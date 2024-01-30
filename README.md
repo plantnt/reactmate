@@ -5,5 +5,9 @@
   >npm run dev
 
 
+## /.vscode/settings.json
 
+  >{
+  >    "typescript.tsdk": "node_modules\\typescript\\lib"
+  >}
 
