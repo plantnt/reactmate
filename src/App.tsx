@@ -6,6 +6,7 @@ import Navbar from './components/UI/navbar'
 import LogIn from './pages/Login'
 import SignUp from './pages/Signup'
 import Profile from './pages/Profile'
+import HelpPage from './pages/Help'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/profilePage' element={<Profile/>} />
           <Route path='/logIn' element={<LogIn/>} />
           <Route path='/signUp' element={<SignUp/>} />
+          <Route path='/helpPage' element={<HelpPage/>} />
         </Routes>
       </main>
     </Router>
