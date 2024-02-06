@@ -1,6 +1,7 @@
 import ProductCard from "../components/productCard"
 import Filters from "../components/filters"
 import Footer from "../components/UI/footer"
+import Rating from "../components/rating"
 
 const Home = () => {
     return(
@@ -9,6 +10,7 @@ const Home = () => {
                 <div className="absolute left-0">
                     <Filters></Filters>
                 </div>
+                <Rating/>
                 <div className="flex flex-wrap justify-center max-w-[700px] p-2">
                     <ProductCard></ProductCard>
                     <ProductCard></ProductCard>
