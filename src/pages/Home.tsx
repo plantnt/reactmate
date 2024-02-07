@@ -5,34 +5,24 @@ import Rating from "../components/rating"
 
 const Home = () => {
     return(
-        <div className="h-full overflow-x-hidden">
-            <div className="flex flex-row justify-center">
-                <div className="absolute left-0">
-                    <Filters></Filters>
+        <div className="h-full w-full flex flex-col items-center">
+            <div className="absolute left-0">
+                <Filters/>
+            </div>
+            <div>
+                <div className="mt-3">
+                    <Rating/>
                 </div>
-                <Rating/>
-                <div className="flex flex-wrap justify-center max-w-[700px] p-2">
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
+                <div className="flex flex-wrap max-w-[700px] pt-3">
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                 </div>
             </div>
-            <div className="w-full">
-                <Footer />                
+            <div className="w-full z-50">
+                <Footer/>
             </div>
-
         </div>
     )
 }

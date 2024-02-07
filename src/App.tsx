@@ -11,7 +11,7 @@ import HelpPage from './pages/Help'
 const App = () => {
   return (
     <Router>
-        <Navbar></Navbar>
+      <Navbar></Navbar>
       <main>
         <Routes>
           <Route path='/' element={<Home/>} />

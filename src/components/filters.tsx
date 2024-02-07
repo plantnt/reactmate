@@ -1,9 +1,8 @@
-import { IconCirclePlus } from "@tabler/icons-react"
-
+import { PlusCircle } from "lucide-react"
 export default function Filters(){
     return(
         <div>
-            <div id="filters" className="h-full pt-5 pl-5 pr-10 border-r-[1px] border-slate-300">
+            <div id="filters" className="h-full max-w-[300px] py-5 pl-5 pr-10 border-r-[1px] border-slate-300 bg-white ">
                 <h2 className="font-bold mb-3">Categorías</h2>
                 <ul className="flex flex-col space-y-2">
                     <li>
@@ -24,7 +23,7 @@ export default function Filters(){
                     </li>
                     <li>
                         <label htmlFor="IconCirclePlus" className="flex items-center">
-                            <IconCirclePlus size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
+                            <PlusCircle size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
                             Ver más
                         </label>
                     </li>
@@ -49,7 +48,7 @@ export default function Filters(){
                     </li>
                     <li>
                         <label htmlFor="IconCirclePlus" className="flex items-center">
-                            <IconCirclePlus size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
+                            <PlusCircle size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
                             Ver más
                         </label>
                     </li>
@@ -74,7 +73,7 @@ export default function Filters(){
                     </li>
                     <li>
                         <label htmlFor="IconCirclePlus" className="flex items-center">
-                            <IconCirclePlus size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
+                            <PlusCircle size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
                             Ver más
                         </label>
                     </li>
