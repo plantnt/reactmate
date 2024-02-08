@@ -26,7 +26,7 @@ export default function Rating(){
                 
                 <input type="text" value={value2} onChange={handleChange2} className="border-2 border-slate-300 w-[54px] h-[1.2em] mx-1 outline-none pb-[1px] text-slate-700" placeholder="Max."/>
             </div>
-            <div className="flex items-center ml-10">
+            <div className="flex items-center ml-10 text-slate-700">
                 Calificación:
                 <div className="flex
                                 ml-1 
