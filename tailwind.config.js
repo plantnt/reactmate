@@ -8,6 +8,9 @@ export default {
     extend: {},
     container:{
       center: true
+    },
+    screens: {
+      'tv': '1800px'
     }
   },
   plugins: [],

@@ -6,7 +6,7 @@ export default function Footer(){
         <>
             <div id="FooterMain" className="bg-[#aaa] mt-10 pb-5">
             <div className="max-w-[1200px] mx-auto px-4">
-                <div className="md:flex gap-4 justify-between w-full">
+                <div className="flex justify-evenly w-full">
                     <div className="md:w-[50%] pt-4">
                         <div className="text-lg font-semibold text-[#282828]">Ayuda</div>
                         <div className="text-[#222] text-sm">
