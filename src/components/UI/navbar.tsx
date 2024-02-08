@@ -17,7 +17,7 @@ const Navbar = () => {
             <Link to='/'><img src={textLogo} className="min-w-[120px] h-[20px] m-2"/></Link>
           </div>
           <div className="basis-1/5">
-            <button className="flex justify-between items-center bg-[#FF886D] px-3 p-2 text-white font-bold rounded-lg">
+            <button className="flex justify-between items-center bg-furniorange px-3 p-2 text-white font-bold rounded-lg">
               <Layers className="mr-[10px]" color="white" size={20} />
               Catalogo
             </button>

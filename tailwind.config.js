@@ -11,7 +11,12 @@ export default {
     },
     screens: {
       'tv': '1800px'
-    }
+    },
+    // colors:{
+    //   white: '#FFFFFF',
+    //   furnipurple: '#9A6CC8',
+    //   furniorange: '#FF886D'
+    // }
   },
   plugins: [],
 }

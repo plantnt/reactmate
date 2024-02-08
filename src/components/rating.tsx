@@ -1,8 +1,5 @@
 import { useState } from "react"
 
-import { IconStar } from "@tabler/icons-react"
-import { IconStarFilled } from "@tabler/icons-react"
-
 export default function Rating(){
     const [value, setValue] = useState('')
     const handleChange = (event: { target: { value: string } }) => {
@@ -15,6 +12,7 @@ export default function Rating(){
         setValue2(result2)
     }
 
+     
 
 
     
@@ -30,12 +28,18 @@ export default function Rating(){
             </div>
             <div className="flex items-center ml-10">
                 Calificación:
-
-                <IconStar size={16} id="star1" className="ml-1 cursor-pointer text-slate-300 hover:text-gray-400 transition-all" />
-                <IconStar size={16} id="star2" className="ml-1 cursor-pointer text-slate-300 hover:text-gray-400 transition-all" />
-                <IconStar size={16} id="star3" className="ml-1 cursor-pointer text-slate-300 hover:text-gray-400 transition-all" />
-                <IconStar size={16} id="star4" className="ml-1 cursor-pointer text-slate-300 hover:text-gray-400 transition-all" />
-                <IconStar size={16} id="star5" className="ml-1 cursor-pointer text-slate-300 hover:text-gray-400 transition-all" />
+                <div className="flex
+                                ml-1 
+                                hover:text-furnipurple
+                                space-x-[1px] 
+                                cursor-pointer
+                                transition-colors text-md">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
             </div>
         </div>
     )
