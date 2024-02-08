@@ -10,7 +10,7 @@ export default {
       center: true
     },
     screens: {
-      'tv': '1800px'
+      'tv': '2000px'
     },
     colors:{
       white: '#FFFFFF',
