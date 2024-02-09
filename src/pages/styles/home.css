@@ -1,0 +1,21 @@
+:root{
+    --primaryOrange: #FF886D ;
+    --primaryPurple: #9A6CC8;
+}
+
+.ant-pagination .ant-pagination-item-active{
+    border-color: var(--primaryOrange);
+}
+.ant-pagination .ant-pagination-item-active > a{
+    font-weight: 800;
+    color: var(--primaryOrange);
+}
+
+.ant-pagination .ant-pagination-item-active:hover{
+    border-color: var(--primaryOrange);
+}
+.ant-pagination .ant-pagination-item-active > a:hover{
+    font-weight: 800;
+    color: var(--primaryOrange);
+}
+

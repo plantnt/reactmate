@@ -55,7 +55,7 @@ export default {
         900:'#18181b',
         950:'#09090b',
       },
-      Neutral: {
+      neutral: {
         50: '#fafafa',
         100: '#f5f5f5',
         200: '#e5e5e5',
@@ -68,7 +68,7 @@ export default {
         900: '#171717',
         950: '#0a0a0a',
       },
-      Stone: {
+      stone: {
         50: '#fafaf9',
         100: '#f5f5f4',
         200: '#e7e5e4',
@@ -81,7 +81,7 @@ export default {
         900: '#1c1917',
         950: '#0c0a09',
       },
-      Red: {
+      red: {
         50:  '#fef2f2',
         100: '#fee2e2',
         200: '#fecaca',
@@ -94,7 +94,7 @@ export default {
         900: '#7f1d1d',
         950: '#450a0a',
       },
-      Orange: {
+      orange: {
         50: '#fff7ed',
         100: '#ffedd5',
         200: '#fed7aa',
@@ -107,7 +107,7 @@ export default {
         900: '#7c2d12',
         950: '#431407',
       },
-      Amber: {
+      amber: {
         50: '#fffbeb',
         100: '#fef3c7',
         200: '#fde68a',
@@ -120,7 +120,7 @@ export default {
         900: '#78350f',
         950: '#451a03',
       },
-      Yellow: {
+      yellow: {
         50: '#fefce8',
         100: '#fef9c3',
         200: '#fef08a',
@@ -133,7 +133,7 @@ export default {
         900: '#713f12',
         950: '#422006',
       },
-      Lime: {
+      lime: {
         50: '#f7fee7',
         100: '#ecfccb',
         200: '#d9f99d',
@@ -146,7 +146,7 @@ export default {
         900: '#365314',
         950: '#1a2e05',
       },
-      Green: {
+      green: {
         50: '#f0fdf4',
         100: '#dcfce7',
         200: '#bbf7d0',
@@ -159,7 +159,7 @@ export default {
         900: '#14532d',
         950: '#052e16',
       },
-      Emerald: {
+      emerald: {
         50: '#ecfdf5',
         100: '#d1fae5',
         200: '#a7f3d0',
@@ -172,7 +172,7 @@ export default {
         900: '#064e3b',
         950: '#022c22',
       },
-      Teal: {
+      teal: {
         50: '#f0fdfa',
         100: '#ccfbf1',
         200: '#99f6e4',
@@ -185,7 +185,7 @@ export default {
         900: '#134e4a',
         950: '#042f2e',
       },
-      Cyan: {
+      cyan: {
         50: '#ecfeff',
         100: '#cffafe',
         200: '#a5f3fc',
@@ -198,7 +198,7 @@ export default {
         900: '#164e63',
         950: '#083344',
       },
-      Sky: {
+      sky: {
         50: '#f0f9ff',
         100: '#e0f2fe',
         200: '#bae6fd',
@@ -211,7 +211,7 @@ export default {
         900: '#0c4a6e',
         950: '#082f49',
       },
-      Blue: {
+      blue: {
         50: '#eff6ff',
         100: '#dbeafe',
         200: '#bfdbfe',
@@ -224,7 +224,7 @@ export default {
         900: '#1e3a8a',
         950: '#172554',
       },
-        Indigo: {
+      Indigo: {
         50: '#eef2ff',
         100: '#e0e7ff',
         200: '#c7d2fe',
@@ -237,7 +237,7 @@ export default {
         900: '#312e81',
         950: '#1e1b4b',
       },
-      Violet: {
+      violet: {
         50: '#f5f3ff',
         100: '#ede9fe',
         200: '#ddd6fe',
@@ -250,7 +250,7 @@ export default {
         900: '#4c1d95',
         950: '#2e1065',
       },
-      Purple: {
+      purple: {
         50: '#faf5ff',
         100: '#f3e8ff',
         200: '#e9d5ff',
@@ -264,7 +264,7 @@ export default {
         950: '#3b0764',
       },
 
-      Fuchsia: {
+      fuchsia: {
         50: '#fdf4ff',
         100: '#fae8ff',
         200: '#f5d0fe',
@@ -277,7 +277,7 @@ export default {
         900: '#701a75',
         950: '#4a044e',
       },
-      Pink: {
+      pink: {
         50: '#fdf2f8',
         100: '#fce7f3',
         200: '#fbcfe8',
@@ -290,7 +290,7 @@ export default {
         900: '#831843',
         950: '#500724',
       },
-        Rose: {
+      rose: {
         50: '#fff1f2',
         100: '#ffe4e6',
         200: '#fecdd3',

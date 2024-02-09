@@ -7,8 +7,12 @@ import textLogo from '../../assets/textLogo.png'
 
 import { Layers } from 'lucide-react';
 
+import { Select } from 'antd'
+
 
 const Navbar = () => {
+  const defaultSubpage = 'Catalogo'
+  const subpages = ['Catalogo', 'Foro', 'Deseados']
   return (
     <nav className="sticky top-0 w-full bg-white border-slate-300 border-b-[1px] z-50">
       <div className="container max-w-5xl">
@@ -17,6 +21,11 @@ const Navbar = () => {
             <Link to='/'><img src={textLogo} className="min-w-[120px] h-[20px] m-2"/></Link>
           </div>
           <div className="basis-1/5">
+            {/* <Select placeholder={defaultSubpage} dropdownStyle={{fontWeight:'bold'}}>
+              {subpages.map((subpage, index) => {
+                return <Select.Option key={index} value={subpage}>{subpage}</Select.Option>
+              })}
+            </Select> */}
             <button className="flex justify-between items-center bg-furniorange px-3 p-2 text-white font-bold rounded-lg">
               <Layers className="mr-[10px]" color="white" size={20} />
               Catalogo
