@@ -1,18 +1,14 @@
 import { Link, NavLink } from 'react-router-dom'
 
+import SubpageSelect from './subpages'
+
 import cartIcon from '../../assets/cartIcon.png'
 import profileIcon from '../../assets/profileIcon.png'
 import searchIcon from '../../assets/searchIcon.png'
 import textLogo from '../../assets/textLogo.png'
 
-import { Layers } from 'lucide-react';
-
-import { Select } from 'antd'
-
-
 const Navbar = () => {
-  const defaultSubpage = 'Catalogo'
-  const subpages = ['Catalogo', 'Foro', 'Deseados']
+
   return (
     <nav className="sticky top-0 w-full bg-white border-slate-300 border-b-[1px] z-50">
       <div className="container max-w-5xl">
@@ -21,15 +17,7 @@ const Navbar = () => {
             <Link to='/'><img src={textLogo} className="min-w-[120px] h-[20px] m-2"/></Link>
           </div>
           <div className="basis-1/5">
-            {/* <Select placeholder={defaultSubpage} dropdownStyle={{fontWeight:'bold'}}>
-              {subpages.map((subpage, index) => {
-                return <Select.Option key={index} value={subpage}>{subpage}</Select.Option>
-              })}
-            </Select> */}
-            <button className="flex justify-between items-center bg-furniorange px-3 p-2 text-white font-bold rounded-lg">
-              <Layers className="mr-[10px]" color="white" size={20} />
-              Catalogo
-            </button>
+              <SubpageSelect/>
           </div>
           <div className="basis-2/5 flex items-center">
             <input type="text" className="bg-slate-200 rounded-xl outline-none px-2 h-7 text-gray-900 w-[90%]"/>
@@ -46,7 +34,7 @@ const Navbar = () => {
               <li>
                 <div className="flex flex-row ml-5">
                 <NavLink to='logIn'>
-                  <button className="bg-gradient-to-r from-[#FF886D]
+                  <button className="bg-gradient-to-r from-furniorange
                                   to-[#BE8AFF] px-3 h-10
                                   text-white font-semibold rounded-xl">
                                     Entrar
@@ -54,7 +42,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink to='signUp'>
                   <div className="mx-auto flex items-center justify-center ml-4 cursor-pointer select-none">
-                    <div className="h-10 w-full p-1 rounded-xl bg-gradient-to-r from-[#FF886D] to-[#BE8AFF]">
+                    <div className="h-10 w-full p-1 rounded-xl bg-gradient-to-r from-furniorange to-[#BE8AFF]">
                       <div className="flex p-1 bg-white rounded-lg">
                         <h1 className="font-semibold text-slate-700">
                           Registrarse
