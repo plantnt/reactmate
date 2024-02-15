@@ -2,6 +2,7 @@ import ProductCard from "../components/productCard"
 import Filters from "../components/filters"
 import Footer from "../components/UI/footer"
 import Rating from "../components/rating"
+import FeaturedProducts from "./featured"
 
 import './styles/home.css'
 
@@ -11,15 +12,16 @@ const Home = () => {
     return(
         <>
             <div className="h-full w-full flex flex-col items-center">
+                <FeaturedProducts/>
                 <div className="flex w-full">
-                    <div className="basis-1/5">
+                    <div className="">
                         <Filters/>
                     </div>      
                     <div className="flex flex-col items-center">
-                        <div className="self-start mt-3">
+                        <div className="mt-3">
                             <Rating/>
                         </div>
-                        <div className="grid grid-cols-4 gap-3 ml-3 pt-3">
+                        <div className="max-w-[70%] inline-flex flex-wrap gap-3 ml-3 pt-3">
                             <ProductCard />
                             <ProductCard />
                             <ProductCard />
