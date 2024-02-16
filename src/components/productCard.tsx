@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom"
 import prod1 from "../assets/products/1.jpg"
+import Card from 'react-bootstrap/Card';
 
 export default function ProductCard(){
     return(
         <>
             <NavLink to="productPage">
-                <div className="max-w-[200px] rounded-xl bg-white border border-slate-200 cursor-pointer hover:transform">
-                    <img src={prod1} className="w-full rounded-t-xl" />
-                    <div className="p-4">
-                        <h2 className="font-black">Titulo</h2>
-                        <h4 className="font-bold">$9999</h4>
-                    </div>
-                </div>
+                <Card className="w-[10rem] bg-white color-black border-[1px] rounded-lg">
+                    <Card.Img src={prod1} />
+                    <Card.Body className="p-3">
+                        <Card.Title>Titulo</Card.Title>
+                        <Card.Text className="font-bold">
+                            $999.99
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
             </NavLink>
         </>
     )
