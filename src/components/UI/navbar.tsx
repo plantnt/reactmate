@@ -29,7 +29,7 @@ const Navbar = () => {
                 <NavLink to='cartPage'><img src={cartIcon} className="min-w-[25px] max-h-[20px]" /></NavLink>
               </li>
               <li>
-                <NavLink to="profilePage"><img src={profileIcon} width="25" className="hidden"/></NavLink>
+                <NavLink to="profilePage"><img src={profileIcon} width="25" className=""/></NavLink>
               </li>
               <li>
                 <div className="flex flex-row ml-5">
@@ -51,6 +51,7 @@ const Navbar = () => {
                     </div>
                   </div>
                 </NavLink>
+
                 </div>
               </li>
             </ul>
