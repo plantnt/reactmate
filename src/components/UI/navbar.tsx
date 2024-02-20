@@ -33,28 +33,32 @@ const Navbar = () => {
                       <Layers size={20} className="mr-2"/> Catalogo
                   </button>
                   <div className="dropdown-menu">
-                    <button className="dropdown-foro transition-all
-                    flex
-                    items-center
-                    p-2 
-                    mt-1 
-                    w-[130px] 
-                    rounded-md
-                    font-semibold
-                    text-white ">
-                      <MessagesSquare size={20} className='mr-2'/> Foro
-                    </button>
-                    <button className="dropdown-deseados
-                    flex
-                    items-center
-                    p-2 
-                    mt-1 
-                    w-[130px] 
-                    rounded-md
-                    font-semibold
-                    text-white ">
-                      <FaStar size={20} className='mr-2'/> Deseados
-                    </button>
+                    <NavLink to='foroPage'>
+                      <button className="dropdown-foro transition-all
+                      flex
+                      items-center
+                      p-2 
+                      mt-1 
+                      w-[130px] 
+                      rounded-md
+                      font-semibold
+                      text-white ">
+                        <MessagesSquare size={20} className='mr-2'/> Foro
+                      </button>
+                    </NavLink>
+                    <NavLink to='deseadosPage'>
+                      <button className="dropdown-deseados
+                      flex
+                      items-center
+                      p-2 
+                      mt-1 
+                      w-[130px] 
+                      rounded-md
+                      font-semibold
+                      text-white ">
+                        <FaStar size={20} className='mr-2'/> Deseados
+                      </button>
+                    </NavLink>
                   </div>
             </div>
           </div>
@@ -68,7 +72,7 @@ const Navbar = () => {
                 <NavLink to='cartPage'><img src={cartIcon} className="min-w-[25px] max-h-[20px]" /></NavLink>
               </li>
               <li>
-                <NavLink to="profilePage"><img src={profileIcon} width="25" className=""/></NavLink>
+                <NavLink to="profilePage"><img src={profileIcon} width="25" className="hidden"/></NavLink>
               </li>
               <li>
                 <div className="flex flex-row ml-5">
