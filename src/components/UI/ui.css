@@ -1,0 +1,28 @@
+.link:hover, .dropdown-foro:hover, .dropdown-deseados:hover{
+    background-color: #eb7d64;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown-menu{
+    position: fixed;
+    display: none;
+    transform: translateY(-10px);
+}
+
+.dropdown-deseados{
+    background-color: #FF886D;
+    box-shadow: 0 2px 15px 0 rgba(79, 82, 99, 0.502);
+}
+.dropdown-foro{
+    background-color: #FF886D;
+    box-shadow: 0 2px 15px 0 rgba(79, 82, 99, 0.502);
+}
+
+
+.dropdown > .link:focus + .dropdown-menu{
+    transform: translateY(0);
+    display: block;
+}
