@@ -82,11 +82,9 @@ const Navbar = () => {
                 <NavLink to='signUp'>
                   <div className="mx-auto flex items-center justify-center ml-4 cursor-pointer select-none">
                     <div className="h-10 w-full p-1 rounded-xl bg-gradient-to-r from-furniorange to-[#BE8AFF]">
-                      <div className="flex p-1 bg-white rounded-lg">
-                        <h1 className="font-semibold text-slate-700">
+                        <h1 className="font-semibold text-white mt-1">
                           Registrarse
                           </h1>
-                      </div>
                     </div>
                   </div>
                 </NavLink>
