@@ -8,6 +8,8 @@ import SignUp from './pages/Signup'
 import Profile from './pages/Profile'
 import HelpPage from './pages/Help'
 import ProductView from './pages/ProductView'
+import ForoPage from './pages/subpages/Foro'
+import DeseadosPage from './pages/subpages/Deseados'
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
           <Route path='/ProductPage' element={<ProductView/>} />
+          <Route path='/foroPage' element={<ForoPage/>} />
+          <Route path='/deseadosPage' element={<DeseadosPage/>} />
         </Routes>
       </main>
     </Router>

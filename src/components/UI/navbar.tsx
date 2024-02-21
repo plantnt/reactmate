@@ -1,15 +1,17 @@
 import { Link, NavLink } from 'react-router-dom'
 
-import SubpageSelect from './subpages'
+import { FaStar } from "react-icons/fa";
+import { Layers, MessagesSquare } from "lucide-react"
 
 import cartIcon from '../../assets/cartIcon.png'
 import profileIcon from '../../assets/profileIcon.png'
 import searchIcon from '../../assets/searchIcon.png'
 import textLogo from '../../assets/textLogo.png'
 
-const Navbar = () => {
+import "./ui.css"
 
-  return (
+const Navbar = () => {
+    return (
     <nav className="sticky top-0 w-full bg-white border-slate-300 border-b-[1px] z-50">
       <div className="container max-w-5xl">
         <div className="flex flex-row py-2 items-center">
@@ -17,7 +19,48 @@ const Navbar = () => {
             <Link to='/'><img src={textLogo} className="min-w-[120px] h-[20px] m-2"/></Link>
           </div>
           <div className="basis-1/5">
-              <SubpageSelect/>
+          <div className="dropdown">
+                  <button className="link 
+                  flex
+                  items-center
+                  bg-furniorange 
+                  p-2 
+                  w-[130px] 
+                  rounded-md 
+                  font-semibold 
+                  text-white 
+                  transition-all">
+                      <Layers size={20} className="mr-2"/> Catalogo
+                  </button>
+                  <div className="dropdown-menu">
+                    <NavLink to='foroPage'>
+                      <button className="dropdown-foro transition-all
+                      flex
+                      items-center
+                      p-2 
+                      mt-1 
+                      w-[130px] 
+                      rounded-md
+                      font-semibold
+                      text-white ">
+                        <MessagesSquare size={20} className='mr-2'/> Foro
+                      </button>
+                    </NavLink>
+                    <NavLink to='deseadosPage'>
+                      <button className="dropdown-deseados
+                      flex
+                      items-center
+                      p-2 
+                      mt-1 
+                      w-[130px] 
+                      rounded-md
+                      font-semibold
+                      text-white ">
+                        <FaStar size={20} className='mr-2'/> Deseados
+                      </button>
+                    </NavLink>
+                  </div>
+            </div>
           </div>
           <div className="basis-2/5 flex items-center">
             <input type="text" className="bg-slate-200 rounded-xl outline-none px-2 h-7 text-gray-900 w-[90%]"/>
@@ -51,6 +94,7 @@ const Navbar = () => {
                     </div>
                   </div>
                 </NavLink>
+
                 </div>
               </li>
             </ul>
@@ -62,3 +106,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+ 
