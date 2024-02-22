@@ -7,13 +7,13 @@ export default function Footer(){
             <div id="FooterMain" className="bg-[#aaa] mt-10 pb-5">
             <div className="max-w-[1200px] mx-auto px-4">
                 <div className="flex justify-evenly w-full">
-                    <div className="md:w-[50%] pt-4">
+                    <div className="md:w-[50%] pt-5 ">
                         <div className="text-lg font-semibold text-[#282828]">Ayuda</div>
                         <div className="text-[#222] text-sm">
                             <NavLink to="helpPage">Reportar problemas</NavLink>
                         </div>
                     </div>
-                    <div className="md:w-[50%] pt-4 ">
+                    <div className="md:w-[50%] pt-6 ">
                         <a href="https://www.instagram.com/furnimate_zw/?hl=en" target="_blank">
                         <Instagram size={20}/>
                             @furnimate_zw

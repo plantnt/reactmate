@@ -12,8 +12,10 @@ import ProductView from './pages/ProductView'
 const App = () => {
   return (
     <Router>
-      <Navbar></Navbar>
-      <main>
+      <div className="sticky top-0 z-50">
+        <Navbar />
+      </div>
+      <main className='bg-gray-50'>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />
@@ -28,4 +30,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
