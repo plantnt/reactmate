@@ -37,8 +37,8 @@ const Home = () => {
                             <ProductCard />
                             <ProductCard />
                         </div>
-                        <AddProduct/>
                     </div>
+                    <AddProduct/>
                 </div>
                 <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
                 <div className="grid w-full justify-self-end">

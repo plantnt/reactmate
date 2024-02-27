@@ -3,20 +3,20 @@ import { NavLink } from "react-router-dom";
 export default function SignUp(){
     return(
         <>  
-            <div className="container flex flex-col items-center justify-center" align="center">
+            <div className="container flex flex-col items-center justify-center">
 
             <NavLink to="/" className="max-w-96">
                 <img src="./src\assets\textLogo.png" className="p-4"></img>
             </NavLink>
             
-                <div className="flex flex-col bg-gray-200 p-4 rounded-2xl m-0-auto max-w-sm items-center text-center">
+                <div className="flex flex-col bg-gray-200 p-4 rounded-2xl m-0-auto max-w-sm items-center text-center m-5">
                     <div className="flex rounded-full w-1/3 h-1/3 items-center justify-center">
                     <img src="./src\assets\profileIcon.png"></img>
                     </div>
                     <ul className="min-w-fit">
                         <li className="p-2">
                             Seleccione una imagen:
-                            <input type="file" className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white  file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
+                            <input type="file" className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
                         </li>
                         <li className="p-2">
                             <label className="p-2">
