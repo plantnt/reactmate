@@ -1,29 +1,28 @@
+import { BiAddToQueue } from "react-icons/bi";
 function AddProduct2(){
-location.href="#"
+  location.href="login "
 }
 
 export default function AddProduct(){
   
   return(
+    <>
+    
 
-<div className="absolute">
-
-<button className="
-bg-furnipurple 
-hover:bg-furniorange
-ease-in-out duration-500
-rounded-full 
-px-4 
-py-2
-text-white 
-
-" 
-onClick={AddProduct2}
-> 
-Boton
-</button>
-
-</div>
-
+    <button className="
+      fixed top-[80vh] right-[40px]
+      w-[70px] h-[70px]
+      bg-furnipurple
+      hover:bg-violet-700
+      ease-in-out duration-500
+      rounded-full  
+      p-2 flex justify-center items-center text-white
+      " 
+      onClick={AddProduct2}
+      > 
+        <BiAddToQueue size={35} />
+      </button>
+  
+    </>
   )
 }
