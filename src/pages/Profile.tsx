@@ -40,7 +40,7 @@ export default function Profile() {
                 alt="Profile"
               />
             </div>
-            <div className="p-8 text-center">
+            <div className="p-4  text-center">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
                 <h1 className="text-2xl font-rounded">donjuan700</h1>
               </div>
@@ -109,13 +109,13 @@ export default function Profile() {
         {/* Esta es la linea separadora q separa jaajaj */}
         <hr className="my-8 border-b border-gray-200 mx-4" />
 
-        <h1 className="text-center text-gray-400 text-xl pb-10">*Se filtrarán solamente los productos de este usuario*</h1>
+        <h1 className="text-center text-gray-400 text-xl pb-8">*Se filtrarán solamente los productos de este usuario*</h1>
         <br></br>
 
         <div className="h-full w-full flex flex-col -m-8">
           <div className="grid grid-flow-col">
-            <div className="pl-8"><Filters /></div>
-            <div className="max-w-[60rem] justify-self-start">
+            <div className="pl-8" ><Filters /></div>
+            <div className="max-w-[60rem] justify-self-start ">
               <div className="mt-3">
                 <Rating />
               </div>
