@@ -5,6 +5,7 @@ import Filters from "../components/filters";
 import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import { Pagination } from 'antd';
+import RatingProfile from '../components/ratingProfile';
 
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +55,7 @@ export default function Profile() {
               <br />
 
               <div className="mt-4 text-center font-rounded">
+                
                 <p className="text-gray-700">
                   <span className="font-semibold">Correo electrónico: </span> donjuan@example.com
                 </p>
@@ -63,6 +65,8 @@ export default function Profile() {
                 <p className="text-gray-600">
                   <span className="font-semibold">Fecha de Registro: </span> 20 de febrero de 2024
                 </p>
+<br></br>
+<div className="flex justify-center items-center mr-20"><RatingProfile/></div>
               </div>
               <br />
 
@@ -114,10 +118,10 @@ export default function Profile() {
 
         <div className="h-full w-full flex flex-col -m-8">
           <div className="grid grid-flow-col">
-            <div className="pl-8" ><Filters /></div>
+            <div className="pl-8" ><Filters />
+            </div>
             <div className="max-w-[60rem] justify-self-start ">
               <div className="mt-3">
-                <Rating />
               </div>
               <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-8 pt-3">
                 <ProductCard />
