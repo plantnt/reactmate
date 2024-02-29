@@ -10,7 +10,10 @@ export default function SignUp(){
             </NavLink>
             
                 <div className="flex flex-col bg-gray-200 p-4 rounded-2xl m-0-auto max-w-sm items-center text-center m-5">
-                    <div className="flex rounded-full w-1/3 h-1/3 items-center justify-center">
+                    <label className="text-2xl font-bold pb-4 text-violet-700">
+                        Registro
+                    </label>
+                    <div className="flex rounded-full w-1/3 h-1/3 justify-center">
                     <img src="./src\assets\profileIcon.png"></img>
                     </div>
                     <ul className="min-w-fit">
@@ -44,12 +47,13 @@ export default function SignUp(){
                         </li> 
 
                         <li className="p-2">
-                            <input type="number" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono"/>
-                        </li> 
+                            <input type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
+                        </li>  
 
                         <li className="p-2">
-                            <input type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
-                        </li>     
+                            <input type="number" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono (Opcional)"/>
+                        </li> 
+
                         <li className="p-2">
                             <input type="" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
                         </li>        
