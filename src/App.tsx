@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { createClient } from "@supabase/supabase-js";
 
 import Home from './pages/Home'
 import Cart from './pages/Cart'
@@ -13,19 +11,8 @@ import ProductView from './pages/ProductView'
 import ForoPage from './pages/subpages/Foro'
 import DeseadosPage from './pages/subpages/Deseados'
 
-const supabase = createClient("https://bvbyifqplonojbgaeafg.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2YnlpZnFwbG9ub2piZ2FlYWZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg0MzA2ODAsImV4cCI6MjAyNDAwNjY4MH0.16txlFiUZ7kfJuCDe8G5aWu2gUg_455R6dmp5f5nFHY");
 const App = () => {
-  const [countries, setCountries] = useState([]);
-
-    useEffect(() => {
-      getCountries();
-    }, []);
-
-    async function getCountries() {
-      const {data} = await supabase.from("countries").select();
-      setCountries(data);
-    }
-
+  
   return (
     <Router>
       <Navbar></Navbar>
@@ -41,11 +28,6 @@ const App = () => {
           <Route path='/foroPage' element={<ForoPage/>} />
           <Route path='/deseadosPage' element={<DeseadosPage/>} />
         </Routes>
-        <ul>
-        {countries.map((country) => (
-          <li key={country.name}>{country.name}</li>
-        ))}
-      </ul>
       </main>
     </Router>
   )
