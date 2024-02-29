@@ -5,7 +5,7 @@ export default function LogIn(){
         <>  
             <div className="container flex flex-col items-center justify-center">
 
-            <NavLink to="/" className="max-w-96">
+            <NavLink to="/" className="max-w-96 pb-10">
                 <img src="./src\assets\textLogo.png" className="p-4"></img>
             </NavLink>
             
