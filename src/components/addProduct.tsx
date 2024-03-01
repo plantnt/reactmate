@@ -1,14 +1,12 @@
 import { BiAddToQueue } from "react-icons/bi";
-function AddProduct2(){
-  location.href="#"
-}
+import {NavLink} from 'react-router-dom'
 
 export default function AddProduct(){
   
   return(
     <>
     
-
+    <NavLink to='/Upload'>
 <button className="
       fixed top-[80vh] right-[40px]
       w-[70px] h-[70px]
@@ -17,12 +15,10 @@ export default function AddProduct(){
       ease-in-out duration-1000
       rounded-full  
       p-2 flex justify-center items-center text-white
-      " 
-      onClick={AddProduct2}
-      > 
+      "> 
         <BiAddToQueue size={35} />
       </button>
-
+      </NavLink>
     </>
   )
 }

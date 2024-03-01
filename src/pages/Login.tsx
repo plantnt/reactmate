@@ -26,7 +26,7 @@ export default function LogIn(){
                     <button className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all"> Iniciar Sesión </button>
                         <div className="flex">
                             <label>¿No tienes una cuenta?</label>
-                            <NavLink to="/logIn" className="text-blue-400 pl-2">Registrarse</NavLink>
+                            <NavLink to="/SignUp" className="text-blue-400 pl-2">Registrarse</NavLink>
                         </div>
                         <div>
                             <NavLink to="#" className="text-blue-400 pl-2">¿Olvido su Contraseña?</NavLink>

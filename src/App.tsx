@@ -8,6 +8,7 @@ import SignUp from './pages/Signup'
 import Profile from './pages/Profile'
 import HelpPage from './pages/Help'
 import ProductView from './pages/ProductView'
+import Upload from './pages/ProductUpload'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
           <Route path='/ProductPage' element={<ProductView/>} />
+          <Route path='/ProductUpload' element={<Upload/>} />
         </Routes>
       </main>
     </Router>
