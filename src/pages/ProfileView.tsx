@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { FaRegCommentDots, FaRegListAlt, FaEllipsisH } from 'react-icons/fa';
+import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaFlag, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
 import Footer from "../components/UI/footer";
@@ -43,14 +43,14 @@ export default function Profile() {
             </div>
             <div className="p-4  text-center">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                <h1 className="text-2xl font-rounded">josefino700</h1>
+                <h1 className="text-2xl font-rounded">carlos500m98</h1>
               </div>
-              <p className="text-indigo-700 font-semibold font-rounded">VENDEDOR</p>
+              <p className="text-indigo-700 font-semibold font-rounded">EMPRENDEDOR</p>
               <br />
               <p className="mt-2 text-gray-500 font-rounded">
-                Esta es la página destinada para mostrar los datos introducidos en el registro
-                como un usuario completo, desde la vista del usuario primario en su propia página
-                OJO Q EL FORO EXTERNO ES SOLAMENTE TEMPORAL ns si se use la vdd
+                Esta es la vista externa cuando se visita a un usuario externo, en el cual se dan más
+                opciones de calificación y un boton de reporte, que incluye un link hacia el reglamento
+                de la pagina y asi reevaluar si este usuario ha cometido una infracción.
               </p>
               <br />
 
@@ -66,7 +66,21 @@ export default function Profile() {
                   <span className="font-semibold">Fecha de Registro: </span> 20 de febrero de 2024
                 </p>
 <br></br>
-<div className="flex justify-center items-center mr-20"><RatingProfile/></div>
+
+<div className="mt-4 text-center font-rounded">
+  <div className="flex justify-center items-center space-x-2">
+    <RatingProfile />
+    {/* Botón de Me gusta */}
+    <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105">
+      <FaThumbsUp className="inline-block mr-1 text-gray-500" />
+    </button>
+    {/* Botón de No me gusta */}
+    <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105">
+      <FaThumbsDown className="inline-block mr-1 text-gray-500" />
+    </button>
+  </div>
+</div>
+
               </div>
               <br />
 
@@ -85,25 +99,25 @@ export default function Profile() {
                 </a>
 
                 <div ref={dropdownRef} className="">
-                  <button
-                    onClick={handleClick}
-                    className="bg-gray-500 hover:bg-white hover:text-gray-500 hover:border-gray-500 transition duration-300 border-2 border-gray-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
-                  >
-                    <span className="text-base font-rounded">Opciones</span>
-                    <FaEllipsisH className="inline-block ml-2 text-xl" />
-                  </button>
-                  {isOpen && (
-                    <div
-                      className="absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10"
-                    >
-                      <div className="py-1">
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Modificar perfil</p>
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Modificar contraseña</p>
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Eliminar cuenta</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
+  <button
+    onClick={handleClick}
+    className="bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-300 border-2 border-red-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+  >
+    <span className="text-base font-rounded">Reportar</span>
+    <FaFlag className="inline-block ml-2 text-xl" />    
+  </button>
+  {isOpen && (
+    <div
+      className="absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10"
+    >
+      <div className="py-1">
+        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Ver reglamento</p>
+        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Por infracción</p>
+      </div>
+    </div>
+  )}
+</div>
+
               </div>
             </div>
           </div>
@@ -113,7 +127,7 @@ export default function Profile() {
         {/* Esta es la linea separadora q separa jaajaj */}
         <hr className="my-8 border-b border-gray-200 mx-4" />
 
-        <h1 className="text-center text-gray-400 text-xl pb-8">*Se filtrarán solamente los productos que hayas publicado*</h1>
+        <h1 className="text-center text-gray-400 text-xl pb-8">*Se filtrarán solamente los productos de este usuario*</h1>
         <br></br>
 
         <div className="h-full w-full flex flex-col -m-8">
