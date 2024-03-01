@@ -12,6 +12,7 @@ import ProductView from './pages/ProductView'
 import ForoPage from './pages/subpages/Foro'
 import DeseadosPage from './pages/subpages/Deseados'
 import TosPage from './pages/ToS'
+import Upload from './pages/ProductUpload'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/deseadosPage' element={<DeseadosPage/>} />
           <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
+          <Route path='/ProductUpload' element={<Upload/>} />
         </Routes>
       </main>
     </Router>

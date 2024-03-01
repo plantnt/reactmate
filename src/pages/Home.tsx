@@ -3,6 +3,7 @@ import Filters from "../components/filters"
 import Footer from "../components/UI/footer"
 import Rating from "../components/rating"
 import FeaturedProducts from "./Featured"
+import AddProduct from "../components/addProduct"
 
 import './styles/home.css'
 
@@ -36,8 +37,11 @@ const Home = () => {
                             <ProductCard />
                             <ProductCard />
                         </div>
+                        
                     </div>
+                    <AddProduct/>
                 </div>
+               
                 <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
                 <div className="grid w-full justify-self-end">
                     <Footer/>
