@@ -10,7 +10,7 @@ import HelpPage from './pages/Help'
 import ProductView from './pages/ProductView'
 import ForoPage from './pages/subpages/Foro'
 import DeseadosPage from './pages/subpages/Deseados'
-import React from 'react'
+
 
 const App = () => {
   
