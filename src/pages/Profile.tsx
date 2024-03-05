@@ -6,6 +6,8 @@ import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import { Pagination } from 'antd';
 import RatingProfile from '../components/ratingProfile';
+import Navbar from "../components/UI/navbar.tsx"
+
 
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +32,7 @@ export default function Profile() {
 
   return (
     <>
+    <Navbar></Navbar>
       <div className="bg-gray-50 min-h-screen py-8">
         <div className="max-w-screen mx-auto rounded-lg border-gray-200 overflow-hidden">
           <br />

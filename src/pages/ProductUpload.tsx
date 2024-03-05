@@ -3,6 +3,7 @@
 
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+import Navbar from "../components/UI/navbar.tsx"
 export default function Upload(){
 
   const animatedComponents = makeAnimated();
@@ -31,6 +32,7 @@ export default function Upload(){
   return(
       <> 
       
+<Navbar></Navbar>
       <div className="flex w-full h-[400px] px-4 mt-[60px] mb-4">
         <input type="file" className="
           w-[500px] 
