@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { Rate } from "antd";
 
-export default function Rating(){
+export default function RatingUser(){
 
     //Evitar letras en los inputs
     const [value, setValue] = useState('')
@@ -21,13 +21,11 @@ export default function Rating(){
         <>
             <div className="flex ml-3">
                 <div className="flex items-center ml-10 text-slate-700">
-                    Calificación promedio:
-                    <Rate allowHalf disabled value={value} onChange={handleChange} className="mt-[5px] ml-2 text-violet-400 text-sm" />
+                    Calificar usuario:
+                    <Rate allowHalf value={value} onChange={handleChange} className="mt-[5px] ml-2 text-violet-400 text-sm" />
                 </div>
             </div>
         </>
         )
 
 }
-
-//El propio usuario no podrá calificarse a si mismo por lo que manipular este botón está restringido

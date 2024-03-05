@@ -1,9 +1,9 @@
-/*import { BiCamera } from "react-icons/bi";*/
-/*<BiCamera />*/
+import { BiCamera } from "react-icons/bi";
+<BiCamera />
 
-import Select from 'react-select'
+import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import Navbar from "../components/UI/navbar.tsx"
+import Navbar from "../components/UI/navbar";
 export default function Upload(){
 
   const animatedComponents = makeAnimated();
