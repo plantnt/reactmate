@@ -4,7 +4,7 @@ export default function LogIn(){
     return(
         <>  
 
-<div className="w-full h-full bg-[url('/src\assets\17860815_rm405-a02d-mockup.jpg')] bg-cover bg-[50%] absolute">
+<div className="w-full h-full bg-[url('/src\assets\LoginBackground.jpg')] bg-cover bg-[50%] absolute">
 <div className="flex flex-col items-center  mt-10">
 
 <NavLink to="/" className="max-w-96 pb-10">

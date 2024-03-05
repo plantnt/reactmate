@@ -4,10 +4,11 @@ export default function ProductView(){
     return(
         <>
         
-        <div className="flex w-full h-[400px] px-4 mt-[60px]">
+        <div className="flex w-full h-[400px] px-4 mt-[60px] ml-4">
             <div className="w-[440px] h-[90%]  border-[5px] border-furnipurple rounded-3xl transition-all ease-in-out duration-700">
                 <img src="/src\assets\products\1.jpg" className="w-full h-full"></img>
             </div>
+            
         <ul className="p-4 w-[500px]">
               <li className="my-4">
                 <legend>Nombre del Producto:</legend>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function SignUp(){
     return(
         <>  
-        <div className="w-full h-full bg-[url('/src\assets\LoginSignUpBackground.jpg')] bg-cover">
+        <div className="w-full h-full bg-[url('/src\assets\SignUpBackground.jpg')] bg-cover">
 
             <div className="container flex flex-col items-center justify-center">
 
