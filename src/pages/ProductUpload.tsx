@@ -31,7 +31,7 @@ export default function Upload(){
   return(
       <> 
       
-      <div className="flex w-full h-[400px] px-4 mt-[60px]">
+      <div className="flex w-full h-[400px] px-4 mt-[60px] mb-4">
         <input type="file" className="
           w-[500px] 
           h-full
@@ -47,9 +47,9 @@ export default function Upload(){
           file:transition-all 
           file:ease-in-out
           file:duration-700 
-          file:
-          " 
+          "
           accept="image/*">
+            
         </input>
 
           <ul className="p-4 w-[600px]">
@@ -70,10 +70,10 @@ export default function Upload(){
               
           </ul>
 
-          <ul className="p-4 w-[300px] h-full">
+          <ul className="p-4 w-[300px] h-full border-2 border-furnipurple rounded-2xl bg-purple-200">
               <li className="my-10">
                 <legend className="text-center">Elige una categoria</legend>
-                <Select options={categorias} isMulti components={animatedComponents} placeholder="Seleccionar...">
+                <Select options={categorias} isMulti components={animatedComponents} placeholder="Seleccionar..." >
                 </Select>
               </li>
 
