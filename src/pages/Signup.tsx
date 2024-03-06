@@ -30,7 +30,16 @@ async function fetchregistro() {
 
 const insertarDatos = async () => {
         try {
-          const { data, error } = await supabase.from("registro").insert([{imagen: 'imagen', nombre: 'nombre', contraseña: 'contraseña', correo: 'correo', telefono: 'telefono', direccion: 'direccion'}]);
+          const { data, error } = await supabase.from("registro")
+          .insert
+          ([{
+            imagen: 'imagen',
+            nombre: 'nombre',
+            contraseña: 'contraseña',
+            correo: 'correo',
+            telefono: 'telefono',
+            direccion: 'direccion'
+                }]);
       
           if (error) {
             throw error;
@@ -101,7 +110,7 @@ const insertarDatos = async () => {
                                 <input id="direccion" name="direccion" type="text" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
                             </li>        
                         </ul>
-                        <button id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </button>
+                        <button onClick={() => {insertarDatos()}} id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </button>
                             <div className="flex">
                                 <label>¿Ya tienes una cuenta?</label>
                                 <NavLink to="/logIn" className="text-blue-400 pl-2">Inicia sesion</NavLink>
