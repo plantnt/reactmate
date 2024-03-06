@@ -46,6 +46,10 @@ export default function Upload(){
               <input type="text" id='title' className='border border-slate-300 h-[2em] outline-none p-1 rounded-md' required/>
             </label>
             <label className='grid'>
+              Precio
+              <input type="text" id='title' className='border border-slate-300 h-[2em] outline-none p-1 rounded-md' required/>
+            </label>
+            <label className='grid'>
               Descrición
               <textarea id='description' className='border border-slate-300 resize-none outline-none p-1 rounded-lg' cols={30} rows={10} maxLength={500}></textarea>
             </label>
