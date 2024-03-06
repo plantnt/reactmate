@@ -5,11 +5,11 @@ export default function LogIn(){
         <>  
 
 <div className="w-full h-full bg-[url('/src\assets\LoginBackground.jpg')] bg-cover bg-[50%] absolute">
-<div className="flex flex-col items-center  mt-10">
+    <div className="flex flex-col items-center  mt-10">
 
-<NavLink to="/" className="max-w-96 pb-10">
-    <img src="./src\assets\textLogo.png" className="p-4"></img>
-</NavLink>
+    <NavLink to="/" className="max-w-96 pb-10">
+        <img src="./src\assets\textLogo.png" className="p-4"></img>
+    </NavLink>
 
     <div className="flex flex-col bg-gray-200 p-4 rounded-2xl m-0-auto w-[30%] items-center text-center m-5 h-full">
         <label className="text-2xl font-bold pb-4 text-violet-700">

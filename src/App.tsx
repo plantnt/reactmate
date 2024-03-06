@@ -17,12 +17,11 @@ import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
 
-
 const App = () => {
   return (
     <Router>  
       <main>
-        <Navbar/>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />

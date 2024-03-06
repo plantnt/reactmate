@@ -2,7 +2,7 @@ import { PlusCircle } from "lucide-react"
 export default function Filters(){
     return(
         <div>
-            <div id="filters" className="w-[17rem] py-5 pl-5 pr-10 border-t-[1px] border-r-[1px] border-b-[1px] rounded-lg border-slate-300 bg-white ">
+            <div id="filters" className="w-[17rem] py-5 pl-5 pr-10 border-t-[1px] border-r-[1px] border-b-[1px] rounded-r-lg border-slate-300 bg-white ">
                 <h2 className="font-bold mb-3">Categorías</h2>
                 <ul className="flex flex-col space-y-2">
                     <li>
