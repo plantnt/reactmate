@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaFlag, FaBoxOpen, FaUser } from 'react-icons/fa';
+import { FaRegCommentDots, FaRegListAlt, FaFlag, FaBoxOpen, FaUser } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
 import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import RatingUser from '../components/ratingUser';
-import Navbar from "../components/UI/navbar";
 import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
 import RatingProfile from '../components/ratingProfile';
@@ -48,7 +47,6 @@ export default function Profile() {
 
   return (
     <>
-      <Navbar />
       <div className="relative bg-gray-50 min-h-screen max-w-full py-8">
         {/* Fondo rectangular */}
         <div className="absolute inset-0 bg-black opacity-50 z-0"></div>

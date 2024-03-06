@@ -10,7 +10,7 @@ export default function Footer(){
                     <div className="md:w-[50%] pt-5">
                         <div className="text-lg font-semibold text-[#282828]">Ayuda</div>
                         <div className="text-[#222] text-sm">
-                            <NavLink to="helpPage">Reportar problemas</NavLink>
+                            <NavLink to="/helpPage">Reportar problemas</NavLink>
                         </div>
                     </div>
                     <div className="md:w-[50%] pt-6 ">

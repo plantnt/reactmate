@@ -4,7 +4,6 @@ import Footer from "../components/UI/footer"
 import Rating from "../components/rating"
 import FeaturedProducts from "./Featured"
 import AddProduct from "../components/addProduct"
-import Navbar from "../components/UI/navbar"
 import './styles/home.css'
 
 import { Pagination } from "antd"
@@ -12,7 +11,6 @@ import { Pagination } from "antd"
 const Home = () => {
     return(
         <>
-        <Navbar></Navbar>
             <div className="h-full w-full flex flex-col">
                 <FeaturedProducts />
                 <div className="grid grid-flow-col">

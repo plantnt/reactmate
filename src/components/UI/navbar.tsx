@@ -1,4 +1,4 @@
-import { FaComment, FaCommentAlt, FaCommentDots } from 'react-icons/fa';
+import { FaCommentDots } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import cartIcon from '../../assets/cartIcon.png';
 import profileIcon from '../../assets/profileIcon.png';
@@ -21,25 +21,25 @@ const Navbar = () => {
                     <div className="basis-2/5">     
                         <ul className="flex flex-row p-2 justify-evenly items-center">
                             <li>
-                                <NavLink to='cartPage'><img src={cartIcon} className="min-w-[35px] max-h-[30px]" /></NavLink>
+                                <NavLink to='/cartPage'><img src={cartIcon} className="min-w-[35px] max-h-[30px]" /></NavLink>
                             </li>
                             <li>
                                 {/* Insert the chat button here */}
-                                    <NavLink to='chatingPage'>
+                                    <NavLink to='/chatingPage'>
                                     <FaCommentDots className="text-green-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
                                     </NavLink>
                             </li>
                             <li>
-                                <NavLink to='profilePage'><img src={profileIcon} width="35" className=""/></NavLink>
+                                <NavLink to='/profilePage'><img src={profileIcon} width="35" className=""/></NavLink>
                             </li>
                             <li>
                                 <div className="flex flex-row ml-5">
-                                    <NavLink to='logIn'>
+                                    <NavLink to='/logIn'>
                                         <button className="bg-gradient-to-r from-furniorange to-[#BE8AFF] px-3 h-10 text-white font-semibold rounded-xl">
                                             Entrar
                                         </button>
                                     </NavLink>
-                                    <NavLink to='signUp'>
+                                    <NavLink to='/signUp'>
                                         <div className="mx-auto flex items-center justify-center ml-4 cursor-pointer select-none">
                                             <div className="h-10 w-full p-1 rounded-xl bg-gradient-to-r from-furniorange to-[#BE8AFF]">
                                                 <h1 className="font-semibold text-white mt-1">

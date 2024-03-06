@@ -1,11 +1,9 @@
 import { Rate } from "antd";
-import Navbar from "../components/UI/navbar.tsx"
 import { NavLink } from "react-router-dom";
 
 export default function ProductView(){
     return(
         <>
-        <Navbar></Navbar>
         <div className=" mt-[30px] ml-8 w-[440px]">
           <NavLink to='/ProfilePageView' className="flex max-w-fit">
           <img className="rounded-full border-2 w-[70px] h-[65px]" src="/src\assets\furniLogo.png"></img>
