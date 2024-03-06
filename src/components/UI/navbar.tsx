@@ -26,7 +26,7 @@ const Navbar = () => {
                             <li>
                                 {/* Insert the chat button here */}
                                     <NavLink to='/chatHome'>
-                                    <FaCommentDots className="text-blue-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
+                                    <FaCommentDots className="text-purple-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
                                     </NavLink>
                             </li>
                             <li>
