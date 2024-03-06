@@ -1,8 +1,14 @@
 /*import { BiCamera } from "react-icons/bi";*/
 /*<BiCamera />*/
-
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+
+import UploadWidget from '../components/Imageupload/UploadWidget';
+
+import { FaRegCheckCircle } from "react-icons/fa";
+import { GiCancel } from "react-icons/gi";
+import { NavLink } from 'react-router-dom';
+
 export default function Upload(){
 
   const animatedComponents = makeAnimated();
@@ -11,7 +17,8 @@ export default function Upload(){
     { value: '1', label: 'Mueble de hogar' },
     { value: '2', label: 'Mueble de exteriores' },
     { value: '3', label: 'Mueble de madera' },
-    { value: '4', label: 'Mueble de plastico' }
+    { value: '4', label: 'Mueble de plastico' },
+    { value: '5', label: 'Mueble de plastico reciclado' }
   ]
 
   const colores = [
@@ -29,74 +36,48 @@ export default function Upload(){
   ]
 
   return(
-      <> 
-      
-      <div className="flex w-full h-[400px] px-4 mt-[60px] mb-4">
-        <input type="file" className="
-          w-[500px] 
-          h-full
-          file:border-[5px]
-          file:border-furnipurple
-          file:border-dashed
-          file:w-full file:h-[90%] 
-          file:rounded-3xl 
-          file:bg-[#FFC08F] 
-          file:text-furnipurple 
-          file:font-bold
-          file:hover:bg-[#FEB881]
-          file:transition-all 
-          file:ease-in-out
-          file:duration-700 
-          "
-          accept="image/*">
-            
-        </input>
-
-          <ul className="p-4 w-[600px]">
-              <li className="my-4">
-                <legend>Nombre del Producto:</legend>
-                <input type="text" placeholder="(Minimo 5 caracteres)" className="border-2 border-violet-400  px-2 w-full bg-purple-200 placeholder:text-violet-500"/>
-              </li>
-
-              <li className="my-4">
-                <legend>Precio del Producto:</legend>
-                <input type="Number" placeholder="(Minimo 5 caracteres)" className="border-2 border-violet-400 px-2 bg-purple-200 placeholder:text-violet-500"/>
-              </li>
-
-              <li className="my-4 ">
-                <legend>Descripcion del Producto:</legend>
-                <input type="text" placeholder="(Espacio opcional para describir tu producto)" className="border-2 px-2 border-violet-400  w-full h-[150px] bg-purple-200 placeholder:text-violet-500"/>
-              </li>
-              
-          </ul>
-
-          <ul className="p-4 w-[300px] h-full border-2 border-furnipurple rounded-2xl bg-purple-200">
-              <li className="my-10">
-                <legend className="text-center">Elige una categoria</legend>
-                <Select options={categorias} isMulti components={animatedComponents} placeholder="Seleccionar..." >
-                </Select>
-              </li>
-
-              <li className="my-10 ">
-                <legend className="text-center">Elige un color</legend>
-                <Select options={colores} isMulti components={animatedComponents} placeholder="Seleccionar...">
-                </Select>
-              </li>
-
-              <li className="my-10">
-                <legend className="text-center">Elige un material</legend>
-                <Select options={materiales} isMulti components={animatedComponents} placeholder="Seleccionar...">
-                </Select>
-              </li>
-              
-          </ul>
+    <> 
+      <div className="flex space-x-9 p-8">
+          <UploadWidget />
+          <form className='grid grid-cols-2'>
+          <div>
+            <label className='grid'>
+              Título del producto
+              <input type="text" id='title' className='border border-slate-300 h-[2em] outline-none p-1 rounded-md' required/>
+            </label>
+            <label className='grid'>
+              Descrición
+              <textarea id='description' className='border border-slate-300 resize-none outline-none p-1 rounded-lg' cols={30} rows={10} maxLength={500}></textarea>
+            </label>
+          </div>
+          <div className='flex flex-col space-y-4 ml-4'>
+            <label>
+                Categoría
+                <Select className='' options={categorias} isMulti components={animatedComponents}  placeholder="Seleccionar..." />
+            </label>
+            <label>
+                Color
+                <Select className='' options={colores} isMulti components={animatedComponents}  placeholder="Seleccionar..." />
+            </label>
+            <label>
+                Material
+                <Select className='' options={materiales} isMulti components={animatedComponents}  placeholder="Seleccionar..." />
+            </label>
+          </div>
+        </form>
+      </div>    
+      <div className='p-8 flex space-x-3'>
+        <NavLink to="/" className="overflow-hidden">
+          <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-red-500 hover:text-white transition-colors'>
+            <GiCancel className='transform  mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
+            Cancelar
+          </button>
+        </NavLink>
+        <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-slate-400 hover:text-white transition-colors'>
+          <FaRegCheckCircle className='transform mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
+          Publicar
+        </button>
       </div>
-
-    <div className="flex w-full justify-end">
-    <button className="border-2 border-gray-400 bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-400  font-bold transition-all ease-in-out duration-500 mx-5 w-[8%]">Cancelar</button>
-      <button className="border-2 border-orange-500 bg-[#FFA375] hover:bg-[#FF8D55] rounded-full p-2 text-orange-500 hover:text-orange-200 font-bold transition-all ease-in-out duration-500 mx-5 w-[8%]">Publicar</button>
-    </div>
-      
-      </>
+  </>
  )
 }
