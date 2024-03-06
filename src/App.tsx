@@ -9,10 +9,13 @@ import Profile from './pages/Profile'
 import ProfileView from './pages/ProfileView'
 import HelpPage from './pages/Help'
 import ProductView from './pages/ProductView'
-import ChatPage from './pages/Chats'
+import ChatPage from './pages/ChatHome'
+import UserChats from './pages/Chats'
+import ServicesChat from './pages/ChatServices'
 import DeseadosPage from './pages/subpages/Deseados'
 import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
+import Chat from './pages/ChatView'
 
 
 const App = () => {
@@ -28,7 +31,10 @@ const App = () => {
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
           <Route path='/ProductPage' element={<ProductView/>} />
-          <Route path='/chatingPage' element={<ChatPage/>} />
+          <Route path='/chatHome' element={<ChatPage/>} />
+          <Route path='/chatingPage' element={<UserChats/>} />
+          <Route path='/chatingServices' element={<ServicesChat/>} />
+          <Route path='/chatView' element={<Chat/>} />
           <Route path='/deseadosPage' element={<DeseadosPage/>} />
           <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
