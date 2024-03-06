@@ -14,12 +14,11 @@ import DeseadosPage from './pages/subpages/Deseados'
 import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 
-
 const App = () => {
   return (
     <Router>  
       <main>
-        <Navbar/>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />

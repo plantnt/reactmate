@@ -22,9 +22,9 @@ export default function Footer(){
                 </div>
             </div>
             </div>
-            <div id="FooterSub" className="w-full bg-[#000000] text-sm text-gray-400 flex ">
-            <div className="max-w-[1200px] mx-auto p-4 font-bold font-extrawide">
-                &copy; ZEROWARE - furnimate. 2024
+            <div id="FooterSub" className="w-full bg-neutral-800 text-sm text-gray-400 flex ">
+            <div className="max-w-[1200px] mx-auto p-4">
+                &copy; Furnimate - Zeroware 2024
             </div>
             </div>
         </>

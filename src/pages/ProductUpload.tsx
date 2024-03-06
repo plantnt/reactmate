@@ -8,6 +8,7 @@ import UploadWidget from '../components/Imageupload/UploadWidget';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Upload(){
 
@@ -35,6 +36,12 @@ export default function Upload(){
     { value: '4', label: 'Plastico Reciclado' }
   ]
 
+  const [value, setValue] = useState('')
+  const handleChange = (event: { target: { value: string } }) => {
+      const result = event.target.value.replace(/\D/g, '')
+      setValue(result)
+  }
+
   return(
     <> 
       <div className="flex space-x-9 p-8">
@@ -47,7 +54,8 @@ export default function Upload(){
             </label>
             <label className='grid'>
               Precio
-              <input type="text" id='title' className='border border-slate-300 h-[2em] outline-none p-1 rounded-md' required/>
+              $
+              <input type="text" value={value} onChange={handleChange} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10}/>
             </label>
             <label className='grid'>
               Descrición
