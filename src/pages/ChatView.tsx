@@ -1,4 +1,4 @@
-import { FaArrowLeft, FaPaperclip, FaUser } from "react-icons/fa";
+import { FaArrowLeft, FaPaperPlane, FaPaperclip, FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -39,20 +39,22 @@ const Chat = () => {
                                 <FaUser className="text-purple-500 h-8 w-8" />
                             </div>
                             <div className="ml-3">
-                                <p className="text-sm font-medium text-gray-900">{message.user}</p>
-                                <p className="text-sm text-gray-600">{message.text}</p>
+                                <p className="text-sm font-medium text-gray-900 font-sans">{message.user}</p>
+                                <p className="text-sm text-gray-600 font-sans">{message.text}</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Formulario de envío de mensaje */}
-                <div className="p-4 bg-white flex items-center fixed bottom-0 left-0 right-0">
+                <div className="p-4 bg-white rounded-t-lg flex items-center fixed bottom-0 left-0 right-0">
                     <form onSubmit={sendMessage} className="flex justify-between items-center flex-1 w-full">
-                        <input type="text" name="message" className="flex-1 mr-4 py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring focus:ring-purple-500 focus:border-purple-500" placeholder="Escribe un mensaje..." />
-                        <button type="submit" className="py-2 px-6 rounded-full bg-purple-500 text-white hover:bg-purple-600 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-opacity-50">Enviar</button>
+                        <input type="text" name="message" className="flex-1 mr-4 py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring focus:ring-purple-500 focus:border-purple-500 font-sans" placeholder="Escribe un mensaje..." />
+                        <button type="submit" className="py-2 px-6 rounded-full bg-purple-500 text-white hover:bg-purple-600 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-opacity-50 font-sans">
+                            <FaPaperPlane />
+                        </button>
                     </form>
-                    <button className="ml-4 py-2 px-6 rounded-full bg-gray-300 text-gray-700 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50">
+                    <button className="ml-4 py-2 px-6 rounded-full bg-gray-300 text-gray-700 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 font-sans">
                         <FaPaperclip />
                     </button>
                 </div>

@@ -6,6 +6,7 @@ const Cart = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <div className="flex-grow">
+            <br></br><br></br>
                 <div className="flex flex-col items-center pt-20 pb-20">
                     <div className="max-w-md w-full mx-auto">
                         <h1 className="text-center text-3xl font-bold font-extrawide text-gray-600">
@@ -37,7 +38,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+           <div className="fixed bottom-0 w-full"><Footer/> {/* Agrega el componente de Footer con clases de Tailwind */}</div>
         </div>
     )
 }
