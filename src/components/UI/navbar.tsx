@@ -1,4 +1,4 @@
-import { FaCommentDots } from 'react-icons/fa';
+import { FaCommentAlt, FaCommentDots, FaCommentMedical, FaCommentSlash, FaRegCommentAlt } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import cartIcon from '../../assets/cartIcon.png';
 import profileIcon from '../../assets/profileIcon.png';
@@ -25,8 +25,8 @@ const Navbar = () => {
                             </li>
                             <li>
                                 {/* Insert the chat button here */}
-                                    <NavLink to='/chatingPage'>
-                                    <FaCommentDots className="text-green-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
+                                    <NavLink to='/chatHome'>
+                                    <FaCommentDots className="text-blue-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
                                     </NavLink>
                             </li>
                             <li>

@@ -5,7 +5,6 @@ import Filters from "../components/filters";
 import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import RatingUser from '../components/ratingUser';
-import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
 import RatingProfile from '../components/ratingProfile';
 import { NavLink } from 'react-router-dom';

@@ -132,7 +132,7 @@ export default function Profile() {
         {/* Esta es la linea separadora q separa jaajaj */}
         <hr className="my-8 border-b border-gray-200 mx-4" />
         <h1 className="text-center text-gray-300 text-3xl mb-2">TUS PRODUCTOS</h1>
-        <div className="flex justify-center items-center -mb-12">
+        <div className="flex justify-center items-center -mb-3">
           <FaBoxOpen className="text-gray-300 text-5xl" />
         </div>
       </div>
