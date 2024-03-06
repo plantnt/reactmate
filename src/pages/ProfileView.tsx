@@ -52,7 +52,7 @@ export default function Profile() {
         <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
         <div className="relative z-10 max-w-screen mx-auto rounded-lg border-gray-200 overflow-hidden">
           <br />
-          <div className="md:flex max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="md:flex-shrink-0 bg-purple-100 max-w-full rounded-lg">
               <img
                 className="h-48 m-5 w-48 object-cover rounded-lg mx-auto relative z-10"
