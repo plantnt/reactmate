@@ -7,7 +7,7 @@ const ChatPage = () => {
     const [optionsVisible, setOptionsVisible] = useState(Array.from({ length: 10 }, () => false));
 
     // Función para cambiar la visibilidad de las opciones de un usuario específico
-    const toggleOptions = (index) => {
+    const toggleOptions = (index: number) => {
         const newOptionsVisible = [...optionsVisible];
         newOptionsVisible[index] = !newOptionsVisible[index];
         setOptionsVisible(newOptionsVisible);
