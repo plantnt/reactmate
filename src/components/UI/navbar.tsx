@@ -1,3 +1,4 @@
+import { FaComment, FaCommentAlt, FaCommentDots } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import cartIcon from '../../assets/cartIcon.png';
 import profileIcon from '../../assets/profileIcon.png';
@@ -21,6 +22,12 @@ const Navbar = () => {
                         <ul className="flex flex-row p-2 justify-evenly items-center">
                             <li>
                                 <NavLink to='cartPage'><img src={cartIcon} className="min-w-[35px] max-h-[30px]" /></NavLink>
+                            </li>
+                            <li>
+                                {/* Insert the chat button here */}
+                                    <NavLink to='chatingPage'>
+                                    <FaCommentDots className="text-green-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
+                                    </NavLink>
                             </li>
                             <li>
                                 <NavLink to='profilePage'><img src={profileIcon} width="35" className=""/></NavLink>
@@ -52,5 +59,4 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
  

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaFlag } from 'react-icons/fa';
+import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaFlag, FaBoxOpen, FaUser } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
 import Footer from "../components/UI/footer";
@@ -8,6 +8,8 @@ import RatingUser from '../components/ratingUser';
 import Navbar from "../components/UI/navbar";
 import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
+import RatingProfile from '../components/ratingProfile';
+import { NavLink } from 'react-router-dom';
 
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,6 +66,7 @@ export default function Profile() {
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold pt-4">
                 <h1 className="text-2xl font-rounded">juanca54</h1>
                 <p className="text-indigo-700 font-semibold font-rounded">EMPRENDEDOR</p>
+                <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
               </div>
               <br />
               <p className="mt-2 mb-4 text-gray-500 font-rounded">
@@ -90,18 +93,24 @@ export default function Profile() {
                 <br />
               </div>
               <div className="mt-4 flex justify-between">
-                <a href="https://furnimate.foroactivo.com/">
+                <NavLink to='/chatingPage'>
                   <button className="bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-2 px-4 rounded flex items-center ho">
                     <FaRegCommentDots className="inline-block mr-2 text-xl" />
-                    <span className="text-base font-rounded">Abrir Foro</span>
+                    <span className="text-base font-rounded">Empezar chat</span>
                   </button>
-                </a>
+                </NavLink>
                 <a href="http://localhost:3000/">
                   <button className="bg-green-500 hover:bg-white hover:text-green-500 hover:border-green-500 transition duration-300 border-2 border-green-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
                     <FaRegListAlt className="inline-block mr-2 text-xl" />
                     <span className="text-base font-rounded">Ver en Catálogo</span>
                   </button>
                 </a>
+<a href="http://localhost:3000/profilePage">
+  <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
+    <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
+    <span className="text-base font-rounded text-gray-400">*Modo Usuario*</span>
+  </button>
+</a>
                 <div ref={dropdownRef} className="">
   <button
     onClick={handleClick}
@@ -127,9 +136,11 @@ export default function Profile() {
         </div>
         {/* Esta es la linea separadora q separa jaajaj */}
         <hr className="my-8 border-b border-gray-200 mx-4" />
-        <h1 className="text-center text-gray-400 text-3xl mb-2">PRODUCTOS</h1>
-        <h1 className="text-center text-gray-400 text-xl -mb-6">*Solo se mostrarán los productos que este usuario haya publicado*</h1>
-        <br></br>
+        <h1 className="text-center text-gray-300 text-3xl mb-2">PRODUCTOS</h1>
+        <div className="flex justify-center items-center -mb-2">
+          <FaBoxOpen className="text-gray-300 text-5xl" />
+        </div>
+        
         <>
         </>
         
