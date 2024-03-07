@@ -1,6 +1,5 @@
 import { FaRegCommentDots, FaStore, FaUser } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
-import Footer from "../components/UI/footer"
 
 const Cart = () => {
     return (

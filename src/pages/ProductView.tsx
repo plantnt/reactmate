@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 export default function ProductView(){
     return(
         <>
-        <div className=" mt-[30px] ml-8 w-[440px]">
-          <NavLink to='/ProfilePageView' className="flex max-w-fit">
-          <img className="rounded-full border-2 w-[70px] h-[65px]" src="/src\assets\furniLogo.png"></img>
-        <label className="self-center ml-2 font-bold cursor-pointer text-lg">Muebleria Carlos Lozano</label>
-          </NavLink>
-        
-        </div>
+        <NavLink to="/ProfilePageView">
+          <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full border">
+            <img className="object-cover" src="/src\assets\furniLogo.png">
+              <h2></h2>
+            </img>
+          </div>
+        </NavLink>
         
         <div className="flex w-full h-[380px] px-4 mt-2 ml-4">
             <div className="w-[440px] h-full relative  border-[5px] border-furnipurple rounded-3xl transition-all ease-in-out duration-700">

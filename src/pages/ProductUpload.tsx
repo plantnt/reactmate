@@ -84,10 +84,12 @@ export default function Upload(){
             Cancelar
           </button>
         </NavLink>
-        <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-slate-400 hover:text-white transition-colors'>
-          <FaRegCheckCircle className='transform mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
-          Publicar
-        </button>
+        <NavLink to="/">
+          <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-green-400 hover:text-white transition-colors'>
+            <FaRegCheckCircle className='transform mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
+            Publicar
+          </button>
+        </NavLink>
       </div>
   </>
  )
