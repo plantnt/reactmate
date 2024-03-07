@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
-import { message } from "antd";
 import React, {useState, useEffect} from "react"
+import { message } from "antd";
 
 
 
@@ -29,55 +29,55 @@ async function fetchregistro() {
 }
 
 
+// const form = document.getElementById('formregistro');
 
+//   form.addEventListener('submit', async (event) => {
+//   event.preventDefault();
+
+//   const formData = new FormData(form);
+//   const data = {};
+
+//   formData.forEach((value, key) => {
+//     data[key] = value;
+//   });
+
+//   // Insertar datos en la tabla de Supabase
+//   const { data: newRecord, error } = await supabase
+//     .from('registro')
+//     .upsert([data]);
+
+//   if (error) {
+//     console.error('Error al guardar datos en Supabase:', error);
+//   } else {
+//     console.log('Datos guardados correctamente:', newRecord);
+//   }
+// }); 
 const insertarDatos = async () => {
        
-    const form = document.getElementById('formregistro');
-
-  form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(form);
-  const data = {};
-
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  // Insertar datos en la tabla de Supabase
-  const { data: newRecord, error } = await supabase
-    .from('registro')
-    .upsert([data]);
-
-  if (error) {
-    console.error('Error al guardar datos en Supabase:', error);
-  } else {
-    console.log('Datos guardados correctamente:', newRecord);
-  }
-}); }
-// try {
-//           const { data, error } = await supabase.from("registro")
-//           .insert
-//           ([{
-//             imagen: 'imagen',
-//             nombre: 'nombre',
-//             contraseña: 'contraseña',
-//             correo: 'correo',
-//             telefono: 'telefono',
-//             direccion: 'direccion'
-//                 }]);
+    
+try {
+          const { data, error } = await supabase.from("registro")
+          .insert
+          ([{
+            imagen: 'imagen',
+            nombre: 'nombre',
+            contraseña: 'contraseña',
+            correo: 'correo',
+            telefono: 'telefono',
+            direccion: 'direccion'
+                }]);
       
-//           if (error) {
-//             throw error;
-//           }
+          if (error) {
+            throw error;
+          }
       
-//           console.log('Datos insertados con éxito:', data);
-//         } catch (error) {
-//           console.error('Error al insertar datos:', message);
-//         }
+          console.log('Datos insertados con éxito:', data);
+        } catch (error) {
+          console.error('Error al insertar datos:', message);
+        }
         
-//       };
-      
+      };
+      insertarDatos()
     
     return(
             <>  
