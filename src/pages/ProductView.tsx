@@ -6,9 +6,7 @@ export default function ProductView(){
         <>
         <NavLink to="/ProfilePageView">
           <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full border">
-            <img className="object-cover" src="/src\assets\furniLogo.png">
-              <h2></h2>
-            </img>
+            
           </div>
         </NavLink>
         

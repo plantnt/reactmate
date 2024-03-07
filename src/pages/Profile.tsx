@@ -84,6 +84,7 @@ export default function Profile() {
                 src="src/assets/profileIcon.png"
                 alt="Profile"
               />
+              <Profile></Profile>
             </div>
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
