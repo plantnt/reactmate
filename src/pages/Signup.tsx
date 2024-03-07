@@ -25,59 +25,33 @@ async function fetchregistro() {
     .from('registro')
     .select('*') 
     setregistro (data)
-    console.log(setregistro)
+    console.log(data)
 }
 
+ const form = document.getElementById('formregistro');
+ form.addEventListener('submit', async (event) => {
+   event.preventDefault();
 
-// const form = document.getElementById('formregistro');
+   const formData = new FormData(form);
+   const data = {};
 
-//   form.addEventListener('submit', async (event) => {
-//   event.preventDefault();
+   formData.forEach((value, key) => {
+    data[key] = value;
+   });
 
-//   const formData = new FormData(form);
-//   const data = {};
+// Insertar datos en la tabla de Supabase
+   const { data: newRecord, error } = await supabase
+     .from('registro')
+     .upsert([data]);
 
-//   formData.forEach((value, key) => {
-//     data[key] = value;
-//   });
+   if (error) {
+     console.error('Error al guardar datos en Supabase:', message);
+   } else {
+     console.log('Datos guardados correctamente:', newRecord);
+   }
+ }); 
 
-//   // Insertar datos en la tabla de Supabase
-//   const { data: newRecord, error } = await supabase
-//     .from('registro')
-//     .upsert([data]);
-
-//   if (error) {
-//     console.error('Error al guardar datos en Supabase:', error);
-//   } else {
-//     console.log('Datos guardados correctamente:', newRecord);
-//   }
-// }); 
-const insertarDatos = async () => {
-       
-    
-try {
-          const { data, error } = await supabase.from("registro")
-          .insert
-          ([{
-            imagen: 'imagen',
-            nombre: 'nombre',
-            contraseña: 'contraseña',
-            correo: 'correo',
-            telefono: 'telefono',
-            direccion: 'direccion'
-                }]);
       
-          if (error) {
-            throw error;
-          }
-      
-          console.log('Datos insertados con éxito:', data);
-        } catch (error) {
-          console.error('Error al insertar datos:', message);
-        }
-        
-      };
-      insertarDatos()
     
     return(
             <>  
@@ -137,7 +111,7 @@ try {
                                 <input id="direccion" name="direccion" type="text" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
                             </li>        
                         </ul>
-                        <button  onClick={() => {insertarDatos()}} id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </button>
+                        <input type="submit"  id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </input>
                             <div className="flex">
                                 <label>¿Ya tienes una cuenta?</label>
                                 <NavLink to="/logIn" className="text-blue-400 pl-2">Inicia sesion</NavLink>
@@ -148,3 +122,4 @@ try {
             </>
     )
 }
+// onClick={() => {insertarDatos()}} 
