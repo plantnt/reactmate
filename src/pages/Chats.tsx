@@ -1,13 +1,14 @@
+// En ChatPage.tsx
+
+import { useState, useEffect } from "react";
 import { FaArrowLeft, FaEllipsisV, FaUser } from "react-icons/fa";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Footer from "../components/UI/footer";
 
-
 const ChatPage = () => {
-    const [optionsVisible, setOptionsVisible] = useState(Array.from({ length: 10 }, () => false));
-    const userNames = ["Juan", "María", "Carlos", "Laura", "Pedro", "Ana", "Luis", "Sofía", "David", "Elena"];
-    const messages = [
+    const [optionsVisible, setOptionsVisible] = useState<boolean[]>(Array.from({ length: 10 }, () => false));
+    const userNames: string[] = ["Juan", "María", "Carlos", "Laura", "Pedro", "Ana", "Luis", "Sofía", "David", "Elena"];
+    const messages: string[] = JSON.parse(localStorage.getItem('chatMessages') || '[]') || [
         "¡Acabo de comprar un nuevo sofá para mi sala de estar!",
         "Estoy buscando una mesa de centro para mi sala.",
         "¿Alguien conoce una buena tienda de muebles en la zona?",
@@ -25,6 +26,10 @@ const ChatPage = () => {
         newOptionsVisible[index] = !newOptionsVisible[index];
         setOptionsVisible(newOptionsVisible);
     };
+
+    useEffect(() => {
+        localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }, [messages]);
 
     return (
         <>
@@ -61,11 +66,9 @@ const ChatPage = () => {
                             </div>
                         </div>
                     ))}
-
-
                 </div>
             </div>
-            <div className="fixed bottom-0 w-full"><Footer/> {/* Agrega el componente de Footer con clases de Tailwind */}</div>
+            <div className="fixed bottom-0 w-full"><Footer /></div>
         </>
     );
 };

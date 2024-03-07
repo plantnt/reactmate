@@ -6,7 +6,6 @@ import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import RatingProfile from '../components/ratingProfile';
 import AddProduct from '../components/addProduct';
-import RatingUser from '../components/ratingUser';
 import { Pagination } from 'antd';
 import { NavLink } from 'react-router-dom';
 
@@ -14,6 +13,13 @@ export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
+  const [userData, setUserData] = useState({
+    username: "JohnDoe",
+    email: "johndoe@example.com",
+    phone: "+1234567890", // Número de teléfono de ejemplo
+    registrationDate: "2024-03-07" // Fecha de registro de ejemplo
+  });
+  const [products, setProducts] = useState([]);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -45,6 +51,25 @@ export default function Profile() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    // Fetch user data from backend
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('URL_DEL_BACKEND/perfilUsuario');
+      if (response.ok) {
+        const userData = await response.json();
+        setUserData(userData);
+      } else {
+        console.error('Error al obtener los datos del usuario');
+      }
+    } catch (error) {
+      console.error('Error al conectar con el backend:', error);
+    }
+  };
+
   return (
     <>
       <div className="relative bg-gray-50 min-h-screen max-w-full py-8">
@@ -62,30 +87,26 @@ export default function Profile() {
             </div>
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                <h1 className="text-2xl font-rounded">josefino700</h1>
-                <p className="text-indigo-700 font-semibold font-rounded">USUARIO</p>
+                <h1 className="text-3xl font-rounded">{userData.username}</h1>
                 <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
               </div>
               <br />
               <p className="mt-2 mb-4 text-gray-500 font-rounded">
                 ¡Hola a todos! Soy un nuevo usuario en furnimate. Mi propósito es el de comprar muebles en el sitio web y también. he venido a vender un solo armario el cual alguien mas le pudo sacar mucho mas provecho :D, ESTE ES EL PERFIL DE UN USUARIO O VENDEDOR "DE UNA SOLA VEZ" y es una de las 3 categorías en el concepto de furnimate.
               </p>
-              <a href="https://www.youtube.com/watch?v=zVf4uVRl9Fo&list=WL&index=13" className="text-blue-500 hover:underline">Mi canal de youtube</a>
-              <br></br>
-              <a href="https://www.youtube.com/watch?v=gsnC-MgAmc4" className="text-blue-500 hover:underline">Un video de papayas</a>
-              <br />
               <div className="mt-4 text-center font-rounded">
                 <p className="text-gray-700">
-                  <span className="font-semibold">Correo electrónico: </span> donjuan@example.com, <a href="mailto:correo@example.com" className="text-blue-400">Enviar correo</a>
+                  <span className="font-semibold">Correo electrónico: </span> {userData.email}, <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
                 </p>
                 <p className="text-gray-700">
-                  <span className="font-semibold">Teléfono: </span> +57 345 6789034
+                  <span className="font-semibold">Teléfono: </span> {userData.phone}
                 </p>
                 <p className="text-gray-600">
-                  <span className="font-semibold">Fecha de Registro: </span> 20 de febrero de 2024
+                  <span className="font-semibold">Fecha de Registro: </span> {userData.registrationDate}
                 </p>
                 <br />
               </div>
+              {/* Resto del código... */}
               <div className="mt-4 flex justify-between">
                 <NavLink to='/chatingPage'>
                   <button className="bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-2 px-4 rounded flex items-center ho">
@@ -144,24 +165,24 @@ export default function Profile() {
                   <Rating/>
                 </div>
                 <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  
+                  {/* Product Cards */}
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
+                  <ProductCard/>
                 </div>
-                               <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
+                <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
                 <div className="grid w-full justify-self-end">
                 </div>
               </div>

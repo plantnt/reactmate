@@ -13,6 +13,12 @@ export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
+  const [userData, setUserData] = useState({
+    username: "juanca54",
+    email: "juancamilo@example.com",
+    phone: "+57 345 6789034",
+    registrationDate: "24 de enero de 2024"
+  });
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -61,27 +67,27 @@ export default function Profile() {
             </div>
             <div className="p-4 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold pt-4">
-                <h1 className="text-2xl font-rounded">juanca54</h1>
+                <h1 className="text-2xl font-rounded">{userData.username}</h1>
                 <p className="text-indigo-700 font-semibold font-rounded">EMPRENDEDOR</p>
                 <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
               </div>
               <br />
               <p className="mt-2 mb-4 text-gray-500 font-rounded">
-                ¡Hola a todos! Soy un nuevo emprendedor en furnimate. Mi proposito es vender los productos y servicios, uno de ellos es restaurar muebles viejos, dañados o de segunda mano y asi efectuarlo por esta plataforma :D, ESTE ES EL PERFIL DE UN EMPRENDEDOR O "MINIEMPRESA" y es una de las 3 categorías en el concepto de furnimate.
+                ¡Hola a todos! Soy un nuevo emprendedor en furnimate. Mi propósito es vender productos y servicios, como restaurar muebles viejos, dañados o de segunda mano, a través de esta plataforma :D. Este es el perfil de un emprendedor o "miniempresa", una de las 3 categorías en el concepto de Furnimate.
               </p>
               <a href="https://www.google.com/maps/place/Muebleria+Felipe+del+Valle/@3.4332404,-76.5012979,14z/data=!4m10!1m2!2m1!1sgoogle+maps+muebles!3m6!1s0x8e30a70088051b37:0x3735d8f785c6f6dd!8m2!3d3.4425281!4d-76.4996951!15sChNnb29nbGUgbWFwcyBtdWVibGVzIgOIAQFaFSITZ29vZ2xlIG1hcHMgbXVlYmxlc5IBD2Z1cm5pdHVyZV9zdG9yZeABAA!16s%2Fg%2F1pzwkxllt?entry=ttu" className="text-blue-500 hover:underline">Ubicación de mi negocio</a>
               <br></br>
-              <a href="https://www.instagram.com/" className="text-blue-500 hover:underline">Mi instagram</a>
+              <a href="https://www.instagram.com/" className="text-blue-500 hover:underline">Mi Instagram</a>
               <br />
               <div className="mt-4 text-center font-rounded">
                 <p className="text-gray-700">
-                  <span className="font-semibold">Correo electrónico: </span> juancamilo@example.com, <a href="mailto:correo@example.com" className="text-blue-400">Enviar correo</a>
+                  <span className="font-semibold">Correo electrónico: </span> {userData.email}, <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
                 </p>
                 <p className="text-gray-700">
-                  <span className="font-semibold">Teléfono: </span> +57 345 6789034
+                  <span className="font-semibold">Teléfono: </span> {userData.phone}
                 </p>
                 <p className="text-gray-600">
-                  <span className="font-semibold">Fecha de Registro: </span> 24 de enero de 2024
+                  <span className="font-semibold">Fecha de Registro: </span> {userData.registrationDate}
                 </p>
                 <br></br>
                 <p>
@@ -102,31 +108,31 @@ export default function Profile() {
                     <span className="text-base font-rounded">Ver en Catálogo</span>
                   </button>
                 </a>
-<a href="http://localhost:3000/profilePage">
-  <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
-    <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
-    <span className="text-base font-rounded text-gray-400">*Modo Usuario*</span>
-  </button>
-</a>
+                <a href="http://localhost:3000/profilePage">
+                  <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
+                    <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
+                    <span className="text-base font-rounded text-gray-400">*Modo Usuario*</span>
+                  </button>
+                </a>
                 <div ref={dropdownRef} className="">
-  <button
-    onClick={handleClick}
-    className="bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-300 border-2 border-red-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
-  >
-    <span className="text-base font-rounded">Reportar</span>
-    <FaFlag className="inline-block ml-2 text-xl" />    
-  </button>
-  {isOpen && (
-    <div
-      className={`absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10 ${dropdownPosition === "up" ? "-top-0" : "top-40"}`}
-    >
-      <div className="py-1">
-        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Ver reglamento</p>
-        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Denunciar usuario</p>
-      </div>
-    </div>
-  )}
-</div>
+                  <button
+                    onClick={handleClick}
+                    className="bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-300 border-2 border-red-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+                  >
+                    <span className="text-base font-rounded">Reportar</span>
+                    <FaFlag className="inline-block ml-2 text-xl" />    
+                  </button>
+                  {isOpen && (
+                    <div
+                      className={`absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10 ${dropdownPosition === "up" ? "-top-0" : "top-40"}`}
+                    >
+                      <div className="py-1">
+                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Ver reglamento</p>
+                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Denunciar usuario</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -143,40 +149,36 @@ export default function Profile() {
         
       </div>
       <div className="h-full w-full flex flex-col bg-gray-50">
-            <div className="grid grid-flow-col">
-              <Filters/>
-              <div className="max-w-[60rem] justify-self-start">
-                <div className="mt-3">
-                  <Rating/>
-                </div>
-                <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  
-                </div>
-
-                 <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
-                <div className="grid w-full justify-self-end">
-                </div>
-              
-              </div>
+        <div className="grid grid-flow-col">
+          <Filters/>
+          <div className="max-w-[60rem] justify-self-start">
+            <div className="mt-3">
+              <Rating/>
             </div>
-             <Footer />
+            <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+            </div>
+            <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
+            <div className="grid w-full justify-self-end">
+            </div>
           </div>
+        </div>
+        <Footer />
+      </div>
     </>
-    
   );
 }
