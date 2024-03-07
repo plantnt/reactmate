@@ -1,7 +1,12 @@
 
 import { NavLink } from "react-router-dom";
 
+
+
 export default function LogIn(){
+
+    
+
     return(
         <>  
             <div className="container flex flex-col items-center justify-center">
