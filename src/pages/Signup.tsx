@@ -1,74 +1,54 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import { IoMdImage } from "react-icons/io";
+
+const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    avatar: null
+}
+
 export default function SignUp(){
+    const [formData, setFormData] = useState(initialState)
+    const [loading, setLoading] = useState(true)
+    const [status, setStatus] = useState(false)
+
+    const handleChange = async (e:any) => {
+        e.preventDefault()
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+    
     return(
-        <>  
-        <div className="w-full h-full bg-[url('/src\assets\SignUpBackground.jpg')] bg-cover">
-
-            <div className="container flex flex-col items-center justify-center">
-
-    <NavLink to="/" className="max-w-96">
-        <img src="./src\assets\textLogo.png" className="p-4"></img>
-    </NavLink>
-
-    <div className="flex flex-col bg-gray-200 p-4 rounded-2xl m-0-auto max-w-sm items-center text-center m-5">
-            <label className="text-2xl font-bold pb-4 text-violet-700">
-                Registro
-            </label>
-             <div className="flex rounded-full w-1/3 h-1/3 justify-center">
-              <img src="./src\assets\profileIcon.png"></img>
-             </div>
-            <ul className="min-w-fit">
-                <li className="p-2">
-                    Seleccione una imagen:
-                    <input type="file" className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
-                </li>
-                <li className="p-2">
-                    <label className="p-2">
-                        Usuario:
-                        <input type="checkbox" className="accent-furnipurple ml-1" name="1checksign"/>
+        <div className="flex items-center justify-center w-full h-[100vh] bg-cover bg-center bg-[url('/src/assets/SignUpBackground.jpg')]">
+            <div className="flex flex-col items-center w-[400px] rounded-2xl p-9 text-md bg-white shadow-md">
+                <form className="flex flex-col items-center w-full space-y-3">
+                    <p>Foto de perfil</p>
+                    <div className="group flex flex-col items-center justify-center h-[100px] w-[100px] rounded-full border hover:bg-slate-100 transition-colors cursor-pointer">
+                        <IoMdImage  size={37} className="text-slate-600 group-hover:scale-105 transition-transform"/>
+                        <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 transition-transform">Añadir foto</p>
+                    </div>  
+                    <label className="flex flex-col w-full">
+                        Nombre
+                        <input type="text" className="outline-none border-t-0 border-2 border-x-0 h-[2.5em] px-2 focus:bg-gray-100 focus:border-0 transition-colors" maxLength={30}/>
                     </label>
-                    <label className="p-2">
-                        Local:
-                        <input type="checkbox" className="accent-furnipurple ml-1" name="2checksign"/>
+                    <label className="flex flex-col w-full">
+                        Apellido
+                        <input type="text" className="outline-none border-t-0 border-2 border-x-0 h-[2.5em] px-2 focus:bg-gray-100 focus:border-0 transition-colors" maxLength={30}/>
                     </label>
-                    <label className="p-2">
-                        Empresa:
-                        <input type="checkbox" className="accent-furnipurple ml-1" name="3checksign"/>
+                    <label className="flex flex-col w-full">
+                        Dirección de correo
+                        <input type="text" className="outline-none border-t-0 border-2 border-x-0 h-[2.5em] px-2 focus:bg-gray-100 focus:border-0 transition-colors" maxLength={30}/>
                     </label>
-                </li>
-                <li className="p-2">
-                    <input type="text" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Nombre de Usuario/Empresa"/>
-                </li> 
-                <li className="p-2">
-                    <input type="password" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Contraseña"/>
-                </li> 
-
-                <li className="p-2">
-                    <input type="password" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Confirmar Contraseña"/>
-                </li> 
-
-                <li className="p-2">
-                    <input type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
-                </li>  
-
-                <li className="p-2">
-                    <input type="number" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono (Opcional)"/>
-                </li> 
-
-                <li className="p-2">
-                    <input type="" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
-                </li>        
-            </ul>
-            <button className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all"> Registrarse </button>
-                <div className="flex">
-                    <label>¿Ya tienes una cuenta?</label>
-                    <NavLink to="/logIn" className="text-blue-400 pl-2">Inicia sesion</NavLink>
-                </div>
-        </div>
-    </div>
+                    <label className="flex flex-col w-full">
+                        Contraseña
+                        <input type="text" className="outline-none border-t-0 border-2 border-x-0 h-[2.5em] px-2 focus:bg-gray-100 focus:border-0 transition-colors" maxLength={30}/>
+                    </label>
+                </form>
+                <p className="w-[200px] mt-8 text-sm text-wrap text-center">¿Ya tienes una cuenta? prueba con <NavLink to="/logIn"><span className="text-violet-600">iniciar sesión</span></NavLink></p>
             </div>
-           
-        </>
+                
+        </div>
     )
 }
