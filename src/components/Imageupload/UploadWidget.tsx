@@ -56,6 +56,7 @@ const Upload = () => {
         processResults
         );
     };
+    
   return (
     <div className='flex flex-col space-y-4'>
         <div className='flex items-center justify-center w-auto max-w-[500px] h-auto border-[3px] border-violet-400 rounded-xl relative overflow-y-hidden'>
@@ -89,24 +90,30 @@ const Upload = () => {
                 )}
             </div>
         </div>
-        {uploadedImages.length ==1 && (
+        {uploadedImages.length == 1 && (
             <div className='flex gap-2 flex-wrap'>
-                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'>
+                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                        type='button'>
                     <Plus className='group-hover:scale-150 transition-all'/>
                 </button>
-                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'>
+                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                        type='button'>
                     <Plus className='group-hover:scale-150 transition-all'/>
                 </button>
-                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'>
+                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                        type='button'>
                     <Plus className='group-hover:scale-150 transition-all'/>
                 </button>
-                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'>
+                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                        type='button'>
                     <Plus className='group-hover:scale-150 transition-all'/>
                 </button>
-                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'>
+                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                        type='button'>
                     <Plus className='group-hover:scale-150 transition-all'/>
                 </button>
-                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'>
+                <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                        type='button'>
                     <Plus className='group-hover:scale-150 transition-all'/>
                 </button>
             </div>

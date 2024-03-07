@@ -16,21 +16,21 @@ const Cart = () => {
                         <br /><br />
 
                         <NavLink to='/chatingServices'>
-                            <button className="rounded-full w-full bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-4 px-6 rounded flex items-center mb-4">
+                            <button className="rounded-full w-full bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-4 px-6 flex items-center mb-4">
                                 <FaUser className="text-gray-400 inline-block mr-2 text-2xl" />
                                 <span className="text-lg w-full font-rounded text-gray-400">Solicitudes de servicio</span>
                             </button>
                         </NavLink>
 
                         <NavLink to='/chatingPage'>
-                            <button className="rounded-full w-full bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-4 px-6 rounded flex items-center mb-4">
+                            <button className="rounded-full w-full bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-4 px-6 flex items-center mb-4">
                                 <FaRegCommentDots className="inline-block mr-2 text-2xl" />
                                 <span className="text-lg font-rounded w-full">Chat usuarios</span>
                             </button>
                         </NavLink>
 
                         <NavLink to='/'>
-                            <button className="rounded-full w-full bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-4 px-6 rounded flex items-center">
+                            <button className="rounded-full w-full bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-4 px-6 flex items-center">
                                 <FaStore className="text-gray-400 inline-block mr-2 text-3xl" />
                                 <span className="text-lg w-full font-rounded text-gray-400">Explorar emprendimientos</span>
                             </button>
@@ -38,7 +38,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-           <div className="fixed bottom-0 w-full"><Footer/> {/* Agrega el componente de Footer con clases de Tailwind */}</div>
         </div>
     )
 }

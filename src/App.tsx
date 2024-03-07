@@ -12,7 +12,6 @@ import ProductView from './pages/ProductView'
 import ChatPage from './pages/ChatHome'
 import UserChats from './pages/Chats'
 import ServicesChat from './pages/ChatServices'
-import DeseadosPage from './pages/subpages/Deseados'
 import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
@@ -21,7 +20,7 @@ const App = () => {
   return (
     <Router>  
       <main>
-        <Navbar />
+        <Navbar/>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />
@@ -34,7 +33,6 @@ const App = () => {
           <Route path='/chatingPage' element={<UserChats/>} />
           <Route path='/chatingServices' element={<ServicesChat/>} />
           <Route path='/chatView' element={<Chat/>} />
-          <Route path='/deseadosPage' element={<DeseadosPage/>} />
           <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
           <Route path='/ProductUpload' element={<Upload/>} />

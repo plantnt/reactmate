@@ -1,4 +1,4 @@
-import { FaCommentAlt, FaCommentDots, FaCommentMedical, FaCommentSlash, FaRegCommentAlt } from 'react-icons/fa';
+import { FaCommentDots, } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import cartIcon from '../../assets/cartIcon.png';
 import profileIcon from '../../assets/profileIcon.png';

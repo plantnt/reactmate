@@ -45,17 +45,16 @@ export default function Upload(){
   return(
     <> 
       <div className="flex space-x-9 p-8">
+          <form className='grid grid-cols-3'>
           <UploadWidget />
-          <form className='grid grid-cols-2'>
-          <div>
+          <div className='ml-4'>
             <label className='grid'>
               Título del producto
               <input type="text" id='title' className='border border-slate-300 h-[2em] outline-none p-1 rounded-md' required/>
             </label>
-            <label className='grid'>
+            <label className='relative grid'>
               Precio
-              $
-              <input type="text" value={value} onChange={handleChange} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10}/>
+              <input type="text" value={value} onChange={handleChange} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
             </label>
             <label className='grid'>
               Descrición
