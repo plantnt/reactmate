@@ -3,7 +3,7 @@ import Filters from "../components/filters"
 import Footer from "../components/UI/footer"
 import Rating from "../components/rating"
 import FeaturedProducts from "./Featured"
-
+import AddProduct from "../components/addProduct"
 import './styles/home.css'
 
 import { Pagination } from "antd"
@@ -36,8 +36,11 @@ const Home = () => {
                             <ProductCard />
                             <ProductCard />
                         </div>
+                        
                     </div>
+                    <AddProduct/>
                 </div>
+               <br></br>
                 <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
                 <div className="grid w-full justify-self-end">
                     <Footer/>

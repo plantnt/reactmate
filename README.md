@@ -16,3 +16,8 @@
   >    "typescript.tsdk": "node_modules\\typescript\\lib"
   >}
 
+
+## .env
+# Cloudinary
+  >VITE_CLOUD_NAME='dotrqr59h'
+  >VITE_UPLOAD_PRESET='m52lvxyz'

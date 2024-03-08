@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 function Cardproduct(){
     return(
         <div className="max-w-[200px] rounded-xl border border-slate-200 cursor-pointer hover:transform">
-        <NavLink to="productPage"><img src="src\assets\products\2.jpg" className="w-full rounded-t-xl" /></NavLink>
+        <NavLink to="/productPage"><img src="src\assets\products\2.jpg" className="w-full rounded-t-xl" /></NavLink>
         
     </div> 
      
@@ -28,9 +28,7 @@ export default function Cardcart(){
             <Cardproduct/>
             <Infocart/> 
             <Complementocart/>
-        
         </div>
-    
         </>
     )
 }

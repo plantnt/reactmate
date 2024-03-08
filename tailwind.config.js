@@ -9,9 +9,6 @@ export default {
     container:{
       center: true
     },
-    screens: {
-      'tv': '2000px'
-    },
     colors:{
       white: '#FFFFFF',
       furnipurple: '#9A6CC8',
