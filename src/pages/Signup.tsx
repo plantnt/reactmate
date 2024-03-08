@@ -12,12 +12,12 @@ const supabase = createClient("https://bvbyifqplonojbgaeafg.supabase.co", "eyJhb
 export default function SignUp(){
 
 const [registro, setregistro]=useState([])
-const [imagen, setimagen]=useState(File)
-const [nombre, setnombre]=useState(String)
-const [contraseña, setcontraseña]=useState(String)
-const [correo, setcorreo]=useState(String)
-const [telefono, settelefono]=useState(String)
-const [direccion, setdireccion]=useState(String)
+const [imagen, setimagen]=useState("")
+const [nombre, setnombre]=useState("")
+const [contraseña, setcontraseña]=useState("")
+const [correo, setcorreo]=useState("")
+const [telefono, settelefono]=useState("")
+const [direccion, setdireccion]=useState("")
 
 
 
@@ -40,12 +40,12 @@ const insertarDatos = async () => {
              const { data, error } = await supabase.from("registro")
              .upsert
              ([{
-               imagen: setimagen,
-               nombre: setnombre,
-               contraseña: setcontraseña,
-               correo: setcorreo,
-               telefono: settelefono,
-               direccion: setdireccion
+               imagen: "imagen",
+               nombre: "nombre",
+               contraseña: "contraseña",
+               correo: "correo",
+               telefono: "telefono",
+               direccion: "direccion"
                    }]);
          
              if (error) {
@@ -80,7 +80,7 @@ const insertarDatos = async () => {
                         <ul className="min-w-fit">
                             <li className="p-2">
                                 Seleccione una imagen:
-                                <input id="imagen" name="imagen" type="file" value={imagen} className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
+                                <input id="imagen" name="imagen" type="file" value={imagen} onChange={(e)=>setimagen(e.target.value)} className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
                             </li>
                             <li className="p-2">
                                 <label className="p-2">
@@ -97,10 +97,10 @@ const insertarDatos = async () => {
                                 </label>
                             </li>
                             <li className="p-2">
-                                <input id="nombre" value={nombre} name="nombre" type="text" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Nombre de Usuario/Empresa"/>
+                                <input id="nombre" value={nombre} onChange={(e)=>setnombre(e.target.value)} name="nombre" type="text" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Nombre de Usuario/Empresa"/>
                             </li> 
                             <li className="p-2">
-                                <input id="contraseña" value={contraseña} name="contraseña" type="password" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Contraseña"/>
+                                <input id="contraseña" value={contraseña} onChange={(e)=>setcontraseña(e.target.value)} name="contraseña" type="password" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Contraseña"/>
                             </li> 
     
                             <li className="p-2">
@@ -108,15 +108,15 @@ const insertarDatos = async () => {
                             </li> 
     
                             <li className="p-2">
-                                <input id="correo" name="correo" value={correo} type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
+                                <input id="correo" name="correo" value={correo} onChange={(e)=>setcorreo(e.target.value)} type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
                             </li>  
     
                             <li className="p-2">
-                                <input id="telefono" name="telefono" value={telefono} type="text"  className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono (Opcional)"/>
+                                <input id="telefono" name="telefono" value={telefono} onChange={(e)=>settelefono(e.target.value)} type="text"  className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono (Opcional)"/>
                             </li> 
     
                             <li className="p-2">
-                                <input id="direccion" name="direccion" value={direccion} type="text" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
+                                <input id="direccion" name="direccion" value={direccion} onChange={(e)=>setdireccion(e.target.value)} type="text" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
                             </li>        
                         </ul>
                         <button onClick={() => {insertarDatos()}} id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </button>
