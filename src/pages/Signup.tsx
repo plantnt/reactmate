@@ -12,7 +12,12 @@ const supabase = createClient("https://bvbyifqplonojbgaeafg.supabase.co", "eyJhb
 export default function SignUp(){
 
 const [registro, setregistro]=useState([])
-
+const [imagen, setimagen]=useState(File)
+const [nombre, setnombre]=useState(String)
+const [contraseña, setcontraseña]=useState(String)
+const [correo, setcorreo]=useState(String)
+const [telefono, settelefono]=useState(String)
+const [direccion, setdireccion]=useState(String)
 
 
 
@@ -28,28 +33,31 @@ async function fetchregistro() {
     console.log(data)
 }
 
- const form = document.getElementById('formregistro');
- form.addEventListener('submit', async (event) => {
-   event.preventDefault();
 
-   const formData = new FormData(form);
-   const data = {};
-
-   formData.forEach((value, key) => {
-    data[key] = value;
-   });
-
-// Insertar datos en la tabla de Supabase
-   const { data: newRecord, error } = await supabase
-     .from('registro')
-     .upsert([data]);
-
-   if (error) {
-     console.error('Error al guardar datos en Supabase:', message);
-   } else {
-     console.log('Datos guardados correctamente:', newRecord);
-   }
- }); 
+      
+const insertarDatos = async () => {
+  try {
+             const { data, error } = await supabase.from("registro")
+             .upsert
+             ([{
+               imagen: setimagen,
+               nombre: setnombre,
+               contraseña: setcontraseña,
+               correo: setcorreo,
+               telefono: settelefono,
+               direccion: setdireccion
+                   }]);
+         
+             if (error) {
+               throw error;
+             }
+         
+             console.log('Datos insertados con éxito:', data);
+           } catch (error) {
+             console.error('Error al insertar datos:', message);
+           }
+           
+         };
 
       
     
@@ -72,7 +80,7 @@ async function fetchregistro() {
                         <ul className="min-w-fit">
                             <li className="p-2">
                                 Seleccione una imagen:
-                                <input id="imagen" name="imagen" type="file" className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
+                                <input id="imagen" name="imagen" type="file" value={imagen} className="border-2 border-violet-700 p-1 bg-furnipurple rounded-full text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" accept="image/*"/>
                             </li>
                             <li className="p-2">
                                 <label className="p-2">
@@ -89,10 +97,10 @@ async function fetchregistro() {
                                 </label>
                             </li>
                             <li className="p-2">
-                                <input id="nombre" name="nombre" type="text" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Nombre de Usuario/Empresa"/>
+                                <input id="nombre" value={nombre} name="nombre" type="text" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Nombre de Usuario/Empresa"/>
                             </li> 
                             <li className="p-2">
-                                <input id="contraseña" name="contraseña" type="password" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Contraseña"/>
+                                <input id="contraseña" value={contraseña} name="contraseña" type="password" className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Contraseña"/>
                             </li> 
     
                             <li className="p-2">
@@ -100,26 +108,26 @@ async function fetchregistro() {
                             </li> 
     
                             <li className="p-2">
-                                <input id="correo" name="correo" type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
+                                <input id="correo" name="correo" value={correo} type="email" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Correo Electronico"/>
                             </li>  
     
                             <li className="p-2">
-                                <input id="telefono" name="telefono" type="text"  className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono (Opcional)"/>
+                                <input id="telefono" name="telefono" value={telefono} type="text"  className="border-2 border-gray-400 rounded p-1 w-full" placeholder="Telefono (Opcional)"/>
                             </li> 
     
                             <li className="p-2">
-                                <input id="direccion" name="direccion" type="text" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
+                                <input id="direccion" name="direccion" value={direccion} type="text" className="border-2 border-gray-400 rounded p-1 w-full " placeholder="Direccion (Opcional)"/>
                             </li>        
                         </ul>
-                        <input type="submit"  id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </input>
-                            <div className="flex">
+                        <button onClick={() => {insertarDatos()}} id="ingreso" name="ingreso" className="bg-violet-600 hover:bg-violet-800 border-2 border-violet-900 rounded p-1 text-white w-full my-2 transition-all" > Registrarse </button>
+                           </form> <div className="flex">
                                 <label>¿Ya tienes una cuenta?</label>
                                 <NavLink to="/logIn" className="text-blue-400 pl-2">Inicia sesion</NavLink>
-                            </div></form>
+                            </div>
                         
                     </div>
                 </div>
             </>
     )
 }
-// onClick={() => {insertarDatos()}} 
+ 
