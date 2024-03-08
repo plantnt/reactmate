@@ -38,15 +38,14 @@ async function fetchregistro() {
 const insertarDatos = async () => {
   try {
              const { data, error } = await supabase.from("registro")
-             .upsert
-             ([{
-               imagen: "imagen",
+             .insert
+             ([{imagen: "imagen",
                nombre: "nombre",
                contraseña: "contraseña",
                correo: "correo",
                telefono: "telefono",
-               direccion: "direccion"
-                   }]);
+               direccion: "direccion"},
+            ]);
          
              if (error) {
                throw error;
@@ -73,7 +72,7 @@ const insertarDatos = async () => {
                         <label className="text-2xl font-bold pb-4 text-violet-700">
                             Registro
                         </label>
-                        <form id="formregistro" action="" method="post">
+                        <form id="registro" action="" method="post">
                         <div className="flex rounded-full w-1/3 h-1/3 justify-center">
                         <img src="./src\assets\profileIcon.png"></img>
                         </div>
