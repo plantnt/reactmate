@@ -91,7 +91,7 @@ const ServicesChat = () => {
             </div>
 
             {/* Footer fijo si no me vuelvo loco */}
-            <div className="fixed bottom-0 left-0 right-0">
+            <div className="bottom-0 left-0 right-0">
                 <Footer />
             </div>
         </>
