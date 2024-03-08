@@ -1,14 +1,13 @@
-import Cardcart from "../components/cardcart"
+import CardCart from "../components/cardcart";
 
-const Cart = () => {
-    return(
-        <>
-        <div className="">
-            <Cardcart/>
+// Página de Carrito
+const CartPage = () => {
+    return (
+        <div className="flexbox p-4">
+            <CardCart />
+            <CardCart />
         </div>
-        </>
-        
-    )
+    );
 }
 
-export default Cart
+export default CartPage;
