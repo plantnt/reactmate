@@ -16,11 +16,15 @@ import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
 
+import NavbarVisible from './components/UI/navbarvisible'
+
 const App = () => {
   return (
     <Router>  
       <main>
-        <Navbar/>
+        <NavbarVisible>
+          <Navbar/>
+        </NavbarVisible>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />

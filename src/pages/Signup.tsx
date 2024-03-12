@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { IoMdImage, IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
+import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import { FaCircleCheck } from "react-icons/fa6";
 import { supabase } from "../utils/Utils";
 
@@ -79,7 +78,7 @@ return(
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
                 <img src="src/assets/textLogo.png" className="md:h-[40px] md:w-[220px] mb-2 sm:justify-self-center" />
                 <NavLink to="/">
-                    <IoClose size={25} className="text-slate-600 absolute top-2 right-2 hover:scale-105"/>
+                    <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <form className="grid w-full space-y-3"
                       onSubmit={(e:any) => {
