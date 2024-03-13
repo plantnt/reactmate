@@ -1,5 +1,3 @@
-/*import { BiCamera } from "react-icons/bi";*/
-/*<BiCamera />*/
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 
@@ -57,7 +55,7 @@ export default function Upload(){
               <input type="text" value={value} onChange={handleChange} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
             </label>
             <label className='grid'>
-              Descrición
+              Descripción
               <textarea id='description' className='border border-slate-300 resize-none outline-none p-1 rounded-lg' cols={30} rows={10} maxLength={500}></textarea>
             </label>
           </div>
