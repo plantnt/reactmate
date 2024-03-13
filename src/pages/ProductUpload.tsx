@@ -9,6 +9,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { supabase } from "../utils/Utils";
 
 export default function Upload(){
 
@@ -37,10 +38,51 @@ export default function Upload(){
   ]
 
   const [value, setValue] = useState('')
-  const handleChange = (event: { target: { value: string } }) => {
+  const handleChangeP = (event: { target: { value: string } }) => {
       const result = event.target.value.replace(/\D/g, '')
       setValue(result)
   }
+
+  // const [formData,setFormData] = useState({
+  //   fullName:'',email:'',password:''
+  // })
+
+  // console.log(formData)
+
+  // function handleChange(event){
+  //   setFormData((prevFormData)=>{
+  //     return{
+  //       ...prevFormData,
+  //       [event.target.name]:event.target.value
+  //     }
+
+  //   })
+
+  // }
+
+  // async function handleSubmit(e){
+  //   e.preventDefault()
+
+  //   try {
+  //     const { data, error } = await supabase.auth.signUp(
+  //       {
+  //         email: formData.email,
+  //         password: formData.password,
+  //         options: {
+  //           data: {
+  //             full_name: formData.fullName,
+  //           }
+  //         }
+  //       }
+  //     )
+  //     if (error) throw error
+  //     alert('Check your email for verification link')
+
+      
+  //   } catch (error) {
+  //     alert(error)
+  //   }
+  // }
 
   return(
     <> 
@@ -54,7 +96,7 @@ export default function Upload(){
             </label>
             <label className='relative grid'>
               Precio
-              <input type="text" value={value} onChange={handleChange} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
+              <input type="text" value={value} onChange={handleChangeP} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
             </label>
             <label className='grid'>
               Descrición
@@ -85,7 +127,7 @@ export default function Upload(){
           </button>
         </NavLink>
         <NavLink to="/">
-          <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-green-400 hover:text-white transition-colors'>
+          <button type='submit' className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-green-400 hover:text-white transition-colors'>
             <FaRegCheckCircle className='transform mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
             Publicar
           </button>

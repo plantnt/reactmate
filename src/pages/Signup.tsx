@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import { FaCircleCheck } from "react-icons/fa6";
 import { supabase } from "../utils/Utils";
+
 
 const initialState = {
     firstName: "",
@@ -71,6 +72,58 @@ const [visible, setVisible] = useState(true)
 const handleClick = () => {
     setVisible((prevVisible) => !prevVisible)
 }
+    const cloudName = import.meta.env.VITE_CLOUD_NAME;          //Variables de sistema
+    const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
+
+    const [loaded, setLoaded] = useState(false);
+    const [uploadedImages, setUploadedImages] = useState([]);
+    const [isDisabled, setIsDisabled] = useState(false);
+
+    useEffect(() => {
+        const uwScript = document.getElementById('uw');
+        if (!loaded && !uwScript) {
+        const script = document.createElement('script');
+        script.setAttribute('async', '');
+        script.setAttribute('id', 'uw');
+        script.src = 'https://upload-widget.cloudinary.com/global/all.js';
+        script.addEventListener('load', () => setLoaded(true));
+        document.body.appendChild(script);
+        }
+    }, [loaded]);
+
+    const processResults = (error:any, result:any) => {
+        if (result.event === 'close') {
+        setIsDisabled(false);
+        }
+        if (result && result.event === 'success') {
+        const secureUrl = result.info.secure_url;
+        const previewUrl = secureUrl.replace(
+            '/upload/',
+            '/upload/w_400/f_auto,q_auto/'
+        );
+        setUploadedImages((prevImages) => [...prevImages, previewUrl]);
+        setIsDisabled(false);
+        }
+        if (error) {
+        setIsDisabled(false);
+        }
+    };
+
+    const uploadWidget = () => {
+        setIsDisabled(true);
+        window.cloudinary.openUploadWidget(
+        {
+            cloudName,
+            uploadPreset,
+            sources: ['local', 'url'],
+            tags: ['myphotoalbum-react'],
+            clientAllowedFormats: ['image'],
+            resourceType: 'image',
+            multiple: false
+        },
+        processResults
+        );
+    };
 
 
 return(
@@ -87,7 +140,7 @@ return(
                         }}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer"
-                            onClick={(e) => handleImage(e)}>
+                            onClick={() => uploadWidget()}>
                             <IoMdImage  size={37} className="text-slate-600 group-hover:scale-105 group-hover:text-violet-600 transition-all"/>
                             <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 group-hover:text-violet-600 transition-all">Añadir foto</p>
                         </div>  
@@ -97,21 +150,22 @@ return(
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6">
                         <label className="flex flex-col">
                             <p className="select-none">Nombre</p> 
-                            <input type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent"/>
+                            <input name="firstName" type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent"
+                            onChange={handleChange}/>
                         </label>
                         <label className="flex flex-col">
                             <p className="select-none">Dirección de correo</p> 
-                            <input type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
+                            <input name="email" type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
                                 onChange={handleChange}/>
                         </label>
                         <label className="flex flex-col">
                             <p className="select-none">Apellido</p> 
-                            <input type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
+                            <input name="lastName" type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
                                 onChange={handleChange} required/>
                         </label>
                         <label className="relative flex flex-col">
                             <p className="select-none">Contraseña</p>
-                            <input type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
+                            <input name="password" type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
                                 onChange={handleChange}/>
                             {visible === true ? (
                                 <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
