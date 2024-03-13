@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import { FaCircleCheck } from "react-icons/fa6";
 import { supabase } from "../utils/Utils";
+import Separator from "../components/UI/separator";
 
 const initialState = {
     firstName: "",
@@ -92,7 +93,7 @@ return(
                             <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 group-hover:text-violet-600 transition-all">Añadir foto</p>
                         </div>  
                         <p className="select-none">Foto de perfil</p>
-                    <span className="w-[90%] max-w-[700px] bg-white border-t border-t-slate-300 rounded-lg"></span>
+                        <Separator />
                     </div>
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6">
                         <label className="flex flex-col">

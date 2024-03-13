@@ -1,55 +1,36 @@
-import { Rate } from "antd";
 import { NavLink } from "react-router-dom";
+import { Rate } from "antd";
+
+import Separator from "../components/UI/separator";
+
+import feli from '../assets/feli.jpg'
 
 export default function ProductView(){
     return(
-        <>
-        <NavLink to="/ProfilePageView">
-          <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full border">
-            
-          </div>
-        </NavLink>
-        
-        <div className="flex w-full h-[380px] px-4 mt-2 ml-4">
-            <div className="w-[440px] h-full relative  border-[5px] border-furnipurple rounded-3xl transition-all ease-in-out duration-700">
-                <img src="/src\assets\products\1.jpg" className="w-full h-full"></img>
-            </div>
-            
-        <ul className="p-4 w-[500px]">
-              <li className="my-4">
-                <legend>Nombre del Producto:</legend>
-                <input type="text" disabled placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXX" className="border-2 border-violet-400  px-2 w-full bg-purple-200 placeholder:text-violet-500 rounded-full"/>
-              </li>
-
-              <li className="my-4">
-                <legend>Precio del Producto:</legend>
-                <input type="Number" disabled placeholder="$XXXXXX" className="border-2 border-violet-400 px-2 bg-purple-200 placeholder:text-violet-500 rounded-full"/>
-              </li>
-
-              <li className="mb-4 absolute w-[800px]">
-                <legend>Descripcion del Producto:</legend>
-                <input type="text" disabled placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" className="border-2 px-2 border-violet-400  w-full h-[150px] bg-purple-200 placeholder:text-violet-500 rounded-2xl"/>
-              </li>
-              
-          </ul>
-
-          <div className="items-top text-slate-700 mt-10 ml-5 h-[70px]">
-                    <label className="align-top">Calificación:</label>
-                    <Rate allowHalf className="mt-[4px] ml-2 text-violet-400 text-sm absolute" />
-                    <label className="text-gray-400 ml-32">Votos (XXXXX)</label>
-                    <div className="mt-2">
-                    <label className="text-gray-400">Publicado el XX/XX/XXXX</label>
+        <div className="p-6">
+          <div className="grid md:flex md:flex-wrap relative w-full p-4">
+            <img src="" className="w-[500px] h-[500px] border-4 border-violet-400 rounded-md" />
+            <div className="flex flex-col ml-6 relative w-[400px]">
+              <div className="flex w-full justify-between">
+                <h3>Publicado por</h3>
+                <div className="flex space-x-3">
+                  <p>Nombre del autor</p>
+                  <NavLink to="/ProfilePageView">
+                    <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
+                      <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
                     </div>
-                    
-                    
+                  </NavLink>
                 </div>
-                
-        </div>
-        <div className="flex w-full justify-end absolute">
-    <button className="border-2 border-purple-800 bg-furnipurple hover:bg-purple-700 rounded-full p-2 text-purple-800 hover:text-purple-200  font-bold transition-all ease-in-out duration-500 mx-4 w-[150px]">Añadir al carro</button>
-      <button className="border-2 border-orange-500 bg-[#FFA375] hover:bg-[#FF8D55] rounded-full p-2 text-orange-500 hover:text-orange-200 font-bold transition-all ease-in-out duration-500 mr-20 w-[110px]">Comprar</button>
-    </div>
+              </div>
+              <h2 className="text-xl font-semibold mb-3">Titulo del producto</h2>
+              <Separator />
+              <div className="flex  items-center space-x-3 mt-3">
+                <Rate allowHalf disabled value={4} className="mt-[5px] ml-2 text-violet-400 text-sm" />
+                <p className="text-xs">34 Votos</p>
+              </div>
 
-        </>
+            </div>
+          </div>
+        </div>
     )
 }
