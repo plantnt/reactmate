@@ -5,6 +5,7 @@ import { supabase } from "../utils/Utils";
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 
 import googleIcon from '../assets/icons/google.svg'
+import Separator from "../components/UI/separator";
 
 export default function SignUp(){
 const [visible, setVisible] = useState(true)
@@ -27,11 +28,11 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLogin()}>
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLogin()}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
                     </button>
-                <span className="w-[90%] max-w-[700px] mt-[40px] bg-white border-t border-t-slate-300 rounded-lg"></span>
+                    <Separator />
                 </div>
                 <form className="grid w-full space-y-3 mt-[20px]">
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6">
