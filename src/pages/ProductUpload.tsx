@@ -85,7 +85,7 @@ export default function Upload(){
     }
         
     const createProduct = async () => {
-        const res = await supabase.from("users").insert([
+        const res = await supabase.from("products").insert([
             {
                 image: `${formData.image}`,
                 title: `${formData.title}`,
