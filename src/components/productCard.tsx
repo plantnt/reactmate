@@ -6,7 +6,7 @@ export default function ProductCard(){
     return(
         <>
             <NavLink to="/ProductPage">
-                <Card className="w-[10rem] bg-white color-black border-[1px] rounded-lg">
+                <Card className="w-[10rem] bg-white color-black border-[1px] rounded-lg shadow-md">
                     <Card.Img src={prod1} />
                     <Card.Body className="p-3">
                         <Card.Title>Titulo</Card.Title>

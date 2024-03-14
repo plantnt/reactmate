@@ -36,7 +36,7 @@ export default function Upload(){
   ]
 
   const [value, setValue] = useState('')
-  const handleChangeP = (event: { target: { value: string } }) => {
+  const handleChange = (event: { target: { value: string } }) => {
       const result = event.target.value.replace(/\D/g, '')
       setValue(result)
   }
@@ -94,7 +94,7 @@ export default function Upload(){
             </label>
             <label className='relative grid'>
               Precio
-              <input type="text" value={value} onChange={handleChangeP} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
+              <input type="text" value={value} onChange={handleChange} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
             </label>
             <label className='grid'>
               Descripción
