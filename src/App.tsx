@@ -33,13 +33,13 @@ const App = () => {
           <Route path='/logIn' element={<LogIn/>} />
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
-          <Route path='/ProductPage' element={<ProductView/>} />
+          <Route path='/productPage' element={<ProductView/>} />
           <Route path='/chatHome' element={<ChatPage/>} />
           <Route path='/chatingPage' element={<UserChats/>} />
           <Route path='/chatingServices' element={<ServicesChat/>} />
           <Route path='/chatView' element={<Chat/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
-          <Route path='/ProductUpload' element={<Upload/>} />
+          <Route path='/productUpload' element={<Upload/>} />
         </Routes>
       </main>
     </Router>

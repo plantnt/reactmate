@@ -41,47 +41,6 @@ export default function Upload(){
       setValue(result)
   }
 
-  // const [formData,setFormData] = useState({
-  //   fullName:'',email:'',password:''
-  // })
-
-  // console.log(formData)
-
-  // function handleChange(event){
-  //   setFormData((prevFormData)=>{
-  //     return{
-  //       ...prevFormData,
-  //       [event.target.name]:event.target.value
-  //     }
-
-  //   })
-
-  // }
-
-  // async function handleSubmit(e){
-  //   e.preventDefault()
-
-  //   try {
-  //     const { data, error } = await supabase.auth.signUp(
-  //       {
-  //         email: formData.email,
-  //         password: formData.password,
-  //         options: {
-  //           data: {
-  //             full_name: formData.fullName,
-  //           }
-  //         }
-  //       }
-  //     )
-  //     if (error) throw error
-  //     alert('Check your email for verification link')
-
-      
-  //   } catch (error) {
-  //     alert(error)
-  //   }
-  // }
-
   return(
     <> 
       <div className="flex space-x-9 p-8">
