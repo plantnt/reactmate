@@ -9,7 +9,7 @@ import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
 import { NavLink } from 'react-router-dom';
 
-export default function Profile() {
+export default function UserProfile() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
@@ -84,7 +84,6 @@ export default function Profile() {
                 src="src/assets/profileIcon.png"
                 alt="Profile"
               />
-              <Profile></Profile>
             </div>
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">

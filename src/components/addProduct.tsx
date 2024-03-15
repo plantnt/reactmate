@@ -6,7 +6,7 @@ export default function AddProduct(){
   return(
     <>
     
-      <NavLink to='/ProductUpload'>
+      <NavLink to='/productUpload'>
         <button className="
         fixed top-[80vh] right-[40px]
         w-[70px] h-[70px]

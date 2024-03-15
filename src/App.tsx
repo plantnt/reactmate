@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import LogIn from './pages/Login'
 import SignUp from './pages/Signup'
-import Profile from './pages/UserProfile'
 import ProfileView from './pages/ProfileView'
 import HelpPage from './pages/Help'
 import ProductView from './pages/ProductView'
@@ -15,6 +14,7 @@ import ServicesChat from './pages/ChatServices'
 import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
+import UserProfile from './pages/UserProfile'
 
 import NavbarVisible from './components/UI/navbarvisible'
 
@@ -28,18 +28,18 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />
-          <Route path='/profilePage' element={<Profile/>} />
+          <Route path='/profilePage' element={<UserProfile/>} />
+          <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/logIn' element={<LogIn/>} />
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
-          <Route path='/ProductPage' element={<ProductView/>} />
+          <Route path='/productPage' element={<ProductView/>} />
           <Route path='/chatHome' element={<ChatPage/>} />
           <Route path='/chatingPage' element={<UserChats/>} />
           <Route path='/chatingServices' element={<ServicesChat/>} />
           <Route path='/chatView' element={<Chat/>} />
-          <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
-          <Route path='/ProductUpload' element={<Upload/>} />
+          <Route path='/productUpload' element={<Upload/>} />
         </Routes>
       </main>
     </Router>
