@@ -8,17 +8,17 @@ import googleIcon from '../assets/icons/google.svg'
 import Separator from "../components/UI/separator";
 
 export default function SignUp(){
-const [visible, setVisible] = useState(true)
-const handleClick = () => {
-    setVisible((prevVisible) => !prevVisible)
-}
+    const [visible, setVisible] = useState(true)
+    const handleClick = () => {
+        setVisible((prevVisible) => !prevVisible)
+    }
 
-const handleLogin = () =>{
-    supabase.auth.signInWithOAuth({
-        provider: 'google',
-      })
-      
-}
+    const handleLogin = () =>{
+        supabase.auth.signInWithOAuth({
+            provider: 'google',
+        })
+        
+    }
 
 return(
         <div className="flex items-center justify-center w-full h-[100vh] lg:bg-cover sm:bg-left  bg-[url('/src/assets/SignUpBackground.png')]">
@@ -56,7 +56,7 @@ return(
                             >
                         Iniciar sesión
                     </button>
-                    <p className="justify-self-center w-[200px] mt-8 text-sm text-wrap text-center">Aún no tienes cuneta? <br/>Creala <NavLink to="/signUp"><span className="text-violet-600">aquí</span></NavLink></p>
+                    <p className="justify-self-center w-[200px] mt-8 text-sm text-wrap text-center">¿Aún no tienes cuenta? <br/>Creala <NavLink to="/signUp"><span className="text-violet-600">aquí</span></NavLink></p>
                 </form>
             </div>
         </div>
