@@ -28,7 +28,7 @@ const BuyProduct = () => {
         <div id="container" className="fixed flex items-center justify-left right-0 bottom-[120px] h-40 w-[400px] border rounded-lg p-3 bg-white transition-all z-[99] overflow-hidden">
             <IoMdArrowDropleft size={40} id="openArrow" className="hidden text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleShow()}/>
             <IoMdArrowDropright size={40} id="closeArrow" className="text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleHide()}/>
-            <div id="actions" className="flex items-start">
+            <div id="actions" className="block">
                 <h1 className="font-semibold text-xl">Acciones</h1>
                 <div className="flex gap-3 w-full mt-2 font-semibold text-white">
                     <button className="flex items-center justify-center bg-furniorange px-4 p-2 rounded-full">
