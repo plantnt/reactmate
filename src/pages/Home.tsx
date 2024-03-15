@@ -1,6 +1,5 @@
 import ProductCard from "../components/productCard"
 import Filters from "../components/filters"
-import Footer from "../components/UI/footer"
 import Rating from "../components/rating"
 import FeaturedProducts from "./Featured"
 import AddProduct from "../components/addProduct"
@@ -42,9 +41,6 @@ const Home = () => {
                 </div>
                <br></br>
                 <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
-                <div className="grid w-full justify-self-end">
-                    <Footer/>
-                </div>
             </div>
         </>
     )

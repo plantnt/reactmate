@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { FaArrowLeft, FaEllipsisV, FaUser } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import Footer from "../components/UI/footer";
 
 const ChatPage = () => {
     const [optionsVisible, setOptionsVisible] = useState<boolean[]>(Array.from({ length: 10 }, () => false));
@@ -68,7 +67,6 @@ const ChatPage = () => {
                     ))}
                 </div>
             </div>
-            <div className="bottom-0 w-full"><Footer /></div>
         </>
     );
 };
