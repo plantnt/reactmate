@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Footer from "../components/UI/footer";
 
 const ServicesChat = () => {
     // Estado para las publicaciones de consumidores
@@ -88,11 +87,6 @@ const ServicesChat = () => {
                         <div key={index} className="border p-2 mb-2">{post}</div>
                     ))}
                 </div>
-            </div>
-
-            {/* Footer fijo si no me vuelvo loco */}
-            <div className="bottom-0 left-0 right-0">
-                <Footer />
             </div>
         </>
     );

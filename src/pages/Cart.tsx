@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FaCartShopping } from 'react-icons/fa6';
 import CardCart from '../components/cardcart';
-import Footer from '../components/UI/footer';
 
 const CartPage = () => {
   const [productos, setProductos] = useState([
@@ -37,7 +36,7 @@ const CartPage = () => {
       <div className="flexbox pl-4">
         {/* Renderizar la lista de productos */}
         {productos.map((producto) => (
-          <CardCart key={producto.id} producto={producto} />
+          <CardCart key={producto.id} />
         ))}
       </div>
       <div className="flex">
@@ -60,7 +59,6 @@ const CartPage = () => {
         <p className="text-gray-400 text-xl font-bold pl-8">${calcularTotal()}</p>
       </div>
       </div>
-      <Footer/>
     </>
   );
 };
