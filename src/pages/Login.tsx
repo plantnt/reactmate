@@ -7,7 +7,20 @@ import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import googleIcon from '../assets/icons/google.svg'
 import Separator from "../components/UI/separator";
 
+interface UserData {
+    user: import("@supabase/gotrue-js").User;
+    session: import("@supabase/gotrue-js").Session;
+    
+}
+
+
 export default function SignUp(){
+    async function setToken(data: UserData) {
+        const { user, session } = data;
+        sessionStorage.setItem('supabaseToken', session.access_token)
+
+    }
+    
     const [visible, setVisible] = useState(true)
     const handleClick = () => {
         setVisible((prevVisible) => !prevVisible)
@@ -42,10 +55,11 @@ async function handleSubmit(e:any){
     e.preventDefault()
 
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: formData.email,
-            password: formData.password,
-          })
+        
+const { data, error } = await supabase.auth.signInWithPassword({
+   email: ``,
+    password: ``
+  })
 
       if (error) throw error
       console.log(data)
@@ -53,17 +67,23 @@ async function handleSubmit(e:any){
       navigate('/homepage')
 
 
-    //   alert('Check your email for verification link')
+   
 
       
+    if (error) {
+        
+        console.error("Error al iniciar sesión:", error);
+      } else {
+      
+        console.log("Inicio de sesión exitoso:", data);
+      }
     } catch (error) {
-      alert(error)
+      console.error("Error inesperado:", error);
     }
-  }
-  
-  function setToken(_data: { user: import("@supabase/gotrue-js").User; session: import("@supabase/gotrue-js").Session; weakPassword?: import("@supabase/gotrue-js").WeakPassword | undefined; }) {
-    throw new Error("Function not implemented.");
 }
+//   function setToken(_data: { user: import("@supabase/gotrue-js").User; session: import("@supabase/gotrue-js").Session; weakPassword?: import("@supabase/gotrue-js").WeakPassword | undefined; }) {
+//     throw new Error("Function not implemented.");
+// }
 
 return(
         <div className="flex items-center justify-center w-full h-[100vh] lg:bg-cover sm:bg-left  bg-[url('/src/assets/SignUpBackground.png')]">

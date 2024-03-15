@@ -8,20 +8,49 @@ import RatingProfile from '../components/ratingProfile';
 import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { supabase } from '../utils/Utils';
 
 export default function UserProfile() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
   const [userData, setUserData] = useState({
-    username: "JohnDoe",
-    email: "johndoe@example.com",
-    phone: "+1234567890", // Número de teléfono de ejemplo
+    username: "",
+    email: "",
+    phone: "", // Número de teléfono de ejemplo
     registrationDate: "2024-03-07" // Fecha de registro de ejemplo
   });
   const [products, setProducts] = useState([]);
 
-  const handleClick = () => {
+  
+  useEffect(() => {
+    // Fetch user data from backend
+    fetchUserData();
+  }, []);
+
+  // async function fetchUserData(){
+  //   const {data} = await supabase
+  //     .from('users')
+  //     .select('*')
+  //     setUserData(data)
+
+
+
+  // }
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('URL_DEL_BACKEND/perfilUsuario');
+      if (response.ok) {
+        const userData = await response.json();
+        setUserData(userData);
+      } else {
+        console.error('Error al obtener los datos del usuario');
+      }
+    } catch (error) {
+      console.error('Error al conectar con el backend:', error);
+    }
+  };
+const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
@@ -50,25 +79,6 @@ export default function UserProfile() {
       }
     }
   }, [isOpen]);
-
-  useEffect(() => {
-    // Fetch user data from backend
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
-    try {
-      const response = await fetch('URL_DEL_BACKEND/perfilUsuario');
-      if (response.ok) {
-        const userData = await response.json();
-        setUserData(userData);
-      } else {
-        console.error('Error al obtener los datos del usuario');
-      }
-    } catch (error) {
-      console.error('Error al conectar con el backend:', error);
-    }
-  };
 
   return (
     <>
