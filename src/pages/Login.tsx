@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../utils/Utils";
 
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
@@ -19,6 +19,51 @@ const handleLogin = () =>{
       })
       
 }
+let navigate = useNavigate()
+
+const [formData,setFormData] = useState({
+    email:'',password:''
+})
+
+console.log(formData)
+
+function handleChange(event: { target: { name: any; value: any; }; }){
+setFormData((prevFormData)=>{
+  return{
+    ...prevFormData,
+    [event.target.name]:event.target.value
+  }
+
+})
+
+}
+
+async function handleSubmit(e:any){
+    e.preventDefault()
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: formData.email,
+            password: formData.password,
+          })
+
+      if (error) throw error
+      console.log(data)
+      setToken(data)
+      navigate('/homepage')
+
+
+    //   alert('Check your email for verification link')
+
+      
+    } catch (error) {
+      alert(error)
+    }
+  }
+  
+  function setToken(_data: { user: import("@supabase/gotrue-js").User; session: import("@supabase/gotrue-js").Session; weakPassword?: import("@supabase/gotrue-js").WeakPassword | undefined; }) {
+    throw new Error("Function not implemented.");
+}
 
 return(
         <div className="flex items-center justify-center w-full h-[100vh] lg:bg-cover sm:bg-left  bg-[url('/src/assets/SignUpBackground.png')]">
@@ -34,15 +79,15 @@ return(
                     </button>
                     <Separator />
                 </div>
-                <form className="grid w-full space-y-3 mt-[20px]">
-                    <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6">
+                <form className="grid w-full space-y-3 mt-[20px]"onSubmit={handleSubmit}>
+                    <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6" >
                         <label className="flex flex-col">
                             <p className="select-none">Email</p> 
-                            <input type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent"/>
+                            <input name="email" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent"/>
                         </label>
                         <label className="relative flex flex-col">
                             <p className="select-none">Contraseña</p>
-                            <input type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
+                            <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
                                 />
                             {visible === true ? (
                                 <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
@@ -59,6 +104,7 @@ return(
                     <p className="justify-self-center w-[200px] mt-8 text-sm text-wrap text-center">Aún no tienes cuneta? <br/>Creala <NavLink to="/signUp"><span className="text-violet-600">aquí</span></NavLink></p>
                 </form>
             </div>
+            
         </div>
     )
 }

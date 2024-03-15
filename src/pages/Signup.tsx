@@ -73,58 +73,58 @@ const [visible, setVisible] = useState(true)
 const handleClick = () => {
     setVisible((prevVisible) => !prevVisible)
 }
-    const cloudName = import.meta.env.VITE_CLOUD_NAME;          //Variables de sistema
-    const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
+    // const cloudName = import.meta.env.VITE_CLOUD_NAME;          //Variables de sistema
+    // const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
 
-    const [loaded, setLoaded] = useState(false);
-    const [uploadedImages, setUploadedImages] = useState([]);
-    const [isDisabled, setIsDisabled] = useState(false);
+    // const [loaded, setLoaded] = useState(false);
+    // const [uploadedImages, setUploadedImages] = useState([]);
+    // const [isDisabled, setIsDisabled] = useState(false);
 
-    useEffect(() => {
-        const uwScript = document.getElementById('uw');
-        if (!loaded && !uwScript) {
-        const script = document.createElement('script');
-        script.setAttribute('async', '');
-        script.setAttribute('id', 'uw');
-        script.src = 'https://upload-widget.cloudinary.com/global/all.js';
-        script.addEventListener('load', () => setLoaded(true));
-        document.body.appendChild(script);
-        }
-    }, [loaded]);
+    // useEffect(() => {
+    //     const uwScript = document.getElementById('uw');
+    //     if (!loaded && !uwScript) {
+    //     const script = document.createElement('script');
+    //     script.setAttribute('async', '');
+    //     script.setAttribute('id', 'uw');
+    //     script.src = 'https://upload-widget.cloudinary.com/global/all.js';
+    //     script.addEventListener('load', () => setLoaded(true));
+    //     document.body.appendChild(script);
+    //     }
+    // }, [loaded]);
 
-    const processResults = (error:any, result:any) => {
-        if (result.event === 'close') {
-        setIsDisabled(false);
-        }
-        if (result && result.event === 'success') {
-        const secureUrl = result.info.secure_url;
-        const previewUrl = secureUrl.replace(
-            '/upload/',
-            '/upload/w_400/f_auto,q_auto/'
-        );
-        setUploadedImages((prevImages) => [...prevImages, previewUrl]);
-        setIsDisabled(false);
-        }
-        if (error) {
-        setIsDisabled(false);
-        }
-    };
+    // const processResults = (error:any, result:any) => {
+    //     if (result.event === 'close') {
+    //     setIsDisabled(false);
+    //     }
+    //     if (result && result.event === 'success') {
+    //     const secureUrl = result.info.secure_url;
+    //     const previewUrl = secureUrl.replace(
+    //         '/upload/',
+    //         '/upload/w_400/f_auto,q_auto/'
+    //     );
+    //     setUploadedImages((prevImages) => [...prevImages, previewUrl]);
+    //     setIsDisabled(false);
+    //     }
+    //     if (error) {
+    //     setIsDisabled(false);
+    //     }
+    // };
 
-    const uploadWidget = () => {
-        setIsDisabled(true);
-        window.cloudinary.openUploadWidget(
-        {
-            cloudName,
-            uploadPreset,
-            sources: ['local', 'url'],
-            tags: ['myphotoalbum-react'],
-            clientAllowedFormats: ['image'],
-            resourceType: 'image',
-            multiple: false
-        },
-        processResults
-        );
-    };
+    // const uploadWidget = () => {
+    //     setIsDisabled(true);
+    //     window.cloudinary.openUploadWidget(
+    //     {
+    //         cloudName,
+    //         uploadPreset,
+    //         sources: ['local', 'url'],
+    //         tags: ['myphotoalbum-react'],
+    //         clientAllowedFormats: ['image'],
+    //         resourceType: 'image',
+    //         multiple: false
+    //     },
+    //     processResults
+    //     );
+    // };
 
 
 return(
@@ -141,7 +141,7 @@ return(
                         }}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer"
-                            onClick={() => uploadWidget()}>
+                            onChange={(e) => handleImage(e)}>
                             <IoMdImage  size={37} className="text-slate-600 group-hover:scale-105 group-hover:text-violet-600 transition-all"/>
                             <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 group-hover:text-violet-600 transition-all">Añadir foto</p>
                         </div>  
