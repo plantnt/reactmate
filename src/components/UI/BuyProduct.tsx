@@ -1,12 +1,9 @@
-import { useState } from "react";
-
-import { IoIosAddCircleOutline, IoIosClose, IoMdArrowDropleft,IoMdArrowDropright } from "react-icons/io"
+import { IoIosAddCircleOutline, IoMdArrowDropleft,IoMdArrowDropright } from "react-icons/io"
 import { MdAttachMoney } from "react-icons/md";
 import { RiShoppingCartLine } from "react-icons/ri";
 
 
 const BuyProduct = () => {
-    const [isVisible, setVisible] = useState(true)
 
     function handleShow(){
         console.log("show")
