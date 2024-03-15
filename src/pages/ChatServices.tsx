@@ -36,13 +36,13 @@ const ServicesChat = () => {
             <div className="relative bg-gray-50 min-h-screen max-w-full overflow-y-auto">
                 {/* Sección para añadir publicaciones de consumidores */}
                 <div className="p-4">
-                    <h2 className="text-2xl font-semibold mb-4">Añadir publicación de consumidor:</h2>
+                    <h2 className="text-2xl font-semibold mb-4">Añade tu publicación como un consumidor</h2>
                     <textarea
                         className="w-full p-2 border border-gray-300 rounded"
                         rows={4}
                         value={newConsumerPost}
                         onChange={(e) => setNewConsumerPost(e.target.value)}
-                        placeholder="Escribe aquí tu publicación como consumidor"
+                        placeholder="Añade tu publicación como un consumidor: publica tu petición y tus datos de contacto para empezar!"
                     />
                     <input type="file" accept="image/*" />
                     <button
@@ -53,15 +53,18 @@ const ServicesChat = () => {
                     </button>
                 </div>
 
+                <br></br>
+                <h1>Las subidas de imagen se realizarán con Cloudinary.</h1>
+
                 {/* Sección para añadir publicaciones de empresarios */}
                 <div className="p-4">
-                    <h2 className="text-2xl font-semibold mb-4">Añadir publicación de empresario:</h2>
+                    <h2 className="text-2xl font-semibold mb-4">Añadir publicación de empresario</h2>
                     <textarea
                         className="w-full p-2 border border-gray-300 rounded"
                         rows={4}
                         value={newBusinessPost}
                         onChange={(e) => setNewBusinessPost(e.target.value)}
-                        placeholder="Escribe aquí tu publicación como empresario"
+                        placeholder="Añade tu publicación como un empresario: publica tu petición y tus datos de contacto para empezar!"
                     />
                     <input type="file" accept="image/*" />
                     <button
