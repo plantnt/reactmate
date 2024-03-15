@@ -58,7 +58,8 @@ export default function ProductView(){
               </div>
             </div>
           </div>
-            <div className="lg:w-[950px] w-[500px]">
+          <Separator />
+            <div className="lg:w-[950px] w-[500px] mt-4">
               <h2 className="text-xl font-semibold mb-3">Descripción</h2>
               <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
               Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
