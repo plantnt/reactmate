@@ -1,14 +1,16 @@
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+import { useState, useRef } from 'react';
 
 import UploadWidget from '../components/Imageupload/UploadWidget';
+import { NavLink } from 'react-router-dom';
+import { supabase } from "../utils/Utils";
 
 import { FaRegCheckCircle } from "react-icons/fa";
+import { LuUpload } from "react-icons/lu";
 import { GiCancel } from "react-icons/gi";
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import { supabase } from "../utils/Utils";
-import { FaCircleCheck } from 'react-icons/fa6';
+import { Plus } from 'lucide-react';
+
 
 export default function Upload(){
 
@@ -36,134 +38,85 @@ export default function Upload(){
     { value: '4', label: 'Plastico Reciclado' }
   ]
 
-  const [value, setValue] = useState('')
-  const handleChangeP = (event: { target: { value: string } }) => {
-      const result = event.target.value.replace(/\D/g, '')
-      setValue(result)
-       
+  const inputFile = useRef<HTMLInputElement>(null)
+
+  const [imgSrc, setImgSrc] = useState<string|null>(null)
+
+  const handleUpload = () => {
+    inputFile.current && inputFile.current.click()
   }
 
-  const initialState = {
-    title: "",
-    description: "",
-    price: "",
-    image: null,
-}
-
-
-    const [formData, setFormData] = useState(initialState)
-    const [loading, setLoading] = useState(true)
-    const [status, setStatus] = useState(false)
-
-    const handleChange = async (e:any) => {
-        e.preventDefault()
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
-    
-    const handleImage = async (e:any) => {
-        const reader = new FileReader()
-        reader.onloadend = async () => {
-            setLoading(true)
+  const handleUploadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if(file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setImgSrc(reader.result)
         }
-        
-        const files = e.target.files[0]
-        if(!files) return
-        const data = new FormData()
-        data.append('file', files) 
-        data.append('upload_preset', 'c_tags')
-        const res = await fetch(
-            "https://api.cloudinary.com/v1_1/dotrqr59h/image/upload",
-            {
-                method: "POST",
-                body: data
-            }
-        ) 
-        
-        const file = await res.json()
-        setFormData({...formData, image: file.secure_url})
-        setLoading(false)
+      }
+      reader.readAsDataURL(file)
     }
-        
-    const createProduct = async () => {
-        const res = await supabase.from("products").insert([
-            {
-                image: `${formData.image}`,
-                title: `${formData.title}`,
-                description: `${formData.description}`,
-                price: `${formData.price}`,
-            }
-        ])
-        if (res.error === null && res.status === 201) {
-            setStatus(true);
-            setFormData(initialState);
-            setTimeout(() => {
-              setStatus(false);
-            }, 5000);
-    }
-}
-console.log(loading)
-
-  return(
-    <> 
-      <div className="flex space-x-9 p-8">
-          <form className='grid grid-cols-3'
-          onSubmit={(e:any) => {
-                            e.preventDefault()
-                            createProduct()
-                        }}>
-          <UploadWidget />
-          <div className='ml-4'>
-            <label className='grid'>
-              Título del producto
-              <input type="text" id='title' name='title' onChange={handleChange} className='border border-slate-300 h-[2em] outline-none p-1 rounded-md' required/>
-            </label>
-            <label className='relative grid'>
-              Precio
-              <input type="text" name='price' value={value} onChange={handleChangeP} className="border border-slate-300 h-[2em] outline-none p-1 rounded-md" maxLength={10} placeholder='$'/>
-            </label>
-            <label className='grid'>
-              Descripción
-              <textarea id='description' name='description' onChange={handleChange} className='border border-slate-300 resize-none outline-none p-1 rounded-lg' cols={30} rows={10} maxLength={500}></textarea>
-            </label>
-          </div>
-          <div className='flex flex-col space-y-4 ml-4'>
-            <label>
-                Categoría
-                <Select className='' options={categorias} isMulti components={animatedComponents}  placeholder="Seleccionar..." />
-            </label>
-            <label>
-                Color
-                <Select className='' options={colores} isMulti components={animatedComponents}  placeholder="Seleccionar..." />
-            </label>
-            <label>
-                Material
-                <Select className='' options={materiales} isMulti components={animatedComponents}  placeholder="Seleccionar..." />
-            </label>
-          </div>
-        </form>
-      </div>    
-      <div className='p-8 flex space-x-3'>
-        <NavLink to="/" className="overflow-hidden">
-          <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-red-500 hover:text-white transition-colors'>
-            <GiCancel className='transform  mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
-            Cancelar
+  }
+ 
+return(
+  <>
+    <div className='flex flex-col gap-2 w-[400px]'>
+      <div className='group flex flex-col items-center justify-center w-full h-[300px] border-4 border-violet-400 rounded-xl hover:cursor-pointer overflow-hidden'
+          onClick={() => handleUpload()}>
+        {imgSrc ? (
+          <img src={imgSrc} className="w-full h-full object-cover hover:scale-105 transition-transform" />
+        ) : (
+          <>
+            <input ref={inputFile} onChange={handleUploadChange} type="file" hidden />
+            <LuUpload size={30} className='text-violet-400 group-hover:opacity-70 transition-opacity'/>
+            <p>Subir archivo</p>
+          </>
+        )}
+      </div>
+      {imgSrc && (
+      <div className='flex gap-2 flex-wrap'>
+          <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                  type='button'>
+              <Plus className='group-hover:scale-150 transition-all'/>
           </button>
+          <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                  type='button'>
+              <Plus className='group-hover:scale-150 transition-all'/>
+          </button>
+          <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                  type='button'>
+              <Plus className='group-hover:scale-150 transition-all'/>
+          </button>
+          <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                  type='button'>
+              <Plus className='group-hover:scale-150 transition-all'/>
+          </button>
+          <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                  type='button'>
+              <Plus className='group-hover:scale-150 transition-all'/>
+          </button>
+          <button className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 transition-opacity'
+                  type='button'>
+              <Plus className='group-hover:scale-150 transition-all'/>
+          </button>
+        </div>
+        )}
+      </div>
+      {/* <div className='p-8 flex space-x-3'>
+        <NavLink to="/" className="overflow-hidden">
+        <button className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-red-500 hover:text-white transition-colors'>
+        <GiCancel className='transform  mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
+        Cancelar
+        </button>
         </NavLink>
         <NavLink to="/">
-          <button type='submit' className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-green-400 hover:text-white transition-colors'>
-            <FaRegCheckCircle className='transform mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
-            Publicar
-          </button>
-          {status === false? (
-                <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
-                ) : (
-                <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
-                    <FaCircleCheck size={20} className="text-green-400" />
-                    Se ha registrado correctamente
-                </div>
-                )}
+        <button type='submit' className='group flex items-center bg-slate-300 px-4 py-2 rounded-xl text-slate-800 hover:bg-green-400 hover:text-white transition-colors overflow-hidden'>
+        <FaRegCheckCircle className='transform mr-2 translate-y-8 group-hover:translate-y-0 transition duration-500 ease-in-out'/>
+        Publicar
+        </button>
         </NavLink>
-      </div>
+      </div> */}
   </>
  )
 }
