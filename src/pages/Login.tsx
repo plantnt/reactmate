@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../utils/Utils";
 
@@ -7,80 +7,107 @@ import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import googleIcon from '../assets/icons/google.svg'
 import Separator from "../components/UI/separator";
 
-interface UserData {
-    user: import("@supabase/gotrue-js").User;
-    session: import("@supabase/gotrue-js").Session;
+// interface UserData {
+//     user: import("@supabase/gotrue-js").User;
+//     session: import("@supabase/gotrue-js").Session;
     
-}
+// }
 
 
 export default function SignUp(){
-    async function setToken(data: UserData) {
-        const { user, session } = data;
-        sessionStorage.setItem('supabaseToken', session.access_token)
 
-    }
+    const [formData, setFormData]= useState() 
+    const [ users, setUsers] = useState([]);
+
+    useEffect(() => {
+        getUsers();
+      }, [])
     
-    const [visible, setVisible] = useState(true)
+      async function getUsers() {
+        try {
+          const { data, error } = await supabase
+            .from("users")
+            .select("email, password")
+          if (error) throw error;
+          if (data != null) {
+            setUsers(data); // [user1, user2, user3]
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+const [visible, setVisible] = useState(true)
     const handleClick = () => {
         setVisible((prevVisible) => !prevVisible)
     }
 
-const handleLogin = () =>{
-    supabase.auth.signInWithOAuth({
-        provider: 'google',
-      })
+    const handleChange = async (e:any) => {
+        e.preventDefault();
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
+
       
-}
-let navigate = useNavigate()
+//     async function setToken(data: UserData) {
+//         const { user, session } = data;
+//         sessionStorage.setItem('supabaseToken', session.access_token)
 
-const [formData,setFormData] = useState({
-    email:'',password:''
-})
+//     }
+// const handleLogin = () =>{
+//     supabase.auth.signInWithOAuth({
+//         provider: 'google',
+//       })
+      
+// }
+// let navigate = useNavigate()
 
-console.log(formData)
+// const [formData,setFormData] = useState({
+//     email:'',password:''
+// })
 
-function handleChange(event: { target: { name: any; value: any; }; }){
-setFormData((prevFormData)=>{
-  return{
-    ...prevFormData,
-    [event.target.name]:event.target.value
-  }
+// console.log(formData)
 
-})
+// function handleChange(event: { target: { name: any; value: any; }; }){
+// setFormData((prevFormData)=>{
+//   return{
+//     ...prevFormData,
+//     [event.target.name]:event.target.value
+//   }
 
-}
+// })
 
-async function handleSubmit(e:any){
-    e.preventDefault()
+// }
 
-    try {
+// async function handleSubmit(e:any){
+//     e.preventDefault()
+
+//     try {
         
-const { data, error } = await supabase.auth.signInWithPassword({
-   email: ``,
-    password: ``
-  })
+// const { data, error } = await supabase.auth.signInWithPassword({
+//    email: ``,
+//     password: ``
+//   })
 
-      if (error) throw error
-      console.log(data)
-      setToken(data)
-      navigate('/homepage')
+//       if (error) throw error
+//       console.log(data)
+//       setToken(data)
+//       navigate('/homepage')
 
 
    
 
       
-    if (error) {
+//     if (error) {
         
-        console.error("Error al iniciar sesión:", error);
-      } else {
+//         console.error("Error al iniciar sesión:", error);
+//       } else {
       
-        console.log("Inicio de sesión exitoso:", data);
-      }
-    } catch (error) {
-      console.error("Error inesperado:", error);
-    }
-}
+//         console.log("Inicio de sesión exitoso:", data);
+//       }
+//     } catch (error) {
+//       console.error("Error inesperado:", error);
+//     }
+// }
 //   function setToken(_data: { user: import("@supabase/gotrue-js").User; session: import("@supabase/gotrue-js").Session; weakPassword?: import("@supabase/gotrue-js").WeakPassword | undefined; }) {
 //     throw new Error("Function not implemented.");
 // }
@@ -99,7 +126,7 @@ return(
                     </button>
                     <Separator />
                 </div>
-                <form className="grid w-full space-y-3 mt-[20px]"onSubmit={handleSubmit}>
+                <form className="grid w-full space-y-3 mt-[20px]"onSubmit={handleLogin}>
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6" >
                         <label className="flex flex-col">
                             <p className="select-none">Email</p> 
