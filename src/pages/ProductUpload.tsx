@@ -42,7 +42,7 @@ export default function Upload(){
 
   const [imgSrc, setImgSrc] = useState<string|null>(null)
   const [uploadCount, setUploadCount] = useState(0)
-  const []
+
 
   const handleUpload = () => {
     inputFile.current && inputFile.current.click()
@@ -56,6 +56,7 @@ export default function Upload(){
         if(typeof reader.result === 'string'){
           setImgSrc(reader.result)
           setUploadCount(uploadCount + 1)
+          console.log(setUploadCount)
         }
       }
       reader.readAsDataURL(file)
@@ -70,9 +71,7 @@ export default function Upload(){
     while(uploadCount < 6){
       return(
         <div className='group flex items-center justify-center h-[120px] w-[32%] text-slate-400 rounded-md border-2 border-slate-400 hover:opacity-50 hover:cursor-pointer transition-opacity'
-        onClick={()=>{
-          handleUpload()
-        }}>
+        onClick={()=>{setUploadCount((prevCount) => prevCount + 1), console.log(setUploadCount)}}>
           <Plus className='group-hover:scale-150 transition-all'/>
         </div>
       )
