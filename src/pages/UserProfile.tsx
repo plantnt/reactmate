@@ -15,10 +15,10 @@ export default function UserProfile() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
   const [userData, setUserData] = useState({
-    username: "",
+    name: "",
     email: "",
-    phone: "", // Número de teléfono de ejemplo
-    registrationDate: "2024-03-07" // Fecha de registro de ejemplo
+    last_name: "", // Número de teléfono de ejemplo
+    
   });
   const [products, setProducts] = useState([]);
 
@@ -97,7 +97,7 @@ const handleClick = () => {
             </div>
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                <h1 className="text-3xl font-rounded">{userData.username}</h1>
+                <h1 className="text-3xl font-rounded">{userData.name}</h1>
                 <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
               </div>
               <br />
@@ -109,10 +109,10 @@ const handleClick = () => {
                   <span className="font-semibold">Correo electrónico: </span> {userData.email}, <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
                 </p>
                 <p className="text-gray-700">
-                  <span className="font-semibold">Teléfono: </span> {userData.phone}
+                  <span className="font-semibold">Teléfono: </span> 
                 </p>
                 <p className="text-gray-600">
-                  <span className="font-semibold">Fecha de Registro: </span> {userData.registrationDate}
+                  <span className="font-semibold">Fecha de Registro: </span> 
                 </p>
                 <br />
               </div>
