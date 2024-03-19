@@ -20,7 +20,7 @@ export default function UserProfile() {
     
   });
   const [products, setProducts] = useState([]);
-
+  const [login, setLogin] =useState ()
   
   useEffect(() => {
     // Fetch user data from backend
@@ -30,7 +30,7 @@ export default function UserProfile() {
   
   async function fetchUserData() {
     try {
-      // Obtener la ID del usuario
+      
       const { data: users, error } = await supabase
         .from('users')
         .select('id, name, last_name, email, password');
@@ -42,11 +42,11 @@ export default function UserProfile() {
   
       const userIds = users.map(user => user.id);
       console.log('User IDs:', userIds);
-  
-      // Suponiendo que userIds es un array de IDs y quieres obtener datos para la primera ID en el array
-      const userIdToFetch = userIds[0];
-  
-      // Obtener datos del usuario con la ID obtenida
+   
+      
+      const userIdToFetch = userIds[6];
+      
+      
       const { data: userData, error: userDataError } = await supabase
         .from('users')
         .select('*')
@@ -59,13 +59,10 @@ export default function UserProfile() {
       }
   
       console.log('User Data:', userData);
-      // Hacer algo con los datos del usuario, como establecerlos en el estado de tu aplicación
-      // setUserData(userData);
+      
+      setUserData(userData);
   
-      // Si necesitas hacer algo específico con la ID obtenida
-      if (userData.id === userIdToFetch) {
-        // Haz algo aquí
-      }
+     
   
     } catch (error) {
       console.error('Error in fetchUserData:', error);
@@ -123,7 +120,7 @@ const handleClick = () => {
             </div>
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                <h1 id='nameU' className="text-3xl font-rounded">{userData.name}</h1>
+                <h1 id='nameU' className="text-3xl font-rounded">{userData.name}  {userData.last_name}</h1>
                 <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
               </div>
               <br />
@@ -134,9 +131,9 @@ const handleClick = () => {
                 <p className="text-gray-700">
                   <span id='emailU' className="font-semibold">Correo electrónico: {userData.email}</span> , <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
                 </p>
-                <p className="text-gray-700">
+                {/* <p className="text-gray-700">
                   <span id='last_Name' className="font-semibold">apellido:  {userData.last_name}</span> 
-                </p> 
+                </p>  */}
                 {/* <p className="text-gray-600"> 
                  <span className="font-semibold">Fecha de Registro: </span> 
                 </p>  */}

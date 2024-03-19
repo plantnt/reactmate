@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../utils/Utils";
 
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
