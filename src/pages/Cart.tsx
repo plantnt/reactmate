@@ -42,7 +42,7 @@ const CartPage = () => {
       <div className="flex">
       <div className="flex justify-center mt-4 mb-6 pl-8">
         <button
-          className="mr-4 border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded hover:bg-red-600"
+          className="mr-4 border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded"
           onClick={eliminarTodo}
         >
           Eliminar Todo

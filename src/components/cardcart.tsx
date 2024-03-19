@@ -7,6 +7,7 @@ export default function CardCart() {
     const price = "10300";
 
     const handleDelete = () => {
+       
         // Lógica para eliminar el producto del carrito
     };
 
@@ -31,13 +32,13 @@ export default function CardCart() {
 
             {/* Botón para Ver Producto */}
             <NavLink to="/productPage">
-                <button className="bg-orange-400 hover:bg-white hover:text-orange-400 hover:border-orange-400 transition duration-300 border-2 border-orange-400 text-white font-bold py-2 pl-4 px-4 rounded items-center">
+                <button className="bg-violet-500 hover:bg-violet-600   transition duration-300 border-2 border-violet-800 text-white font-bold py-2 pl-4 px-4 rounded-xl items-center">
                   <span className="text-base font-rounded">Ver producto</span>
                 </button>
             </NavLink>
 
             {/* Botón para Eliminar Producto */}
-            <button onClick={handleDelete} className="border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded hover:bg-red-600">
+            <button onClick={handleDelete} className="bg-red-500 hover:bg-red-600   transition duration-300 border-2 border-red-800 text-white font-bold py-2 pl-4 px-4 rounded-xl items-center">
                 Eliminar
             </button>
         </div>
