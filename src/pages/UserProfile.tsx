@@ -121,7 +121,7 @@ const handleClick = () => {
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
                 <h1 id='nameU' className="text-3xl font-rounded">{userData.name}  {userData.last_name}</h1>
-                <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
+                <div className="flex justify-center items-center mr-20"><Rating /></div>
               </div>
               <br />
               <p className="mt-2 mb-4 text-gray-500 font-rounded">
