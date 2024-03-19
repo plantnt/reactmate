@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaBoxOpen, FaUser } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
-import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import RatingProfile from '../components/ratingProfile';
 import AddProduct from '../components/addProduct';
@@ -17,7 +16,7 @@ export default function UserProfile() {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
-    last_name: "", // Número de teléfono de ejemplo
+    last_name: "",
     
   });
   const [products, setProducts] = useState([]);
@@ -27,17 +26,55 @@ export default function UserProfile() {
     // Fetch user data from backend
     fetchUserData();
   }, []);
-
-  async function fetchUserData(){
-    const {data} = await supabase
-      .from('users')
-      .select('*')
-      // .eq("Id",id)
-      // .single()
-
-
+  
+  
+  async function fetchUserData() {
+    try {
+      // Obtener la ID del usuario
+      const { data: users, error } = await supabase
+        .from('users')
+        .select('id, name, last_name, email, password');
+        
+      if (error) {
+        console.error('Error fetching users:', error);
+        return;
+      }
+  
+      const userIds = users.map(user => user.id);
+      console.log('User IDs:', userIds);
+  
+      // Suponiendo que userIds es un array de IDs y quieres obtener datos para la primera ID en el array
+      const userIdToFetch = userIds[0];
+  
+      // Obtener datos del usuario con la ID obtenida
+      const { data: userData, error: userDataError } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', userIdToFetch)
+        .single();
+  
+      if (userDataError) {
+        console.error('Error fetching user data:', userDataError);
+        return;
+      }
+  
+      console.log('User Data:', userData);
+      // Hacer algo con los datos del usuario, como establecerlos en el estado de tu aplicación
+      // setUserData(userData);
+  
+      // Si necesitas hacer algo específico con la ID obtenida
+      if (userData.id === userIdToFetch) {
+        // Haz algo aquí
+      }
+  
+    } catch (error) {
+      console.error('Error in fetchUserData:', error);
+    }
   }
+  
+ console.log(userData)
 
+ 
 
 const handleClick = () => {
     setIsOpen(!isOpen);
@@ -187,7 +224,7 @@ const handleClick = () => {
               </div>
               <AddProduct/>
             </div>
-             <Footer />
+             
           </div>
     </>
     
