@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../utils/Utils";
 
@@ -35,17 +35,22 @@ const [visible, setVisible] = useState(true)
     const handlelogin = async (e:any) => {
         e.preventDefault();
         try {
-            const { user, error } = await supabase.auth.signIn({
-                email: '',
-                password: '',
-            });
-            
+            const { data: users, error } = await supabase
+            .from("users")
+            .select("email,password")
+        ;
+        const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
+        if (user){
+              console.log('Usuario ha iniciado sesión correctamente:', user);
+           navigate("/")  
+            } else{
+                console.log("No se ha podido iniciar sesion correctamente");
+            }
             if (error) {
                 throw error;
             }
         
-            console.log('Usuario ha iniciado sesión correctamente:', user);
-           navigate("/")
+            
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
         }
