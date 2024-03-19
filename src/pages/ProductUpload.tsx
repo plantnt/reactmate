@@ -286,6 +286,7 @@ return(
           </div>
         )}
         </div>
+        <ProductForm/>
       </form>
       <div className='p-8 flex space-x-3'>
         <NavLink to="/" className="overflow-hidden">
