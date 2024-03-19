@@ -44,7 +44,7 @@ export default function UserProfile() {
       console.log('User IDs:', userIds);
    
       
-      const userIdToFetch = userIds[6];
+      const userIdToFetch = userIds[8];
       
       
       const { data: userData, error: userDataError } = await supabase
