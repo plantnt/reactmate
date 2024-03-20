@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaCartShopping } from 'react-icons/fa6';
 import CardCart from '../components/cardcart';
+import Rating from '../components/rating';
 
 const CartPage = () => {
   const [productos, setProductos] = useState([
@@ -33,7 +34,12 @@ const CartPage = () => {
       <h1 className="text-5xl pl-8 pt-8 pb-8 font-bold text-purple-400 flex">
         Tu Carrito ‎ <FaCartShopping className="pt-2" />
       </h1>
-      <div className="flexbox pl-4">
+
+      <div className="flex p-2 ml-4">
+      <Rating/>
+      </div>
+      
+      <div className="flexbox pl-4 bg-gray-200 rounded-3xl max-w-[1100px] m-5">
         {/* Renderizar la lista de productos */}
         {productos.map((producto) => (
           <CardCart key={producto.id} />
