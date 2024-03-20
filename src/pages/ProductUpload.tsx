@@ -182,7 +182,7 @@ return(
             </>
           ) : (
             <>
-              <input ref={mainFile} onChange={handleUploadChange} type="file" hidden />
+              <input ref={mainFile} onChange={handleUploadChange} type="file" accept='image/png, image/jpeg' hidden />
               <LuUpload size={30} className='text-violet-400 group-hover:opacity-70 transition-opacity'/>
               <p>Subir archivo</p>
             </>
@@ -203,7 +203,7 @@ return(
                 <>
                     <Plus className='group-hover:scale-150 transition-all'
                     onClick={()=> handleUpload1()}/>
-                    <input ref={item1} onChange={handleUpload1Change} type="file" hidden />
+                    <input ref={item1} onChange={handleUpload1Change} type="file" accept='image/png, image/jpeg' hidden />
                 </>
               )}
             </div>
@@ -217,7 +217,7 @@ return(
                   <>
                     <Plus className='group-hover:scale-150 transition-all'
                     onClick={()=> handleUpload2()}/>
-                    <input ref={item2} onChange={handleUpload2Change} type="file" hidden />
+                    <input ref={item2} onChange={handleUpload2Change} type="file" accept='image/png, image/jpeg' hidden />
                   </>
                 )}
             </div>
@@ -232,7 +232,7 @@ return(
                   <>
                     <Plus className='group-hover:scale-150 transition-all'
                     onClick={()=> handleUpload3()}/>
-                    <input ref={item3} onChange={handleUpload3Change} type="file" hidden />
+                    <input ref={item3} onChange={handleUpload3Change} type="file" accept='image/png, image/jpeg' hidden />
                   </>
                 )}
             </div>
@@ -247,7 +247,7 @@ return(
                   <>
                     <Plus className='group-hover:scale-150 transition-all'
                     onClick={()=> handleUpload4()}/>
-                    <input ref={item4} onChange={handleUpload4Change} type="file" hidden />
+                    <input ref={item4} onChange={handleUpload4Change} type="file" accept='image/png, image/jpeg' hidden />
                   </>
                 )}
             </div>
@@ -262,7 +262,7 @@ return(
                   <>
                     <Plus className='group-hover:scale-150 transition-all'
                     onClick={()=> handleUpload5()}/>
-                    <input ref={item5} onChange={handleUpload5Change} type="file" hidden />
+                    <input ref={item5} onChange={handleUpload5Change} type="file" accept='image/png, image/jpeg' hidden />
                   </>
                 )}
             </div>
@@ -277,7 +277,7 @@ return(
                   <>
                     <Plus className='group-hover:scale-150 transition-all'
                     onClick={()=> handleUpload6()}/>
-                    <input ref={item6} onChange={handleUpload6Change} type="file" hidden />
+                    <input ref={item6} onChange={handleUpload6Change} type="file" accept='image/png, image/jpeg' hidden />
                   </>
                 )}
             </div> 
