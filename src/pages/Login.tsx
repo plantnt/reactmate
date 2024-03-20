@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../utils/Utils";
 
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
@@ -23,6 +23,8 @@ const [visible, setVisible] = useState(true)
         setVisible((prevVisible) => !prevVisible)
     }
 
+const [login, setLogin] =useState("")
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -37,12 +39,14 @@ const [visible, setVisible] = useState(true)
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("email,password")
+            .select("id,email,password")
         ;
         const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
         if (user){
               console.log('Usuario ha iniciado sesión correctamente:', user);
            navigate("/")  
+           user.id=setLogin
+           
             } else{
                 console.log("No se ha podido iniciar sesion correctamente");
             }
@@ -88,7 +92,7 @@ return(
                             )}
                         </label>
                     </div>
-                    <button className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button value={login} className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
                             type="submit" 
                             >
                         Iniciar sesión
