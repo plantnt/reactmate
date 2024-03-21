@@ -43,13 +43,13 @@ const [login, setLogin] =useState("")
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("id,email,password")
+            .select("id,email,password,session")
         ;
         const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
         if (user){
               console.log('Usuario ha iniciado sesión correctamente:', user);
            navigate("/")  
-           user.id=setLogin
+           user.session=setLogin
            
             } else{
                 console.log("No se ha podido iniciar sesion correctamente");

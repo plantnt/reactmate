@@ -33,18 +33,19 @@ export default function UserProfile() {
       
       const { data: users, error } = await supabase
         .from('users')
-        .select('id, name, last_name, email, password');
+        .select('id, name, last_name, email, password, session');
         
       if (error) {
         console.error('Error fetching users:', error);
         return;
       }
-  
+      
+      const userSessions = users.map( user => user.session)
       const userIds = users.map(user => user.id);
       console.log('User IDs:', userIds);
    
       
-      const userIdToFetch = userIds[6];
+      const userIdToFetch = userIds[userSessions];
       
       
       const { data: userData, error: userDataError } = await supabase
