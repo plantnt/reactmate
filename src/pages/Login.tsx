@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../utils/Utils";
-
+import { useUser, useSupabaseClient} from "@supabase/auth-helpers-react"
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 
 import googleIcon from '../assets/icons/google.svg'
@@ -11,6 +11,10 @@ import Separator from "../components/UI/separator";
 
 
 export default function SignUp(){
+
+const User= useUser()
+const supabaseC = useSupabaseClient()
+
 
 const handleLogin = () =>{
     supabase.auth.signInWithOAuth({

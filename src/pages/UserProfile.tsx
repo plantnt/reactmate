@@ -20,7 +20,7 @@ export default function UserProfile() {
     
   });
   const [products, setProducts] = useState([]);
-  const [login, setLogin] =useState ()
+  
   
   useEffect(() => {
     // Fetch user data from backend
@@ -44,7 +44,7 @@ export default function UserProfile() {
       console.log('User IDs:', userIds);
    
       
-      const userIdToFetch = userIds[8];
+      const userIdToFetch = userIds[6];
       
       
       const { data: userData, error: userDataError } = await supabase
