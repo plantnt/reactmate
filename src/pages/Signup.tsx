@@ -8,7 +8,12 @@ import Separator from "../components/UI/separator";
 
 
 export default function SignUp(){
-    
+
+const [visible, setVisible] = useState(true)
+const handleClick = () => {
+    setVisible((prevVisible) => !prevVisible)
+}
+
 const initialState = {
     firstName: "",
     lastName: "",
@@ -38,47 +43,53 @@ const initialState = {
             }, 5000);
         }
     }
-// const [formData,setFormData] = useState({
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     avatar: null,
-//     password: ""
-//   })
-//   console.log(formData)
-
-const handleChange = async (e:any) => {
+    
+    const handleChange = async (e:any) => {
         e.preventDefault();
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+// const [formData,setFormData] = useState({
+//     email:'',password:'', firstName: "", lastName: "",
+//   })
 
-//  async function handleSubmit(e:any){
-//     e.preventDefault
-//       try{
-//         const { data, error } = await supabase.auth.signUp(
-//             {
-//               email: formData.email,
-//               password: formData.password,
-//               options: {
-//                 data: {
-//                   name: formData.firstName,
-//                   last_name: formData.lastName,
-//                 }
-//               }
-//             }
-//         )
-//         if (error) throw error
-//         alert('Check your email for verification link')
+//   console.log(formData)
 
-//       } catch (error){
-//  alert(error)
+//   function handleChange(event){
+//     setFormData((prevFormData)=>{
+//       return{
+//         ...prevFormData,
+//         [event.target.name]:event.target.value
 //       }
+
+//     })
+
+//   }
+
+//   async function handleSubmit(e:any){
+//     e.preventDefault()
+//  setStatus(true)
+//     try {
+//       const { data, error } = await supabase.auth.signUp(
+//         {
+//           email: formData.email,
+//           password: formData.password,
+//           options: {
+//             data: {
+//                 name: `${formData.firstName}`,
+//                 last_name: `${formData.lastName}`,
+//             }
+//           }
+//         }
+//       )
+//       if (error) throw error
+//       alert('Check your email for verification link')
+//       setStatus(false)
       
-// }
-const [visible, setVisible] = useState(true)
-const handleClick = () => {
-    setVisible((prevVisible) => !prevVisible)
-}
+//     } catch (error) {
+//       alert(error)
+//     }
+//   }
+
 
 
 
