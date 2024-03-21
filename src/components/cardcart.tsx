@@ -1,3 +1,4 @@
+import { MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import Stars from "./Stars";
 
@@ -12,35 +13,42 @@ export default function CardCart() {
     };
 
     return (
-        <div className="border-2 bg-gray-50 rounded-r-3xl rounded-l-3xl w-[95%] p-4 m-4 flex items-center">
+        
+<div className="border-2 bg-gray-50 rounded-r-3xl rounded-l-3xl w-[98%] my-[15px]">
             {/* Componente de Producto en el Carrito */}
 
             
+            <NavLink to="/productPage"> 
+            <div className="flex p-4 m-4 items-center justify-items-center">
 
-            <div className="max-w-[300px]  rounded-xl border border-slate-200 cursor-pointer hover:transform ">
-                <NavLink to="/productPage">
+            <div className="max-w-[250px]  rounded-xl border border-slate-200">
                     <img src="src/assets/products/2.jpg" className="w-full rounded-t-xl bg-contain" alt="Product Image" />
-                </NavLink>
             </div>
 
             {/* Componente de Información del Carrito */}
-            <div className="w-[20%]">
-                <h2 className="font-black text-2xl w-full h-full">{title}</h2>
+            <div className="w-[30%] ml-[50px]">
+                <h2 className="font-black text-3xl w-full h-full">{title}</h2>
                 <h4 className="font-bold text-lg w-full h-full">${price}</h4>
                 <Stars/>
             </div>
 
             {/* Botón para Ver Producto */}
-            <NavLink to="/productPage">
-                <button className="bg-violet-500 hover:bg-violet-600   transition duration-300 border-2 border-violet-800 text-white font-bold py-2 pl-4 px-4 rounded-xl items-center">
-                  <span className="text-base font-rounded">Comprar</span>
-                </button>
-            </NavLink>
 
-            {/* Botón para Eliminar Producto */}
-            <button onClick={handleDelete} className="bg-red-500 hover:bg-red-600   transition duration-300 border-2 border-red-800 text-white font-bold py-2 pl-4 px-4 rounded-xl items-center">
-                Eliminar
+        <div className="ml-[80px] flex space-x-4">
+                <button className="bg-violet-500 hover:bg-violet-600 transition duration-300 border-2 border-violet-800 text-white font-bold px-4 rounded-3xl">
+                  <span className="font-rounded text-3xl">Comprar</span>
+                </button>
+            
+            <button onClick={handleDelete} className="group bg-red-500 hover:bg-red-600 hover:ease-in-out duration-300 border-2 border-red-800 text-white font-bold py-2 pl-4 px-4 rounded-3xl">
+                <MdDelete className="block group-hover:hidden" size={36}/>
+                <span className="font-rounded text-3xl hidden group-hover:block">Eliminar</span>
             </button>
         </div>
+            </div>
+            </NavLink>
+            
+</div>
+        
+        
     );
 }
