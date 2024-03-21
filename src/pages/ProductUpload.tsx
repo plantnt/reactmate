@@ -168,9 +168,8 @@ export default function Upload(){
  
 return(
   <div className='p-5'>
-    <form className=''>
+    <form className='flex space-x-6'>
       <div className='flex flex-col gap-2 w-[400px]'>
-        {imgCounter}
         <div className='group relative flex flex-col items-center justify-center w-full h-[300px] border-4 border-violet-400 rounded-xl hover:cursor-pointer overflow-hidden'
             onClick={() => handleUpload()}>
           {imgSrc ? (
@@ -281,7 +280,7 @@ return(
                     <input ref={item6} onChange={handleUpload6Change} type="file" accept='image/png, image/jpeg' hidden />
                   </>
                 )}
-            </div>
+            </div> 
             )}      
           </div>
         )}
