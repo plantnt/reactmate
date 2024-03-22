@@ -1,7 +1,8 @@
-import type { SelectProps } from 'antd';
+import { SelectProps } from 'antd';
 import { Select, Space } from 'antd';
 import { useState } from 'react';
 import { MdAttachMoney } from 'react-icons/md';
+import ColorPick from './ColorPick';
 
 
 const ProductForm = () => {
@@ -84,7 +85,7 @@ const ProductForm = () => {
                 <span className='flex items-center'>
                   COP
                   <MdAttachMoney size={25}/>
-                  <input type="number" min="0.01" step="0.01" max="1000000000" onChange={handleInput} value={value} className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" />
+                  <input type="text" onChange={handleInput} value={value} className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" />
                 </span>
             </label>
             <label className='grid'>
@@ -113,6 +114,10 @@ const ProductForm = () => {
                       {option.data.desc}
                   </Space>
                   )}/>
+            </label>
+            <label className='flex flex-col space-y-2'>
+              Color
+              <ColorPick/>
             </label>
         </div>
     )

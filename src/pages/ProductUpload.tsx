@@ -284,6 +284,7 @@ return(
             )}      
           </div>
         )}
+        <p className='text-xs '>{imgCounter}/6 Imagenes adicionales</p>
         </div>
         <ProductForm/>
       </form>
