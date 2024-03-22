@@ -22,5 +22,7 @@
   ## contraseña de la base de datos
   >tpPUdLRmqOzki9u
 
+ ## cosita del supabase
+ npm i @supabase/auth-helpers-react
   ## cosas que nesecito guardar
   https://fhumanes.com/blog/gestor-de-proyectos/gestion-de-un-chat/
