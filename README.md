@@ -21,3 +21,6 @@
   >npm install @supabase/supabase-js 
   ## contraseña de la base de datos
   >tpPUdLRmqOzki9u
+
+  ## cosas que nesecito guardar
+  https://fhumanes.com/blog/gestor-de-proyectos/gestion-de-un-chat/
