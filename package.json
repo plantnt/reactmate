@@ -12,6 +12,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.13.0",
     "@cloudinary/url-gen": "^1.19.0",
+    "@supabase/auth-helpers-react": "^0.4.2",
     "@supabase/supabase-js": "^2.39.8",
     "@tabler/icons-react": "^2.47.0",
     "antd": "^5.14.0",

@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaBoxOpen, FaUser } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
-import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import RatingProfile from '../components/ratingProfile';
 import AddProduct from '../components/addProduct';
@@ -15,41 +14,66 @@ export default function UserProfile() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
   const [userData, setUserData] = useState({
-    username: "",
+    name: "",
     email: "",
-    phone: "", // Número de teléfono de ejemplo
-    registrationDate: "2024-03-07" // Fecha de registro de ejemplo
+    last_name: "",
+    
   });
   const [products, setProducts] = useState([]);
-
+  
   
   useEffect(() => {
     // Fetch user data from backend
     fetchUserData();
   }, []);
-
-  // async function fetchUserData(){
-  //   const {data} = await supabase
-  //     .from('users')
-  //     .select('*')
-  //     setUserData(data)
-
-
-
-  // }
-  const fetchUserData = async () => {
+  
+  
+  async function fetchUserData() {
     try {
-      const response = await fetch('URL_DEL_BACKEND/perfilUsuario');
-      if (response.ok) {
-        const userData = await response.json();
-        setUserData(userData);
-      } else {
-        console.error('Error al obtener los datos del usuario');
+      
+      const { data: users, error } = await supabase
+        .from('users')
+        .select('id, name, last_name, email, password, session');
+        
+      if (error) {
+        console.error('Error fetching users:', error);
+        return;
       }
+      
+      const userSessions = users.map( user => user.session)
+      const userIds = users.map(user => user.id);
+      console.log('User IDs:', userIds);
+   
+      
+      const userIdToFetch = userIds[userSessions];
+      
+      
+      const { data: userData, error: userDataError } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', userIdToFetch)
+        .single();
+  
+      if (userDataError) {
+        console.error('Error fetching user data:', userDataError);
+        return;
+      }
+  
+      console.log('User Data:', userData);
+      
+      setUserData(userData);
+  
+     
+  
     } catch (error) {
-      console.error('Error al conectar con el backend:', error);
+      console.error('Error in fetchUserData:', error);
     }
-  };
+  }
+  
+ console.log(userData)
+
+ 
+
 const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -97,8 +121,8 @@ const handleClick = () => {
             </div>
             <div className=" pt-8 text-center relative z-10">
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                <h1 className="text-3xl font-rounded">{userData.username}</h1>
-                <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
+                <h1 id='nameU' className="text-3xl font-rounded">{userData.name}  {userData.last_name}</h1>
+                <div className="flex justify-center items-center mr-20"><Rating /></div>
               </div>
               <br />
               <p className="mt-2 mb-4 text-gray-500 font-rounded">
@@ -106,14 +130,14 @@ const handleClick = () => {
               </p>
               <div className="mt-4 text-center font-rounded">
                 <p className="text-gray-700">
-                  <span className="font-semibold">Correo electrónico: </span> {userData.email}, <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
+                  <span id='emailU' className="font-semibold">Correo electrónico: {userData.email}</span> , <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
                 </p>
-                <p className="text-gray-700">
-                  <span className="font-semibold">Teléfono: </span> {userData.phone}
-                </p>
-                <p className="text-gray-600">
-                  <span className="font-semibold">Fecha de Registro: </span> {userData.registrationDate}
-                </p>
+                {/* <p className="text-gray-700">
+                  <span id='last_Name' className="font-semibold">apellido:  {userData.last_name}</span> 
+                </p>  */}
+                {/* <p className="text-gray-600"> 
+                 <span className="font-semibold">Fecha de Registro: </span> 
+                </p>  */}
                 <br />
               </div>
               {/* Resto del código... */}
@@ -198,7 +222,7 @@ const handleClick = () => {
               </div>
               <AddProduct/>
             </div>
-             <Footer />
+             
           </div>
     </>
     

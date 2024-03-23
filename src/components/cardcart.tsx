@@ -1,5 +1,6 @@
-import { FaEllipsisVertical } from "react-icons/fa6";
+import { MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import Stars from "./Stars";
 
 // Componente de Carrito
 export default function CardCart() {
@@ -7,39 +8,47 @@ export default function CardCart() {
     const price = "10300";
 
     const handleDelete = () => {
+       
         // Lógica para eliminar el producto del carrito
     };
 
     return (
-        <div className="border-2 bg-gray-50 rounded-r-3xl rounded-l-3xl w-7/12 p-4 m-4 flex items-center justify-between">
+        
+<div className="border-2 bg-gray-50 rounded-r-3xl rounded-l-3xl w-[98%] my-[15px]">
             {/* Componente de Producto en el Carrito */}
 
-            <FaEllipsisVertical className="-mr-10 text-gray-400"/>
-            <FaEllipsisVertical className="text-gray-400"/>
+            
+            <NavLink to="/productPage"> 
+            <div className="flex p-4 m-4 items-center justify-items-center">
 
-            <div className="max-w-[200px] rounded-xl border border-slate-200 cursor-pointer hover:transform">
-                <NavLink to="/productPage">
-                    <img src="src/assets/products/2.jpg" className="w-full rounded-t-xl" alt="Product Image" />
-                </NavLink>
+            <div className="max-w-[250px]  rounded-xl border border-slate-200">
+                    <img src="src/assets/products/2.jpg" className="w-full rounded-t-xl bg-contain" alt="Product Image" />
             </div>
 
             {/* Componente de Información del Carrito */}
-            <div className="ml-4">
-                <h2 className="font-black">{title}</h2>
-                <h4 className="font-bold">${price}</h4>
+            <div className="w-[30%] ml-[50px]">
+                <h2 className="font-black text-3xl w-full h-full">{title}</h2>
+                <h4 className="font-bold text-lg w-full h-full">${price}</h4>
+                <Stars/>
             </div>
 
             {/* Botón para Ver Producto */}
-            <NavLink to="/productPage">
-                <button className="bg-orange-400 hover:bg-white hover:text-orange-400 hover:border-orange-400 transition duration-300 border-2 border-orange-400 text-white font-bold py-2 pl-4 px-4 rounded items-center">
-                  <span className="text-base font-rounded">Ver producto</span>
-                </button>
-            </NavLink>
 
-            {/* Botón para Eliminar Producto */}
-            <button onClick={handleDelete} className="border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded hover:bg-red-600">
-                Eliminar
+        <div className="ml-[80px] flex space-x-4">
+                <button className="bg-violet-500 hover:bg-violet-600 transition duration-300 border-2 border-violet-800 text-white font-bold px-4 rounded-3xl">
+                  <span className="font-rounded text-3xl">Comprar</span>
+                </button>
+            
+            <button onClick={handleDelete} className="group bg-red-500 hover:bg-red-600 hover:ease-in-out duration-300 border-2 border-red-800 text-white font-bold py-2 pl-4 px-4 rounded-3xl">
+                <MdDelete className="block group-hover:hidden" size={36}/>
+                <span className="font-rounded text-3xl hidden group-hover:block">Eliminar</span>
             </button>
         </div>
+            </div>
+            </NavLink>
+            
+</div>
+        
+        
     );
 }

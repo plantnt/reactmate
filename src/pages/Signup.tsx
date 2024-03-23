@@ -8,7 +8,12 @@ import Separator from "../components/UI/separator";
 
 
 export default function SignUp(){
-    
+
+const [visible, setVisible] = useState(true)
+const handleClick = () => {
+    setVisible((prevVisible) => !prevVisible)
+}
+
 const initialState = {
     firstName: "",
     lastName: "",
@@ -38,47 +43,53 @@ const initialState = {
             }, 5000);
         }
     }
-// const [formData,setFormData] = useState({
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     avatar: null,
-//     password: ""
-//   })
-//   console.log(formData)
-
-const handleChange = async (e:any) => {
+    
+    const handleChange = async (e:any) => {
         e.preventDefault();
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+// const [formData,setFormData] = useState({
+//     email:'',password:'', firstName: "", lastName: "",
+//   })
 
-//  async function handleSubmit(e:any){
-//     e.preventDefault
-//       try{
-//         const { data, error } = await supabase.auth.signUp(
-//             {
-//               email: formData.email,
-//               password: formData.password,
-//               options: {
-//                 data: {
-//                   name: formData.firstName,
-//                   last_name: formData.lastName,
-//                 }
-//               }
-//             }
-//         )
-//         if (error) throw error
-//         alert('Check your email for verification link')
+//   console.log(formData)
 
-//       } catch (error){
-//  alert(error)
+//   function handleChange(event){
+//     setFormData((prevFormData)=>{
+//       return{
+//         ...prevFormData,
+//         [event.target.name]:event.target.value
 //       }
+
+//     })
+
+//   }
+
+//   async function handleSubmit(e:any){
+//     e.preventDefault()
+//  setStatus(true)
+//     try {
+//       const { data, error } = await supabase.auth.signUp(
+//         {
+//           email: formData.email,
+//           password: formData.password,
+//           options: {
+//             data: {
+//                 name: `${formData.firstName}`,
+//                 last_name: `${formData.lastName}`,
+//             }
+//           }
+//         }
+//       )
+//       if (error) throw error
+//       alert('Check your email for verification link')
+//       setStatus(false)
       
-// }
-const [visible, setVisible] = useState(true)
-const handleClick = () => {
-    setVisible((prevVisible) => !prevVisible)
-}
+//     } catch (error) {
+//       alert(error)
+//     }
+//   }
+
 
 
 
@@ -90,7 +101,9 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <form className="grid w-full space-y-3"
-                      onSubmit={handleSubmit}>
+                      onSubmit={(e:any) => {
+                        e.preventDefault()
+                        createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer"
                             >
