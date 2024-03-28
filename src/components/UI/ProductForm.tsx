@@ -73,9 +73,8 @@ const ProductForm = () => {
         setValue(result)
       }
           
-    document.querySelector("#select")?.classList.remove(".css-b62m3t-container")
     return(
-        <div className="h-[400px] w-[400px] space-y-5 flex flex-col">
+        <div className="flex flex-col w-[400px] space-y-5">
             <label className='grid'>
                 Titulo
                 <input type="text" className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" maxLength={50}/>
