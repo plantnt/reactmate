@@ -2,8 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaBoxOpen, FaUser } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
-import Rating from "../components/rating";
-import RatingProfile from '../components/ratingProfile';
+import Rating from "../components/rating"
 import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
 import { NavLink } from 'react-router-dom';
@@ -23,7 +22,7 @@ export default function UserProfile() {
   
   
   useEffect(() => {
-    // Fetch user data from backend
+    
     fetchUserData();
   }, []);
   

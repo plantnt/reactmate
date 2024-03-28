@@ -16,7 +16,7 @@ const User= useUser()
 const supabaseC = useSupabaseClient()
 
 
-const handleLogin = () =>{
+const handleLoginG = () =>{
     supabase.auth.signInWithOAuth({
         provider: 'google',
       })
@@ -48,8 +48,16 @@ const [login, setLogin] =useState("")
         const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
         if (user){
               console.log('Usuario ha iniciado sesión correctamente:', user);
-           navigate("/")  
-           user.session=setLogin
+            
+           const { session, error: sessionError } = supabase.auth.session();
+
+           if (session) {
+               console.log('Sesión de usuario:', session);
+               setLogin(session.access_token); // Almacenar el token de sesión
+               navigate("/");
+           } else {
+               console.error('Error al obtener la sesión:', sessionError.message);
+           }
            
             } else{
                 console.log("No se ha podido iniciar sesion correctamente");
@@ -73,7 +81,7 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLogin()}>
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLoginG()}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
                     </button>
