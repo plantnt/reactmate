@@ -66,14 +66,14 @@ const [login, setLogin] =useState("")
     };
 
 return(
-        <div className="flex items-center justify-center w-full h-[100vh] lg:bg-cover sm:bg-left  bg-[url('/src/assets/SignUpBackground.png')]">
+        <div className="flex items-center justify-center w-full h-[100vh] bg-cover bg-[url('/src/assets/SignUpBackground.png')]">
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
-                <img src="src/assets/textLogo.png" className="md:h-[40px] md:w-[220px] mb-2 sm:justify-self-center" />
+                <img src="src/assets/textLogo.png" className="md:h-[20px] md:w-[120px] mb-[50px] sm:justify-self-center" />
                 <NavLink to="/">
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLogin()}>
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 border-4 border-white hover:border-violet-400 transition-all" onClick={() => handleLogin()}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
                     </button>
@@ -87,16 +87,17 @@ return(
                         </label>
                         <label className="relative flex flex-col">
                             <p className="select-none">Contraseña</p>
-                            <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
-                                />
-                            {visible === true ? (
-                                <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
-                            ) : (
-                                <IoMdEyeOff size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
-                            )}
+                            <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} 
+                                    className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
+                                    />
+                                {visible === true ? (
+                                    <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
+                                ) : (
+                                    <IoMdEyeOff size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
+                                )}
                         </label>
                     </div>
-                    <button value={login} className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button value={login} className="flex justify-self-center justify-center md:w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
                             type="submit" 
                             >
                         Iniciar sesión
