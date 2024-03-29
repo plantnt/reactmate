@@ -7,6 +7,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 import { supabase } from "../utils/Utils";
 import Separator from "../components/UI/separator";
 import { MdEdit } from "react-icons/md";
+import ProfilePicHandler from "../components/profilePicHandler";
 
 
 export default function SignUp(){
@@ -125,30 +126,11 @@ return(
                 </NavLink>
                 <form className="grid w-full space-y-3"
                       onSubmit={(e:any) => {
-                        e.preventDefault()
-                        createUser()}}>
+                          e.preventDefault()
+                          createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
-                        <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer"
-                        onClick={() => handlePicUpload()}>
-                            {picSrc ? (
-                                <div className="relative object-cover w-full h-full overflow-hidden">
-                                    <img src={picSrc} className="group"/>
-                                    <div className="group-hover:flex group-hover:flex-col h-[100px] w-[100px] rounded-full group-hover:items-center group-hover:justify-center hidden absolute z-50 top-0 bg-slate-500 bg-opacity-50"
-                                    onClick={() => handlePicUpload()}>
-                                        <MdEdit  size={40} className="text-white"/>
-                                        <p className="text-xs text-center font-bold text-white">Cambiar <br/> imagen</p>
-                                    </div>
-                                    <input ref={profilePic} onChange={handlePicUploadChange} type="file" accept="image/png, image/jpeg" hidden/>
-                                </div>
-                            ):(
-                                <>
-                                    <IoMdImage  size={37} className="text-slate-600 group-hover:scale-105 group-hover:text-violet-600 transition-all"/>
-                                    <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 group-hover:text-violet-600 transition-all">
-                                        Añadir foto
-                                    </p>
-                                    <input ref={profilePic} onChange={handlePicUploadChange} type="file" accept="image/png, image/jpeg" hidden/>
-                                </>
-                            )}
+                        <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer">
+                            <ProfilePicHandler/>
                         </div>  
                         <p className="select-none">Foto de perfil</p>
                         <Separator />

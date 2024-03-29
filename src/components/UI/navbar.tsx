@@ -1,12 +1,17 @@
-import { FaCommentDots, } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+
+import { FaCommentDots, } from 'react-icons/fa';
+import { FaMagnifyingGlass } from "react-icons/fa6";
+
 import cartIcon from '../../assets/cartIcon.png';
 import profileIcon from '../../assets/profileIcon.png';
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import textLogo from '../../assets/textLogo.png';
+
 import "./ui.css";
 
 const Navbar = () => {
+    const [logged, setLogged] = useState(false)
     return (
         <nav className="sticky top-0 w-full bg-white border-slate-300 border-b-[1px] z-50">
             <div className="container w-full">
@@ -32,9 +37,11 @@ const Navbar = () => {
                                     <FaCommentDots className="text-purple-400 text-4xl" /> {/* Cambiar el color y el tamaño */}
                                     </NavLink>
                             </li>
+                            {logged === true && 
                             <li>
                                 <NavLink to='/profilePage'><img src={profileIcon} width="35" className=""/></NavLink>
                             </li>
+                            }
                             <li>
                                 <div className="flex flex-row ml-5">
                                     <NavLink to='/logIn'>

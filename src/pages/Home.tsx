@@ -39,7 +39,6 @@ const Home = () => {
                     </div>
                     <AddProduct/>
                 </div>
-               <br></br>
                 <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
             </div>
         </>
