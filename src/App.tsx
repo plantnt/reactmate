@@ -20,6 +20,8 @@ import NavbarVisible from './components/UI/navbarvisible'
 import Footer from './components/UI/footer'
 import FooterVisible from './components/UI/footervisible'
 
+import 'react-image-crop/dist/ReactCrop.css'
+
 const App = () => {
   return (
     <Router>  

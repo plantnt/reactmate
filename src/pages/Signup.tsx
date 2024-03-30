@@ -7,7 +7,8 @@ import { FaCircleCheck } from "react-icons/fa6";
 import { supabase } from "../utils/Utils";
 import Separator from "../components/UI/separator";
 import { MdEdit } from "react-icons/md";
-import ProfilePicHandler from "../components/profilePicHandler";
+import ProfilePicHandler from "../components/Modal";
+import Modal from "../components/Modal";
 
 
 export default function SignUp(){
@@ -16,6 +17,15 @@ export default function SignUp(){
 
     const [picSrc, setPicSrc] = useState<string|null>(null)
     const [visible, setVisible] = useState(true)
+    const [openModal, setOpenModal] = useState(false)
+
+    const handleShowModal = () =>{
+        setOpenModal(true)
+    }
+
+    const handleCloseModal = () =>{
+        setOpenModal(false)
+    }
 
     const handlePicUpload = () => {
         profilePic.current && profilePic.current.click()
@@ -130,7 +140,14 @@ return(
                           createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer">
-                            <ProfilePicHandler/>
+                        {!openModal ? 
+                            <div className="flex flex-col items-center group" onClick={handleShowModal}>
+                            <IoMdImage size={30} className="text-violet-500 group-hover:scale-105 transition-transform"/>
+                            <p className="select-none text-center text-wrap text-[0.9em] text-violet-500">
+                                Elegir imagen
+                            </p>
+                            </div>
+                        : <Modal onClose={handleCloseModal}/>}
                         </div>  
                         <p className="select-none">Foto de perfil</p>
                         <Separator />
@@ -148,7 +165,7 @@ return(
                             <p className="select-none">Apellido</p> 
                             <input name="lastName" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
                         </label>
-                        <label className="relative flex flex-col">
+                        <label className="relative flex flex-col overflow-hidden">
                             <p className="select-none">Contraseña</p>
                             <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}/>
                             {visible === true ? (
