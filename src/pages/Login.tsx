@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { supabase } from "../utils/Utils";
 import { useUser, useSupabaseClient} from "@supabase/auth-helpers-react"
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
@@ -12,8 +12,8 @@ import Separator from "../components/UI/separator";
 
 export default function SignUp(){
 
-const User= useUser()
-const supabaseC = useSupabaseClient()
+// const User= useUser()
+// const supabaseC = useSupabaseClient()
 
 
 const handleLoginG = () =>{
@@ -27,7 +27,6 @@ const [visible, setVisible] = useState(true)
         setVisible((prevVisible) => !prevVisible)
     }
 
-const [login, setLogin] =useState("")
 
     const [formData, setFormData] = useState({
         email: '',
@@ -37,7 +36,7 @@ const [login, setLogin] =useState("")
     const handleChange = (e:any) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
- let navigate = useNavigate()
+ 
     const handlelogin = async (e:any) => {
         e.preventDefault();
         try {
@@ -48,17 +47,9 @@ const [login, setLogin] =useState("")
         const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
         if (user){
               console.log('Usuario ha iniciado sesión correctamente:', user);
-            
-           const { session, error: sessionError } = supabase.auth.session();
+              window.location.href = `/profilePage?id=${user.id}`;
+              localStorage.setItem('id', user.id);             
 
-           if (session) {
-               console.log('Sesión de usuario:', session);
-               setLogin(session.access_token); // Almacenar el token de sesión
-               navigate("/");
-           } else {
-               console.error('Error al obtener la sesión:', sessionError.message);
-           }
-           
             } else{
                 console.log("No se ha podido iniciar sesion correctamente");
             }
@@ -104,7 +95,7 @@ return(
                             )}
                         </label>
                     </div>
-                    <button value={login} className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button  className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
                             type="submit" 
                             >
                         Iniciar sesión

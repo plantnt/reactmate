@@ -21,6 +21,36 @@ export default function UserProfile() {
   const [products, setProducts] = useState([]);
   
   
+window.addEventListener('DOMContentLoaded', async () => {
+
+  const urlParams = new URLSearchParams(window.location.search)
+  const id = urlParams.get('id')
+  
+
+  if (!id) {
+    console.error('ID no encontrada en la URL.')
+    return;
+  }
+
+  const { data, error } = await supabase
+    .from('mi_tabla')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.error('Error al obtener datos:', error.message);
+    return;
+  }
+
+  if (data) {
+    fetchUserData()
+  } else {
+    console.error('No se encontraron datos para la ID especificada.');
+  }
+});
+
+
   useEffect(() => {
     
     fetchUserData();
@@ -29,7 +59,7 @@ export default function UserProfile() {
   
   async function fetchUserData() {
     try {
-      
+      const idS = localStorage.getItem('id')
       const { data: users, error } = await supabase
         .from('users')
         .select('id, name, last_name, email, password, session');
@@ -38,19 +68,21 @@ export default function UserProfile() {
         console.error('Error fetching users:', error);
         return;
       }
-      
-      const userSessions = users.map( user => user.session)
+
+
+//   }
+      // const userSessions = users.map( user => user.session)
       const userIds = users.map(user => user.id);
-      console.log('User IDs:', userIds);
+      // console.log('User IDs:', userIds);
    
       
-      const userIdToFetch = userIds[userSessions];
+      // const userIdToFetch = userIds[idS];
       
       
       const { data: userData, error: userDataError } = await supabase
         .from('users')
         .select('*')
-        .eq('id', userIdToFetch)
+        .eq('id', idS)
         .single();
   
       if (userDataError) {
@@ -124,9 +156,9 @@ const handleClick = () => {
                 <div className="flex justify-center items-center mr-20"><Rating /></div>
               </div>
               <br />
-              <p className="mt-2 mb-4 text-gray-500 font-rounded">
+              {/* <p className="mt-2 mb-4 text-gray-500 font-rounded">
                 ¡Hola a todos! Soy un nuevo usuario en furnimate. Mi propósito es el de comprar muebles en el sitio web y también. he venido a vender un solo armario el cual alguien mas le pudo sacar mucho mas provecho :D, ESTE ES EL PERFIL DE UN USUARIO O VENDEDOR "DE UNA SOLA VEZ" y es una de las 3 categorías en el concepto de furnimate.
-              </p>
+              </p> */}
               <div className="mt-4 text-center font-rounded">
                 <p className="text-gray-700">
                   <span id='emailU' className="font-semibold">Correo electrónico: {userData.email}</span> , <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
