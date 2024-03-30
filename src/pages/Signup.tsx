@@ -1,100 +1,123 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import { FaCircleCheck } from "react-icons/fa6";
+
 import { supabase } from "../utils/Utils";
 import Separator from "../components/UI/separator";
+import { MdEdit } from "react-icons/md";
 
 
 export default function SignUp(){
 
-const [visible, setVisible] = useState(true)
-const handleClick = () => {
-    setVisible((prevVisible) => !prevVisible)
-}
+    const profilePic = useRef<HTMLInputElement>(null)
 
-const initialState = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    avatar: null,
-    password: ""
-}
+    const [picSrc, setPicSrc] = useState<string|null>(null)
+    const [visible, setVisible] = useState(true)
 
-    const [formData, setFormData] = useState(initialState)
-    const [status, setStatus] = useState(false)
-    
-    const createUser = async () => {
-        const res = await supabase.from("users").insert([
-            {
-                profilepic: `${formData.avatar}`,
-                name: `${formData.firstName}`,
-                last_name: `${formData.lastName}`,
-                email: `${formData.email}`,
-                password: `${formData.password}`,
+    const handlePicUpload = () => {
+        profilePic.current && profilePic.current.click()
+    }
+
+    const handlePicUploadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
+        if(file){
+            const reader = new FileReader()
+            reader.onload = () => {
+                if(typeof reader.result === 'string'){
+                    setPicSrc(reader.result)
+                    console.log("Imagen de perfil")
+                }
             }
-        ])
-        if (res.error === null && res.status === 201) {
-            setStatus(true);
-            setFormData(initialState);
-            setTimeout(() => {
-              setStatus(false);
-            }, 5000);
+            reader.readAsDataURL(file)
         }
     }
     
-    const handleChange = async (e:any) => {
-        e.preventDefault();
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-      };
-// const [formData,setFormData] = useState({
-//     email:'',password:'', firstName: "", lastName: "",
-//   })
+    const handleClick = () => {
+        setVisible((prevVisible) => !prevVisible)
+    }
+    const initialState = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        avatar: null,
+        password: ""
+    }
 
-//   console.log(formData)
+        const [formData, setFormData] = useState(initialState)
+        const [status, setStatus] = useState(false)
+        
+        const createUser = async () => {
+            const res = await supabase.from("users").insert([
+                {
+                    profilepic: `${formData.avatar}`,
+                    name: `${formData.firstName}`,
+                    last_name: `${formData.lastName}`,
+                    email: `${formData.email}`,
+                    password: `${formData.password}`,
+                }
+            ])
+            if (res.error === null && res.status === 201) {
+                setStatus(true);
+                setFormData(initialState);
+                setTimeout(() => {
+                setStatus(false);
+                }, 5000);
+            }
+        }
+        
+        const handleChange = async (e:any) => {
+            e.preventDefault();
+            setFormData({ ...formData, [e.target.name]: e.target.value });
+        };
+    // const [formData,setFormData] = useState({
+    //     email:'',password:'', firstName: "", lastName: "",
+    //   })
 
-//   function handleChange(event){
-//     setFormData((prevFormData)=>{
-//       return{
-//         ...prevFormData,
-//         [event.target.name]:event.target.value
-//       }
+    //   console.log(formData)
 
-//     })
+    //   function handleChange(event){
+    //     setFormData((prevFormData)=>{
+    //       return{
+    //         ...prevFormData,
+    //         [event.target.name]:event.target.value
+    //       }
 
-//   }
+    //     })
 
-//   async function handleSubmit(e:any){
-//     e.preventDefault()
-//  setStatus(true)
-//     try {
-//       const { data, error } = await supabase.auth.signUp(
-//         {
-//           email: formData.email,
-//           password: formData.password,
-//           options: {
-//             data: {
-//                 name: `${formData.firstName}`,
-//                 last_name: `${formData.lastName}`,
-//             }
-//           }
-//         }
-//       )
-//       if (error) throw error
-//       alert('Check your email for verification link')
-//       setStatus(false)
-      
-//     } catch (error) {
-//       alert(error)
-//     }
-//   }
+    //   }
+
+    //   async function handleSubmit(e:any){
+    //     e.preventDefault()
+    //  setStatus(true)
+    //     try {
+    //       const { data, error } = await supabase.auth.signUp(
+    //         {
+    //           email: formData.email,
+    //           password: formData.password,
+    //           options: {
+    //             data: {
+    //                 name: `${formData.firstName}`,
+    //                 last_name: `${formData.lastName}`,
+    //             }
+    //           }
+    //         }
+    //       )
+    //       if (error) throw error
+    //       alert('Check your email for verification link')
+    //       setStatus(false)
+        
+    //     } catch (error) {
+    //       alert(error)
+    //     }
+    //   }
 
 
 
 
 return(
-        <div className="flex items-center justify-center w-full h-[100vh] lg:bg-cover sm:bg-left  bg-[url('/src/assets/SignUpBackground.png')]">
+        <div className="flex items-center justify-center w-full h-[100vh] bg-cover  bg-[url('/src/assets/SignUpBackground.png')]">
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
                 <img src="src/assets/textLogo.png" className="md:h-[40px] md:w-[220px] mb-2 sm:justify-self-center" />
                 <NavLink to="/">
@@ -106,9 +129,26 @@ return(
                         createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer"
-                            >
-                            <IoMdImage  size={37} className="text-slate-600 group-hover:scale-105 group-hover:text-violet-600 transition-all"/>
-                            <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 group-hover:text-violet-600 transition-all">Añadir foto</p>
+                        onClick={() => handlePicUpload()}>
+                            {picSrc ? (
+                                <div className="relative object-cover w-full h-full overflow-hidden">
+                                    <img src={picSrc} className="group"/>
+                                    <div className="group-hover:flex group-hover:flex-col h-[100px] w-[100px] rounded-full group-hover:items-center group-hover:justify-center hidden absolute z-50 top-0 bg-slate-500 bg-opacity-50"
+                                    onClick={() => handlePicUpload()}>
+                                        <MdEdit  size={40} className="text-white"/>
+                                        <p className="text-xs text-center font-bold text-white">Cambiar <br/> imagen</p>
+                                    </div>
+                                    <input ref={profilePic} onChange={handlePicUploadChange} type="file" accept="image/png, image/jpeg" hidden/>
+                                </div>
+                            ):(
+                                <>
+                                    <IoMdImage  size={37} className="text-slate-600 group-hover:scale-105 group-hover:text-violet-600 transition-all"/>
+                                    <p className="mt-2 text-xs text-slate-600 text-wrap group-hover:scale-105 group-hover:text-violet-600 transition-all">
+                                        Añadir foto
+                                    </p>
+                                    <input ref={profilePic} onChange={handlePicUploadChange} type="file" accept="image/png, image/jpeg" hidden/>
+                                </>
+                            )}
                         </div>  
                         <p className="select-none">Foto de perfil</p>
                         <Separator />
