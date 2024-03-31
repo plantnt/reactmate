@@ -1,12 +1,8 @@
 import { IoIosClose } from "react-icons/io";
 import ImageCrop from "./ImageCropper";
 
-interface ModalProps {
-  closeModal: () => void,
-  updateAvatar: () => void
-}
 
-const Modal: React.FC<ModalProps> = ({ updateAvatar, closeModal}) => { //ignorar error
+const Modal = ({ updateAvatar, closeModal}) => { //ignorar error
   return(
     <div className="relative z-10 cursor-auto" aria-labelledby="crop-image-dialog" role="dialog" aria-modal="true">
       <div className="fixed inset-0 transition-all">

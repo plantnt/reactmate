@@ -3,15 +3,11 @@ import { useRef, useState } from "react";
 
 import setCanvasPreview from "../components/setCanvasPreview";
 
-interface ImageCropProps{
-    closeModal: () => void
-    updateAvatar: () => void
-}
 
 const aspect_ratio = 1
 const min_widht = 150
 
-const ImageCrop: React.FC<ImageCropProps> = ({closeModal, updateAvatar}) => {
+const ImageCrop = ({closeModal, updateAvatar}) => {
     const imgRef = useRef(null) 
     const previewCanvasRef = useRef(null)
     const [avatarSrc, setAvatarSrc] = useState('')
@@ -102,10 +98,10 @@ const ImageCrop: React.FC<ImageCropProps> = ({closeModal, updateAvatar}) => {
                         imgRef.current.width,
                         imgRef.current.height
                     )
-                )
-                const dataUrl = previewCanvasRef.current.toDataUrl()
+                );
+                const dataUrl = previewCanvasRef.current.toDataURL()
                 updateAvatar(dataUrl)
-                closeModal
+                closeModal()
             }}>
             Aceptar
           </button>
