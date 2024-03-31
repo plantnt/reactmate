@@ -7,7 +7,7 @@ import setCanvasPreview from "../components/setCanvasPreview";
 const aspect_ratio = 1
 const min_widht = 150
 
-const ImageCrop = ({closeModal, updateAvatar}) => {
+const ImageCrop = ({ closeModal, updateAvatar}) => {
     const imgRef = useRef(null) 
     const previewCanvasRef = useRef(null)
     const [avatarSrc, setAvatarSrc] = useState('')
@@ -60,7 +60,7 @@ const ImageCrop = ({closeModal, updateAvatar}) => {
     return(
       <div className='flex flex-col items-center'>
         <label className="m-3 w-fit">
-          <input type="file" accept="image/jpg, image/png, image/jpeg" 
+          <input name='avatar' type="file" accept="image/jpg, image/png, image/jpeg" 
             onChange={handleAvatarSrc}
             className="block text-wrap max-w-[300px] text-sm 
             text-slate-500 file:mr-4 file:py-1 file:px-2 

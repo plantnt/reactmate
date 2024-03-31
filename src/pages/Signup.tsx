@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import { FaCircleCheck } from "react-icons/fa6";
+import { MdEdit } from "react-icons/md";
 
 import { supabase } from "../utils/Utils";
+
 import Separator from "../components/UI/separator";
-import { MdEdit } from "react-icons/md";
 import ProfilePicHandler from "../components/Modal";
 import Modal from "../components/Modal";
 
@@ -14,6 +15,7 @@ import Modal from "../components/Modal";
 export default function SignUp(){
 
     const avatarUrl = useRef("")
+    const navigate = useNavigate()
 
     const [visible, setVisible] = useState(true)
     const [openModal, setOpenModal] = useState(false)
@@ -24,25 +26,33 @@ export default function SignUp(){
 
     const updateAvatar = (imgSrc) => {
         avatarUrl.current = imgSrc;
+        setFormData({ ...formData, avatar: imgSrc})
     };
-
     
     const handleClick = () => {
         setVisible((prevVisible) => !prevVisible)
     }
-
+        
     const initialState = {
         firstName: "",
         lastName: "",
         email: "",
-        avatar: null,
+        avatar: "",
         password: ""
     }
-
-        const [formData, setFormData] = useState(initialState)
-        const [status, setStatus] = useState(false)
-        
-        const createUser = async () => {
+    
+    const [status, setStatus] = useState(false)
+    const [formData, setFormData] = useState(initialState)
+    
+    const createUser = async () => {
+        if(!formData.avatar){
+            setError(true)
+            setTimeout(() => {
+                setError(false)
+            },5000)
+        }
+        else{
+            
             const res = await supabase.from("users").insert([
                 {
                     profilepic: `${formData.avatar}`,
@@ -56,18 +66,25 @@ export default function SignUp(){
                 setStatus(true);
                 setFormData(initialState);
                 setTimeout(() => {
-                setStatus(false);
+                    setStatus(false);
                 }, 5000);
             }
+            setTimeout(() => {
+                navigate('/')
+            },2000)
         }
-        
-        const handleChange = async (e:any) => {
-            e.preventDefault();
-            setFormData({ ...formData, [e.target.name]: e.target.value });
-        };
+    }
+    const [error, setError] = useState(false)
 
-        console.log(avatarUrl.current.length)
-return(
+
+
+    const handleChange = async (e:any) => {
+        e.preventDefault();
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    console.log(avatarUrl.current.length)
+    return(
         <div className="flex items-center justify-center w-full h-[100vh] bg-cover  bg-[url('/src/assets/SignUpBackground.png')]">
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
                 <img src="src/assets/textLogo.png" className="md:h-[40px] md:w-[220px] mb-2 sm:justify-self-center" />
@@ -75,9 +92,9 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <form className="grid w-full space-y-3"
-                      onSubmit={(e:any) => {
-                          e.preventDefault()
-                          createUser()}}>
+                        onSubmit={(e:any) => {
+                            e.preventDefault()
+                            createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer">
                             {!openModal ? 
@@ -100,6 +117,7 @@ return(
                             : <Modal updateAvatar={updateAvatar} closeModal={() => setOpenModal(false)}/>}
                         </div>  
                         <p className="select-none">Foto de perfil</p>
+                        {error && <p className="text-red-500">Primero debe subir una foto de perfil</p>}
                         <Separator />
                     </div>
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6">
@@ -126,7 +144,7 @@ return(
                         </label>
                     </div>
                     <button className="flex justify-self-center justify-center w-[40%] min-w-[100px] mt-[20px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
-                            type="submit" 
+                            type="submit"  
                             >
                         Registrarse
                     </button>
