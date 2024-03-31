@@ -13,9 +13,8 @@ import Modal from "../components/Modal";
 
 export default function SignUp(){
 
-    const profilePic = useRef<HTMLInputElement>(null)
+    const avatarUrl = useRef("")
 
-    const [picSrc, setPicSrc] = useState<string|null>(null)
     const [visible, setVisible] = useState(true)
     const [openModal, setOpenModal] = useState(false)
 
@@ -23,31 +22,15 @@ export default function SignUp(){
         setOpenModal(true)
     }
 
-    const handleCloseModal = () =>{
-        setOpenModal(false)
-    }
+    const updateAvatar = (imgSrc) => {
+        avatarUrl.current = imgSrc;
+    };
 
-    const handlePicUpload = () => {
-        profilePic.current && profilePic.current.click()
-    }
-
-    const handlePicUploadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0]
-        if(file){
-            const reader = new FileReader()
-            reader.onload = () => {
-                if(typeof reader.result === 'string'){
-                    setPicSrc(reader.result)
-                    console.log("Imagen de perfil")
-                }
-            }
-            reader.readAsDataURL(file)
-        }
-    }
     
     const handleClick = () => {
         setVisible((prevVisible) => !prevVisible)
     }
+
     const initialState = {
         firstName: "",
         lastName: "",
@@ -82,51 +65,8 @@ export default function SignUp(){
             e.preventDefault();
             setFormData({ ...formData, [e.target.name]: e.target.value });
         };
-    // const [formData,setFormData] = useState({
-    //     email:'',password:'', firstName: "", lastName: "",
-    //   })
 
-    //   console.log(formData)
-
-    //   function handleChange(event){
-    //     setFormData((prevFormData)=>{
-    //       return{
-    //         ...prevFormData,
-    //         [event.target.name]:event.target.value
-    //       }
-
-    //     })
-
-    //   }
-
-    //   async function handleSubmit(e:any){
-    //     e.preventDefault()
-    //  setStatus(true)
-    //     try {
-    //       const { data, error } = await supabase.auth.signUp(
-    //         {
-    //           email: formData.email,
-    //           password: formData.password,
-    //           options: {
-    //             data: {
-    //                 name: `${formData.firstName}`,
-    //                 last_name: `${formData.lastName}`,
-    //             }
-    //           }
-    //         }
-    //       )
-    //       if (error) throw error
-    //       alert('Check your email for verification link')
-    //       setStatus(false)
-        
-    //     } catch (error) {
-    //       alert(error)
-    //     }
-    //   }
-
-
-
-
+        console.log(avatarUrl.current.length)
 return(
         <div className="flex items-center justify-center w-full h-[100vh] bg-cover  bg-[url('/src/assets/SignUpBackground.png')]">
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
@@ -140,14 +80,24 @@ return(
                           createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer">
-                        {!openModal ? 
-                            <div className="flex flex-col items-center group" onClick={handleShowModal}>
-                            <IoMdImage size={30} className="text-violet-500 group-hover:scale-105 transition-transform"/>
-                            <p className="select-none text-center text-wrap text-[0.9em] text-violet-500">
-                                Elegir imagen
-                            </p>
-                            </div>
-                        : <Modal onClose={handleCloseModal}/>}
+                            {!openModal ? 
+                                <div className="flex flex-col items-center group" onClick={handleShowModal}>
+                                    {avatarUrl.current.length === 0 ?  
+                                        <>
+                                            <IoMdImage size={30} className="text-violet-500 group-hover:scale-105 transition-transform"
+                                            onClick={handleShowModal}/>
+                                            <p className="select-none text-center text-wrap text-[0.9em] text-violet-500">
+                                                Elegir imagen
+                                            </p>
+                                        </>
+                                    :
+                                        <>
+                                            <img src={avatarUrl.current} className="w-full h-full object-cover" />
+                                        </>
+                                    }
+                                </div>
+                                
+                            : <Modal updateAvatar={updateAvatar} closeModal={() => setOpenModal(false)}/>}
                         </div>  
                         <p className="select-none">Foto de perfil</p>
                         <Separator />
