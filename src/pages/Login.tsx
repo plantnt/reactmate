@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { supabase } from "../utils/Utils";
 import { useUser, useSupabaseClient} from "@supabase/auth-helpers-react"
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
@@ -12,11 +12,11 @@ import Separator from "../components/UI/separator";
 
 export default function SignUp(){
 
-const User= useUser()
-const supabaseC = useSupabaseClient()
+// const User= useUser()
+// const supabaseC = useSupabaseClient()
 
 
-const handleLogin = () =>{
+const handleLoginG = () =>{
     supabase.auth.signInWithOAuth({
         provider: 'google',
       })
@@ -27,7 +27,6 @@ const [visible, setVisible] = useState(true)
         setVisible((prevVisible) => !prevVisible)
     }
 
-const [login, setLogin] =useState("")
 
     const [formData, setFormData] = useState({
         email: '',
@@ -37,7 +36,7 @@ const [login, setLogin] =useState("")
     const handleChange = (e:any) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
- let navigate = useNavigate()
+ 
     const handlelogin = async (e:any) => {
         e.preventDefault();
         try {
@@ -48,9 +47,9 @@ const [login, setLogin] =useState("")
         const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
         if (user){
               console.log('Usuario ha iniciado sesión correctamente:', user);
-           navigate("/")  
-           user.session=setLogin
-           
+              window.location.href = `/profilePage?id=${user.id}`;
+              localStorage.setItem('id', user.id);             
+
             } else{
                 console.log("No se ha podido iniciar sesion correctamente");
             }
@@ -73,7 +72,7 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 border-4 border-white hover:border-violet-400 transition-all" onClick={() => handleLogin()}>
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLoginG()}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
                     </button>
@@ -97,7 +96,7 @@ return(
                                 )}
                         </label>
                     </div>
-                    <button value={login} className="flex justify-self-center justify-center md:w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button  className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
                             type="submit" 
                             >
                         Iniciar sesión
