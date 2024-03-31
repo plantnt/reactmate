@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { FaRegCommentDots, FaRegListAlt, FaFlag, FaBoxOpen, FaUser } from 'react-icons/fa';
 import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
-import Footer from "../components/UI/footer";
 import Rating from "../components/rating";
 import RatingUser from '../components/ratingUser';
 import { Pagination } from 'antd';

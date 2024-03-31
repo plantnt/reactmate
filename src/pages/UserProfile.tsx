@@ -7,6 +7,7 @@ import AddProduct from '../components/addProduct';
 import { Pagination } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { supabase } from '../utils/Utils';
+import Separator from '../components/UI/separator';
 
 export default function UserProfile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function UserProfile() {
     name: "",
     email: "",
     last_name: "",
+    profilepic:""
     
   });
   const [products, setProducts] = useState([]);
@@ -33,7 +35,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 
   const { data, error } = await supabase
-    .from('mi_tabla')
+    .from('users')
     .select('*')
     .eq('id', id)
     .single();
@@ -62,42 +64,44 @@ window.addEventListener('DOMContentLoaded', async () => {
       const idS = localStorage.getItem('id')
       const { data: users, error } = await supabase
         .from('users')
-        .select('id, name, last_name, email, password, session');
+        .select('id, name, last_name, email, password, profilepic, session');
         
       if (error) {
         console.error('Error fetching users:', error);
         return;
       }
 
-
-//   }
+      
+      
+      //   }
       // const userSessions = users.map( user => user.session)
       const userIds = users.map(user => user.id);
       // console.log('User IDs:', userIds);
-   
+      
       
       // const userIdToFetch = userIds[idS];
       
       
       const { data: userData, error: userDataError } = await supabase
-        .from('users')
-        .select('*')
-        .eq('id', idS)
-        .single();
-  
+      .from('users')
+      .select('*')
+      .eq('id', idS)
+      .single();
+      
       if (userDataError) {
         console.error('Error fetching user data:', userDataError);
         return;
       }
-  
+      
       console.log('User Data:', userData);
       
       setUserData(userData);
-  
-     
-  
+      
+      
+      
     } catch (error) {
       console.error('Error in fetchUserData:', error);
+      console.log(userData.profilepic)
     }
   }
   
@@ -145,8 +149,8 @@ const handleClick = () => {
           <div className="max-w-4xl mx-auto">
             <div className="md:flex-shrink-0 bg-purple-100 max-w-full rounded-lg">
               <img
-                className="h-48 m-5 w-48 object-cover rounded-lg mx-auto relative z-10"
-                src="src/assets/profileIcon.png"
+                className="h-48 m-5 w-48 object-cover rounded-full mx-auto relative z-10"
+                src={userData.profilepic}
                 alt="Profile"
               />
             </div>
@@ -156,19 +160,11 @@ const handleClick = () => {
                 <div className="flex justify-center items-center mr-20"><Rating /></div>
               </div>
               <br />
-              {/* <p className="mt-2 mb-4 text-gray-500 font-rounded">
-                ¡Hola a todos! Soy un nuevo usuario en furnimate. Mi propósito es el de comprar muebles en el sitio web y también. he venido a vender un solo armario el cual alguien mas le pudo sacar mucho mas provecho :D, ESTE ES EL PERFIL DE UN USUARIO O VENDEDOR "DE UNA SOLA VEZ" y es una de las 3 categorías en el concepto de furnimate.
-              </p> */}
               <div className="mt-4 text-center font-rounded">
                 <p className="text-gray-700">
                   <span id='emailU' className="font-semibold">Correo electrónico: {userData.email}</span> , <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
                 </p>
-                {/* <p className="text-gray-700">
-                  <span id='last_Name' className="font-semibold">apellido:  {userData.last_name}</span> 
-                </p>  */}
-                {/* <p className="text-gray-600"> 
-                 <span className="font-semibold">Fecha de Registro: </span> 
-                </p>  */}
+                
                 <br />
               </div>
               {/* Resto del código... */}
@@ -215,9 +211,8 @@ const handleClick = () => {
             </div>
           </div>
         </div>
-        {/* Esta es la linea separadora q separa jaajaj */}
-        <hr className="my-8 border-b border-gray-200 mx-4" />
-        <h1 className="text-center text-gray-300 text-3xl mb-2">TUS PRODUCTOS</h1>
+<Separator />        
+<h1 className="text-center text-gray-300 text-3xl mb-2">TUS PRODUCTOS</h1>
         <div className="flex justify-center items-center -mb-3">
           <FaBoxOpen className="text-gray-300 text-5xl" />
         </div>

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
