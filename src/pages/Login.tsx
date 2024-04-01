@@ -14,7 +14,6 @@ import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 export default function SignUp(){
     const [status, setStatus] = useState(false)
     const [failure, setFailure] = useState(false)
-    const [isEmpty, setIsEmpty] = useState(false)
 
 // const User= useUser()
 // const supabaseC = useSupabaseClient()
@@ -48,26 +47,28 @@ const [visible, setVisible] = useState(true)
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("id,email,password,session")
-        ;
-        const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
-        if (user){
-            setStatus(true)           
-            setTimeout(() => {
-                setStatus(false);
-            }, 5000);
-            setTimeout(() => {
-                console.log('Usuario ha iniciado sesión correctamente:', user);
-                window.location.href = `/profilePage?id=${user.id}`;
-                localStorage.setItem('id', user.id);  
-            }, 2000)
-            
-            } else{
-                console.log("No se ha podido iniciar sesion correctamente");
-                setFailure(true)
+            .select("id,email,password")
+            ;
+        if (users){
+            const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
+            if (user){
+                setStatus(true)           
                 setTimeout(() => {
-                    setFailure(false)
-                }, 2000);
+                    setStatus(false);
+                }, 5000);
+                setTimeout(() => {
+                    console.log('Usuario ha iniciado sesión correctamente:', user);
+                    window.location.href = `/profilePage?id=${user.id}`;
+                    localStorage.setItem('id', user.id);  
+                }, 2000)
+                
+                } else{
+                    console.log("No se ha podido iniciar sesion correctamente");
+                    setFailure(true)
+                    setTimeout(() => {
+                        setFailure(false)
+                    }, 2000);
+                }
             }
             if (error) {
                 throw error;

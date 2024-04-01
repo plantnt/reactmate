@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       const idS = localStorage.getItem('id')
       const { data: users, error } = await supabase
         .from('users')
-        .select('id, name, last_name, email, password, profilepic, session');
+        .select('id, name, last_name, email, password, profilepic');
         
       if (error) {
         console.error('Error fetching users:', error);
