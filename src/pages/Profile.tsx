@@ -73,15 +73,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 
       
       
-      //   }
-      // const userSessions = users.map( user => user.session)
-      const userIds = users.map(user => user.id);
-      // console.log('User IDs:', userIds);
-      
-      
-      // const userIdToFetch = userIds[idS];
-      
-      
       const { data: userData, error: userDataError } = await supabase
       .from('users')
       .select('*')

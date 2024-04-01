@@ -99,7 +99,9 @@ const ProductForm = () => {
                 <Space>
                     {option.data.desc}
                 </Space>
-                )}/>
+                )}/> 
+              </label>
+              <label className='grid'>
                   Categoría
                   <Select
                   mode="multiple"

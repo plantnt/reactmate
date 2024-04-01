@@ -6,11 +6,15 @@ import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 
 import googleIcon from '../assets/icons/google.svg'
 import Separator from "../components/UI/separator";
+import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 
 
 
 
 export default function SignUp(){
+    const [status, setStatus] = useState(false)
+    const [failure, setFailure] = useState(false)
+    const [isEmpty, setIsEmpty] = useState(false)
 
 // const User= useUser()
 // const supabaseC = useSupabaseClient()
@@ -37,6 +41,8 @@ const [visible, setVisible] = useState(true)
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
  
+    //Logear al usuario
+
     const handlelogin = async (e:any) => {
         e.preventDefault();
         try {
@@ -46,12 +52,22 @@ const [visible, setVisible] = useState(true)
         ;
         const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
         if (user){
-              console.log('Usuario ha iniciado sesión correctamente:', user);
-              window.location.href = `/profilePage?id=${user.id}`;
-              localStorage.setItem('id', user.id);             
-
+            setStatus(true)           
+            setTimeout(() => {
+                setStatus(false);
+            }, 5000);
+            setTimeout(() => {
+                console.log('Usuario ha iniciado sesión correctamente:', user);
+                window.location.href = `/profilePage?id=${user.id}`;
+                localStorage.setItem('id', user.id);  
+            }, 2000)
+            
             } else{
                 console.log("No se ha podido iniciar sesion correctamente");
+                setFailure(true)
+                setTimeout(() => {
+                    setFailure(false)
+                }, 2000);
             }
             if (error) {
                 throw error;
@@ -82,12 +98,12 @@ return(
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6" >
                         <label className="flex flex-col">
                             <p className="select-none">Email</p> 
-                            <input name="email" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent"/>
+                            <input name="email" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" required/>
                         </label>
                         <label className="relative flex flex-col">
                             <p className="select-none">Contraseña</p>
                             <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} 
-                                    className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}
+                                    className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required
                                     />
                                 {visible === true ? (
                                     <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
@@ -104,7 +120,22 @@ return(
                     <p className="justify-self-center w-[200px] mt-8 text-sm text-wrap text-center">¿Aún no tienes cuenta? <br/>Creala <NavLink to="/signUp"><span className="text-violet-600">aquí</span></NavLink></p>
                 </form>
             </div>
-            
+            {status === false? (
+                <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
+                ) : (
+                <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
+                    <FaCircleCheck size={20} className="text-green-400" />
+                    Ha ingresado correctamente
+                </div>
+                )}
+            {failure === false? (
+                <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
+                ) : (
+                <div className="fixed bottom-2 right-2 flex items-center justify-around w-[250px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
+                    <FaCircleXmark size={20} className="text-red-400" />
+                    Ha habido un problema
+                </div>
+                )}
         </div>
     )
 }
