@@ -14,7 +14,7 @@ import ServicesChat from './pages/ChatServices'
 import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
-import UserProfile from './pages/UserProfile'
+import Profile from './pages/Profile'
 
 import NavbarVisible from './components/UI/navbarvisible'
 import Footer from './components/UI/footer'
@@ -32,7 +32,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />
-          <Route path='/profilePage' element={<UserProfile/>} />
+          <Route path='/profilePage' element={<Profile/>} />
           <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/logIn' element={<LogIn/>} />
           <Route path='/signUp' element={<SignUp/>} />
