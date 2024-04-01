@@ -4,7 +4,7 @@ import ProductCard from "../components/productCard";
 import Filters from "../components/filters";
 import Rating from "../components/rating"
 import AddProduct from '../components/addProduct';
-import { Pagination } from 'antd';
+import { Pagination, Rate } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { supabase } from '../utils/Utils';
 import Separator from '../components/UI/separator';
@@ -132,115 +132,120 @@ const handleClick = () => {
 
   return (
     <>
-      <div className="relative bg-gray-50 min-h-screen max-w-full py-8">
-        {/* Fondo rectangular */}
-        <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
-        <div className="relative z-10 max-w-screen mx-auto rounded-lg border-gray-200 overflow-hidden">
-          <br />
-          <div className="max-w-4xl mx-auto">
-            <div className="md:flex-shrink-0 bg-purple-100 max-w-full rounded-lg">
-              <img
-                className="h-48 m-5 w-48 object-cover rounded-full mx-auto relative z-10"
-                src={userData.profilepic}
-                alt="Profile"
-              />
-            </div>
-            <div className=" pt-8 text-center relative z-10">
-              <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-                <h1 id='nameU' className="text-3xl font-rounded">{userData.name}  {userData.last_name}</h1>
-                <div className="flex justify-center items-center mr-20"><Rating /></div>
+        <div className="relative bg-gray-50 min-h-screen max-w-full py-8">
+          {/* Fondo rectangular */}
+          <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
+          <div className="relative z-10 max-w-screen mx-auto rounded-lg border-gray-200 overflow-hidden">
+            <br />
+            <div className="max-w-4xl mx-auto">
+              <div className="md:flex-shrink-0 bg-purple-100 max-w-full rounded-lg">
+                <img
+                  className="h-48 m-5 w-48 object-cover rounded-full mx-auto relative z-10"
+                  src={userData.profilepic}
+                  alt="Profile"
+                />
               </div>
-              <br />
-              <div className="mt-4 text-center font-rounded">
-                <p className="text-gray-700">
-                  <span id='emailU' className="font-semibold">Correo electrónico: {userData.email}</span> , <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
-                </p>
-                
+              <div className=" pt-8 text-center relative z-10">
+                <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
+                  <h1 id='nameU' className="text-3xl font-rounded">{userData.name}  {userData.last_name}</h1>
+                  <div className="flex justify-center items-center mr-20">
+                  <div className="flex items-center ml-10 text-slate-700">
+                      Calificación:
+                      <Rate allowHalf className="mt-[5px] ml-2 text-violet-400 text-sm" />
+                  </div>
+                  </div>
+                </div>
                 <br />
-              </div>
-              {/* Resto del código... */}
-              <div className="mt-4 flex justify-between">
-                <NavLink to='/chatingPage'>
-                  <button className="bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-2 px-4 rounded flex items-center ho">
-                    <FaRegCommentDots className="inline-block mr-2 text-xl" />
-                    <span className="text-base font-rounded">Empezar chat</span>
+                <div className="mt-4 text-center font-rounded">
+                  <p className="text-gray-700">
+                    <span id='emailU' className="font-semibold">Correo electrónico: {userData.email}</span> , <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
+                  </p>
+                  
+                  <br />
+                </div>
+                {/* Resto del código... */}
+                <div className="mt-4 flex justify-between">
+                  <NavLink to='/chatingPage'>
+                    <button className="bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-2 px-4 rounded flex items-center ho">
+                      <FaRegCommentDots className="inline-block mr-2 text-xl" />
+                      <span className="text-base font-rounded">Empezar chat</span>
+                    </button>
+                  </NavLink>
+                  <NavLink to="/">
+                    <button className="bg-green-500 hover:bg-white hover:text-green-500 hover:border-green-500 transition duration-300 border-2 border-green-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
+                      <FaRegListAlt className="inline-block mr-2 text-xl" />
+                      <span className="text-base font-rounded">Ver en Catálogo</span>
+                    </button>
+                  </NavLink>
+                  <NavLink to="/ProfilePageView">
+                  <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
+                    <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
+                    <span className="text-base font-rounded text-gray-400">*Modo perfil externo*</span>
                   </button>
-                </NavLink>
-                <NavLink to="/">
-                  <button className="bg-green-500 hover:bg-white hover:text-green-500 hover:border-green-500 transition duration-300 border-2 border-green-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
-                    <FaRegListAlt className="inline-block mr-2 text-xl" />
-                    <span className="text-base font-rounded">Ver en Catálogo</span>
-                  </button>
-                </NavLink>
-                <NavLink to="/ProfilePageView">
-                <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
-                  <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
-                  <span className="text-base font-rounded text-gray-400">*Modo perfil externo*</span>
-                </button>
-                </NavLink>
-                <div ref={dropdownRef} className="">
-                  <button
-                    onClick={handleClick}
-                    className="bg-gray-500 hover:bg-white hover:text-gray-500 hover:border-gray-500 transition duration-300 border-2 border-gray-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
-                  >
-                    <span className="text-base font-rounded">Opciones</span>
-                    <FaEllipsisH className="inline-block ml-2 text-xl" />
-                  </button>
-                  {isOpen && (
-                    <div
-                      className={`absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10 ${dropdownPosition === "up" ? "-top-0" : "top-40"}`}
+                  </NavLink>
+                  <div ref={dropdownRef} className="">
+                    <button
+                      onClick={handleClick}
+                      className="bg-gray-500 hover:bg-white hover:text-gray-500 hover:border-gray-500 transition duration-300 border-2 border-gray-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
                     >
-                      <div className="py-1">
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Gestionar cuenta</p>
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Cambiar contraseña</p>
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Eliminar cuenta</p>
+                      <span className="text-base font-rounded">Opciones</span>
+                      <FaEllipsisH className="inline-block ml-2 text-xl" />
+                    </button>
+                    {isOpen && (
+                      <div
+                        className={`absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10 ${dropdownPosition === "up" ? "-top-0" : "top-40"}`}
+                      >
+                        <div className="py-1">
+                          <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Gestionar cuenta</p>
+                          <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Cambiar contraseña</p>
+                          <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Eliminar cuenta</p>
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-<Separator />        
-<h1 className="text-center text-gray-300 text-3xl mb-2">TUS PRODUCTOS</h1>
-        <div className="flex justify-center items-center -mb-3">
-          <FaBoxOpen className="text-gray-300 text-5xl" />
-        </div>
-      </div>
-      <div className="h-full w-full flex flex-col bg-gray-50">
-            <div className="grid grid-flow-col">
-              <Filters/>
-              <div className="max-w-[60rem] justify-self-start">
-                <div className="mt-3">
-                  <Rating/>
-                </div>
-                <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
-                  {/* Product Cards */}
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                  <ProductCard/>
-                </div>
-                <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
-                <div className="grid w-full justify-self-end">
-                </div>
-              </div>
-              <AddProduct/>
-            </div>
-             
+  <Separator />        
+  <h1 className="text-center text-gray-300 text-3xl mb-2">TUS PRODUCTOS</h1>
+          <div className="flex justify-center items-center -mb-3">
+            <FaBoxOpen className="text-gray-300 text-5xl" />
           </div>
+        </div>
+        <div className="h-full w-full flex flex-col bg-gray-50">
+              <div className="grid grid-flow-col">
+                <Filters/>
+                <div className="max-w-[60rem] justify-self-start">
+                  <div className="mt-3">
+                    <Rating/>
+                  </div>
+                  <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
+                    {/* Product Cards */}
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                    <ProductCard/>
+                  </div>
+                  <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
+                  <div className="grid w-full justify-self-end">
+                  </div>
+                </div>
+                <AddProduct/>
+              </div>
+              
+            </div>
     </>
     
   );
