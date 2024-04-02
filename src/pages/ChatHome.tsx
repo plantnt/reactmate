@@ -28,7 +28,7 @@ const Cart = () => {
                             </button>
                         </NavLink>
 
-                        <NavLink to='/'>
+                        <NavLink to='/userBrowser'>
                             <button className="rounded-full w-full bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-4 px-6 flex items-center">
                                 <FaStore className="text-gray-400 inline-block mr-2 text-3xl" />
                                 <span className="text-lg w-full font-rounded text-gray-400">Explorar emprendimientos</span>
