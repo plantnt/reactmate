@@ -11,7 +11,7 @@ export default function ProductView(){
         <div className="flex flex-col items-center p-6">
           <BuyProduct/>
           <div className="grid md:flex md:justify-center sm:justify-center md:flex-wrap md:space-y-6 sm:space-y-6 space-y-0 relative w-full p-4">
-            <img src="" className="w-[500px] h-[500px] border-4 border-violet-400 rounded-md" />
+            <img src="src\assets\products\1.jpg" className="w-[500px] h-[500px] border-4 border-violet-400 rounded-md" />
             <div className="flex flex-col lg:ml-6 md:ml-0 relative w-[400px]">
               <div className="flex w-full justify-between">
                 <h3>Publicado por</h3>

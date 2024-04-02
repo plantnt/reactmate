@@ -43,14 +43,14 @@ const Navbar = () => {
                             </li>
                             }
                             <li>
-                                <div className="flex flex-row ml-5">
+                                <div className="flex flex-row ml-5 space-x-4">
                                     <NavLink to='/logIn'>
                                         <button className="bg-gradient-to-r from-furniorange to-[#BE8AFF] px-3 h-10 text-white font-semibold rounded-xl">
                                             Entrar
                                         </button>
                                     </NavLink>
                                     <NavLink to='/signUp'>
-                                        <div className="mx-auto flex items-center justify-center ml-4 cursor-pointer select-none">
+                                        <div className="mx-auto flex items-center justify-center cursor-pointer select-none">
                                             <div className="h-10 w-full p-1 rounded-xl bg-gradient-to-r from-furniorange to-[#BE8AFF]">
                                                 <h1 className="font-semibold text-white mt-1">
                                                     Registrarse
