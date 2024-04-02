@@ -41,6 +41,7 @@ export default function Upload(){
       reader.onload = () => {
         if(typeof reader.result === 'string'){
           setImgSrc(reader.result)
+          setFormData({ ...formData, imgP: imgSrc})
           console.log("Imagen principal", imgCounter)
         }
       }
@@ -48,7 +49,129 @@ export default function Upload(){
     }
   }
 
-  const deleteImage = () => {
+ 
+
+  const handleUpload1 = () => {
+    item1.current && item1.current.click()
+  }
+
+  const handleUpload1Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setItem1Src(reader.result)
+          setFormData({ ...formData, img_1: Item1Src})
+          setImgCounter(imgCounter + 1)
+          console.log(setImgCounter)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+  
+  const handleUpload2 = () => {
+    item2.current && item2.current.click()
+  }
+
+  const handleUpload2Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setItem2Src(reader.result)
+          setFormData({ ...formData, img_2: Item2Src})
+          setImgCounter(imgCounter + 1)
+          console.log(setImgCounter)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleUpload3 = () => {
+    item3.current && item3.current.click()
+  }
+
+  const handleUpload3Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setItem3Src(reader.result)
+          setFormData({ ...formData, img_3: Item3Src})
+          setImgCounter(imgCounter + 1)
+          console.log(setImgCounter)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleUpload4 = () => {
+    item4.current && item4.current.click()
+  }
+
+  const handleUpload4Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setItem4Src(reader.result)
+          setFormData({ ...formData, img_4: Item4Src})
+          setImgCounter(imgCounter + 1)
+          console.log(setImgCounter)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleUpload5 = () => {
+    item5.current && item5.current.click()
+  }
+
+  const handleUpload5Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setItem5Src(reader.result)
+          setFormData({ ...formData, img_5: Item5Src})
+          setImgCounter(imgCounter + 1)
+          console.log(setImgCounter)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleUpload6 = () => {
+    item6.current && item6.current.click()
+  }
+
+  const handleUpload6Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file){
+      const reader = new FileReader()
+      reader.onload = () => {
+        if(typeof reader.result === 'string'){
+          setItem6Src(reader.result)
+          setFormData({ ...formData, img_6: Item6Src})
+          setImgCounter(imgCounter + 1)
+          console.log(setImgCounter)
+        }
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+ 
+ const deleteImage = () => {
     setImgSrc(null)
   }
 
@@ -83,120 +206,38 @@ export default function Upload(){
   }
 
 
-  const handleUpload1 = () => {
-    item1.current && item1.current.click()
-  }
+   const images ={
+   imgP:"",
+   img_1:"",
+   img_2:"",
+   img_3:"",
+   img_4:"",
+   img_5:"",
+   img_6:""
 
-  const handleUpload1Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file){
-      const reader = new FileReader()
-      reader.onload = () => {
-        if(typeof reader.result === 'string'){
-          setItem1Src(reader.result)
-          setImgCounter(imgCounter + 1)
-          console.log(setImgCounter)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
-  
-  const handleUpload2 = () => {
-    item2.current && item2.current.click()
-  }
+   }
+   
+   const [formData, setFormData]=useState(images)
 
-  const handleUpload2Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file){
-      const reader = new FileReader()
-      reader.onload = () => {
-        if(typeof reader.result === 'string'){
-          setItem2Src(reader.result)
-          setImgCounter(imgCounter + 1)
-          console.log(setImgCounter)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
 
-  const handleUpload3 = () => {
-    item3.current && item3.current.click()
-  }
+  const uploadimgs = async ()=>{
+    try{
+  const { data, error } = await supabase
+  .from('products')
+  .insert([{ image:`${formData.imgP}`, aditImages: [`${formData.img_1}`, `${formData.img_2}`, `${formData.img_3}`, `${formData.img_4}`,
+  `${formData.img_5}`, `${formData.img_6}`] }])
+   console.log(formData)
+   console.log(data)
+   if (error) {
+    throw error;
+}
 
-  const handleUpload3Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file){
-      const reader = new FileReader()
-      reader.onload = () => {
-        if(typeof reader.result === 'string'){
-          setItem3Src(reader.result)
-          setImgCounter(imgCounter + 1)
-          console.log(setImgCounter)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
 
-  const handleUpload4 = () => {
-    item4.current && item4.current.click()
-  }
+}catch (error) {
+console.error('Error al subir imagenes', error);
+}
+}
 
-  const handleUpload4Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file){
-      const reader = new FileReader()
-      reader.onload = () => {
-        if(typeof reader.result === 'string'){
-          setItem4Src(reader.result)
-          setImgCounter(imgCounter + 1)
-          console.log(setImgCounter)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
-
-  const handleUpload5 = () => {
-    item5.current && item5.current.click()
-  }
-
-  const handleUpload5Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file){
-      const reader = new FileReader()
-      reader.onload = () => {
-        if(typeof reader.result === 'string'){
-          setItem5Src(reader.result)
-          setImgCounter(imgCounter + 1)
-          console.log(setImgCounter)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
-
-  const handleUpload6 = () => {
-    item6.current && item6.current.click()
-  }
-
-  const handleUpload6Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file){
-      const reader = new FileReader()
-      reader.onload = () => {
-        if(typeof reader.result === 'string'){
-          setItem6Src(reader.result)
-          setImgCounter(imgCounter + 1)
-          console.log(setImgCounter)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
- 
 return(
   <div className='p-8 grid'>
     <form className='flex space-x-6'>
@@ -341,7 +382,7 @@ return(
       </form>
       <div className='flex p-8 justify-end space-x-3'>
           <NavLink to="/">
-            <button type='submit' className={imgSrc ? 
+            <button onSubmit={(e:any) => {e.preventDefault();uploadimgs()}} type='submit' className={imgSrc ? 
             'group flex items-center bg-slate-300 w-[200px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:bg-green-400 hover:text-white transition-colors overflow-hidden'
             : 'flex items-center opacity-80 bg-slate-300 w-[200px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:cursor-not-allowed transition-colors overflow-hidden'}
             disabled={!imgSrc}

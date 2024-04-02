@@ -43,7 +43,7 @@ const Navbar = () => {
                             </li>
                             }
                             <li>
-                                <div className="flex flex-row ml-5 space-x-3">
+                                <div className="flex flex-row ml-5 space-x-4">
                                     <NavLink to='/logIn'>
                                         <button className="flex justify-center items-center bg-[#945aff] hover:bg-[#7b5aff] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all">
                                             ENTRAR
