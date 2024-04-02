@@ -19,22 +19,36 @@ export default function CardCart() {
 
             
             <NavLink to="/productPage"> 
-            <div className="flex p-4 m-4 items-center justify-items-center">
+            <div className="flex p-4 m-4 items-center justify-center space-x-10">
 
             <div className="max-w-[250px]  rounded-xl border border-slate-200">
                     <img src="src/assets/products/2.jpg" className="w-full rounded-t-xl bg-contain" alt="Product Image" />
             </div>
 
             {/* Componente de Información del Carrito */}
-            <div className="w-[30%] ml-[50px]">
+            <div className="w-[30%] ">
                 <h2 className="font-black text-3xl w-full h-full">{title}</h2>
                 <h4 className="font-bold text-lg w-full h-full">${price}</h4>
                 <Stars/>
+                <div className="flex flex-wrap gap-1 w-full mt-1">
+                <div className="w-[40px] h-[40px] border p-[2.5px] rounded-sm hover:cursor-pointer">
+                  <div className="w-full h-full bg-furnipurple rounded-sm"/>
+                </div>
+                <div className="w-[40px] h-[40px] border p-[2.5px] rounded-sm hover:cursor-pointer">
+                  <div className="w-full h-full bg-furniorange rounded-sm"/>
+                </div>
+                <div className="w-[40px] h-[40px] border p-[2.5px] rounded-sm hover:cursor-pointer">
+                  <div className="w-full h-full bg-[#000] rounded-sm"/>
+                </div>
+                <div className="w-[40px] h-[40px] border p-[2.5px] rounded-sm hover:cursor-pointer">
+                  <div className="w-full h-full bg-white rounded-sm border"/>
+                </div>
+                </div>
             </div>
 
             {/* Botón para Ver Producto */}
 
-        <div className="ml-[80px] flex space-x-4">
+        <div className="flex space-x-6">
                 <button className="bg-violet-500 hover:bg-violet-600 transition duration-300 border-2 border-violet-800 text-white font-bold px-4 rounded-3xl">
                   <span className="font-rounded text-3xl">Comprar</span>
                 </button>
