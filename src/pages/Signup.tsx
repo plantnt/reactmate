@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 import { FaCircleCheck } from "react-icons/fa6";
-import { MdEdit } from "react-icons/md";
 
 import { supabase } from "../utils/Utils";
 
 import Separator from "../components/UI/separator";
-import ProfilePicHandler from "../components/Modal";
 import Modal from "../components/Modal";
 
 
@@ -24,7 +22,7 @@ export default function SignUp(){
         setOpenModal(true)
     }
 
-    const updateAvatar = (imgSrc) => {
+    const updateAvatar = (imgSrc: string) => {
         avatarUrl.current = imgSrc;
         setFormData({ ...formData, avatar: imgSrc})
     };
