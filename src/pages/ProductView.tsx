@@ -8,7 +8,7 @@ import feli from '../assets/feli.jpg'
 
 export default function ProductView(){
     return(
-        <div className="flex flex-col items-center p-6">
+        <div className="flex flex-col h-full items-center p-6">
           <BuyProduct/>
           <div className="grid md:flex md:justify-center sm:justify-center md:flex-wrap md:space-y-6 sm:space-y-6 space-y-0 relative w-full p-4">
             <img src="" className="w-[500px] h-[500px] border-4 border-violet-400 rounded-md" />
@@ -61,6 +61,12 @@ export default function ProductView(){
           <Separator />
             <div className="lg:w-[950px] w-[500px] mt-4">
               <h2 className="text-xl font-semibold mb-3">Descripción</h2>
+              <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+              Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
+              At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
+              <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+              Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
+              At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
               <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
               Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
               At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>

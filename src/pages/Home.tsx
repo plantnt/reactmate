@@ -39,7 +39,7 @@ const Home = () => {
                     </div>
                     <AddProduct/>
                 </div>
-                <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
+                <Pagination className="self-center mt-6 mb-6" defaultCurrent={1} total={50}></Pagination>
             </div>
         </>
     )
