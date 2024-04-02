@@ -39,23 +39,22 @@ const CartPage = () => {
   <div className="flex p-2 ml-4 top-0">
       <Rating/>
 
-    <div className="flex justify-center mt-4 mb-6 pl-8">
+    <div className="flex justify-center mt-4 mb-6 pl-8 items-center h-full space-x-6">
       
         <button
-           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded h-[50%]"
+           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
            onClick={organizar}>
            Organizar
         </button>
         
         <button
-           className="mr-4 border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded h-[50%]"
+           className="border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded transition-full ease-in-out"
            onClick={eliminarTodo}>
            Eliminar Todo
         </button>
 
-      <div className="mb-6">
-         <h2 className="text-gray-400 text-lg font-semibold -mb-1 pl-8 pt-2">Costo total:</h2>
-         <p className="text-gray-400 text-xl font-bold pl-8">${calcularTotal()}</p>
+      <div className="justify-center items-center">
+         <h2 className="text-gray-400 text-lg font-semibold">Costo total: ${calcularTotal()}</h2>
       </div>
     </div>
   </div>
