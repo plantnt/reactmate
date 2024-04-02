@@ -43,20 +43,16 @@ const Navbar = () => {
                             </li>
                             }
                             <li>
-                                <div className="flex flex-row ml-5">
+                                <div className="flex flex-row ml-5 space-x-3">
                                     <NavLink to='/logIn'>
-                                        <button className="bg-gradient-to-r from-furniorange to-[#BE8AFF] px-3 h-10 text-white font-semibold rounded-xl">
-                                            Entrar
+                                        <button className="flex justify-center items-center bg-[#945aff] hover:bg-[#7b5aff] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all">
+                                            ENTRAR
                                         </button>
                                     </NavLink>
                                     <NavLink to='/signUp'>
-                                        <div className="mx-auto flex items-center justify-center ml-4 cursor-pointer select-none">
-                                            <div className="h-10 w-full p-1 rounded-xl bg-gradient-to-r from-furniorange to-[#BE8AFF]">
-                                                <h1 className="font-semibold text-white mt-1">
-                                                    Registrarse
-                                                </h1>
-                                            </div>
-                                        </div>
+                                        <button className="flex justify-center items-center bg-[#ff6c6c] hover:bg-[#f65858] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all">
+                                            REGISTRARSE
+                                        </button>
                                     </NavLink>
                                 </div>
                             </li>

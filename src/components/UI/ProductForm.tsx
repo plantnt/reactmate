@@ -68,8 +68,7 @@ const ProductForm = () => {
 
       const [value, setValue] = useState('')
       const handleInput = (event: { target: { value: string } }) => {
-
-      const result = event.target.value.replace(/\D/g, '')
+        const result = event.target.value.replace(/\D/g, '')
         setValue(result)
       }
       //contador de palabras

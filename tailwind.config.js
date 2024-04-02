@@ -11,8 +11,10 @@ export default {
     },
     colors:{
       white: '#FFFFFF',
-      furnipurple: '#9A6CC8',
+      furnipurple: '#945aff',
       furniorange: '#FF886D',
+      convenientPurple: '#945aff',
+      convenientOrange: '#ff6c6c',
       slate: {
         50: '#f8fafc',
         100: '#f1f5f9',

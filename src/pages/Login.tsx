@@ -89,7 +89,7 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-violet-400 transition-all" onClick={() => handleLoginG()}>
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-convenientPurple transition-all" onClick={() => handleLoginG()}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
                     </button>
@@ -113,7 +113,7 @@ return(
                                 )}
                         </label>
                     </div>
-                    <button  className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button  className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-convenientPurple px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
                             type="submit" 
                             >
                         Iniciar sesión

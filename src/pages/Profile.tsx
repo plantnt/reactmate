@@ -16,9 +16,6 @@ import AddProduct from '../components/addProduct';
 import { IoIosPin } from 'react-icons/io';
 
 export default function UserProfile() {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -99,37 +96,11 @@ export default function UserProfile() {
   
  console.log(userData)
 
- 
-
-const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleClose = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClose);
-    return () => {
-      document.removeEventListener('mousedown', handleClose);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (dropdownRef.current) {
-      const dropdownBottom = dropdownRef.current.getBoundingClientRect().bottom;
-      const windowHeight = window.innerHeight;
-      const dropdownTop = dropdownRef.current.getBoundingClientRect().top;
-      if (dropdownBottom > windowHeight && dropdownTop > windowHeight / 2) {
-        setDropdownPosition("up");
-      } else {
-        setDropdownPosition("down");
-      }
-    }
-  }, [isOpen]);
+ const [value, setValue] = useState('')
+  const handleInput = (event: { target: { value: string } }) => {
+    const result = event.target.value.replace(/\D/g, '')
+    setValue(result)
+  }
 
   return (
     <>
@@ -145,7 +116,7 @@ const handleClick = () => {
           </div>
           <hr className='mt-7'/>
           <form action='' className="flex flex-col items-center justify-center space-y-2 mt-7">
-          <h2 className='font-semibold mb-4 select-none'>- Añade datos adicionales -</h2>
+            <h2 className='font-semibold mb-4 select-none'>- Añade datos adicionales -</h2>
             <label className='flex'>
               <MdMailOutline size={25} className='text-violet-800 mr-2'/> 
               <p className='cursor-text'>
@@ -154,12 +125,15 @@ const handleClick = () => {
             </label>
             <label className='flex items-center'>
               <FaPhone size={23} className='text-violet-800 mr-2'/>
-              <input type="text" className='outline-none border-2 border-violet-800 px-1 rounded-md w-[150px]' />
+              <input type="text" onChange={handleInput} value={value} maxLength={10} className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]' />
             </label>
             <label className='flex items-center'>
               <IoIosPin size={23} className='text-violet-800 mr-2'/>
-              <input type="text" className='outline-none border-2 border-violet-800 px-1 rounded-md w-[150px]' />
+              <input type="text" className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]' />
             </label>
+            <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'>
+              Actualizar datos
+            </button>
           </form>
         </div>
         <div className=''>
