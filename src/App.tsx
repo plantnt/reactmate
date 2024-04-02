@@ -15,6 +15,7 @@ import TosPage from './pages/ToS'
 import Upload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
 import Profile from './pages/Profile'
+import UserBrowser from './pages/UserBrowser'
 
 import NavbarVisible from './components/UI/navbarvisible'
 import Footer from './components/UI/footer'
@@ -42,6 +43,7 @@ const App = () => {
           <Route path='/chatingPage' element={<UserChats/>} />
           <Route path='/chatingServices' element={<ServicesChat/>} />
           <Route path='/chatView' element={<Chat/>} />
+          <Route path='/userBrowser' element={<UserBrowser/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
           <Route path='/productUpload' element={<Upload/>} />
         </Routes>
