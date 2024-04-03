@@ -32,7 +32,7 @@ export default function ProductView(){
               <h1 className="text-3xl font-semibold mb-3">$ 455.50</h1>
               <Separator />
               <h2 className="font-semibold mt-3">Categorías</h2>
-              <div className="flex flex-wrap gap-2 mt-3 ml-3">
+              <div className="flex flex-wrap gap-2 mt-3">
                 <p className="w-fit rounded-xl p-2 border shadow hover:cursor-pointer hover:text-violet-500 transition-colors">Filtro</p>
                 <p className="w-fit rounded-xl p-2 border shadow hover:cursor-pointer hover:text-violet-500 transition-colors">Filtro_largo</p>
                 <p className="w-fit rounded-xl p-2 border shadow hover:cursor-pointer hover:text-violet-500 transition-colors">Filtro_muy_largo</p>
@@ -42,7 +42,7 @@ export default function ProductView(){
                 <p className="w-fit rounded-xl p-2 border shadow hover:cursor-pointer hover:text-violet-500 transition-colors">Filtro</p>
               </div>
               <h2 className="font-semibold mt-3">Colores</h2>
-              <div className="flex flex-wrap gap-1 w-full mt-1 ml-3">
+              <div className="flex flex-wrap gap-1 w-full mt-1">
                 <div className="w-[40px] h-[40px] border p-[2.5px] rounded-sm hover:cursor-pointer">
                   <div className="w-full h-full bg-furnipurple rounded-sm"/>
                 </div>
@@ -60,17 +60,55 @@ export default function ProductView(){
           </div>
           <Separator />
             <div className="lg:w-[950px] w-[500px] mt-4">
-              <h2 className="text-xl font-semibold mb-3">Descripción</h2>
-              <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
-              Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
-              At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
-              <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
-              Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
-              At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
-              <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
-              Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
-              At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
+               <h2 className="text-xl font-semibold mb-3">Descripción</h2>
+               <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+               Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
+               At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
+
+               <Separator />
+              
+               <h2 className="text-xl font-semibold justify-center align-center mt-10 text-center">Reseñas</h2>
+              
+               <div id="Reseña1" className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
+               <NavLink to="/ProfilePageView">
+                    <div className="items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
+                      <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
+                    </div>
+                    </NavLink>
+                 <p className="font-semibold">Nombre de usuario</p>
+               <Rate allowHalf disabled value={4} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+               Distinctio esse nulla itaque rerum perferendis</p>
+               </div>
+
+               <div id="Reseña1" className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
+               <NavLink to="/ProfilePageView">
+                    <div className="items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
+                      <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
+                    </div>
+                    </NavLink>
+                 <p className="font-semibold">Nombre de usuario</p>
+               <Rate allowHalf disabled value={3} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+               Distinctio esse nulla itaque rerum perferendis</p>
+               </div>
+
+               <div id="Reseña1" className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
+               <NavLink to="/ProfilePageView">
+                    <div className="items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
+                      <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
+                    </div>
+                    </NavLink>
+                 <p className="font-semibold">Nombre de usuario</p>
+               <Rate allowHalf disabled value={2} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+               Distinctio esse nulla itaque rerum perferendis</p>
+               </div>
+               
             </div>
         </div>
+        
     )
 }
+
+/*ALGUIEN QUE ALINEE ESAS ESTRELLAS POR DIOS (gracias :>)*/

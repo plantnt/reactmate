@@ -1,4 +1,4 @@
-import ProductCard from "../components/productCard"
+import Card1 from "../components/productsCards/Card1"
 import Filters from "../components/filters"
 import Rating from "../components/rating"
 import FeaturedProducts from "./Featured"
@@ -19,21 +19,21 @@ const Home = () => {
                             <Rating/>
                         </div>
                         <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
-                            <ProductCard />
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
+                            <Card1/>
                         </div>
                         
                     </div>
