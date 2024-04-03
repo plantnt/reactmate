@@ -49,7 +49,6 @@ export default function SignUp(){
             },5000)
         }
         else{
-            
             const res = await supabase.from("users").insert([
                 {
                     profilepic: `${formData.avatar}`,
