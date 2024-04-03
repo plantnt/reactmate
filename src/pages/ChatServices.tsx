@@ -1,92 +1,87 @@
 import { useState } from "react";
+import { FaCouch, FaPaperclip } from "react-icons/fa";
 
 const ServicesChat = () => {
-    // Estado para las publicaciones de consumidores
-    const [consumerPosts, setConsumerPosts] = useState<any[]>([]);
-    // Estado para almacenar el contenido de la nueva publicación del consumidor
-    const [newConsumerPost, setNewConsumerPost] = useState("");
+    const [posts, setPosts] = useState<any[]>([]);
+    const [newPost, setNewPost] = useState("");
+    const [selectedOption, setSelectedOption] = useState("");
 
-    // Estado para las publicaciones de empresarios
-    const [businessPosts, setBusinessPosts] = useState<any[]>([]);
-    // Estado para almacenar el contenido de la nueva publicación del empresario
-    const [newBusinessPost, setNewBusinessPost] = useState("");
-
-    // Función para crear una nueva publicación como un consumidor
-    const createConsumerPost = () => {
-        setConsumerPosts([...consumerPosts, newConsumerPost]);
-        // Limpiar el campo de entrada después de agregar la publicación
-        setNewConsumerPost("");
+    const handleCheckboxChange = (option: string) => {
+        setSelectedOption(option);
     };
 
-    // Función para crear una nueva publicación como un empresario
-    const createBusinessPost = () => {
-        setBusinessPosts([...businessPosts, newBusinessPost]);
-        // Limpia los inputs despues de haber publicado
-        setNewBusinessPost("");
+    const createPost = () => {
+        const postWithOption = `${selectedOption}: ${newPost}`;
+        setPosts([...posts, postWithOption]);
+        setNewPost("");
+        setSelectedOption("");
     };
 
     return (
         <>
-            <div className="relative bg-gray-50 py-8">
-                <h1 className="text-center text-4xl font-bold font-extrawide text-gray-600">
-                    Pide o ofrece tus servicios de mueblería en este apartado *Página en proceso*
+            <div className="relative bg-gray-50 pt-8 -pb-3">
+                <h1 className="text-5xl font-bold font-extrawide text-purple-400 ml-4 flex">
+                    Servicios de terceros <FaCouch className="ml-4 mt-2 text-7xl -mt-2"/>     
                 </h1>
             </div>
 
             <div className="relative bg-gray-50 min-h-screen max-w-full overflow-y-auto">
-                {/* Sección para añadir publicaciones de consumidores */}
                 <div className="p-4">
-                    <h2 className="text-2xl font-semibold mb-4">Añade tu publicación como un consumidor</h2>
+                    <h2 className="text-2xl text-gray-400 font-semibold mb-4">Añade tu publicación</h2>
                     <textarea
-                        className="w-full p-2 border border-gray-300 rounded"
-                        rows={4}
-                        value={newConsumerPost}
-                        onChange={(e) => setNewConsumerPost(e.target.value)}
-                        placeholder="Añade tu publicación como un consumidor: publica tu petición y tus datos de contacto para empezar!"
+                        className="w-1/2 p-2 border border-gray-300 rounded"
+                        rows={6}
+                        value={newPost}
+                        onChange={(e) => setNewPost(e.target.value)}
+                        placeholder="Añade tu publicación: publica tu petición y tus datos de contacto para empezar!"
                     />
-                    <input type="file" accept="image/*" />
-                    <button
-                        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                        onClick={createConsumerPost}
-                    >
-                        Publicar
-                    </button>
+                    <div className="flex items-center mb-4">
+                        <label className="mr-4">
+                            <input
+                                type="checkbox"
+                                value="Usuario"
+                                checked={selectedOption === "Usuario"}
+                                onChange={() => handleCheckboxChange("Usuario")}
+                            />
+                            Usuario
+                        </label>
+                        <label className="mr-4">
+                            <input
+                                type="checkbox"
+                                value="Emprendedor"
+                                checked={selectedOption === "Emprendedor"}
+                                onChange={() => handleCheckboxChange("Emprendedor")}
+                            />
+                            Emprendedor
+                        </label>
+                        <label>
+                            <input
+                                type="checkbox"
+                                value="Empresa"
+                                checked={selectedOption === "Empresa"}
+                                onChange={() => handleCheckboxChange("Empresa")}
+                            />
+                            Empresa
+                        </label>
+                    </div>
+                    <div className="flex items-center mb-4">
+                        <button
+                            className="px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-600 flex mr-2"
+                            onClick={createPost}
+                        >
+                            Publicar
+                        </button>
+                        <button className="rounded-lg py-3 px-4 bg-gray-300 text-gray-400 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 font-sans">
+                            <FaPaperclip />
+                        </button>
+                    </div>
                 </div>
 
-                <br></br>
-                <h1>Las subidas de imagen se realizarán con Cloudinary.</h1>
+                <hr className="my-4 mx-4 border-gray-300" /> {/* Línea separadora */}
 
-                {/* Sección para añadir publicaciones de empresarios */}
                 <div className="p-4">
-                    <h2 className="text-2xl font-semibold mb-4">Añadir publicación de empresario</h2>
-                    <textarea
-                        className="w-full p-2 border border-gray-300 rounded"
-                        rows={4}
-                        value={newBusinessPost}
-                        onChange={(e) => setNewBusinessPost(e.target.value)}
-                        placeholder="Añade tu publicación como un empresario: publica tu petición y tus datos de contacto para empezar!"
-                    />
-                    <input type="file" accept="image/*" />
-                    <button
-                        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                        onClick={createBusinessPost}
-                    >
-                        Publicar
-                    </button>
-                </div>
-
-                {/* Sección para mostrar las publicaciones de consumidores */}
-                <div className="p-4">
-                    <h2 className="text-2xl font-semibold mb-4">Publicaciones de consumidores:</h2>
-                    {consumerPosts.map((post, index) => (
-                        <div key={index} className="border p-2 mb-2">{post}</div>
-                    ))}
-                </div>
-
-                {/* Sección para mostrar las publicaciones de empresarios */}
-                <div className="p-4">
-                    <h2 className="text-2xl font-semibold mb-4">Publicaciones de empresarios:</h2>
-                    {businessPosts.map((post, index) => (
+                    <h2 className="text-2xl font-semibold mb-4 text-4xl">Publicaciones</h2>
+                    {posts.map((post, index) => (
                         <div key={index} className="border p-2 mb-2">{post}</div>
                     ))}
                 </div>
