@@ -1,18 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import { FaRegCommentDots, FaRegListAlt, FaEllipsisH, FaBoxOpen, FaUser, FaPhone } from 'react-icons/fa';
+import { FaPhone } from 'react-icons/fa';
 import { MdMailOutline } from "react-icons/md";
-
-import { Pagination, Rate } from 'antd';
 
 import { supabase } from '../utils/Utils';
 
-import Separator from '../components/UI/separator';
-import ProductCard from "../components/productsCards/Card1";
-import Filters from "../components/filters";
-import Rating from "../components/rating"
-import AddProduct from '../components/addProduct';
+
 import { IoIosPin } from 'react-icons/io';
 
 export default function UserProfile() {
@@ -20,7 +13,9 @@ export default function UserProfile() {
     name: "",
     email: "",
     last_name: "",
-    profilepic:""
+    profilepic:"",
+    phoneNum: "",
+    dir: ""
     
   });
   
@@ -82,23 +77,42 @@ export default function UserProfile() {
       }
       
       console.log('User Data:', userData);
-      
+      if (userData && userData.id) {
+        addData(userData.id);
+      }
       setUserData(userData);
       
       
       
     } catch (error) {
       console.error('Error in fetchUserData:', error);
-      console.log(userData.profilepic)
     }
   }
   
- console.log(userData)
 
- const addData = async () => {
-
+ const addData = async (id) => {
+  const res = await supabase
+  .from("users")
+  .update([
+    {
+      phonenum: `${userData.phoneNum}`,
+      direction: `${userData.dir}`,
+    }
+  ])
+  .eq('id', id)
+  if (res.error === null && res.status === 201) {
+    setUserData(userData);
+    console.log(userData)
+}
  }
 
+ const handleFormInput = async (e:any) => {
+  e.preventDefault()
+  setUserData({ ...userData, [e.target.name]:e.target.value })
+  console.log(userData.dir, userData.phoneNum)
+ }
+
+ //Input con solo numeros
  const [value, setValue] = useState('')
   const handleInput = (event: { target: { value: string } }) => {
     const result = event.target.value.replace(/\D/g, '')
@@ -108,18 +122,20 @@ export default function UserProfile() {
   return (
     <>
       <div className='flex h-[100vh] w-full'>
-        <div className='p-5 border-r-2'>
+        <div className='p-5 border-r-[1.5px]'>
           <div className='flex flex-col items-center'>
-            <div className='w-[100px] sm:w-[200px] rounded-full'>
+            <div className='w-[100px] sm:w-[150px] rounded-full'>
               <img src={userData.profilepic} alt="Profile" />
             </div>
             <div className="text-center max-w-[200px] mt-5">
-              <h3 className='text-wrap text-xl font-semibold'>{userData.name} {userData.last_name}</h3>
+              <h3 className='text-wrap text-xl font-normal'>{userData.name} {userData.last_name}</h3>
             </div>
           </div>
           <hr className='mt-7'/>
-          <form onSubmit={(e) => {e.preventDefault; addData()}} className="flex flex-col items-center justify-center space-y-2 mt-7">
-            <h2 className='font-semibold mb-4 select-none'>- Añade datos adicionales -</h2>
+          <form onSubmit={(e) => {
+            e.preventDefault; 
+            addData}} className="flex flex-col items-center justify-center space-y-2 mt-7">
+            <h2 className='font-normal mb-4 select-none'>- Añade datos adicionales -</h2>
             <label className='flex'>
               <MdMailOutline size={25} className='text-violet-800 mr-2'/> 
               <p className='cursor-text'>
@@ -128,11 +144,16 @@ export default function UserProfile() {
             </label>
             <label className='flex items-center'>
               <FaPhone size={23} className='text-violet-800 mr-2'/>
-              <input type="text" onChange={handleInput} value={value} maxLength={10} className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]' />
+              <input type="text" name='phoneNum' value={value} maxLength={10} className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]'
+                onChange={(e) => {
+                  handleInput(e)
+                  handleFormInput
+                }} />
             </label>
             <label className='flex items-center'>
               <IoIosPin size={23} className='text-violet-800 mr-2'/>
-              <input type="text" className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]' />
+              <input type="text" name='dir' className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]' 
+                onChange={handleFormInput}/>
             </label>
             <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'
               type='submit'>

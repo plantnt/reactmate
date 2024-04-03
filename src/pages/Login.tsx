@@ -96,7 +96,8 @@ return(
                     </button>
                     <Separator />
                 </div>
-                <form id="loginform" className="grid w-full space-y-3 mt-[20px]"onSubmit={handlelogin}>
+                <form id="loginform" className="grid w-full space-y-3 mt-[20px]"
+                    onSubmit={handlelogin}>
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6" >
                         <label className="flex flex-col">
                             <p className="select-none">Email</p> 

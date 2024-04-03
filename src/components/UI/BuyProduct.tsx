@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IoIosAddCircleOutline, IoMdArrowDropleft,IoMdArrowDropright } from "react-icons/io"
 import { MdAttachMoney } from "react-icons/md";
 import { RiShoppingCartLine } from "react-icons/ri";
@@ -23,6 +25,12 @@ const BuyProduct = () => {
         document.getElementById("openArrow")!.style.display = "initial"
     }
 
+    const [isFavorite, setIsFavorite] = useState(false)
+
+    const handleFavorite = () => {
+        setIsFavorite((prevFavorite) => !prevFavorite)
+    }
+
     return(
         <>
         <div id="container" className="fixed flex items-center justify-left right-0 bottom-[120px] h-40 w-[400px] border rounded-lg p-3 bg-white transition-all z-[99] overflow-hidden">
@@ -41,8 +49,19 @@ const BuyProduct = () => {
                     </button>
                 </div>
                 <div className="flex items-center mt-2 gap-2">
-                    <IoIosAddCircleOutline />
-                    <p className="text-sm">Añadir a la lista de deseados</p>
+                    {isFavorite === true ? 
+                        <div className="flex items-center space-x-3">
+                            <FaRegHeart size={12} className="text-convenientOrange cursor-pointer"
+                                onClick={handleFavorite}/>
+                            <p className="text-sm">Añadir a favoritos </p>
+                        </div>
+                        :
+                        <div className="flex items-center space-x-3">
+                            <FaHeart size={12} className="text-convenientOrange cursor-pointer"
+                                onClick={handleFavorite}/>
+                            <p className="text-sm">Quitar de favoritos </p>
+                        </div>
+                     }
                 </div>
             </div>
         </div>

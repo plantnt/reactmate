@@ -61,11 +61,11 @@ export default function ProductView(){
           <Separator />
             <div className="lg:w-[950px] w-[500px] mt-4">
                <h2 className="text-xl font-semibold mb-3">Descripción</h2>
-               <p className="ml-4 text-justify leading-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
+               <p className="ml-4 text-justify leading-8 mb-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis, consequatur aliquam delectus officiis sint neque, sapiente iste? Eligendi debitis id impedit ab, ratione molestias recusandae laudantium laboriosam facilis consequatur reprehenderit dolores, magnam voluptatum.
                At fugit, et unde minus quae eligendi consequatur temporibus, perferendis, nisi veritatis incidunt itaque. Provident, error esse. Facilis fugiat quos reiciendis animi consectetur eius consequatur voluptate ut. Consequuntur, sunt sapiente.</p>
 
-               <Separator />
+               <hr />
               
                <h2 className="text-xl font-semibold justify-center align-center mt-10 text-center">Reseñas</h2>
               
@@ -76,7 +76,7 @@ export default function ProductView(){
                     </div>
                     </NavLink>
                  <p className="font-semibold">Nombre de usuario</p>
-               <Rate allowHalf disabled value={4} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <Rate allowHalf disabled value={4} className="flex items-center text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
@@ -88,7 +88,7 @@ export default function ProductView(){
                     </div>
                     </NavLink>
                  <p className="font-semibold">Nombre de usuario</p>
-               <Rate allowHalf disabled value={3} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <Rate allowHalf disabled value={3} className="flex items-center text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
@@ -100,7 +100,7 @@ export default function ProductView(){
                     </div>
                     </NavLink>
                  <p className="font-semibold">Nombre de usuario</p>
-               <Rate allowHalf disabled value={2} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <Rate allowHalf disabled value={2} className="flex items-center text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
