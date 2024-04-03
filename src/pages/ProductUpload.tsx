@@ -80,7 +80,6 @@ export default function Upload(){
       reader.onload = () => {
         if(typeof reader.result === 'string'){
           setItem2Src(reader.result)
-          setFormData({ ...formData, img_2: Item2Src})
           setImgCounter(imgCounter + 1)
           console.log(setImgCounter)
         }
@@ -100,7 +99,6 @@ export default function Upload(){
       reader.onload = () => {
         if(typeof reader.result === 'string'){
           setItem3Src(reader.result)
-          setFormData({ ...formData, img_3: Item3Src})
           setImgCounter(imgCounter + 1)
           console.log(setImgCounter)
         }
@@ -120,7 +118,6 @@ export default function Upload(){
       reader.onload = () => {
         if(typeof reader.result === 'string'){
           setItem4Src(reader.result)
-          setFormData({ ...formData, img_4: Item4Src})
           setImgCounter(imgCounter + 1)
           console.log(setImgCounter)
         }
@@ -140,7 +137,6 @@ export default function Upload(){
       reader.onload = () => {
         if(typeof reader.result === 'string'){
           setItem5Src(reader.result)
-          setFormData({ ...formData, img_5: Item5Src})
           setImgCounter(imgCounter + 1)
           console.log(setImgCounter)
         }
@@ -160,7 +156,6 @@ export default function Upload(){
       reader.onload = () => {
         if(typeof reader.result === 'string'){
           setItem6Src(reader.result)
-          setFormData({ ...formData, img_6: Item6Src})
           setImgCounter(imgCounter + 1)
           console.log(setImgCounter)
         }
