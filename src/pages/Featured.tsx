@@ -1,4 +1,8 @@
-import ProductCard from "../components/productCard"
+import Card1 from "../components/productsCards/Card1"
+import Card2 from "../components/productsCards/Card2"
+import Card3 from "../components/productsCards/Card3"
+import Card4 from "../components/productsCards/Card4"
+import Card5 from "../components/productsCards/Card5"
 import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
 
@@ -17,11 +21,11 @@ export default function FeaturedProducts(){
        </div>
         
         
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <Card1/>
+        <Card2/>
+        <Card3/>
+        <Card4/>
+        <Card5/>
       
        
         

@@ -9,7 +9,7 @@ import { Pagination, Rate } from 'antd';
 import { supabase } from '../utils/Utils';
 
 import Separator from '../components/UI/separator';
-import ProductCard from "../components/productCard";
+import ProductCard from "../components/productsCards/Card1";
 import Filters from "../components/filters";
 import Rating from "../components/rating"
 import AddProduct from '../components/addProduct';
