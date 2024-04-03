@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FaCommentDots, } from 'react-icons/fa';
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { IoCloseOutline } from "react-icons/io5";
 
 import cartIcon from '../../assets/cartIcon.png';
 import profileIcon from '../../assets/profileIcon.png';
@@ -15,10 +16,12 @@ import "./ui.css";
 const Navbar = () => {
     const [logged, setLogged] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
+    const windowWidth =  window.innerWidth;
 
     const handleBurgerMenu = () => {
         setShowMenu((prevMenu) => !prevMenu)
     }
+    console.log(windowWidth)
     return (
         <div className='relative'>
             <nav className="sticky top-0 flex sm:justify-center justify-between items-center space-x-9 w-full p-3 bg-white border-slate-300 border-b-[1px] z-50">
@@ -32,24 +35,29 @@ const Navbar = () => {
                         <FaMagnifyingGlass className="text-white"/>
                     </button>
                 </div>
-                <RxHamburgerMenu size={30} className=" text-convenientOrange cursor-pointer sm:hidden block"
-                onClick={handleBurgerMenu}/>
+                {!showMenu ? 
+                    <RxHamburgerMenu size={30} className=" text-convenientOrange cursor-pointer sm:hidden block"
+                    onClick={handleBurgerMenu}/>
+                    :
+                    <IoCloseOutline size={38} className=" text-convenientOrange cursor-pointer sm:hidden block"
+                    onClick={handleBurgerMenu}/>
+                 }
                 <div className="hidden sm:flex">     
                     <ul className="flex p-2 space-x-3 items-center">
                         <li>
                             <NavLink to='/cartPage'>
-                                <img src={cartIcon} className="w-[35px] h-auto" />
+                                <img src={cartIcon} className="w-[35px] h-auto" title='Carrito'/>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='/chatHome'>
-                                <FaCommentDots size={35} className="text-convenientPurple w-[70px]" /> 
+                                <FaCommentDots size={35} className="text-convenientPurple w-[70px]" title='Comunidad'/> 
                             </NavLink>
                         </li>
                         {logged === true ? 
                         <li>
                             <NavLink to='/profilePage'>
-                                <img src={profileIcon} className="w-[35px] h-auto"/>
+                                <img src={profileIcon} className="w-[35px] h-auto" title='Perfil'/>
                             </NavLink>
                         </li>
                         :
@@ -72,12 +80,37 @@ const Navbar = () => {
                 </div>
             </nav>
             {showMenu &&
-            <div className='sticky w-full bg-white z-50'>
-                <ul>
-                    <li>Op</li>
-                    <li>Op</li>
-                    <li>Op</li>
-                    <li>Op</li>
+            <div className='sticky sm:hidden block w-full p-5 bg-white z-50'>
+                <ul className='flex flex-col p-2 space-y-4'>
+                    <NavLink to='/profilePage'>
+                        <button onClick={handleBurgerMenu}>
+                            Mi perfil
+                        </button>
+                    </NavLink>
+                    <hr />
+                    <NavLink to='/cartPage'>
+                        <button onClick={handleBurgerMenu}>
+                            Carrito
+                        </button>
+                    </NavLink>
+                    <hr />
+                    <NavLink to='/chatHome'>
+                        <button onClick={handleBurgerMenu}>
+                            Comunidad
+                        </button>
+                    </NavLink>
+                    <hr />
+                    <NavLink to='/termsOfService'>
+                        <button onClick={handleBurgerMenu}>
+                            Términos y condiciones
+                        </button>
+                    </NavLink>
+                    <hr />
+                    <NavLink to='/helpPage'>
+                        <button onClick={handleBurgerMenu}>
+                            Ayuda
+                        </button>
+                    </NavLink>
                 </ul>
             </div>
             }
