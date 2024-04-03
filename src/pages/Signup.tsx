@@ -11,7 +11,6 @@ import Modal from "../components/Modal";
 
 
 export default function SignUp(){
-
     const avatarUrl = useRef("")
     const navigate = useNavigate()
 
@@ -74,9 +73,7 @@ export default function SignUp(){
     }
     const [error, setError] = useState(false)
 
-
-
-    const handleChange = async (e:any) => {
+    const handleFormInput = async (e:any) => {
         e.preventDefault();
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -90,9 +87,7 @@ export default function SignUp(){
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <form className="grid w-full space-y-3"
-                        onSubmit={(e:any) => {
-                            e.preventDefault()
-                            createUser()}}>
+                        onSubmit={(e) => {e.preventDefault(); createUser()}}>
                     <div className="flex flex-col items-center text-sm space-y-2">
                         <div className="group flex flex-col items-center justify-center self-center h-[100px] w-[100px] rounded-full border border-slate-300 hover:bg-opacity-60 transition-colors cursor-pointer">
                             {!openModal ? 
@@ -121,19 +116,33 @@ export default function SignUp(){
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6">
                         <label className="flex flex-col">
                             <p className="select-none">Nombre</p> 
-                            <input name="firstName" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent"/>
-                        </label>
-                        <label className="flex flex-col">
-                            <p className="select-none">Dirección de correo</p> 
-                            <input name="email" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}/>
+                            <input name="firstName" 
+                                onChange={handleFormInput} 
+                                type="text" 
+                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
                         </label>
                         <label className="flex flex-col">
                             <p className="select-none">Apellido</p> 
-                            <input name="lastName" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
+                            <input name="lastName" 
+                                onChange={handleFormInput} 
+                                type="text" 
+                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
+                        </label>
+                        <label className="flex flex-col">
+                            <p className="select-none">Dirección de correo</p> 
+                            <input name="email" 
+                                onChange={handleFormInput} 
+                                type="text" 
+                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
                         </label>
                         <label className="relative flex flex-col overflow-hidden">
-                            <p className="select-none">Contraseña</p>
-                            <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30}/>
+                            <p className="select-none">Contraseña <span className="text-gray-700">(min. 4 - max. 15)</span></p>
+                            <input name="password" 
+                                onChange={handleFormInput}
+                                minLength={4} 
+                                maxLength={15}
+                                type={!visible ? "text" : "password"} 
+                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" required/>
                             {visible === true ? (
                                 <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
                             ) : (

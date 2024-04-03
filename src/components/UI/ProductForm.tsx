@@ -107,7 +107,7 @@ const ProductForm = () => {
             </label>
             <label className='grid gap-2'>
               Descripción
-              <textarea ref={textAreaRef} className='px-1 border-2 rounded-md outline-none w-full h-[400px] text-gray-800' required maxLength={1000} spellCheck={false}></textarea>
+              <textarea ref={textAreaRef} className='px-1 border-2 rounded-md outline-none w-full h-[202px] text-gray-800' required maxLength={1000} spellCheck={false}></textarea>
               <span className='text-xs italic'>{charCount}/1000</span>
             </label>
         </div>

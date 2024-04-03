@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 import { FaCommentDots, } from 'react-icons/fa';
@@ -11,17 +11,38 @@ import profileIcon from '../../assets/profileIcon.png';
 import textLogo from '../../assets/textLogo.png';
 import furniLogo from '../../assets/furniLogo.png';
 
+import { supabase } from '../../utils/Utils';
+
 import "./ui.css";
 
 const Navbar = () => {
+    
     const [logged, setLogged] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
-    const windowWidth =  window.innerWidth;
-
+    
+    window.addEventListener('DOMContentLoaded', async () => {    
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+    
+      if (error) {
+        console.error('Error al obtener datos:', error.message);
+        return;
+      }
+    
+      if (data) {
+        console.log(data)
+        setLogged(true)
+        console.log(logged)
+      } else {
+        console.error('No se encontraron datos para la ID especificada.');
+      }
+    });
+    
     const handleBurgerMenu = () => {
         setShowMenu((prevMenu) => !prevMenu)
     }
-    console.log(windowWidth)
+
     return (
         <div className='relative'>
             <nav className="sticky top-0 flex sm:justify-center justify-between items-center space-x-9 w-full p-3 bg-white border-slate-300 border-b-[1px] z-50">
