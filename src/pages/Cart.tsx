@@ -39,35 +39,34 @@ const CartPage = () => {
   <div className="flex p-2 ml-4 top-0">
       <Rating/>
 
-    <div className="flex justify-center mt-4 mb-6 pl-8 items-center h-full space-x-6">
+    <div className="flex mt-4 mb-6 pl-8 items-center h-full space-x-6">
       
         <button
-           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-full ease-in-out duration-400"
            onClick={organizar}>
            Organizar
         </button>
         
         <button
-           className="border-red-500 bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded transition-full ease-in-out"
+           className="border-red-500 bg-red-500 hover:bg-red-600 hover:border-red-600 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded transition-full ease-in-out"
            onClick={eliminarTodo}>
            Eliminar Todo
         </button>
 
-      <div className="justify-center items-center">
-         <h2 className="text-gray-400 text-lg font-semibold">Costo total: ${calcularTotal()}</h2>
-      </div>
+      
     </div>
   </div>
        
-      <div className="flexbox pl-4 bg-gray-200 rounded-3xl max-w-[1100px] m-5">
+       <div className="w-full flex justify-left">
+       <div className="flexbox pl-3 bg-gray-200 rounded-3xl min-w-[100px] m-5 justify-center">
         {/* Renderizar la lista de productos */}
         {productos.map((producto) => (
           <CardCart key={producto.id} />
         ))}
       </div>
-      <div className="flex">
-     
-      
+       </div>
+       <div>
+         <h2 className="text-gray-400 text-lg font-semibold flex justify-center mr-20 mb-10">Costo total: ${calcularTotal()}</h2>
       </div>
     </>
   );

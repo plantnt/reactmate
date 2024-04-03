@@ -19,7 +19,7 @@ export default function SignUp(){
 // const supabaseC = useSupabaseClient()
 
 
-const handleLoginG = () =>{
+const handleGoogle = () =>{
     supabase.auth.signInWithOAuth({
         provider: 'google',
       })
@@ -89,7 +89,8 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-convenientPurple transition-all" onClick={() => handleLoginG()}>
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-convenientPurple transition-all" 
+                    onClick={handleGoogle}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
                     </button>

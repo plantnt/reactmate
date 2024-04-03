@@ -1,6 +1,6 @@
 import { IoIosClose } from "react-icons/io";
-import ImageCrop from "./ImageCropper";
 
+import ImageCrop from "./ImageCropper";
 
 const Modal = ({ updateAvatar, closeModal}) => { //ignorar error
   return(

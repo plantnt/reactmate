@@ -31,8 +31,7 @@ export default function UserProfile() {
     console.error('ID no encontrada en la URL.')
     return;
   }
-
-  const { data, error } = await supabase
+    const { data, error } = await supabase
     .from('users')
     .select('*')
     .eq('id', id)
@@ -57,7 +56,7 @@ export default function UserProfile() {
   }, []);
   
   
-  async function fetchUserData() {
+  const fetchUserData = async () => {
     try {
       const idS = localStorage.getItem('id')
       const { data: users, error } = await supabase
@@ -96,6 +95,10 @@ export default function UserProfile() {
   
  console.log(userData)
 
+ const addData = async () => {
+
+ }
+
  const [value, setValue] = useState('')
   const handleInput = (event: { target: { value: string } }) => {
     const result = event.target.value.replace(/\D/g, '')
@@ -115,7 +118,7 @@ export default function UserProfile() {
             </div>
           </div>
           <hr className='mt-7'/>
-          <form action='' className="flex flex-col items-center justify-center space-y-2 mt-7">
+          <form onSubmit={(e) => {e.preventDefault; addData()}} className="flex flex-col items-center justify-center space-y-2 mt-7">
             <h2 className='font-semibold mb-4 select-none'>- Añade datos adicionales -</h2>
             <label className='flex'>
               <MdMailOutline size={25} className='text-violet-800 mr-2'/> 
@@ -131,7 +134,8 @@ export default function UserProfile() {
               <IoIosPin size={23} className='text-violet-800 mr-2'/>
               <input type="text" className='outline-none border-2 border-violet-800 px-1 rounded-[4px] w-[150px]' />
             </label>
-            <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'>
+            <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'
+              type='submit'>
               Actualizar datos
             </button>
           </form>

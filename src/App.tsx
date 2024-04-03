@@ -12,7 +12,7 @@ import ChatPage from './pages/ChatHome'
 import UserChats from './pages/Chats'
 import ServicesChat from './pages/ChatServices'
 import TosPage from './pages/ToS'
-import Upload from './pages/ProductUpload'
+import ProductUpload from './pages/ProductUpload'
 import Chat from './pages/ChatView'
 import Profile from './pages/Profile'
 import UserBrowser from './pages/UserBrowser'
@@ -39,13 +39,13 @@ const App = () => {
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
           <Route path='/productPage' element={<ProductView/>} />
+          <Route path='/productUpload' element={<ProductUpload/>} />
           <Route path='/chatHome' element={<ChatPage/>} />
           <Route path='/chatingPage' element={<UserChats/>} />
           <Route path='/chatingServices' element={<ServicesChat/>} />
           <Route path='/chatView' element={<Chat/>} />
           <Route path='/userBrowser' element={<UserBrowser/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
-          <Route path='/productUpload' element={<Upload/>} />
         </Routes>
         <FooterVisible>
           <Footer/>
