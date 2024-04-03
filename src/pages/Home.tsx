@@ -8,6 +8,7 @@ import './styles/home.css'
 import { Pagination } from "antd"
 
 const Home = () => {
+    
     return(
         <>
             <div className="h-full w-full flex flex-col">
