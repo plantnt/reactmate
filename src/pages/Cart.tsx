@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { FaCartShopping } from 'react-icons/fa6';
 import CardCart from '../components/cardcart';
 import Rating from '../components/rating';
+import { SiVisa } from "react-icons/si";
+import { FaCcMastercard } from "react-icons/fa";
+import { SiNubank } from "react-icons/si";
 
 const CartPage = () => {
   const [productos, setProductos] = useState([
@@ -32,7 +35,9 @@ const CartPage = () => {
 
   return (
     <>
-      <h1 className="text-5xl pl-8 pt-8 pb-8 font-bold text-purple-400 flex">
+    <div className="flex">
+    <div>
+    <h1 className="text-5xl pl-8 pt-8 pb-8 font-bold text-purple-400 flex">
         Tu Carrito ‎ <FaCartShopping className="pt-2" />
       </h1>
 
@@ -64,10 +69,59 @@ const CartPage = () => {
           <CardCart key={producto.id} />
         ))}
       </div>
+      
        </div>
        <div>
-         <h2 className="text-gray-400 text-lg font-semibold flex justify-center mr-20 mb-10">Costo total: ${calcularTotal()}</h2>
+         <h2 className="text-gray-400 text-lg font-semibold flex justify-end mr-6 mb-10">Costo total: ${calcularTotal()}</h2>
       </div>
+    </div>
+
+         <div className="w-[400px] h-[1x0vh] bg-[#E2D6FB] space-y-4 ml-44 p-2">
+          <h2 className="font-bold text-2xl p-4 text-violet-700">Factura del carrito</h2>
+
+          <div>
+          <h1 className="font-bold text-lg p-4 flex justify-center">Metodo de pago</h1>
+          <div className="flex space-x-5 justify-center">
+
+          <button className="text-violet-800 hover:text-violet-500 transition-all ease-in-out duration-300">
+          <FaCcMastercard size={40}/>
+          </button>
+
+          <button className="text-violet-800 hover:text-violet-500 transition-all ease-in-out duration-300">
+         <SiVisa size={40}/>
+          </button>
+
+          <button className="text-violet-800 hover:text-violet-500 transition-all ease-in-out duration-300">
+          <SiNubank size={40}/>
+          </button>
+          </div>
+          </div>
+
+
+          <div className="grid justify-items-center">
+          <h1 className="font-bold text-lg mt-6">Numero de tarjeta</h1>
+          <input type="number" className="px-2 border-b-violet-700 border-b-2 focus:outline-none bg-[#E2D6FB] mb-6" />
+          </div>
+
+          <div className="flex space-x-4 justify-center mt-4">
+
+            <div className="grid justify-items-center space-y-2">
+              <h2 className="font-bold">Fecha de Expiracion</h2>
+            <input type="date" className="px-2  border-b-violet-700 border-b-2 focus:outline-none bg-[#E2D6FB]"/>
+            </div>
+            <div className="grid justify-items-center space-y-2">
+              <h2 className="font-bold">Codigo de Seguridad</h2>
+            <input type="number" className="px-2  border-b-violet-700 border-b-2 focus:outline-none bg-[#E2D6FB]"/>
+            </div>
+
+          </div>
+          
+<button className="flex justify-center bg-violet-600 hover:bg-violet-700 transition-all ease-in-out duration-400 text-white font-bold px-2 w-full">
+  Confirmar
+</button>
+         </div>
+    </div>
+    
     </>
   );
 };
