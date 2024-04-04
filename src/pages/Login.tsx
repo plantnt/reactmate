@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import { supabase } from "../utils/Utils";
 import { useUser, useSupabaseClient} from "@supabase/auth-helpers-react"
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
@@ -14,6 +14,8 @@ import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 export default function SignUp(){
     const [status, setStatus] = useState(false)
     const [failure, setFailure] = useState(false)
+
+    const navigate = useNavigate()
 
 // const User= useUser()
 // const supabaseC = useSupabaseClient()
@@ -58,8 +60,8 @@ const [visible, setVisible] = useState(true)
                 }, 5000);
                 setTimeout(() => {
                     console.log('Usuario ha iniciado sesión correctamente:', user);
-                    window.location.href = `/profilePage?id=${user.id}`;
-                    localStorage.setItem('id', user.id);  
+                    navigate(`/profilePage/${user.id}`);  
+                    console.log(user.id)
                 }, 2000)
                 
                 } else{
@@ -129,7 +131,7 @@ return(
                     <FaCircleCheck size={20} className="text-green-400" />
                     Ha ingresado correctamente
                 </div>
-                )}
+            )}
             {failure === false? (
                 <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
                 ) : (
@@ -137,7 +139,7 @@ return(
                     <FaCircleXmark size={20} className="text-red-400" />
                     Ha habido un problema
                 </div>
-                )}
+            )}
         </div>
     )
 }

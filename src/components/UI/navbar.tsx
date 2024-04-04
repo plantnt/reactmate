@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { FaCommentDots, } from 'react-icons/fa';
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -15,30 +15,26 @@ import { supabase } from '../../utils/Utils';
 
 import "./ui.css";
 
-const Navbar = () => {
-    
+const Navbar = () => {  
     const [logged, setLogged] = useState(false)
+    const [userId, setUserId] = useState(null)
+
     const [showMenu, setShowMenu] = useState(false)
+
+    useEffect(() => {
+        const userSession = checkSession()
+        if(userSession){    
+            const userId = localStorage.getItem('userId') 
+            setUserId(userId)
+            setLogged(true)
+            console.log(userId)
+        }
+    }, [])
     
-    window.addEventListener('DOMContentLoaded', async () => {    
-      const { data, error } = await supabase
-        .from('users')
-        .select('*')
-    
-      if (error) {
-        console.error('Error al obtener datos:', error.message);
-        return;
-      }
-    
-      if (data) {
-        console.log(data)
-        setLogged(true)
-        console.log(logged)
-      } else {
-        console.error('No se encontraron datos para la ID especificada.');
-      }
-    });
-    
+    const checkSession = () => {
+        return !!localStorage.getItem('userId')
+    }
+
     const handleBurgerMenu = () => {
         setShowMenu((prevMenu) => !prevMenu)
     }
@@ -50,11 +46,18 @@ const Navbar = () => {
                     <img src={textLogo} className=" sm:block w-36 h-auto hidden"/>
                     <img src={furniLogo} className=" block w-16 h-auto sm:hidden"/>
                 </NavLink>
-                <div className='sm:w-[30%] w-[10%] flex items-center4'>
-                    <input type="text" className="bg-slate-200 rounded-l-3xl outline-none px-2 h-7 text-gray-900 w-[85%] hidden sm:block"/>
-                    <button className="flex justify-center items-center sm:rounded-l-none rounded-3xl  h-7 w-14 bg-furnipurple cursor-pointer">
-                        <FaMagnifyingGlass className="text-white"/>
-                    </button>
+                <div className='sm:w-[30%]'>
+                    <form action="" className='flex items-center4'>
+                        <input type="search" className="bg-slate-200 rounded-l-3xl outline-none px-2 h-7 text-gray-900 w-[85%] hidden sm:block"/>
+                        <button className="justify-center items-center sm:rounded-l-none rounded-3xl  h-7 w-14 bg-furnipurple cursor-pointer hidden sm:flex">
+                            <FaMagnifyingGlass className="text-white"/>
+                        </button>
+                    </form>
+                    <form className="sm:hidden block relative mx-auto w-max">
+                        <input type="search" 
+                            className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-convenientPurple focus:pl-16 focus:pr-4" />
+                        <FaMagnifyingGlass className="absolute top-4 left-4 text-slate-800 cursor-pointer border-gray-500"/>
+                    </form>
                 </div>
                 {!showMenu ? 
                     <RxHamburgerMenu size={30} className=" text-convenientOrange cursor-pointer sm:hidden block"
@@ -75,9 +78,9 @@ const Navbar = () => {
                                 <FaCommentDots size={35} className="text-convenientPurple w-[70px]" title='Comunidad'/> 
                             </NavLink>
                         </li>
-                        {logged === true ? 
+                        {logged === false ? 
                         <li>
-                            <NavLink to='/profilePage'>
+                            <NavLink to={`/profilePage/${userId}`}>
                                 <img src={profileIcon} className="w-[35px] h-auto" title='Perfil'/>
                             </NavLink>
                         </li>

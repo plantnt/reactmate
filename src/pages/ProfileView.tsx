@@ -107,7 +107,7 @@ export default function Profile() {
                     <span className="text-base font-rounded">Ver en Catálogo</span>
                   </button>
                 </a>
-                <a href="http://localhost:3000/profilePage">
+                <a href="http://localhost:3000/profilePage/:userId">
                   <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
                     <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
                     <span className="text-base font-rounded text-gray-400">*Modo Usuario*</span>

@@ -10,6 +10,7 @@ export default {
       center: true
     },
     colors:{
+      transparent: 'transparent',
       white: '#FFFFFF',
       furnipurple: '#945aff',
       furniorange: '#FF886D',

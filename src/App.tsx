@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom'
 
 import Navbar from './components/UI/navbar'
 import Home from './pages/Home'
@@ -33,7 +33,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/cartPage' element={<Cart/>} />
-          <Route path='/profilePage' element={<Profile/>} />
+          <Route path='/profilePage/:userId' element={<Profile/>} />
           <Route path='/profilePageView' element={<ProfileView/>} />
           <Route path='/logIn' element={<LogIn/>} />
           <Route path='/signUp' element={<SignUp/>} />
