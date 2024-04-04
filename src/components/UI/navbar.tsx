@@ -1,4 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { FaCommentDots, } from 'react-icons/fa';
@@ -21,19 +21,6 @@ const Navbar = () => {
 
     const [showMenu, setShowMenu] = useState(false)
 
-    useEffect(() => {
-        const userSession = checkSession()
-        if(userSession){    
-            const userId = localStorage.getItem('userId') 
-            setUserId(userId)
-            setLogged(true)
-            console.log(userId)
-        }
-    }, [])
-    
-    const checkSession = () => {
-        return !!localStorage.getItem('userId')
-    }
 
     const handleBurgerMenu = () => {
         setShowMenu((prevMenu) => !prevMenu)
@@ -78,7 +65,7 @@ const Navbar = () => {
                                 <FaCommentDots size={35} className="text-convenientPurple w-[70px]" title='Comunidad'/> 
                             </NavLink>
                         </li>
-                        {logged === false ? 
+                        {logged === true ? 
                         <li>
                             <NavLink to={`/profilePage/${userId}`}>
                                 <img src={profileIcon} className="w-[35px] h-auto" title='Perfil'/>

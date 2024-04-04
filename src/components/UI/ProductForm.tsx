@@ -90,11 +90,11 @@ const ProductForm = () => {
         }
       })
 
-      const [titulo, setTitulo] = useState("");
-      const [precio, setPrecio] = useState("");
-      const [material, setMaterial] = useState("");
-      const [categoria, setCategoria] = useState("");
-      const [descripcion, setDescripcion] = useState("");
+      // const [titulo, setTitulo] = useState("");
+      // const [precio, setPrecio] = useState("");
+      // const [material, setMaterial] = useState("");
+      // const [categoria, setCategoria] = useState("");
+      // const [descripcion, setDescripcion] = useState("");
       
 
 

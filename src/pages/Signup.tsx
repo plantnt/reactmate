@@ -118,21 +118,21 @@ export default function SignUp(){
                             <input name="firstName" 
                                 onChange={handleFormInput} 
                                 type="text" 
-                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
+                                className="w-[400px] outline-none p-2 rounded-md bg-white" maxLength={30} required/>
                         </label>
                         <label className="flex flex-col">
                             <p className="select-none">Apellido</p> 
                             <input name="lastName" 
                                 onChange={handleFormInput} 
                                 type="text" 
-                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
+                                className="w-[400px] outline-none p-2 rounded-md bg-white" maxLength={30} required/>
                         </label>
                         <label className="flex flex-col">
                             <p className="select-none">Dirección de correo</p> 
                             <input name="email" 
                                 onChange={handleFormInput} 
                                 type="text" 
-                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required/>
+                                className="w-[400px] outline-none p-2 rounded-md bg-white" maxLength={30} required/>
                         </label>
                         <label className="relative flex flex-col overflow-hidden">
                             <p className="select-none">Contraseña <span className="text-gray-700">(min. 4 - max. 15)</span></p>
@@ -141,7 +141,7 @@ export default function SignUp(){
                                 minLength={4} 
                                 maxLength={15}
                                 type={!visible ? "text" : "password"} 
-                                className="w-[400px] outline-none p-2 rounded-md bg-transparent" required/>
+                                className="w-[400px] outline-none p-2 rounded-md bg-white" required/>
                             {visible === true ? (
                                 <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>
                             ) : (
