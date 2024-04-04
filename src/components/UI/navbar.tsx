@@ -88,12 +88,12 @@ const Navbar = () => {
                         <li>
                             <div className="flex flex-row space-x-3">
                                 <NavLink to='/logIn'>
-                                    <button className="flex justify-center items-center bg-[#945aff] hover:bg-[#7b5aff] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all">
+                                    <button className="flex justify-center items-center bg-[#945aff] hover:bg-[#7b5aff] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all ease-in-out">
                                         ENTRAR
                                     </button>
                                 </NavLink>
                                 <NavLink to='/signUp'>
-                                    <button className="flex justify-center items-center bg-[#ff6c6c] hover:bg-[#f65858] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all">
+                                    <button className="flex justify-center items-center bg-[#ff6c6c] hover:bg-[#f65858] px-3 h-10 w-[120px] text-white font-semibold hover:font-black rounded-2xl transition-all ease-in-out">
                                         REGISTRARSE
                                     </button>
                                 </NavLink>
