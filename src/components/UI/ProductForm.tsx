@@ -13,27 +13,27 @@ const ProductForm = () => {
     const material: SelectProps['options'] = [
         {
           label: 'Madera',
-          value: '1',
+          value: 'Madera',
           desc: 'Madera',
         },
         {
           label: 'Plástico',
-          value: '2',
+          value: 'Plastico',
           desc: 'Plástico',
         },
         {
           label: 'Madera reciclada',
-          value: '3',
+          value: 'Madera reciclada',
           desc: 'Madera reciclada',
         },
         {
           label: 'Plástico reciclado',
-          value: '4',
+          value: 'Plastico reciclado',
           desc: 'Plástico reciclado',
         },
         {
           label: 'Tela',
-          value: '5',
+          value: 'Tela',
           desc: 'Tela',
         },
       ];
@@ -41,27 +41,27 @@ const ProductForm = () => {
     const categoria: SelectProps['options'] = [
         {
           label: 'Mueble de sala',
-          value: '1',
+          value: 'Mueble de sala',
           desc: 'Mueble de sala',
         },
         {
           label: 'Mueble de exteriores',
-          value: '2',
+          value: 'Mueble de exteriores',
           desc: 'Mueble de exteriores',
         },
         {
           label: 'Mueble de cocina',
-          value: '3',
+          value: 'Mueble de cocina',
           desc: 'Mueble de cocina',
         },
         {
           label: 'Mueble restaurado',
-          value: '4',
+          value: 'Mueble restaurado',
           desc: 'Mueble restaurado',
         },
         {
           label: 'Mueble de playa',
-          value: '5',
+          value: 'mueble de playa',
           desc: 'Mueble de playa',
         },
       ];
@@ -90,12 +90,20 @@ const ProductForm = () => {
         }
       })
 
+      const [titulo, setTitulo] = useState("");
+      const [precio, setPrecio] = useState("");
+      const [material, setMaterial] = useState("");
+      const [categoria, setCategoria] = useState("");
+      const [descripcion, setDescripcion] = useState("");
+      
+
+
     return(
       <>
         <div className="flex flex-col w-[400px] space-y-5">
             <label className='grid'>
                 Titulo
-                <input type="text" className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" required maxLength={1000}/>
+                <input name="title" type="text" className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" required maxLength={1000}/>
             </label>
             <label className='grid'>
                 Precio
@@ -107,7 +115,7 @@ const ProductForm = () => {
             </label>
             <label className='grid gap-2'>
               Descripción
-              <textarea ref={textAreaRef} className='px-1 border-2 rounded-md outline-none w-full h-[202px] text-gray-800' required maxLength={1000} spellCheck={false}></textarea>
+              <textarea ref={textAreaRef} name="description" className='px-1 border-2 rounded-md outline-none w-full h-[202px] text-gray-800' required maxLength={1000} spellCheck={false}></textarea>
               <span className='text-xs italic'>{charCount}/1000</span>
             </label>
         </div>
@@ -115,6 +123,7 @@ const ProductForm = () => {
             <label className='grid'>
                 Material
                 <Select
+                id="Mopcion"
                 style={{ width: '200px' }}
                 placeholder="Seleccione una categoría"
                 onChange={handleChange}
@@ -129,6 +138,7 @@ const ProductForm = () => {
               <label className='grid'>
                   Categoría
                   <Select
+                  id="Copcion"
                   mode="multiple"
                   style={{ width: '200px' }}
                   placeholder="Seleccione una categoría"
