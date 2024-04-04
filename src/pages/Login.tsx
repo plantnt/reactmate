@@ -91,7 +91,7 @@ return(
                     <IoIosClose  size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"/>
                 </NavLink>
                 <div className="flex flex-col items-center w-full">
-                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 hover:border-4 hover:border-convenientPurple transition-all" 
+                    <button className="flex items-center justify-center text-lg bg-white py-2 w-[260px] mb-[40px] rounded-full hover:bg-opacity-70 border-4 border-white hover:border-4 hover:border-convenientPurple transition-all" 
                     onClick={handleGoogle}>
                         <img src={googleIcon} className="h-[30px] mr-4"/>
                         Google
@@ -102,12 +102,12 @@ return(
                     <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6" >
                         <label className="flex flex-col">
                             <p className="select-none">Email</p> 
-                            <input name="email" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-transparent" required/>
+                            <input name="email" onChange={handleChange} type="text" className="w-[400px] outline-none p-2 rounded-md bg-white" required/>
                         </label>
                         <label className="relative flex flex-col">
                             <p className="select-none">Contraseña</p>
                             <input name="password" onChange={handleChange} type={!visible ? "text" : "password"} 
-                                    className="w-[400px] outline-none p-2 rounded-md bg-transparent" maxLength={30} required
+                                    className="w-[400px] outline-none p-2 rounded-md bg-white" maxLength={30} required
                                     />
                                 {visible === true ? (
                                     <IoMdEye size={22} className="absolute top-[33px] right-4 text-slate-500 cursor-pointer" onClick={() => handleClick()}/>

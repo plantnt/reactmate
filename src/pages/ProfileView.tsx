@@ -5,7 +5,6 @@ import Filters from "../components/filters";
 import Rating from "../components/rating";
 import RatingUser from '../components/ratingUser';
 import { Pagination } from 'antd';
-import RatingProfile from '../components/ratingProfile';
 import { NavLink } from 'react-router-dom';
 
 export default function Profile() {
@@ -68,7 +67,7 @@ export default function Profile() {
               <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold pt-4">
                 <h1 className="text-2xl font-rounded">{userData.username}</h1>
                 <p className="text-indigo-700 font-semibold font-rounded">EMPRENDEDOR</p>
-                <div className="flex justify-center items-center mr-20"><RatingProfile /></div>
+                <div className="flex justify-center items-center mr-20"></div>
               </div>
               <br />
               <p className="mt-2 mb-4 text-gray-500 font-rounded">
