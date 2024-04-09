@@ -1,9 +1,37 @@
 import { PlusCircle } from "lucide-react"
+import { FaLeaf } from "react-icons/fa"
 export default function Filters(){
     return(
-        <div className="absolute left-0">
+        <div className="-pl-10 left-0">
             <div id="filters" className="w-[17rem] py-5 pl-5 pr-10 border-t-[1px] border-r-[1px] border-b-[1px] rounded-r-lg border-slate-300 bg-white ">
-                <h2 className="font-bold mb-3">Categorías</h2>
+            <h2 className="font-bold mb-3">Producto</h2>
+                <ul className="flex flex-col space-y-2">
+                <li className="flex items-center">
+                        <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
+                        <span className="mr-2">Restaurado</span>
+                        <FaLeaf className="text-green-300"/>
+                    </li>
+                    <li className="flex items-center">
+                        <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
+                        <span className="mr-2">Artesanal</span>
+                        <FaLeaf className="text-green-300"/>
+                    </li>
+                    <li>
+                        <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
+                        Segunda mano
+                    </li>
+                    <li>
+                        <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
+                        Nuevo
+                    </li>
+                    <li>
+                        <label htmlFor="IconCirclePlus" className="flex items-center">
+                            <PlusCircle size={20} color="gray" className="cursor-pointer mr-2 hover:opacity-50 transition-all" />
+                            Ver más
+                        </label>
+                    </li>
+                </ul>
+                <h2 className="font-bold mb-3 mt-8">Categorías</h2>
                 <ul className="flex flex-col space-y-2">
                     <li>
                         <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
@@ -59,13 +87,15 @@ export default function Filters(){
                         <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
                         Madera
                     </li>
-                    <li>
+                    <li className="flex items-center">
                         <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
-                        Madera reciclada
+                        <span className="mr-2">Madera reciclada</span>
+                        <FaLeaf className="text-green-300"/>
                     </li>
-                    <li>
+                    <li className="flex items-center">
                         <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
-                        Plástico reciclado
+                        <span className="mr-2">Plástico reciclado</span>
+                        <FaLeaf className="text-green-300"/>
                     </li>
                     <li>
                         <input type="checkbox" className="accent-violet-500 w-5 mr-2"/>
