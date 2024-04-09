@@ -25,6 +25,11 @@ export default function FeaturedProducts(){
       <FeaturedProducts />
       <FeaturedProducts />
       <FeaturedProducts /> */}
+      <Card1/>
+      <Card2/>
+      <Card3/>
+      <Card4/>
+      <Card5/>
       <div className="pl-8 flex justify-center items-center">
         <button className="bg-gray-700 bg-opacity-15 rounded-full h-10 w-10 p-2 flex justify-center items-center text-white hover:bg-opacity-40 ease-in-out duration-1000">
         <SlArrowRight/>

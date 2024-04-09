@@ -10,7 +10,7 @@ export default function Card3(){
                     <Card.Body className="p-3">
                         <Card.Title>Titulo</Card.Title>
                         <Card.Text className="font-bold">
-                            $777.77
+                        COP $777.77
                         </Card.Text>
                     </Card.Body>
                 </Card>
