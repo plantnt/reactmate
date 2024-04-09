@@ -14,14 +14,15 @@
 
 ## .env
 # Supabase
-  >VITE_SUPABASE_URL = 'https://bvbyifqplonojbgaeafg.supabase.co'
+  >VITE_SUPABASE_URL = 'https://yjcnwxwxhatwcnngwsnm.supabase.co'
 
-  >VITE_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2YnlpZnFwbG9ub2piZ2FlYWZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg0MzA2ODAsImV4cCI6MjAyNDAwNjY4MH0.16txlFiUZ7kfJuCDe8G5aWu2gUg_455R6dmp5f5nFHY'
+>VITE_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqY253eHd4aGF0d2Nubmd3c25tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI2NjY2NzMsImV4cCI6MjAyODI0MjY3M30._Uu8BTc2w6IAFe8yIIHEmwEWd9WmfRlPwIv-8MgQwU0'
+
 ## Instalar supabase
 
   >npm install @supabase/supabase-js 
   ## contraseña de la base de datos
-  >tpPUdLRmqOzki9u
+  >xr61gHitqxuPEfCG
 
  ## cosita del supabase
  npm i @supabase/auth-helpers-react
