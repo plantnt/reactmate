@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const Chat = () => {
     // Lista de mensajes de ejemplo
     const [messages, setMessages] = useState([
-        { user: "Usuario 1", text: "Hola, ¿cómo estás?" },
-        { user: "Usuario 2", text: "¡Hola! Estoy bien, ¿y tú?" },
+        { user: "Usuario1", text: "Buenas, estoy interesado en el servicio que ofreces" },
+        { user: "Tu", text: "Hola, vale ya te confirmo si tenemos los materiales" },
     ]);
 
     // Función para enviar un mensaje
@@ -20,7 +20,7 @@ const Chat = () => {
 
     return (
         <>
-            <div className="bg-gradient-to-r from-purple-500 to-indigo-500 py-8 flex justify-between items-center">
+            <div className="bg-gradient-to-r from-purple-500 to-purple-100 py-8 flex justify-between items-center">
                 {/* Botón de regreso */}
                 <NavLink to="/chatingPage" className="ml-4 text-white hover:text-gray-200"><FaArrowLeft /></NavLink>
                 {/* Título */}
