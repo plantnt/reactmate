@@ -8,7 +8,8 @@ import { MdMailOutline } from "react-icons/md";
 import { supabase } from '../utils/Utils';
 
 import { IoIosCloseCircle, IoIosPin } from 'react-icons/io';
-import { FaCircleCheck } from 'react-icons/fa6';
+import { FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
+import ProductCard from '../components/productCard';
 
 export default function UserProfile() {
   const { userId } = useParams()
@@ -72,11 +73,10 @@ export default function UserProfile() {
       if(data){
         setUpdateError(false)
         setUpdated(true)
-        setUpdated(true)
         setTimeout(() => {
           setUpdated(false)
         }, 2000);
-        window.location.reload()
+        setShowEditNum(false)
       }
        } catch (error) {
        console.error('Error updating profile:', error.message);
@@ -106,11 +106,11 @@ export default function UserProfile() {
         if(data){
           setUpdateError(false)
           setUpdated(true)
-          setUpdated(true)
           setTimeout(() => {
             setUpdated(false)
+            setShowEditAddress(false)
           }, 2000);
-          window.location.reload()
+          
         }
          } catch (error) {
          console.error('Error updating profile:', error.message);
@@ -235,7 +235,7 @@ export default function UserProfile() {
               }
             </form>
           </div>
-          {updated === false? (
+          {updated === false ? (
             <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
             ) : (
               <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
@@ -243,12 +243,23 @@ export default function UserProfile() {
                     Datos actualizados
                 </div>
             )}
+          {updateError === false ? (
+            <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
+            ) : (
+              <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
+                    <FaCircleXmark size={20} className="text-red-400" />
+                    Ocurrió un error
+                </div>
+            )}
         </div>
-        <div className=''>
-          fd
-        </div>
-        <div className=''>
-          fd
+        
+        <div className='flex flex-wrap gap-3 p-3 w-full'>
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </div>
       </div>
     </>

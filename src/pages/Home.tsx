@@ -6,6 +6,8 @@ import AddProduct from "../components/addProduct"
 import './styles/home.css'
 
 import { Pagination } from "antd"
+import ProductCard from "../components/productCard"
+import Catalog from "../components/catalog"
 
 const Home = () => {
     
@@ -13,30 +15,13 @@ const Home = () => {
         <>
             <div className="h-full w-full flex flex-col">
                 <FeaturedProducts />
-                <div className="grid grid-flow-col">
-                    <Filters/>      
+                <div className="flex justify-center w-full">
+                    <Filters/>
                     <div className="max-w-[60rem] justify-self-start">
                         <div className="mt-3">
                             <Rating/>
                         </div>
-                        <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                            <Card1/>
-                        </div>
-                        
+                        <Catalog />
                     </div>
                     <AddProduct/>
                 </div>
