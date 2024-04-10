@@ -5,7 +5,6 @@ import Card4 from "../components/productsCards/Card4"
 import Card5 from "../components/productsCards/Card5"
 import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
-import ProductCard from "../components/productCard"
 
 export default function FeaturedProducts(){
  return(
