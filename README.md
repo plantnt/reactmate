@@ -14,9 +14,9 @@
 
 ## .env
 # Supabase
-  >VITE_SUPABASE_URL = 'https://yjcnwxwxhatwcnngwsnm.supabase.co'
+  >VITE_SUPABASE_URL = 'https://ieycwtqvgbpsbsbiwegu.supabase.co'
 
->VITE_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqY253eHd4aGF0d2Nubmd3c25tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI2NjY2NzMsImV4cCI6MjAyODI0MjY3M30._Uu8BTc2w6IAFe8yIIHEmwEWd9WmfRlPwIv-8MgQwU0'
+  >VITE_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlleWN3dHF2Z2Jwc2JzYml3ZWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI3NzE3OTUsImV4cCI6MjAyODM0Nzc5NX0.VJZPCRS7fQW63PLXzAzu6IihQqcnA7O6vpeHRlAvYhM'
 
 ## Instalar supabase
 
