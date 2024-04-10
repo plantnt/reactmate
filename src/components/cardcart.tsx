@@ -28,7 +28,7 @@ export default function CardCart() {
             {/* Componente de Información del Carrito */}
             <div className="w-[30%] ">
                 <h2 className="font-black text-xl w-full h-full">{title}</h2>
-                <h4 className="font-bold text-sm w-full h-full pb-2">${price}</h4>
+                <h4 className="font-bold text-sm w-full h-full pb-2">COP ${price}</h4>
                 <Rate allowHalf disabled value={4} className="flex align-center text-violet-400 text-sm bg-purple-200 rounded-full px-2 w-min" />
                 <div className="flex flex-wrap gap-1 w-full mt-1">
                 <div className="w-[40px] h-[40px] border p-[2.5px] rounded-sm hover:cursor-pointer">

@@ -62,7 +62,7 @@ const CartPage = () => {
     </div>
   </div>
        
-       <div className="w-full flex justify-left">
+       <div className="w-full flex justify-start">
        <div className="flexbox pl-3 bg-gray-200 rounded-3xl min-w-[100px] m-5 justify-center">
         {/* Renderizar la lista de productos */}
         {productos.map((producto) => (
@@ -76,7 +76,7 @@ const CartPage = () => {
       </div>
     </div>
 
-         <div className="w-[400px] h-[1x0vh] bg-[#E2D6FB] space-y-4 ml-44 p-2">
+         <div className="w-[400px] h-[1x0vh] bg-[#E2D6FB] space-y-4 p-2">
           <h2 className="font-bold text-2xl p-4 text-violet-700">Factura del carrito</h2>
 
           <div>

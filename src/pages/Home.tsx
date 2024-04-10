@@ -1,4 +1,3 @@
-import Card1 from "../components/productsCards/Card1"
 import Filters from "../components/filters"
 import Rating from "../components/rating"
 import FeaturedProducts from "./Featured"
@@ -6,7 +5,7 @@ import AddProduct from "../components/addProduct"
 import './styles/home.css'
 
 import { Pagination } from "antd"
-import ProductCard from "../components/productCard"
+
 import Catalog from "../components/catalog"
 
 const Home = () => {

@@ -1,13 +1,6 @@
-import { Rate } from 'antd'
-import { NavLink } from 'react-router-dom'
+import Card1 from "./productsCards/Card1"
 
-import product1 from '../assets/products/1.jpg'
-import product2 from '../assets/products/2.jpg'
-import product3 from '../assets/products/3.jpg'
-import product4 from '../assets/products/4.jpg'
-import product5 from '../assets/products/5.jpg'
-
-type ImageUrl = string
+/*type ImageUrl = string
 const images: ImageUrl[] = [
         product1,
         product2,
@@ -46,4 +39,18 @@ const FeaturedProducts: React.FC = () => {
     )
 }
 
+export default FeaturedProducts */
+
+export function FeaturedProducts(){
+    return(
+        <>
+        <div className="flex">
+          <Card1/>
+         </div>
+        </>
+        )
+}
+
 export default FeaturedProducts
+
+
