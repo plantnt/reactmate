@@ -45,6 +45,6 @@ const ProductCard: React.FC = () => {
         </>
     )
 }
-/*Mira el icono de la hoja que estoy colocando en los iconos para diferencial los 
+/*Mira el icono de la hoja que estoy colocando en los filtros para diferencial los 
                         productos eco, podriamos hacer algo similar con estos cards*/
 export default ProductCard
