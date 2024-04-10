@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { IoIosAddCircleOutline, IoMdArrowDropleft,IoMdArrowDropright } from "react-icons/io"
+import { IoMdArrowDropleft,IoMdArrowDropright } from "react-icons/io"
 import { MdAttachMoney } from "react-icons/md";
 import { RiShoppingCartLine } from "react-icons/ri";
 

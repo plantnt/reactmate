@@ -69,7 +69,7 @@ export default function ProductView(){
               
                <h2 className="text-xl font-semibold justify-center align-center mt-10 text-center">Reseñas</h2>
               
-               <div id="Reseña1" className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
+               <div className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
                <NavLink to="/ProfilePageView">
                     <div className="items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
                       <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
@@ -81,7 +81,7 @@ export default function ProductView(){
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
 
-               <div id="Reseña1" className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
+               <div className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
                <NavLink to="/ProfilePageView">
                     <div className="items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
                       <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
@@ -93,7 +93,7 @@ export default function ProductView(){
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
 
-               <div id="Reseña1" className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
+               <div className="bg-gray-100 rounded-3xl p-4 inline-flex flex-wrap gap-3 align-center border-2 border-purple-300 mt-4">
                <NavLink to="/ProfilePageView">
                     <div className="items-center justify-center w-[30px] h-[30px] rounded-full overflow-hidden border-2 hover:border-furniorange transition-colors">
                       <img src={feli} className="w-full h-full hover:scale-110 transition-transform"/>
