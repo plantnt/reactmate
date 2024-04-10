@@ -17,6 +17,7 @@ import Chat from './pages/ChatView'
 import Profile from './pages/Profile'
 import UserBrowser from './pages/UserBrowser'
 import StoreBrowser from './pages/StoreBrowser'
+import StoreSignup from './pages/StoreSignup'
 
 import NavbarVisible from './components/UI/navbarvisible'
 import Footer from './components/UI/footer'
@@ -47,6 +48,7 @@ const App = () => {
           <Route path='/chatView' element={<Chat/>} />
           <Route path='/userBrowser' element={<UserBrowser/>} />
           <Route path='/storeBrowser' element={<StoreBrowser/>} />
+          <Route path='/storeSignup' element={<StoreSignup/>} />
           <Route path='/termsOfService' element={<TosPage/>} />
         </Routes>
         <FooterVisible>
