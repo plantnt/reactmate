@@ -62,7 +62,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink to='/chatHome'>
-                                <FaCommentDots size={35} className="text-convenientPurple w-[70px]" title='Comunidad'/> 
+                                <FaCommentDots size={35} className="text-purple-400 w-[70px]" title='Comunidad'/> 
                             </NavLink>
                         </li>
                         {logged === true ? 

@@ -2,7 +2,8 @@ import { Pagination } from "antd";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import { FaRegCommentDots, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import textLogo from '../assets/textLogo.png';
 
 function StoreCard() {
     return (
@@ -29,8 +30,8 @@ export default function StoreBrowser(){
         <>
             <div className="relative bg-gray-50 min-h-screen max-w-full">
                 <div className="bg-gradient-to-r from-purple-500 to-purple-100 py-6 flex justify-center items-center">
-                    <h1 className="text-3xl font-bold text-white text-center m-4">
-                        Negocios de furnimate.
+                    <h1 className="flex text-3xl font-bold text-white text-center m-4">
+                    Negocios de <img src={textLogo} className="px-2 mx-2 py-1 my-1 sm:block w-26 h-7 hidden bg-purple-400 rounded fill-current"/>
                     </h1> 
                 </div>
 

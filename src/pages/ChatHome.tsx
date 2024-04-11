@@ -1,5 +1,6 @@
 import { FaHammer, FaRegCommentDots, FaStore, FaUser } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
+import furniLogo from '../assets/furniLogo.png';
 
 const Cart = () => {
     return (
@@ -9,11 +10,11 @@ const Cart = () => {
                 <div className="flex flex-col items-center">
                     <div className="max-w-md w-full mx-auto">
                     <h1 className="text-center text-3xl font-bold font-extrawide pb-8 text-gray-300">
-    Comunidad de furnimate.
+                    <img src={furniLogo} className=" block w-18 h-14 mx-auto -pt-2"/>
 </h1>
 
-<div>
-<NavLink to='/chatingPage'>
+<div className="-mt-4">
+                        <NavLink to='/chatingPage'>
                             <button className="rounded-lg w-full bg-blue-400 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-4 px-6 flex items-center mb-4">
                                 <FaRegCommentDots className="size-8 inline-block mr-2 text-2xl" />
                                 <span className="text-lg font-rounded w-full">Chat</span>
