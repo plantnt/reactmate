@@ -71,10 +71,10 @@ const CartPage = () => {
        <div>
          <h2 className="text-gray-400 text-lg font-semibold flex justify-end mr-6 mb-10">Costo total: ${calcularTotal()}</h2>
       </div>
-    </div>
+    
          <BuyCart/>
     </div>
-    
+  </div>
     </>
   );
 };
