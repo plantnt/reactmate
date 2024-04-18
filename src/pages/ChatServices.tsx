@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { FaCouch, FaPaperclip } from "react-icons/fa";
 
+//Propuesta de valor: Si en los demas sitios web no cuentan ni con un chat directo, no cuentan con un espacio
+// dedicado a la busqueda u ofrecimiento de productos/servicios, por lo que este es el espacio propicio para
+// realizarlo, en un entorno de comunidad exclusivo de la muebleria
+
 const ServicesChat = () => {
     const [posts, setPosts] = useState<any[]>([]);
     const [newPost, setNewPost] = useState("");

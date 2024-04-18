@@ -66,8 +66,8 @@ export default function StoreBrowser(){
                     <StoreCard/>
                 </div>
             </div>
-            <div className="sticky bottom-0 bg-gray-50 py-4 w-full text-center">
-                <Pagination className="self-center" defaultCurrent={1} total={50}></Pagination>
+            <div className="bg-gray-50 pb-8 text-center">
+                <Pagination className="self-center w-full" defaultCurrent={1} total={50}></Pagination>
             </div>
         </>
     );
