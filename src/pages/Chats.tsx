@@ -1,4 +1,7 @@
 // En ChatPage.tsx
+// Propuesta de valor: Los demas sitios web de ecommerce cuentan con un chat, pero este únicamente se presta
+// para hablar con agentes del sitio web y no podemos contactar al vendedor de forma asertiva en los comentarios
+// de una publicación, por lo que para evitar redireccion a otras apps, aquí mismo podrán chatear
 
 import { useState, useEffect } from "react";
 import { FaArrowLeft, FaEllipsisV, FaUser } from "react-icons/fa";
@@ -37,6 +40,8 @@ const ChatPage = () => {
                 <h1 className="text-center text-3xl font-bold font-extrawide text-white">Tus Chats</h1>
                 <div className="ml-4"></div>
             </div>
+
+            <h1 className="text-center bg-red-500 text-white">¡Página en proceso! se planea usar un framework de React para crear un chat.</h1>
 
             <div className="bg-gray-100 min-h-screen max-w-full flex flex-col">
                 <div className="flex-1 overflow-y-auto p-4">
