@@ -149,7 +149,7 @@ export default function UserProfile() {
   return (
     <>
       <div className='flex h-[100vh] w-full'>
-        <div className='p-5 border-r-2 w-[300px]'>
+        <div className='p-5 border-r-2 min-w-[300px]'>
           <div className='flex flex-col items-center'>
             <div className='w-[100px] sm:w-[200px] rounded-full'>
               <img src={userData.profilepic} alt="Profile" />
@@ -253,13 +253,25 @@ export default function UserProfile() {
             )}
         </div>
         
-        <div className='flex flex-wrap gap-3 p-3 w-full'>
+        <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
           <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </div>
+        <div className='min-w-[300px]'>
+
         </div>
       </div>
     </>
