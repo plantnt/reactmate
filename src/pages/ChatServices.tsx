@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { FaCouch, FaPaperclip } from "react-icons/fa";
 
+//Propuesta de valor: Si en los demas sitios web no cuentan ni con un chat directo, no cuentan con un espacio
+// dedicado a la busqueda u ofrecimiento de productos/servicios, por lo que este es el espacio propicio para
+// realizarlo, en un entorno de comunidad exclusivo de la muebleria
+
 const ServicesChat = () => {
     const [posts, setPosts] = useState<any[]>([]);
     const [newPost, setNewPost] = useState("");
@@ -21,19 +25,19 @@ const ServicesChat = () => {
         <>
             <div className="relative bg-gray-50 pt-8 -pb-3">
                 <h1 className="text-5xl font-bold font-extrawide text-purple-400 ml-4 flex">
-                    Servicios de terceros <FaCouch className="ml-4 mt-2 text-7xl -mt-2"/>     
+                    Servicios de terceros <FaCouch className="ml-4 -mt-2 text-7xl"/>     
                 </h1>
             </div>
 
             <div className="relative bg-gray-50 min-h-screen max-w-full overflow-y-auto">
                 <div className="p-4">
-                    <h2 className="text-2xl text-gray-400 font-semibold mb-4">Añade tu publicación</h2>
+                    <h2 className="text-2xl text-gray-400 font-semibold mb-2">Añade tu publicación</h2>
                     <textarea
                         className="w-1/2 p-2 border border-gray-300 rounded"
                         rows={6}
                         value={newPost}
                         onChange={(e) => setNewPost(e.target.value)}
-                        placeholder="Añade tu publicación: publica tu petición y tus datos de contacto para empezar!"
+                        placeholder="¡Publica que es lo que buscas u ofreces con la comunidad,! acompaña tu mensaje con tus datos de contacto para empezar :)"
                     />
                     <div className="flex items-center mb-4">
                         <label className="mr-4">
@@ -71,13 +75,13 @@ const ServicesChat = () => {
                         >
                             Publicar
                         </button>
-                        <button className="rounded-lg py-3 px-4 bg-gray-300 text-gray-400 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 font-sans">
+                        <button className="rounded-lg py-3 px-4 bg-gray-300 text-gray-400 hover:bg-gray-200 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 font-sans">
                             <FaPaperclip />
                         </button>
                     </div>
                 </div>
 
-                <hr className="my-4 mx-4 border-gray-300" /> {/* Línea separadora */}
+                <hr className="-mt-3 mx-4 border-gray-300" /> {/* Línea separadora */}
 
                 <div className="p-4">
                     <h2 className="text-2xl font-semibold mb-4 text-4xl">Publicaciones</h2>
