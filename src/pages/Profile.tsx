@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useParams } from 'react-router';
 
 import { FaPhone } from 'react-icons/fa';
 import { MdMailOutline } from "react-icons/md";
@@ -7,7 +7,7 @@ import { MdMailOutline } from "react-icons/md";
 
 import { supabase } from '../utils/Utils';
 
-import { IoIosCloseCircle, IoIosPin } from 'react-icons/io';
+import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 import { FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
 import ProductCard from '../components/productCard';
 
@@ -144,7 +144,41 @@ export default function UserProfile() {
     setValue(result)
   }
 
+  // Abrir modal para eliminar cuenta
 
+  const [openDelProfModal, setOpenDelProfModal] = useState(false)
+
+  const openDeleteProfileModal = () => {
+    setOpenDelProfModal((prevModalState) => !prevModalState)
+  }
+
+  // Verificar el nombre de la cuenta para poder eliminarla
+  const [AccName, setAccName] = useState('')
+  const [nameMatch, setNameMatch] = useState(true)
+
+  const accountUsername = userData.name + ' ' + userData.last_name
+  const handleAccName = (e) => {
+    const accValue = e.target.value
+    setAccName(accValue)
+    accValue === accountUsername ? setNameMatch(false) : setNameMatch(true)
+  }
+
+  //Eliminar cuenta
+  const navigate = useNavigate()
+
+  const handleDeleteAccount = async () => {
+    const { error } = await supabase
+    .from('users')
+    .delete()
+    .eq('email', userData.email)
+    
+    if (error) {
+      throw error;
+    }
+
+    navigate('/')
+    
+  }
 
   return (
     <>
@@ -159,9 +193,9 @@ export default function UserProfile() {
             </div>
           </div>
           <hr className='mt-7'/>
-          <div className="flex flex-col items-center mt-4 space-y-3">
-            <h2 className='font-normal select-none'>- Añade datos adicionales -</h2>
-            <label className='flex'>
+          <div className="flex flex-col items-center mt-4">
+            <h2 className='font-normal text-lg select-none text-furniorange'>- Añade datos adicionales -</h2>
+            <label className='flex mt-3'>
               <MdMailOutline size={25} className='text-violet-800 mr-2'/> 
               <p className='cursor-text'>
                 {userData.email}
@@ -170,7 +204,7 @@ export default function UserProfile() {
             <form onSubmit={(e) => {
               e.preventDefault 
               addPhoneNum(e)
-              }} className="flex flex-col items-center justify-center space-y-5 mt-7">
+              }} className="flex flex-col items-center justify-center mt-7">
               <label className='flex items-center'>
                 {showEditNum === true ?
                   <>
@@ -205,7 +239,7 @@ export default function UserProfile() {
             <form onSubmit={(e) => {
               e.preventDefault
               addAddress(e)
-            }} className="flex flex-col items-center justify-center space-y-5 mt-7">
+            }} className="flex flex-col items-center justify-center space-y-5 mt-3">
               <label className='flex items-center'>
                 {showEditAddress === true ?
                 <>
@@ -234,6 +268,31 @@ export default function UserProfile() {
                 </button>
               }
             </form>
+            <button className='mt-[30px] w-[150px] 
+                              p-2 border-2 border-red-600 rounded-full text-red-600
+                              hover:bg-red-600 hover:text-white transition-colors'
+                    onClick={openDeleteProfileModal}>
+              Eliminar cuenta
+            </button>
+            {openDelProfModal && 
+              <form className='fixed bg-white shadow-md p-6 w-[80%] sm:w-[40%] max-w-[600px] h-[330px] top-[100px] sm:top-[140px] left-[10%] sm:left-[30%] rounded-xl z-50'>
+                  <IoIosClose size={28} className="text-slate-400 absolute top-3 right-3 hover:cursor-pointer hover:scale-105 hover:text-red-600 transition-all"
+                              onClick={openDeleteProfileModal}/>
+
+                  <p className='text-2xl font-bold'>Eliminar cuenta</p>
+                  <hr className='m-3'/>
+                  <div className="flex flex-col justify-between h-[220px]">
+                    <p className='text-lg'>Esta acción es permanente. Una vez eliminada, la cuenta no se puede recuperar.</p>
+                    <p className='text-lg mt-3 font-bold'>Escriba el nombre de su cuenta.</p>
+                    <input value={AccName} type="text" className='border-2 border-slate-300 text-slate-600 p-2 rounded-lg h-[2em] outline-none'
+                          onChange={handleAccName}/>
+                    <button className={nameMatch == true ? 'bg-red-500 bg-opacity-60 rounded-lg text-white px-4 py-2 select-none cursor-not-allowed' : 'bg-red-500 rounded-lg text-white px-4 py-2 hover:bg-red-600 transition-colors'}
+                            disabled={nameMatch} onClick={handleDeleteAccount}>
+                      Eliminar mi cuenta
+                    </button>
+                  </div>
+              </form>
+            }
           </div>
           {updated === false ? (
             <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
