@@ -11,7 +11,6 @@ const FooterVisible: React.FC<FooterVisibleProps> = ({ children }) => {
   const [showFoot, setShowFoot] = useState(false)
   const excludedUrls = ['/logIn', '/signUp']
   useEffect(() => {
-    console.log("Location: ", location);
     {excludedUrls.includes(location.pathname) ? setShowFoot(false) : setShowFoot(true)}
     
   }, [location]);

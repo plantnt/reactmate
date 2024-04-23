@@ -19,6 +19,10 @@ const Navbar = () => {
     const [logged, setLogged] = useState(false)
     const [userId, setUserId] = useState(null)
 
+    useEffect(() => {
+        
+    })
+
     const [showMenu, setShowMenu] = useState(false)
 
 

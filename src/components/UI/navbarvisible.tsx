@@ -11,7 +11,6 @@ const NavbarVisible: React.FC<NavbarVisibleProps> = ({ children }) => {
   const [showNav, setShowNav] = useState(false)
   const excludedUrls = ['/logIn', '/signUp']
   useEffect(() => {
-    console.log("Location: ", location);
     {excludedUrls.includes(location.pathname) ? setShowNav(false) : setShowNav(true)}
     
   }, [location]);

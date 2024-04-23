@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate} from "react-router-dom";
 import { supabase } from "../utils/Utils";
-import { useUser, useSupabaseClient} from "@supabase/auth-helpers-react"
 import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 
 import googleIcon from '../assets/icons/google.svg'
@@ -17,21 +16,21 @@ export default function SignUp(){
 
     const navigate = useNavigate()
 
-// const User= useUser()
-// const supabaseC = useSupabaseClient()
 
-
+//Logear al usuario con google
 const handleGoogle = () =>{
     supabase.auth.signInWithOAuth({
         provider: 'google',
       })
       
 }
+
+//Logear al usuario
+
 const [visible, setVisible] = useState(true)
     const handleClick = () => {
         setVisible((prevVisible) => !prevVisible)
     }
-
 
     const [formData, setFormData] = useState({
         email: '',
@@ -42,7 +41,6 @@ const [visible, setVisible] = useState(true)
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
  
-    //Logear al usuario
 
     const handlelogin = async (e:any) => {
         e.preventDefault();
