@@ -204,7 +204,7 @@ export default function UserProfile() {
             <form onSubmit={(e) => {
               e.preventDefault 
               addPhoneNum(e)
-              }} className="flex flex-col items-center justify-center mt-7">
+              }} className="flex flex-col items-center justify-center space-y-5 mt-7">
               <label className='flex items-center'>
                 {showEditNum === true ?
                   <>

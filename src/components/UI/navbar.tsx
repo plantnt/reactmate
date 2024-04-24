@@ -19,9 +19,24 @@ const Navbar = () => {
     const [logged, setLogged] = useState(false)
     const [userId, setUserId] = useState(null)
 
-    useEffect(() => {
+    const readSession = async () => {
+        try{
+            const { data, error } = await supabase
+            .from('users')
+            .select('id')
+    
+            if(error){ 
+                throw error
+            }
+            if(data){
+                setLogged(true)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
         
-    })
+       
 
     const [showMenu, setShowMenu] = useState(false)
 
