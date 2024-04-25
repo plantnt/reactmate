@@ -42,6 +42,7 @@ export default function UserProfile() {
         
         if (data) {
           setUserData(data);
+          sessionStorage.setItem('profileSrc', JSON.stringify(userData.profilepic))
         } else {
           console.error('No user data found for the specified ID.');
         }

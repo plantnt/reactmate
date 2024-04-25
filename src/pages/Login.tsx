@@ -59,6 +59,8 @@ const [visible, setVisible] = useState(true)
                 setTimeout(() => {
                     console.log('Usuario ha iniciado sesión correctamente:', user);
                     sessionStorage.setItem('supabaseSession', JSON.stringify(user))
+                    sessionStorage.setItem('userId', JSON.stringify(user.id))
+                    console.log('user id:', user.id)
                     navigate(`/profilePage/${user.id}`);  
                     console.log(user.id)
                 }, 2000)
