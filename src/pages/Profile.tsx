@@ -13,6 +13,7 @@ import ProductCard from '../components/productCard';
 
 export default function UserProfile() {
   const { userId } = useParams()
+  
 
   const [updated, setUpdated] = useState(false);
 
