@@ -16,25 +16,11 @@ import { supabase } from '../../utils/Utils';
 import "./ui.css";
 
 const Navbar = () => {  
-    const [logged, setLogged] = useState(false)
     const [userId, setUserId] = useState(null)
 
-    const readSession = async () => {
-        try{
-            const { data, error } = await supabase
-            .from('users')
-            .select('id')
-    
-            if(error){ 
-                throw error
-            }
-            if(data){
-                setLogged(true)
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const isLogged = !!sessionStorage.getItem('supabaseSession');
+
+    console.log(isLogged)
         
        
 
@@ -84,7 +70,7 @@ const Navbar = () => {
                                 <FaCommentDots size={35} className="text-purple-400 w-[70px]" title='Comunidad'/> 
                             </NavLink>
                         </li>
-                        {logged === true ? 
+                        {isLogged ? 
                         <li>
                             <NavLink to={`/profilePage/${userId}`}>
                                 <img src={profileIcon} className="w-[35px] h-auto" title='Perfil'/>
