@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { FaCouch, FaPaperclip } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 //Propuesta de valor: Si en los demas sitios web no cuentan ni con un chat directo, no cuentan con un espacio
 // dedicado a la busqueda u ofrecimiento de productos/servicios, por lo que este es el espacio propicio para
 // realizarlo, en un entorno de comunidad exclusivo de la muebleria
 
 const ServicesChat = () => {
+    const islogged =sessionStorage.getItem('supabaseSession')
     const [posts, setPosts] = useState<any[]>([]);
     const [newPost, setNewPost] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
@@ -28,7 +30,8 @@ const ServicesChat = () => {
                     Servicios de terceros <FaCouch className="ml-4 -mt-2 text-7xl"/>     
                 </h1>
             </div>
-
+            {islogged ? (
+                <>
             <div className="relative bg-gray-50 min-h-screen max-w-full overflow-y-auto">
                 <div className="p-4">
                     <h2 className="text-2xl text-gray-400 font-semibold mb-2">Añade tu publicación</h2>
@@ -90,6 +93,10 @@ const ServicesChat = () => {
                     ))}
                 </div>
             </div>
+            </>
+            ):(
+                <h1 className="text-center bg-white-500 text-black">Por favor, inicia sesión para acceder al chat. <NavLink to="/logIn"><span className="text-purple-500">inicia sesion</span></NavLink></h1>
+            )}
         </>
     );
 };

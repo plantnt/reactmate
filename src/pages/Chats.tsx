@@ -11,7 +11,7 @@ import { useParams } from 'react-router';
 
 const ChatPage = () => {
     const { userId } = useParams();
-
+    const islogged =sessionStorage.getItem('supabaseSession')
     const [optionsVisible, setOptionsVisible] = useState<boolean[]>(Array.from({ length: 10 }, () => false));
     const userNames: string[] = ["Juan", "María", "Carlos", "Laura", "Pedro", "Ana", "Luis", "Sofía", "David", "Elena"];
     const messages: string[] = JSON.parse(localStorage.getItem('chatMessages') || '[]') || [
@@ -45,7 +45,7 @@ const ChatPage = () => {
                 <div className="ml-4"></div>
             </div>
 
-            {userId ? (
+            {islogged ? (
                 // Si userId existe, muestra el contenido de la página de chat
                 <>
                     <div className="bg-gray-100 min-h-screen max-w-full flex flex-col">
