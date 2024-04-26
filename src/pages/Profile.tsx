@@ -43,7 +43,6 @@ export default function UserProfile() {
         
         if (data) {
           setUserData(data);
-          sessionStorage.setItem('profileSrc', JSON.stringify(userData.profilepic))
         } else {
           console.error('No user data found for the specified ID.');
         }
@@ -79,6 +78,9 @@ export default function UserProfile() {
           setUpdated(false)
         }, 2000);
         setShowEditNum(false)
+        const userPfp = userData.profilepic
+        sessionStorage.setItem('profileSrc', JSON.stringify(userPfp))
+        console.log(userPfp)
       }
        } catch (error) {
        console.error('Error updating profile:', error.message);
