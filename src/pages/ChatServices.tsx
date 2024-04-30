@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCouch, FaPaperclip } from "react-icons/fa";
+import { FaCouch, FaPaperclip, FaArrowLeft } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 //Propuesta de valor: Si en los demas sitios web no cuentan ni con un chat directo, no cuentan con un espacio
@@ -25,8 +25,9 @@ const ServicesChat = () => {
 
     return (
         <>
-            <div className="relative bg-gray-50 pt-8 -pb-3">
+            <div className="relative bg-gray-100 pt-8 -pb-3">
                 <h1 className="text-5xl font-bold font-extrawide text-purple-400 ml-4 flex">
+                <NavLink to="/chatHome" className="ml-4 text-white hover:text-gray-200"><FaArrowLeft /></NavLink>
                     Servicios de terceros <FaCouch className="ml-4 -mt-2 text-7xl"/>     
                 </h1>
             </div>
@@ -95,7 +96,10 @@ const ServicesChat = () => {
             </div>
             </>
             ):(
-                <h1 className="text-center bg-white-500 text-black">Por favor, inicia sesión para acceder al chat. <NavLink to="/logIn"><span className="text-purple-500">inicia sesion</span></NavLink></h1>
+                <div className="h-full">
+                 <h1 className="text-center bg-white-500 text-black">Por favor, inicia sesión para acceder al chat. <NavLink to="/logIn"><span className="text-purple-500">inicia sesion</span></NavLink></h1>
+                </div>
+                
             )}
         </>
     );

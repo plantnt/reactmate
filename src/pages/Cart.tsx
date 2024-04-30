@@ -32,7 +32,7 @@ const CartPage = () => {
 
   return (
     <>
-    <div className="flex w-full">
+    <div className="flex w-full ml-[10%]">
     <div>
     <h1 className="text-5xl pl-8 pt-8 pb-8 font-bold text-purple-400 flex">
         Tu Carrito ‎ <FaCartShopping className="pt-2" />
