@@ -27,7 +27,7 @@ const BuyProduct = () => {
 
     return(
         <>
-        <div id="container" className="fixed flex items-center justify-left right-0 bottom-[0.1px] h-full border rounded-lg p-3 transition-all z-[99] overflow-hidden bg-[#E2D6FB] w-[32%] bg-opacity-40">
+        <div id="container" className="fixed flex items-center justify-left right-0 bottom-[0.1px] h-full border rounded-l-lg p-3 transition-all z-[99] overflow-hidden bg-[#E2D6FB] w-[32%] bg-opacity-40">
             <IoMdArrowDropleft size={40} id="openArrow" className="hidden text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleShow()}/>
             <IoMdArrowDropright size={40} id="closeArrow" className="text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleHide()}/>
             <div id="actions" className="">
