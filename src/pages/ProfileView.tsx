@@ -1,181 +1,124 @@
-import { useState, useRef, useEffect } from 'react';
-import { FaRegCommentDots, FaRegListAlt, FaFlag, FaBoxOpen, FaUser } from 'react-icons/fa';
-import ProductCard from "../components/productsCards/Card1";
-import Filters from "../components/filters";
-import Rating from "../components/rating";
-import RatingUser from '../components/ratingUser';
-import { Pagination } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
 
-export default function Profile() {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [dropdownPosition, setDropdownPosition] = useState<"up" | "down">("down");
+import { FaPhone } from 'react-icons/fa';
+import { MdMailOutline } from "react-icons/md";
+
+
+import { supabase } from '../utils/Utils';
+
+import { IoIosPin } from 'react-icons/io';
+
+import ProductCard from '../components/productCard';
+
+import feli from '../assets/feli.jpg'
+
+export default function UserProfile() {
+  const { userId } = useParams()
   const [userData, setUserData] = useState({
-    username: "juanca54",
-    email: "juancamilo@example.com",
-    phone: "+57 345 6789034",
-    registrationDate: "24 de enero de 2024"
+    name: "",
+    email: "",
+    last_name: "",
+    profilepic:"",
+    phonenum: '',
+    address: ''
   });
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleClose = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
-  };
-
   useEffect(() => {
-    document.addEventListener('mousedown', handleClose);
-    return () => {
-      document.removeEventListener('mousedown', handleClose);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (dropdownRef.current) {
-      const dropdownBottom = dropdownRef.current.getBoundingClientRect().bottom;
-      const windowHeight = window.innerHeight;
-      const dropdownTop = dropdownRef.current.getBoundingClientRect().top;
-      if (dropdownBottom > windowHeight && dropdownTop > windowHeight / 2) {
-        setDropdownPosition("up");
-      } else {
-        setDropdownPosition("down");
+    const fetchUserData = async () => {
+      try {
+        
+        const { data, error } = await supabase
+          .from('users')
+          .select('id, name, last_name, email, profilepic, phonenum, address')
+          .eq('id', userId)
+          .single();
+        
+        if (error) {
+          console.error('Error fetching user data:', error.message);
+          return;
+        }
+        
+        if (data) {
+          setUserData(data);
+        } else {
+          console.error('No user data found for the specified ID.');
+        }
+      } catch (error) {
+        console.error('Error in fetchUserData:', error);
       }
-    }
-  }, [isOpen]);
+    };
+
+    fetchUserData();
+  }, [userId]);
 
   return (
     <>
-      <div className="relative bg-gray-50 min-h-screen max-w-full py-8">
-        {/* Fondo rectangular */}
-        <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
-        <div className="relative z-10 max-w-screen mx-auto rounded-lg border-gray-200 overflow-hidden">
-          <br />
-          <div className="max-w-4xl mx-auto">
-            <div className="md:flex-shrink-0 bg-purple-100 max-w-full rounded-lg">
-              <img
-                className="h-48 m-5 w-48 object-cover rounded-lg mx-auto relative z-10"
-                src="src/assets/profileIcon.png"
-                alt="Profile"
-              />
+      <div className='flex h-[100vh] w-full'>
+        <div className='p-5 border-r-2 min-w-[300px]'>
+          <div className='flex flex-col items-center'>
+            <div className='w-[100px] sm:w-[200px] rounded-full'>
+              <img src={userData.profilepic || feli} alt="Profile" />
             </div>
-            <div className="p-4 text-center relative z-10">
-              <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold pt-4">
-                <h1 className="text-2xl font-rounded">{userData.username}</h1>
-                <p className="text-indigo-700 font-semibold font-rounded">EMPRENDEDOR</p>
-                <div className="flex justify-center items-center mr-20"></div>
-              </div>
-              <br />
-              <p className="mt-2 mb-4 text-gray-500 font-rounded">
-                ¡Hola a todos! Soy un nuevo emprendedor en furnimate. Mi propósito es vender productos y servicios, como restaurar muebles viejos, dañados o de segunda mano, a través de esta plataforma :D. Este es el perfil de un emprendedor o "miniempresa", una de las 3 categorías en el concepto de Furnimate.
+            <div className="text-center max-w-[200px] mt-5">
+              <h3 className='text-wrap text-xl font-semibold'>{userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
+            </div>
+          </div>
+          <hr className='mt-7'/>
+          <div className="flex flex-col items-center mt-4">
+            <h2 className='font-normal text-lg select-none text-furniorange'>- Añade datos adicionales -</h2>
+            <label className='flex mt-3'>
+              <MdMailOutline size={25} className='text-violet-800 mr-2'/> 
+              <p className='cursor-text truncate w-[190px]' title={userData.email || 'loremipsumdolor@gmail.com'}>
+                {userData.email || 'loremipsumdolor@gmail.com'}
               </p>
-              <a href="https://www.google.com/maps/place/Muebleria+Felipe+del+Valle/@3.4332404,-76.5012979,14z/data=!4m10!1m2!2m1!1sgoogle+maps+muebles!3m6!1s0x8e30a70088051b37:0x3735d8f785c6f6dd!8m2!3d3.4425281!4d-76.4996951!15sChNnb29nbGUgbWFwcyBtdWVibGVzIgOIAQFaFSITZ29vZ2xlIG1hcHMgbXVlYmxlc5IBD2Z1cm5pdHVyZV9zdG9yZeABAA!16s%2Fg%2F1pzwkxllt?entry=ttu" className="text-blue-500 hover:underline">Ubicación de mi negocio</a>
-              <br></br>
-              <a href="https://www.instagram.com/" className="text-blue-500 hover:underline">Mi Instagram</a>
-              <br />
-              <div className="mt-4 text-center font-rounded">
-                <p className="text-gray-700">
-                  <span className="font-semibold">Correo electrónico: </span> {userData.email}, <a href={`mailto:${userData.email}`} className="text-blue-400">Enviar correo</a>
-                </p>
-                <p className="text-gray-700">
-                  <span className="font-semibold">Teléfono: </span> {userData.phone}
-                </p>
-                <p className="text-gray-600">
-                  <span className="font-semibold">Fecha de Registro: </span> {userData.registrationDate}
-                </p>
-                <br></br>
-                <p>
-                  <span><div className="flex justify-center items-center mr-20"><RatingUser/></div></span>
-                </p>
-                <br />
-              </div>
-              <div className="mt-4 flex justify-between">
-                <NavLink to='/chatingPage'>
-                  <button className="bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-2 px-4 rounded flex items-center ho">
-                    <FaRegCommentDots className="inline-block mr-2 text-xl" />
-                    <span className="text-base font-rounded">Empezar chat</span>
-                  </button>
-                </NavLink>
-                <a href="http://localhost:3000/">
-                  <button className="bg-green-500 hover:bg-white hover:text-green-500 hover:border-green-500 transition duration-300 border-2 border-green-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
-                    <FaRegListAlt className="inline-block mr-2 text-xl" />
-                    <span className="text-base font-rounded">Ver en Catálogo</span>
-                  </button>
-                </a>
-                <a href="http://localhost:3000/profilePage/:userId">
-                  <button className="bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-2 px-4 rounded flex items-center ho">
-                    <FaUser className="text-gray-400 inline-block mr-2 text-xl" />
-                    <span className="text-base font-rounded text-gray-400">*Modo Usuario*</span>
-                  </button>
-                </a>
-                <div ref={dropdownRef} className="">
-                  <button
-                    onClick={handleClick}
-                    className="bg-red-500 hover:bg-white hover:text-red-500 hover:border-red-500 transition duration-300 border-2 border-red-500 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
-                  >
-                    <span className="text-base font-rounded">Reportar</span>
-                    <FaFlag className="inline-block ml-2 text-xl" />    
-                  </button>
-                  {isOpen && (
-                    <div
-                      className={`absolute left-500 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg z-10 ${dropdownPosition === "up" ? "-top-0" : "top-40"}`}
-                    >
-                      <div className="py-1">
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Ver reglamento</p>
-                        <p className="text-sm px-4 py-2 hover:bg-gray-100 cursor-pointer font-rounded">Denunciar usuario</p>
-                      </div>
-                    </div>
-                  )}
+            </label>
+            <div className="flex flex-col items-center justify-center space-y-5 mt-7">
+              <label className='flex items-center'>
+                  <div className='flex flex-col items-center space-y-2'>
+                    <p className='font-semibold w-[190px]' title={userData.phonenum || '123456789'}>Teléfono: {userData.phonenum || '123456789'}</p>
+                    <FaPhone size={15} className='text-white mr-2'/>
+                  </div>
+              </label>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-5 mt-3">
+              <label className='flex items-center'>
+                <div className='flex flex-col items-center space-y-2'>
+                    <p className='font-semibold truncate w-[190px]' title={userData.address || 'lorem ipsum dolor'}>Dirección: {userData.address || 'lorem ipsum dolor'}</p>
+                    <IoIosPin size={15} className='text-white mr-2'/>
                 </div>
-              </div>
+              </label>
             </div>
+          
           </div>
-        </div>
-        {/* Esta es la linea separadora q separa jaajaj */}
-        <hr className="my-8 border-b border-gray-200 mx-4" />
-        <h1 className="text-center text-gray-300 text-3xl mb-2">PRODUCTOS</h1>
-        <div className="flex justify-center items-center -mb-2">
-          <FaBoxOpen className="text-gray-300 text-5xl" />
+          
         </div>
         
-        <>
-        </>
-        
-      </div>
-      <div className="h-full w-full flex flex-col bg-gray-50">
-        <div className="grid grid-flow-col">
-          <Filters/>
-          <div className="max-w-[60rem] justify-self-start">
-            <div className="mt-3">
-              <Rating/>
-            </div>
-            <div className="max-w-[90%] inline-flex flex-wrap gap-3 ml-3 pt-3">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-            </div>
-            <Pagination className="self-center mt-6" defaultCurrent={1} total={50}></Pagination>
-            <div className="grid w-full justify-self-end">
-            </div>
+        <div className='flex flex-wrap gap-3 p-3 overflow-hidden h-full w-full'>
+          <h3 className='text-wrap text-xl font-semibold'>Productos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
+          <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </div>
+        </div>
+        <div className='min-w-[300px]'>
+
         </div>
       </div>
     </>
+    
   );
 }

@@ -66,7 +66,7 @@ const Navbar = () => {
                             className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-convenientPurple focus:pl-16 focus:pr-4" />
                         <FaMagnifyingGlass className="absolute top-4 left-4 text-slate-800 cursor-pointer border-gray-500"/>
                     </form>
-                </div>
+                </div> 
                 {!showMenu ? 
                     <RxHamburgerMenu size={30} className=" text-convenientOrange cursor-pointer sm:hidden block"
                     onClick={handleBurgerMenu}/>
