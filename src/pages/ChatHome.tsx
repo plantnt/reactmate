@@ -24,14 +24,14 @@ const Cart = () => {
                         <NavLink to='/storeBrowser'>
                             <button className="rounded-lg w-full bg-purple-400 hover:bg-white hover:text-purple-400 hover:border-purple-400 transition duration-300 border-2 border-purple-500 text-white font-bold py-4 px-6 flex items-center mb-4">
                                 <FaStore className="text-white-400 size-8 inline-block mr-2 text-2xl" />
-                                <span className="text-lg font-rounded w-full">Emprendimientos furnimate.</span>
+                                <span className="text-lg font-rounded w-full">Emprendimientos</span>
                             </button>
                         </NavLink>
 
                         <NavLink to='/chatingServices'>
                             <button className="rounded-lg w-full bg-orange-300 hover:bg-white hover:text-orange-500 hover:border-furniorange transition duration-300 border-2 border-orange-400 text-white font-bold py-4 px-6 flex items-center mb-4">
                                 <FaHammer className="text-white hover:text-furniorange size-7 inline-block mr-2 text-2xl" />
-                                <span className="text-lg w-full font-rounded text-gray-white">Servicios de terceros</span>
+                                <span className="text-lg w-full font-rounded text-gray-white">Foro</span>
                             </button>
                         </NavLink>
 
@@ -39,7 +39,7 @@ const Cart = () => {
                         <NavLink to='/userBrowser'>
                             <button className="rounded-lg w-full bg-gray-200 hover:bg-gray-50 hover:text-gray-600 hover:border-gray-300 transition duration-300 border-2 border-gray-300 text-gray-700 font-bold py-4 px-6 flex items-center mb-4">
                                 <FaUser className="text-gray-400 inline-block mr-2 text-3xl" />
-                                <span className="text-lg w-full font-rounded text-gray-400">Buscador de usuarios</span>
+                                <span className="text-lg w-full font-rounded text-gray-400">Buscar usuarios...</span>
                             </button>
                         </NavLink>
 </div>

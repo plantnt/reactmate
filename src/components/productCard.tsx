@@ -38,7 +38,7 @@ const ProductCard: React.FC = () => {
                     <div className='w-full p-2 bg-white'>
                         <h3 className='font-semibold text-wrap'>Mueble azul de casa</h3>
                         <Rate allowHalf disabled value={5} className="text-violet-400 text-xs" />
-                        <h1 className='text-lg'>$COP 999.99</h1>
+                        <h1 className=''>$ COP 999.99</h1>
                     </div>
                 </div>
             </NavLink>

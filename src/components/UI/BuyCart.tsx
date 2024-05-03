@@ -9,7 +9,7 @@ const BuyProduct = () => {
 
     function handleShow(){
         console.log("show")
-        document.getElementById("container")!.style.width = "400px"
+        document.getElementById("container")!.style.width = "32%"
         document.getElementById("container")!.style.justifyContent = "left"
         document.getElementById("openArrow")!.style.display = "none"
         document.getElementById("closeArrow")!.style.display = "initial"
@@ -27,12 +27,12 @@ const BuyProduct = () => {
 
     return(
         <>
-        <div id="container" className="fixed flex items-center justify-left right-0 bottom-[0.1px] h-full border rounded-lg p-3 transition-all z-[99] overflow-hidden bg-[#E2D6FB] w-[30%] bg-opacity-50">
+        <div id="container" className="fixed flex items-center justify-left right-0 bottom-[0.1px] h-full border rounded-l-lg p-3 transition-all z-[99] overflow-hidden bg-[#E2D6FB] w-[32%] bg-opacity-40">
             <IoMdArrowDropleft size={40} id="openArrow" className="hidden text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleShow()}/>
             <IoMdArrowDropright size={40} id="closeArrow" className="text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleHide()}/>
             <div id="actions" className="">
                 <h1 className="flex font-semibold text-xl text-violet-700 justify-center">Factura del Carrito</h1>
-                <div>
+                <div className="p-4">
           <h1 className="font-bold text-lg p-4 flex justify-center text-violet-700">Metodo de pago</h1>
           <div className="flex space-x-5 justify-center">
 
@@ -73,7 +73,6 @@ const BuyProduct = () => {
                 </div>
             </div>
         </div>
-        
         </>
     )
 }

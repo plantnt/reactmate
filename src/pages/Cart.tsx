@@ -32,7 +32,7 @@ const CartPage = () => {
 
   return (
     <>
-    <div className="flex w-full">
+    <div className="flex w-full ml-[5%]">
     <div>
     <h1 className="text-5xl pl-8 pt-8 pb-8 font-bold text-purple-400 flex">
         Tu Carrito ‎ <FaCartShopping className="pt-2" />
@@ -44,13 +44,13 @@ const CartPage = () => {
     <div className="flex mt-4 mb-6 pl-8 items-center h-full space-x-6">
       
         <button
-           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-full ease-in-out duration-400"
+           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-800 ease-in-out "
            onClick={organizar}>
            Organizar
         </button>
         
         <button
-           className="border-red-500 bg-red-500 hover:bg-red-600 hover:border-red-600 transition duration-400 border-2 font-bold text-white py-2 px-4 rounded transition-full ease-in-out"
+           className="border-red-500 bg-red-500 hover:bg-red-600 hover:border-red-600 transition-all duration-800 border-2 font-bold text-white py-2 px-4 rounded transition-full ease-in-out"
            onClick={eliminarTodo}>
            Eliminar Todo
         </button>

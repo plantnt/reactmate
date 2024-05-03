@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 import { FaPhone } from 'react-icons/fa';
@@ -78,6 +78,9 @@ export default function UserProfile() {
           setUpdated(false)
         }, 2000);
         setShowEditNum(false)
+        const userPfp = userData.profilepic
+        sessionStorage.setItem('profileSrc', JSON.stringify(userPfp))
+        console.log(userPfp)
       }
        } catch (error) {
        console.error('Error updating profile:', error.message);

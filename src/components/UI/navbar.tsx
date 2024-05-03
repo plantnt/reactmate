@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import { FaCommentDots, } from 'react-icons/fa';
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -11,24 +11,40 @@ import profileIcon from '../../assets/profileIcon.png';
 import textLogo from '../../assets/textLogo.png';
 import furniLogo from '../../assets/furniLogo.png';
 
-import { supabase } from '../../utils/Utils';
-
 import "./ui.css";
 
 const Navbar = () => {  
-    const [userId, setUserId] = useState(null)
-
     const isLogged = !!sessionStorage.getItem('supabaseSession');
+    const isUserId = sessionStorage.getItem('userId');
+    const isPfp = sessionStorage.getItem('profileSrc');
 
-    console.log(isLogged)
+    console.log('user sessiom',isLogged)
+    console.log('user id:',isUserId)
+    console.log('pfp url:',isPfp)
         
        
+    // Burger menu
 
     const [showMenu, setShowMenu] = useState(false)
-
-
     const handleBurgerMenu = () => {
         setShowMenu((prevMenu) => !prevMenu)
+    }
+
+    // Profile modal
+    
+    const [showPfpModal, setShowPfpModal] = useState(false)
+
+    const handleProfileClick = () => {
+        setShowPfpModal((prevPfpStatus) => !prevPfpStatus)
+    }
+
+    // SignOut
+    const navigate = useNavigate()
+    const handleSignOut = () => {
+        sessionStorage.removeItem('supabaseSession');
+        sessionStorage.clear
+        navigate('/')
+        window.location.reload()
     }
 
     return (
@@ -50,7 +66,7 @@ const Navbar = () => {
                             className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-convenientPurple focus:pl-16 focus:pr-4" />
                         <FaMagnifyingGlass className="absolute top-4 left-4 text-slate-800 cursor-pointer border-gray-500"/>
                     </form>
-                </div>
+                </div> 
                 {!showMenu ? 
                     <RxHamburgerMenu size={30} className=" text-convenientOrange cursor-pointer sm:hidden block"
                     onClick={handleBurgerMenu}/>
@@ -72,9 +88,21 @@ const Navbar = () => {
                         </li>
                         {isLogged ? 
                         <li>
-                            <NavLink to={`/profilePage/${userId}`}>
-                                <img src={profileIcon} className="w-[35px] h-auto" title='Perfil'/>
-                            </NavLink>
+                            {showPfpModal ? 
+                                <>
+                                    <img src={isPfp ? isPfp : profileIcon} className="w-[35px] h-auto cursor-pointer" title='Perfil' onClick={handleProfileClick}/>
+                                    <ul className='fixed mt-4 bg-white z-50 shadow-md p-3 rounded-md space-y-4'>
+                                        <NavLink to={`/profilePage/${isUserId}`} onClick={handleProfileClick}>
+                                            <li>Perfil</li> 
+                                        </NavLink>
+                                        <hr />
+                                        <li className='text-red-500 cursor-pointer'
+                                            onClick={handleSignOut}>Cerrar sesión</li> 
+                                    </ul>
+                                </>
+                                :
+                                <img src={isPfp ? isPfp : profileIcon} className="w-[35px] h-auto cursor-pointer" title='Perfil' onClick={handleProfileClick}/>
+                            }
                         </li>
                         :
                         <li>
