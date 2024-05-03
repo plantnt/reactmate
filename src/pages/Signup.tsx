@@ -49,21 +49,34 @@ export default function SignUp(){
             },5000)
         }
         else{
-            const res = await supabase.from("users").insert([
-                {
-                    profilepic: `${formData.avatar}`,
-                    name: `${formData.firstName}`,
-                    last_name: `${formData.lastName}`,
-                    email: `${formData.email}`,
-                    password: `${formData.password}`,
+            try{
+                const res = await supabase.from("users").insert([
+                    {
+                        profilepic: `${formData.avatar}`,
+                        name: `${formData.firstName}`,
+                        last_name: `${formData.lastName}`,
+                        email: `${formData.email}`,
+                        password: `${formData.password}`,
+                    }
+                ])
+                if(res.error){
+                    throw res.error
                 }
-            ])
-            if (res.error === null && res.status === 201) {
-                setStatus(true);
-                setFormData(initialState);
-                setTimeout(() => {
-                    setStatus(false);
-                }, 5000);
+                if (res.status === 201) {
+                    const userId = res.data[0].id
+
+                    setStatus(true);
+                    setFormData(initialState);
+                    sessionStorage.setItem('supabaseSession', JSON.stringify(formData))
+                    sessionStorage.setItem('userId', JSON.stringify(userId))
+
+                    setTimeout(() => {
+                        setStatus(false);
+                    }, 5000);
+                }
+            }
+            catch(error){
+                console.error(error.message)
             }
             setTimeout(() => {
                 navigate('/')
