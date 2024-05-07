@@ -89,13 +89,13 @@ export default function UserProfile() {
       }
     }
     
-    const handleNumInput = (e) => {
+    const handleNumInput = (e:any) => {
       e.preventDefault()
       setPhoneNum(e.target.value)
       console.log(phoneNum)
     }
     
-    const addAddress = async (e) => {
+    const addAddress = async (e:any) => {
       try{
         const { data, error } = await supabase
         .from('users')
@@ -123,7 +123,7 @@ export default function UserProfile() {
         }
       }
 
-    const handleAddressInput = (e) => {
+    const handleAddressInput = (e:any) => {
       e.preventDefault()
       setAddress(e.target.value)
   }
@@ -161,7 +161,7 @@ export default function UserProfile() {
   const [nameMatch, setNameMatch] = useState(true)
 
   const accountUsername = userData.name + ' ' + userData.last_name
-  const handleAccName = (e) => {
+  const handleAccName = (e:any) => {
     const accValue = e.target.value
     setAccName(accValue)
     accValue === accountUsername ? setNameMatch(false) : setNameMatch(true)
@@ -175,13 +175,11 @@ export default function UserProfile() {
     .from('users')
     .delete()
     .eq('email', userData.email)
-    
+    sessionStorage.removeItem('supabaseSession')
     if (error) {
       throw error;
-    }
-
+    }    
     navigate('/')
-    
   }
 
   return (
@@ -291,7 +289,7 @@ export default function UserProfile() {
                     <input value={AccName} type="text" className='border-2 border-slate-300 text-slate-600 p-2 rounded-lg h-[2em] outline-none'
                           onChange={handleAccName}/>
                     <button className={nameMatch == true ? 'bg-red-500 bg-opacity-60 rounded-lg text-white px-4 py-2 select-none cursor-not-allowed' : 'bg-red-500 rounded-lg text-white px-4 py-2 hover:bg-red-600 transition-colors'}
-                            disabled={nameMatch} onClick={handleDeleteAccount}>
+                            disabled={nameMatch} onSubmit={handleDeleteAccount} onClick={handleDeleteAccount}>
                       Eliminar mi cuenta
                     </button>
                   </div>
