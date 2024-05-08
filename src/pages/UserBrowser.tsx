@@ -76,7 +76,7 @@
                     </div>
                     <div className="flex items-center pt-8 pl-6">
                         <input type="text" className="bg-slate-200 rounded-l-3xl outline-none px-4 h-9 text-gray-900 w-[55%]"/>
-                        <button className="rounded-r-3xl h-9 w-14 bg-violet-700 cursor-pointer mr-20">
+                        <button className="rounded-r-3xl h-9 w-14 bg-violet-300 cursor-pointer mr-20">
                             <FaMagnifyingGlass className="text-white ml-[18.5px]"/>
                         </button>
                         <div className="flex items-center ml-4">
