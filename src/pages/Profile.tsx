@@ -288,7 +288,7 @@ export default function UserProfile() {
                     <p className='text-lg mt-3 font-bold'>Escriba el nombre de su cuenta.</p>
                     <input value={AccName} type="text" className='border-2 border-slate-300 text-slate-600 p-2 rounded-lg h-[2em] outline-none'
                           onChange={handleAccName}/>
-                    <button className={nameMatch == true ? 'bg-red-500 bg-opacity-60 rounded-lg text-white px-4 py-2 select-none cursor-not-allowed' : 'bg-red-500 rounded-lg text-white px-4 py-2 hover:bg-red-600 transition-colors'}
+                    <button type='submit' className={nameMatch == true ? 'bg-red-500 bg-opacity-60 rounded-lg text-white px-4 py-2 select-none cursor-not-allowed' : 'bg-red-500 rounded-lg text-white px-4 py-2 hover:bg-red-600 transition-colors'}
                             disabled={nameMatch} onSubmit={handleDeleteAccount} onClick={handleDeleteAccount}>
                       Eliminar mi cuenta
                     </button>
