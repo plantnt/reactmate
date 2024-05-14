@@ -59,28 +59,20 @@ export default function SignUp(){
                         password: `${formData.password}`,
                     }
                 ])
-                if(res.error){
-                    throw res.error
-                }
-                if (res.status === 201) {
-                    const userId = res.data[0].id
-
+                if (res.error === null && res.status === 201) {
                     setStatus(true);
                     setFormData(initialState);
                     sessionStorage.setItem('supabaseSession', JSON.stringify(formData))
-                    sessionStorage.setItem('userId', JSON.stringify(userId))
 
                     setTimeout(() => {
                         setStatus(false);
-                    }, 5000);
+                        navigate('/')
+                    }, 2000);
                 }
             }
             catch(error){
                 console.error(error.message)
             }
-            setTimeout(() => {
-                navigate('/')
-            },2000)
         }
     }
     const [error, setError] = useState(false)

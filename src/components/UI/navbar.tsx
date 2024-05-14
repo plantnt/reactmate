@@ -16,7 +16,7 @@ import "./ui.css";
 const Navbar = () => {  
     const isLogged = !!sessionStorage.getItem('supabaseSession');
     const isUserId = sessionStorage.getItem('userId');
-    const isPfp = sessionStorage.getItem('profileSrc');
+    const isPfp = sessionStorage.getItem('profilesrc');
 
     console.log('user sessiom',isLogged)
     console.log('user id:',isUserId)
