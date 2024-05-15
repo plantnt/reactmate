@@ -26,7 +26,7 @@ const Cart = () => {
                             <NavLink to="/chatingPage" className="w-full">
                                 <button
                                     className="rounded-lg w-full bg-blue-400 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-500 transition duration-300 border-2 border-blue-500 text-white font-bold py-4 px-6 flex items-center mb-2"
-                                    onMouseEnter={() => handleHover('Ir a tus chat')}
+                                    onMouseEnter={() => handleHover('Ir a tus chats')}
                                     onMouseLeave={() => handleHover('Comunidad.')}
                                 >
                                     <FaRegCommentDots className="size-8 inline-block text-2xl" />

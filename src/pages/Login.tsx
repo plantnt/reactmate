@@ -47,7 +47,7 @@ const [visible, setVisible] = useState(true)
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("id,email,password")
+            .select("id,email,password,profilepic")
             ;
         if (users){
             const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
@@ -60,9 +60,10 @@ const [visible, setVisible] = useState(true)
                     console.log('Usuario ha iniciado sesión correctamente:', user);
                     sessionStorage.setItem('supabaseSession', JSON.stringify(user))
                     sessionStorage.setItem('userId', JSON.stringify(user.id))
+                    sessionStorage.setItem('profilesrc', JSON.stringify(user.profilepic))
                     console.log('user id:', user.id)
                     navigate(`/profilePage/${user.id}`);  
-                    console.log(user.id)
+                    console.log(user.profilepic)
                 }, 2000)
                 
                 } else{

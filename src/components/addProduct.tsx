@@ -3,9 +3,11 @@ import {NavLink} from 'react-router-dom'
 
 export default function AddProduct(){
   
+  const isLogged = !!sessionStorage.getItem('supabaseSession');
+
   return(
     <>
-    
+      {isLogged ? 
       <NavLink to='/productUpload'>
         <button className="
         fixed top-[80vh] right-[40px]
@@ -22,6 +24,9 @@ export default function AddProduct(){
           <BiAddToQueue size={35} />
         </button>
       </NavLink>
+      :
+      <></>
+      }
     </>
   )
 }
