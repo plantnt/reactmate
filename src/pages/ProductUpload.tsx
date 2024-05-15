@@ -468,54 +468,42 @@ export default function Upload() {
     }
   };
 
-  // const deleteImage = (index: number | null = null) => {
-  //       if (index !== null) {
-  //         const newItems = [...images.items];
-  //         newItems.splice(index, 1);
-  //         setImages({ ...images, items: newItems });
-  //       } else {
-  //         setImages({ ...images, main: null });
-  //       }
-  //     };
-
-  // const deleteImages = (index: number | null = null) => {
-  //   if (index !== null) {
-      
-  //     const newItems = [...images.items];
-  //     newItems.splice(index, 1);
-  //     setImages({ ...images, items: newItems });
-  
-      
-  //     if (newItems.length > 0) {
-  //       setImages({ main: newItems[0], items: newItems.slice(1) });
-  //     } else {
-        
-  //       setImages({ main: null, items: [] });
-  //     }
-  //   } else {
-      
-  //     setImages({ ...images, main: null });
-  //   }
-  // };
-
   const deleteImage = (index: number | null = null) => {
     if (index !== null) {
         const newItems = [...images.items];
         newItems.splice(index, 1);
         setImages({ ...images, items: newItems });
-        if (images.main === null && newItems.length > 0) {
-            setImages({ main: newItems[0], items: newItems.slice(1) });
+
+        if (index === 0 && images.items.length > 1) {
+            setImages({ ...images, main: images.items[0] });
+            setImages({ ...images, items: newItems });
         }
     } else {
         setImages({ ...images, main: null });
     }
 };
-const handleDeleteMainImage = () => {
-  const button = document.querySelector("button");
 
-  button.addEventListener("click", deleteImage());
 
-};
+  const deleteImages = (index: number | null = null) => {
+    if (index !== null) {
+      
+      const newItems = [...images.items];
+      newItems.splice(index, 1);
+      setImages({ ...images, items: newItems });
+  
+      
+      if (newItems.length > 0) {
+        setImages({ main: newItems[0], items: newItems.slice(1) });
+      } else {
+        
+        setImages({ main: null, items: [] });
+      }
+    } else {
+      
+      setImages({ ...images, main: null });
+    }
+  };
+  
   
   const imgCounter = images.items.length;
 
@@ -536,14 +524,14 @@ const handleDeleteMainImage = () => {
   return (
     <div className='p-8 grid'>
       <form className='flex space-x-6'>
-        <div className='flex flex-wrap  w-[400px]'>
+        <div className='flex flex-wrap   w-[400px]'>
           <div className='group relative flex flex-col items-center justify-center w-full h-[400px] border-4 border-violet-400 rounded-xl hover:cursor-pointer overflow-hidden'
             onClick={() => handleUpload()}>
             {images.main ? (
               <>
                 <img src={images.main} className="w-full h-full object-cover hover:scale-105 transition-transform" />
                 <div className='group-hover:flex items-center justify-center h-[20px] w-[20px] rounded-full bg-red-500 absolute top-1 right-2 hidden hover:bg-opacity-60 transition-all'
-            title='Eliminar imagen' onClick={handleDeleteMainImage}>
+            title='Eliminar imagen' onClick={()=>deleteImage()}>
             <GiCancel className='text-white' />
                   
                 </div>
@@ -557,7 +545,7 @@ const handleDeleteMainImage = () => {
             )}
           </div>
           {images.items.map((itemSrc, index) => (
-            <div key={index} className='pt-2 group relative flex items-center justify-center h-[120px] md:w-[32%] w-[48%] text-slate-400 rounded-md border-2 border-slate-400 hover:cursor-pointer transition-opacity overflow-hidden'>
+            <div key={index} className='m-0.5 mt-1.5 group relative flex items-center justify-center h-[120px] md:w-[32%] w-[48%] text-slate-400 rounded-md border-2 border-slate-400 hover:cursor-pointer transition-opacity overflow-hidden'>
               {itemSrc ? (
                 <>
                   <img src={itemSrc} className="w-full h-full object-cover hover:scale-105 transition-transform" />
@@ -579,7 +567,7 @@ const handleDeleteMainImage = () => {
           {images.main ?(
           <>
           {images.items.length < 6 && (
-            <div className='group relative flex items-center justify-center h-[120px] md:w-[32%] w-[48%] text-slate-400 rounded-md border-2 border-slate-400 hover:cursor-pointer transition-opacity'>
+            <div className='m-0.5 mt-1.5 group relative flex items-center justify-center h-[120px] md:w-[32%] w-[48%] text-slate-400 rounded-md border-2 border-slate-400 hover:cursor-pointer transition-opacity'>
               <Plus className='group-hover:scale-150 transition-all' onClick={() => handleUpload(images.items.length)} />
               <input ref={(el) => itemFiles.current[images.items.length] = el} onChange={(e) => handleUploadChange(e, images.items.length)} type="file" accept='image/png, image/jpeg' hidden />
             </div>
@@ -587,8 +575,9 @@ const handleDeleteMainImage = () => {
           </>
           ):(<>
           </>)}
+          
         
-          <p className='text-xs p-2'>{images.items.filter(Boolean).length}/6 Imágenes adicionales</p>
+          <p className='text-xs m-2 '>{images.items.filter(Boolean).length}/6 Imágenes adicionales</p>
         </div>
         <ProductForm />
       </form>
@@ -597,7 +586,7 @@ const handleDeleteMainImage = () => {
           <button onClick={uploadImgs} type='button' className={images.main ?
             'group flex items-center bg-slate-300 w-[200px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:bg-green-400 hover:text-white transition-colors overflow-hidden'
             : 'flex items-center opacity-80 bg-slate-300 w-[200px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:cursor-not-allowed transition-colors overflow-hidden'}
-            disabled={!images.main}
+            disabled={!images.main }
             title={!images.main ? "Primero debe subir una imagen" : "Publicar"}>
             <FaRegCheckCircle className='transform mr-2 translate-y-9 group-hover:translate-y-0 transition duration-500 ease-in-out' />
             Publicar
