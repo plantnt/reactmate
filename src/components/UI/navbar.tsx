@@ -20,7 +20,6 @@ const Navbar = () => {
 
     console.log('user sessiom',isLogged)
     console.log('user id:',isUserId)
-    console.log('pfp url:',isPfp)
         
        
     // Burger menu

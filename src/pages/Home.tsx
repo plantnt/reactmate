@@ -15,12 +15,12 @@ const Home = () => {
             <div className="h-full w-full flex flex-col">
                 <FeaturedProducts />
                 <div className="flex justify-center w-full">
+                    <div className="flex w-full">
                     <Filters/>
-                    <div className="max-w-[60rem] justify-self-start">
-                        <div className="mt-3">
+                        <div className="ml-2">
                             <Rating/>
+                            <Catalog />
                         </div>
-                        <Catalog />
                     </div>
                     <AddProduct/>
                 </div>
