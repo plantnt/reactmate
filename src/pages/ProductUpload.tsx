@@ -474,7 +474,7 @@ export default function Upload() {
         newItems.splice(index, 1);
         setImages({ ...images, items: newItems });
 
-        if (index === 0 && images.items.length > 1) {
+        if (index === 0 && images.items.length > 0) {
             setImages({ ...images, main: images.items[0] });
             setImages({ ...images, items: newItems });
         }
@@ -483,26 +483,6 @@ export default function Upload() {
     }
 };
 
-
-  const deleteImages = (index: number | null = null) => {
-    if (index !== null) {
-      
-      const newItems = [...images.items];
-      newItems.splice(index, 1);
-      setImages({ ...images, items: newItems });
-  
-      
-      if (newItems.length > 0) {
-        setImages({ main: newItems[0], items: newItems.slice(1) });
-      } else {
-        
-        setImages({ main: null, items: [] });
-      }
-    } else {
-      
-      setImages({ ...images, main: null });
-    }
-  };
   
   
   const imgCounter = images.items.length;
