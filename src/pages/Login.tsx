@@ -60,7 +60,6 @@ const [visible, setVisible] = useState(true)
                     console.log('Usuario ha iniciado sesión correctamente:', user);
                     sessionStorage.setItem('supabaseSession', JSON.stringify(user))
                     sessionStorage.setItem('userId', JSON.stringify(user.id))
-                    sessionStorage.setItem('profilesrc', JSON.stringify(user.profilepic))
                     console.log('user id:', user.id)
                     navigate(`/profilePage/${user.id}`);  
                     console.log(user.profilepic)
