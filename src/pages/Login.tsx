@@ -41,36 +41,53 @@ const [visible, setVisible] = useState(true)
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
  
+    const checkStorageUsage = () => {
+        let used = 0;
+        for (let key in sessionStorage) {
+            if (sessionStorage.hasOwnProperty(key)) {
+                used += (sessionStorage[key].length + key.length) * 2;
+            }
+        }
+        console.log(`Used ${used} bytes out of 5MB`);
+        return used;
+    };
 
     const handlelogin = async (e:any) => {
         e.preventDefault();
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("id,email,password,profilepic")
-            ;
+            .select("id,email,password,profilepic");
         if (users){
             const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
             if (user){
                 setStatus(true)           
                 setTimeout(() => {
                     setStatus(false);
-                }, 5000);
+                }, 1000);
                 setTimeout(() => {
                     console.log('Usuario ha iniciado sesión correctamente:', user);
+                    const currentStorageUsage = checkStorageUsage();
+                    const profilePicSize = (user.profilepic.length * 2); // Estimate size in bytes
+
+                    // Check if adding the profile pic exceeds the limit (usually around 5MB)
+                    if ((currentStorageUsage + profilePicSize) > 5 * 1024 * 1024) {
+                        console.error('Profile picture is too large to store in sessionStorage');
+                    } else {
+                        sessionStorage.setItem('profilePic', user.profilepic);
+                    }
                     sessionStorage.setItem('supabaseSession', JSON.stringify(user))
                     sessionStorage.setItem('userId', JSON.stringify(user.id))
-                    console.log('user id:', user.id)
+                
                     navigate(`/profilePage/${user.id}`);  
-                    console.log(user.profilepic)
-                }, 2000)
+                }, 1000)
                 
                 } else{
                     console.log("No se ha podido iniciar sesion correctamente");
                     setFailure(true)
                     setTimeout(() => {
                         setFailure(false)
-                    }, 2000);
+                    }, 1000);
                 }
             }
             if (error) {

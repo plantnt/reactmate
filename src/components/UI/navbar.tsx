@@ -16,10 +16,11 @@ import "./ui.css";
 const Navbar = () => {  
     const isLogged = !!sessionStorage.getItem('supabaseSession');
     const isUserId = sessionStorage.getItem('userId');
-    const isPfp = sessionStorage.getItem('profilesrc');
+    const isPfp = sessionStorage.getItem('profilePic');
 
     console.log('user sessiom',isLogged)
     console.log('user id:',isUserId)
+    console.log('pfp url:',isPfp)
         
        
     // Burger menu
