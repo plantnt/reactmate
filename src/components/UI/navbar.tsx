@@ -20,12 +20,7 @@ const Navbar = () => {
 
     console.log('user sessiom',isLogged)
     console.log('user id:',isUserId)
-    console.log('pfp url:',isPfp)
-     
-    const profilePicId = sessionStorage.getItem('profilesrc');
-const profilePicUrl = `https://example.com/profiles/${profilePicId}.jpg`;
-
-
+        
        
     // Burger menu
 
