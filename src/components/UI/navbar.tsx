@@ -21,7 +21,11 @@ const Navbar = () => {
     console.log('user sessiom',isLogged)
     console.log('user id:',isUserId)
     console.log('pfp url:',isPfp)
-        
+     
+    const profilePicId = sessionStorage.getItem('profilesrc');
+const profilePicUrl = `https://example.com/profiles/${profilePicId}.jpg`;
+
+
        
     // Burger menu
 
@@ -90,7 +94,7 @@ const Navbar = () => {
                         <li>
                             {showPfpModal ? 
                                 <>
-                                    <img src={isPfp ? isPfp : profileIcon} className="w-[35px] h-auto cursor-pointer" title='Perfil' onClick={handleProfileClick}/>
+                                    <img src={profileIcon} className="w-[35px] h-auto cursor-pointer" title='Perfil' onClick={handleProfileClick}/>
                                     <ul className='fixed mt-4 bg-white z-50 shadow-md p-3 rounded-md space-y-4'>
                                         <NavLink to={`/profilePage/${isUserId}`} onClick={handleProfileClick}>
                                             <li>Perfil</li> 
@@ -101,7 +105,7 @@ const Navbar = () => {
                                     </ul>
                                 </>
                                 :
-                                <img src={isPfp ? isPfp : profileIcon} className="w-[35px] h-auto cursor-pointer" title='Perfil' onClick={handleProfileClick}/>
+                                <img src={profileIcon} className="w-[35px] h-auto cursor-pointer" title='Perfil' onClick={handleProfileClick}/>
                             }
                         </li>
                         :
