@@ -468,21 +468,36 @@ export default function Upload() {
     }
   };
 
-  const deleteImage = (index: number | null = null) => {
-    if (index !== null) {
-        const newItems = [...images.items];
-        newItems.splice(index, 1);
-        setImages({ ...images, items: newItems });
+//   const deleteImage = (index: number | null = null) => {
+//     if (index !== null) {
+//         const newItems = [...images.items];
+//         newItems.splice(index, 1);
+//         setImages({ ...images, items: newItems });
 
-        if (index === 0 && images.items.length > 0) {
-            setImages({ ...images, main: images.items[0] });
-            setImages({ ...images, items: newItems });
-        }
-    } else {
-        setImages({ ...images, main: null });
+//         if (index === 0 && images.items.length > 0) {
+//             setImages({ ...images, main: images.items[0] });
+//             setImages({ ...images, items: newItems });
+//         }
+//     } else {
+//         setImages({ ...images, main: null });
+//     }
+// };
+const deleteImage = (index = null) => {
+  if (index !== null) {
+    const newItems = [...images.items];
+    newItems.splice(index, 1);
+    setImages({ ...images, items: newItems });
+
+    if (images.main === null && images.items.length >=0) {
+      const [newMain, ...remainingItems] = newItems;
+        setImages({ main: newMain, items: remainingItems });
+    } else if (images.items.length === 0) {
+      setImages({ ...images, main: null });
     }
+  } else {
+    setImages({ ...images, main: null });
+  }
 };
-
   
   
   const imgCounter = images.items.length;
@@ -511,7 +526,7 @@ export default function Upload() {
               <>
                 <img src={images.main} className="w-full h-full object-cover hover:scale-105 transition-transform" />
                 <div className='group-hover:flex items-center justify-center h-[20px] w-[20px] rounded-full bg-red-500 absolute top-1 right-2 hidden hover:bg-opacity-60 transition-all'
-            title='Eliminar imagen' onClick={()=>deleteImage()}>
+            title='Eliminar imagen' onClick={(e) => { e.stopPropagation(); deleteImage(); }}>
             <GiCancel className='text-white' />
                   
                 </div>
@@ -530,7 +545,7 @@ export default function Upload() {
                 <>
                   <img src={itemSrc} className="w-full h-full object-cover hover:scale-105 transition-transform" />
                   <div className='group-hover:flex absolute top-0 right-0 items-center justify-center h-[20px] w-[20px] rounded-full bg-red-500 hidden z-50 transition-all'
-                    title='Eliminar imagen' onClick={() => deleteImage(index)}>
+                    title='Eliminar imagen' onClick={(e) => { e.stopPropagation(); deleteImage(index); }}>
                     <GiCancel className='text-white text-lg' />
                   </div>
                 
