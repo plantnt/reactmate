@@ -8,9 +8,9 @@ const ChatPage = () => {
     const { userId } = useParams();
     const isLogged = sessionStorage.getItem('supabaseSession');
     const [optionsVisible, setOptionsVisible] = useState<boolean[]>(Array.from({ length: 1 }, () => false));
-    const userNames: string[] = ["Distribuidora Juanchito"];
+    const userNames: string[] = ["Distribuidora Juanchito","User de prueba"];
     const messages: string[] = JSON.parse(localStorage.getItem('chatMessages') || '[]') || [
-        "¡Acabo de comprar un nuevo sofá para mi sala de estar!",
+        "Hola caballero",
         "Estoy buscando una mesa de centro para mi sala.",
         "¿Alguien conoce una buena tienda de muebles en la zona?",
         "Estoy renovando mi dormitorio y necesito un nuevo armario.",
@@ -45,15 +45,14 @@ const ChatPage = () => {
                 <>
                     <div className="bg-gray-100 min-h-screen max-w-full flex flex-col">
                         <div className="flex-1 overflow-y-auto p-4">
-                            {Array.from({ length: 1 }, (_, index) => (
-                                <div key={index} className="flex items-start mb-4">
+                            {Array.from({ length: 2 }, (_, index) => (
+                                <div key={index} className="flex items-start mb-4 border-2 p-2 rounded-lg">
                                     <NavLink to={`/chatView`} className="flex items-start w-full">
                                         <div className="flex-shrink-0 text-purple-500">
                                             <FaUser className="h-8 w-8" />
                                         </div>
-                                        <div className="ml-3">
+                                        <div className="ml-2 mt-1">
                                             <p className="text-sm font-medium text-gray-900 font-sans">{userNames[index]}</p>
-                                            <p className="text-sm text-gray-600 font-sans">{messages[index]}</p>
                                         </div>
                                     </NavLink>
                                     <div className="ml-auto">
