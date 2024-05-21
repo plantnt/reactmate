@@ -52,25 +52,31 @@ const [visible, setVisible] = useState(true)
         if (users){
             const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
             if (user){
+                setTimeout(() => {
+                    console.log('Usuario ha iniciado sesión correctamente:', user);
+                    
+                const profilePicUrl = user.profilepic;
+                const profilePicId = profilePicUrl.split('/').pop().split('.')[0];
+
+                sessionStorage.setItem('supabaseSession', JSON.stringify(user));
+                sessionStorage.setItem('userId', JSON.stringify(user.id));
+                sessionStorage.setItem('profilesrc', profilePicId);
+                console.log('user id:', user.id);
+                navigate(`/profilePage/${user.id}`);
+                console.log(profilePicId);
+                }, 2000)
                 setStatus(true)           
                 setTimeout(() => {
                     setStatus(false);
-                }, 5000);
-                setTimeout(() => {
-                    console.log('Usuario ha iniciado sesión correctamente:', user);
-                    sessionStorage.setItem('supabaseSession', JSON.stringify(user))
-                    sessionStorage.setItem('userId', JSON.stringify(user.id))
-                    console.log('user id:', user.id)
-                    navigate(`/profilePage/${user.id}`);  
-                    console.log(user.profilepic)
-                }, 2000)
+                }, 3000);
+                
                 
                 } else{
                     console.log("No se ha podido iniciar sesion correctamente");
                     setFailure(true)
                     setTimeout(() => {
                         setFailure(false)
-                    }, 2000);
+                    }, 4000);
                 }
             }
             if (error) {

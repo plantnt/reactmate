@@ -1,8 +1,3 @@
-// En ChatPage.tsx
-// Propuesta de valor: Los demas sitios web de ecommerce cuentan con un chat, pero este únicamente se presta
-// para hablar con agentes del sitio web y no podemos contactar al vendedor de forma asertiva en los comentarios
-// de una publicación, por lo que para evitar redireccion a otras apps, aquí mismo podrán chatear
-
 import { useState, useEffect } from "react";
 import { FaArrowLeft, FaEllipsisV, FaUser } from "react-icons/fa";
 import { NavLink} from "react-router-dom";
@@ -11,9 +6,9 @@ import { useParams } from 'react-router';
 
 const ChatPage = () => {
     const { userId } = useParams();
-    const islogged =sessionStorage.getItem('supabaseSession')
-    const [optionsVisible, setOptionsVisible] = useState<boolean[]>(Array.from({ length: 10 }, () => false));
-    const userNames: string[] = ["Juan", "María", "Carlos", "Laura", "Pedro", "Ana", "Luis", "Sofía", "David", "Elena"];
+    const isLogged = sessionStorage.getItem('supabaseSession');
+    const [optionsVisible, setOptionsVisible] = useState<boolean[]>(Array.from({ length: 1 }, () => false));
+    const userNames: string[] = ["Distribuidora Juanchito"];
     const messages: string[] = JSON.parse(localStorage.getItem('chatMessages') || '[]') || [
         "¡Acabo de comprar un nuevo sofá para mi sala de estar!",
         "Estoy buscando una mesa de centro para mi sala.",
@@ -45,12 +40,12 @@ const ChatPage = () => {
                 <div className="ml-4"></div>
             </div>
 
-            {islogged ? (
+            {isLogged ? (
                 // Si userId existe, muestra el contenido de la página de chat
                 <>
                     <div className="bg-gray-100 min-h-screen max-w-full flex flex-col">
                         <div className="flex-1 overflow-y-auto p-4">
-                            {Array.from({ length: 10 }, (_, index) => (
+                            {Array.from({ length: 1 }, (_, index) => (
                                 <div key={index} className="flex items-start mb-4">
                                     <NavLink to={`/chatView`} className="flex items-start w-full">
                                         <div className="flex-shrink-0 text-purple-500">

@@ -88,7 +88,7 @@ const ServicesChat = () => {
     return (
         <>
             <div className="relative bg-gradient-to-r from-purple-400 to-purple-300 py-6 flex justify-center items-center pb-6 pt-8">
-                <h1 className="text-6xl font-bold font-extrawide text-white -mt-3 p-4 flex">
+                <h1 className="text-5xl font-bold font-extrawide text-white -mt-3 p-4 flex">
                     Foro
                 </h1>
             </div>
@@ -96,65 +96,21 @@ const ServicesChat = () => {
                 <>
                     <div className="relative bg-gray-50 min-h-screen max-w-full overflow-y-auto pt-2">
                         <div className="flex space-x-12">
-                            <div className="p-4">
-                                <h2 className="text-2xl text-gray-400 font-semibold mb-2">Escribe tu publicación</h2>
-                                <textarea
-                                    className="w-full p-2 border-2 border-gray-200 rounded"
-                                    rows={6}
-                                    value={newPost}
-                                    onChange={handlePostChange}
-                                    placeholder="¡Aquí puedes publicar qué es lo que ofreces o buscas con la comunidad, acompaña tu mensaje con tus datos de contacto para empezar :)"
-                                />
-                                <div className="flex items-center mb-4">
-                                    <label className="mr-4">
-                                        <input className="mr-1"
-                                            type="checkbox"
-                                            value="Usuario"
-                                            checked={selectedOption === "Usuario"}
-                                            onChange={() => handleCheckboxChange("Usuario")}
-                                        />
-                                        Usuario
-                                    </label>
-                                    <label className="mr-4">
-                                        <input className="mr-1"
-                                            type="checkbox"
-                                            value="Emprendedor"
-                                            checked={selectedOption === "Emprendedor"}
-                                            onChange={() => handleCheckboxChange("Emprendedor")}
-                                        />
-                                        Emprendedor
-                                    </label>
-                                    <label className="mr-4">
-                                        <input className="mr-1"
-                                            type="checkbox"
-                                            value="Empresa"
-                                            checked={selectedOption === "Empresa"}
-                                            onChange={() => handleCheckboxChange("Empresa")}
-                                        />
-                                        Empresa
-                                    </label>
-                                    <label className="ml-6 text-gray-300">|</label>
-                                    <label className="mx-6"></label>
-                                    <label className="mr-4 pl-10">
-                                        <input className="mr-1"
-                                            type="checkbox"
-                                            value="Busco"
-                                            checked={selectedOption === "Busco"}
-                                            onChange={() => handleCheckboxChange("Busco")}
-                                        />
-                                        Busco
-                                    </label>
-                                    <label className="mr-4 pl-10">
-                                        <input className="mr-1"
-                                            type="checkbox"
-                                            value="Ofrezco"
-                                            checked={selectedOption === "Ofrezco"}
-                                            onChange={() => handleCheckboxChange("Ofrezco")}
-                                        />
-                                        Ofrezco
-                                    </label>
+                            <div className="p-4 w-6/12">
+                                <div>
+                                <div className="p-4">
+                                    <h2 className="text-2xl text-gray-400 font-semibold mb-2">Escribe tu publicación</h2>
+                                    <textarea
+                                        className="w-full p-2 border-2 border-gray-200 rounded"
+                                        rows={6}
+                                        value={newPost}
+                                        onChange={handlePostChange}
+                                        placeholder="¡Aquí puedes publicar qué es lo que ofreces o buscas con la comunidad, acompaña tu mensaje con tus datos de contacto para empezar :)"
+                                    />
                                 </div>
-                                <div className="flex items-center mb-1">
+
+                                </div>
+                                <div className="flex items-center -mt-2 ml-4 w-full">
                                     <button
                                         className="px-4 py-2 bg-blue-400 border-blue-500 border-2 text-white rounded-lg hover:bg-blue-600 flex mr-2"
                                         onClick={createPost}
@@ -164,8 +120,25 @@ const ServicesChat = () => {
                                     <button className="flex rounded-lg py-2 px-4 bg-gray-100 border-gray-300 border-2 text-gray-400 hover:bg-gray-200 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 font-sans">
                                         <div className="pt-1 pr-2">
                                             <FaPaperclip className="" />
-                                        </div> Adjuntar imagen...
+                                        </div> Subir imagen...
                                     </button>
+
+                                    <a className="ml-6"></a>
+
+                                    <label className="mr-4">
+                                            <a className="pr-4">Tipo de usuario:</a>
+                                            <select
+                                                className="p-2 border border-gray-300 rounded-md"
+                                                value={selectedOption}
+                                                onChange={(e) => handleCheckboxChange(e.target.value)}
+                                            >
+                                                <option value="Usuario">Usuario</option>
+                                                <option value="Emprendedor">Emprendedor</option>
+                                                <option value="Empresa">Empresa</option>
+                                                <option value="Busco">Busco</option>
+                                                <option value="Ofrezco">Ofrezco</option>
+                                            </select>
+                                        </label>
                                 </div>
                             </div>
 
