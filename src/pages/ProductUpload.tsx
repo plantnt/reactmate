@@ -497,7 +497,7 @@ const deleteImage = (index = null) => {
     }
   }
 };
-  
+  //pomngo esto pa poder subir lo mio a
   
   const imgCounter = images.items.length;
 
