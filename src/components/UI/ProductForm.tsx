@@ -90,11 +90,46 @@ const ProductForm = () => {
         }
       })
 
-      // const [titulo, setTitulo] = useState("");
-      // const [precio, setPrecio] = useState("");
-      // const [material, setMaterial] = useState("");
-      // const [categoria, setCategoria] = useState("");
-      // const [descripcion, setDescripcion] = useState("");
+      const [formData, setFormData]=useState({
+        title:"",
+        description:"",
+        material:"",
+        categoria:[],
+})
+
+sessionStorage.setItem("titulo",formData.title)
+sessionStorage.setItem("descripcion",formData.description)
+sessionStorage.setItem("precio",value)
+sessionStorage.setItem("material", formData.material)
+var arrayC = JSON.stringify(formData.categoria)
+sessionStorage.setItem("categoria",arrayC)
+console.log(formData.title)
+console.log(value)
+console.log(formData.description)
+console.log(arrayC)
+// // Supongamos que tienes un array de datos
+// var miArray = [1, 2, 3, 4, 5];
+
+// // Conviertes el array a una cadena JSON
+// var miArrayJSON = JSON.stringify(miArray);
+
+// // Guardas la cadena JSON en el sessionStorage
+// sessionStorage.setItem('miArray', miArrayJSON);
+// // Recuperar los datos del sessionStorage
+// var miArrayJSON = sessionStorage.getItem('miArray');
+
+// // Convertir la cadena JSON de nuevo a un array
+// var miArrayRecuperado = JSON.parse(miArrayJSON);
+
+// console.log(miArrayRecuperado); // Imprimirá: [1, 2, 3, 4, 5]
+
+
+const handleFormInput = async (e:any) => {
+  e.preventDefault();
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+
       
 
 
@@ -103,7 +138,7 @@ const ProductForm = () => {
         <div className="flex flex-col w-[400px] space-y-5">
             <label className='grid'>
                 Titulo
-                <input name="title" type="text" className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" required maxLength={1000}/>
+                <input name="title" onChange={handleFormInput} type="text" className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" required maxLength={1000}/>
             </label>
             <label className='grid'>
                 Precio
@@ -115,7 +150,7 @@ const ProductForm = () => {
             </label>
             <label className='grid gap-2'>
               Descripción
-              <textarea ref={textAreaRef} name="description" className='px-1 border-2 rounded-md outline-none w-full h-[202px] text-gray-800' required maxLength={1000} spellCheck={false}></textarea>
+              <textarea ref={textAreaRef} onChange={handleFormInput} name="description" className='px-1 border-2 rounded-md outline-none w-full h-[202px] text-gray-800' required maxLength={1000} spellCheck={false}></textarea>
               <span className='text-xs italic'>{charCount}/1000</span>
             </label>
         </div>

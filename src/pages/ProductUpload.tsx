@@ -497,7 +497,7 @@ const deleteImage = (index = null) => {
     }
   }
 };
-  //pomngo esto pa poder subir lo mio a
+  
   
   const imgCounter = images.items.length;
 
@@ -506,7 +506,8 @@ const deleteImage = (index = null) => {
       const { data, error } = await supabase
         .from('products')
         .insert([{ image: images.main, aditImages: images.items }]);
-      console.log(data);
+      console.log(data)
+      console.log("info enviada");
       if (error) {
         throw error;
       }
