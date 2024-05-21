@@ -11,9 +11,13 @@ export default function Card1(){
                         <img src="src\assets\products\5.jpg" alt="Imagen product" className='object-cover'/>
                     </div>
                     <div className='w-full p-2 bg-white'>
-                        <h3 className='font-semibold text-wrap'>Mueble azul de casa</h3>
-                        <Rate allowHalf disabled value={5} className="text-violet-400 text-xs" />
-                        <h1 className=''>$ COP 999.99</h1>
+                    <Rate allowHalf disabled value={5} className="text-violet-400 pt-1 text-xs text-center bg-purple-200 rounded-full px-1 w-full mt-2" />
+                        <h3 className='font-semibold text-wrap '>Mueble azul de casa</h3>
+                        
+                        <div className="flex">
+                        <h1 className='font-bold'>$ COP 999.99</h1>
+                        </div>
+                        
                     </div>
                 </div>
             </NavLink>
