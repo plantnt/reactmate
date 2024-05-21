@@ -1,5 +1,5 @@
 import { Pagination } from "antd";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaArrowLeft, FaMagnifyingGlass } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import { FaUser } from "react-icons/fa";
@@ -56,6 +56,7 @@ export default function StoreBrowser() {
         <>
             <div className="relative bg-gray-50 min-h-screen max-w-full pl-10">
                 <div className="bg-gradient-to-r from-purple-400 to-purple-300 py-4 -ml-10 flex justify-center items-center">
+                <NavLink to="/chatHome" className="ml-4 text-white hover:text-gray-200 absolute left-0"><FaArrowLeft /></NavLink>
                     <h1 className="flex text-3xl font-bold text-white text-center m-4">
                         Negocios de <img src={textLogo} className="px-2 mx-2 py-1 my-1 sm:block w-26 h-7 hidden bg-purple-400 rounded fill-current" />
                     </h1>

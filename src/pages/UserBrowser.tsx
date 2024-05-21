@@ -4,6 +4,7 @@ import { Pagination } from "antd";
 import { FaMagnifyingGlass, FaUser } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import { FaArrowLeft } from 'react-icons/fa';
 
 // Componente para la tarjeta de usuario
 function UserCard1() {
@@ -103,6 +104,7 @@ export default function UserBrowser() {
         <>
             <div className="relative bg-gray-50 min-h-screen max-w-full">
                 <div className="bg-gradient-to-r from-furniorange to-orange-200 py-6 flex justify-center items-center">
+                <NavLink to="/chatHome" className="ml-4 text-white hover:text-gray-200 absolute left-0"><FaArrowLeft /></NavLink>
                     <h1 className="text-3xl font-bold text-white text-center m-4">
                         Buscador de usuarios
                     </h1>
