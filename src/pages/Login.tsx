@@ -5,31 +5,28 @@ import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 
 import googleIcon from '../assets/icons/google.svg'
 import Separator from "../components/UI/separator";
-import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
+import { toast } from "react-hot-toast";
 
 
 
 
 export default function SignUp(){
-    const [status, setStatus] = useState(false)
-    const [failure, setFailure] = useState(false)
-
     const navigate = useNavigate()
 
 
-//Logear al usuario con google
-const handleGoogle = () =>{
-    supabase.auth.signInWithOAuth({
-        provider: 'google',
-      })
-      
-}
+    //Logear al usuario con google
+    const handleGoogle = () =>{
+        supabase.auth.signInWithOAuth({
+            provider: 'google',
+        })
+        
+    }
 
-//Logear al usuario
+    //Logear al usuario
 
-const [visible, setVisible] = useState(true)
-    const handleClick = () => {
-        setVisible((prevVisible) => !prevVisible)
+    const [visible, setVisible] = useState(true)
+        const handleClick = () => {
+            setVisible((prevVisible) => !prevVisible)
     }
 
     const [formData, setFormData] = useState({
@@ -65,18 +62,12 @@ const [visible, setVisible] = useState(true)
                 navigate(`/profilePage/${user.id}`);
                 console.log(profilePicId);
                 }, 2000)
-                setStatus(true)           
-                setTimeout(() => {
-                    setStatus(false);
-                }, 3000);
+                toast.success('Ha ingresado correctamente')
                 
                 
                 } else{
                     console.log("No se ha podido iniciar sesion correctamente");
-                    setFailure(true)
-                    setTimeout(() => {
-                        setFailure(false)
-                    }, 4000);
+                    toast.error('Ha ocurrido un error')
                 }
             }
             if (error) {
@@ -131,22 +122,8 @@ return(
                     <p className="justify-self-center w-[200px] mt-8 text-sm text-wrap text-center">¿Aún no tienes cuenta? <br/>Creala <NavLink to="/signUp"><span className="text-violet-600">aquí</span></NavLink></p>
                 </form>
             </div>
-            {status === false? (
-                <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
-                ) : (
-                <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
-                    <FaCircleCheck size={20} className="text-green-400" />
-                    Ha ingresado correctamente
-                </div>
-            )}
-            {failure === false? (
-                <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
-                ) : (
-                <div className="fixed bottom-2 right-2 flex items-center justify-around w-[250px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
-                    <FaCircleXmark size={20} className="text-red-400" />
-                    Ha habido un problema
-                </div>
-            )}
+            
+            
         </div>
     )
 }
