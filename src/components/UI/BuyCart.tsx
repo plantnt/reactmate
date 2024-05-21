@@ -92,7 +92,7 @@ const BuyProduct = () => {
                         <div className="grid justify-items-center">
                             <h1 className="font-bold text-lg mt-4">Numero de tarjeta</h1>
                             <input
-                                type="number"
+                                type="number" min={0}
                                 className="px-2 border-b-violet-700 border-b-2 focus:outline-none bg-[#E2D6FB] mb-2 bg-opacity-0"
                             />
                         </div>

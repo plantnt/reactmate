@@ -415,8 +415,9 @@ import { FaRegCheckCircle } from 'react-icons/fa';
 //             </button>
 //           </NavLink>
 //           <NavLink to="/">
-//             <button onSubmit={(e:any) => {e.preventDefault()
-//             uploadImgs()}} type='submit' className={imgSrc ? 
+//             <button onSubmit={(e:any) => {
+//               e.preventDefault()
+//               }} type='submit' className={imgSrc ? 
 //             'group flex items-center bg-slate-300 w-[150px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:bg-green-400 hover:text-white transition-colors overflow-hidden'
 //             : 'flex items-center opacity-80 bg-slate-300 w-[150px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:cursor-not-allowed transition-colors overflow-hidden'}
 //             disabled={!imgSrc}
@@ -487,15 +488,13 @@ const deleteImage = (index = null) => {
     const newItems = [...images.items];
     newItems.splice(index, 1);
     setImages({ ...images, items: newItems });
-
-    if (images.main === null && images.items.length >=0) {
-      const [newMain, ...remainingItems] = newItems;
-        setImages({ main: newMain, items: remainingItems });
-    } else if (images.items.length === 0) {
-      setImages({ ...images, main: null });
-    }
   } else {
-    setImages({ ...images, main: null });
+    if (images.items.length > 0) {
+      const [newMain, ...remainingItems] = images.items;
+      setImages({ main: newMain, items: remainingItems });
+    } else {
+      setImages({ main: null, items: [] });
+    }
   }
 };
   
@@ -507,7 +506,8 @@ const deleteImage = (index = null) => {
       const { data, error } = await supabase
         .from('products')
         .insert([{ image: images.main, aditImages: images.items }]);
-      console.log(data);
+      console.log(data)
+      console.log("info enviada");
       if (error) {
         throw error;
       }
