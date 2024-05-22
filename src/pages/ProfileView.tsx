@@ -114,9 +114,6 @@ export default function UserProfile() {
             <ProductCard />
           </div>
         </div>
-        <div className='min-w-[300px]'>
-
-        </div>
       </div>
     </>
     

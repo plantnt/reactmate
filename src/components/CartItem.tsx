@@ -3,6 +3,30 @@ import { NavLink } from "react-router-dom";
 import { Rate } from "antd";
 import { useState } from "react";
 
+import product1 from '../assets/products/1.jpg'
+import product2 from '../assets/products/2.jpg'
+import product3 from '../assets/products/3.jpg'
+import product4 from '../assets/products/4.jpg'
+import product5 from '../assets/products/5.jpg'
+
+type ImageUrl = string
+const images: ImageUrl[] = [
+  product1,
+  product2,
+  product3,
+  product4,
+  product5
+]
+
+function getRandomImage(images: ImageUrl[]): ImageUrl | undefined {
+    if(images.length === 0){
+        return undefined
+    }
+    
+    const randomIndex = Math.floor(Math.random() * images.length)
+    return images[randomIndex]
+}
+
 // Componente de Carrito
 export default function CardCart({ producto, deleteItem, updateQuantity  }) { //Ignorar errores
 
@@ -24,6 +48,7 @@ export default function CardCart({ producto, deleteItem, updateQuantity  }) { //
     
   }
 
+  const randomImage = getRandomImage(images)
 
     return (
         <div className="flex bg-slate-100 rounded-r-3xl rounded-l-3xl w-[98%] my-[11px] ">
@@ -31,7 +56,7 @@ export default function CardCart({ producto, deleteItem, updateQuantity  }) { //
             <div className="flex">
               <NavLink to={'/productPage'}>
                 <div className="max-w-[180px] rounded-xl border-slate-300 border-2">
-                  <img src="src/assets/products/2.jpg" className="w-full rounded-t-xl bg-contain" alt="Product Image" />
+                  <img src={randomImage} className="w-full rounded-t-xl bg-contain" alt="Product Image" />
                 </div>
               </NavLink>
               <div className="flex flex-col ml-4 space-y-3">

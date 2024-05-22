@@ -7,7 +7,9 @@ import BuyProduct from "../components/UI/BuyProduct";
 import feli from '../assets/feli.jpg'
 
 export default function ProductView(){
-    return(
+
+  
+  return(
         <div className="flex flex-col h-full items-center p-6">
           <BuyProduct/>
           <div className="grid md:flex md:justify-center sm:justify-center md:flex-wrap md:space-y-6 sm:space-y-6 space-y-0 relative w-full p-4">

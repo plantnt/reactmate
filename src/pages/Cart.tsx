@@ -1,14 +1,10 @@
 import { useState } from 'react';
 
-import {loadStripe} from '@stripe/stripe-js';
 
 import { FaCartShopping } from 'react-icons/fa6';
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 
-import CardCart from '../components/CardItem';
-import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
-
-const stripePromise = loadStripe('pk_test_51O24gxD7w9697TwBuGi4XWLac9RwvXWNlQ36mWIqWbaqpVKcec1rT9eBKkF58oK9VSIoXQnPouaWDerydIbN1kK8002PYkrtj5')
+import CardCart from '../components/CartItem';
 
 const CartPage = () => {
   const [productos, setProductos] = useState([
@@ -43,50 +39,6 @@ const CartPage = () => {
   function handleSorting(value: string): void {
     throw new Error('Function not implemented.');
   }
-    
-  const stripe = useStripe()
-  const elements = useElements()
-  const [error, setError] = useState('')
-  const [isPaymentLoading, setIsPaymentLoading] = useState(false)
-
-  const makePayment = async () => {
-    if(!stripe || !elements){
-      return
-    }
-
-    setIsPaymentLoading(true)
-
-    try{
-      const response = await fetch('/create-payment-intent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ amount: calcularTotal() })
-      })
-
-      const { clientSecret } = await response.json()
-
-      const result = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement)
-        } 
-      })
-
-      if(result.error){
-        setError(result.error.message)
-        console.error('Error de pago: ', result.error.message)
-      } else if(result.paymentIntent.status === 'succeeded'){
-        console.log('Pago realizado')
-      }
-
-    } catch(error){
-      setError('Ocurrió un error, intente de nuevo')
-      console.log('Error: ', error)
-    } finally{
-      setIsPaymentLoading(false)
-    }
-  }
   
   function handleShow(){
     console.log("show")
@@ -117,8 +69,8 @@ const CartPage = () => {
             <div id='actions' className="block">
               <h1 className="font-semibold text-xl">Total: COP ${calcularTotal()} </h1>
               <button className={calcularTotal() == 0 ? 'w-[200px] font-normal mt-3 p-2 bg-[#d4b5ff] rounded-full text-white text-3xl cursor-not-allowed' : 'w-[200px] font-normal mt-3 p-2 bg-convenientPurple hover:bg-darkConvPurple rounded-full text-white text-3xl'}
-                      disabled={calcularTotal() == 0 || isPaymentLoading}
-                      onClick={makePayment}>
+                      disabled={calcularTotal() == 0 }
+                      >
                 Comprar
               </button>
             </div>
@@ -149,12 +101,5 @@ const CartPage = () => {
   );
 };
 
-const PaymentPage = () => {
-  return(
-    <Elements stripe={stripePromise}>
-      <CartPage/>
-    </Elements>
-  )
-}
 
-export default PaymentPage;
+export default CartPage;

@@ -54,7 +54,7 @@ const Navbar = () => {
                     <img src={furniLogo} className=" block w-16 h-auto sm:hidden"/>
                 </NavLink>
                 <div className='sm:w-[30%]'>
-                    <form action="" className='flex items-center4'>
+                    <form className='flex items-center4'>
                         <input type="search" className="bg-slate-200 rounded-l-3xl outline-none px-2 h-7 text-gray-900 w-[85%] hidden sm:block"/>
                         <button className="justify-center items-center sm:rounded-l-none rounded-3xl  h-7 w-14 bg-furnipurple cursor-pointer hidden sm:flex">
                             <FaMagnifyingGlass className="text-white"/>
@@ -125,7 +125,7 @@ const Navbar = () => {
             {showMenu &&
             <div className='sticky sm:hidden block w-full p-5 bg-white z-50'>
                 <ul className='flex flex-col p-2 space-y-4'>
-                    <NavLink to='/profilePage'>
+                    <NavLink to={`/profilePage/${isUserId}`}>
                         <button onClick={handleBurgerMenu}>
                             Mi perfil
                         </button>

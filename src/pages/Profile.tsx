@@ -313,26 +313,31 @@ export default function UserProfile() {
                 </div>
             )}
         </div>
-        
-        <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-        <div className='min-w-[300px]'>
-
+        <div className='space-y-5'>
+          <div className='flex flex-wrap p-3 overflow-hidden w-full'>
+            <h3 className='text-wrap text-xl font-semibold'>Productos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
+            <div className='flex flex-wrap gap-3 p-3 w-full'>
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+            </div>
+          </div>
+          <div className='flex flex-wrap p-3 overflow-hidden w-full'>
+            <h3 className='text-wrap text-xl font-semibold'>Favoritos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
+            <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
+            </div>
+          </div>
         </div>
       </div>
     </>

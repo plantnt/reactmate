@@ -8,7 +8,7 @@ import product4 from '../assets/products/4.jpg'
 import product5 from '../assets/products/5.jpg'
 
 type ImageUrl = string
-const images: ImageUrl[] = [
+    const images: ImageUrl[] = [
         product1,
         product2,
         product3,
@@ -26,7 +26,7 @@ const images: ImageUrl[] = [
     }
     
     
-const ProductCard: React.FC = () => {
+const ProductCard = () => {
     const randomImage = getRandomImage(images)
     return(
         <>
@@ -36,15 +36,14 @@ const ProductCard: React.FC = () => {
                         <img src={randomImage} alt="Imagen product" className='object-cover'/>
                     </div>
                     <div className='w-full p-2 bg-white'>
-                        <h3 className='font-semibold text-wrap'>Mueble azul de casa</h3>
+                        <h3 className='font-semibold text-wrap truncate'>Mueble azul de casa</h3>
                         <Rate allowHalf disabled value={5} className="text-violet-400 text-xs" />
-                        <h1 className=''>$ COP 999.99</h1>
+                        <h1 className='text-lg'>$ COP 999.99</h1>
                     </div>
                 </div>
             </NavLink>
         </>
     )
 }
-/*Mira el icono de la hoja que estoy colocando en los filtros para diferencial los 
-                        productos eco, podriamos hacer algo similar con estos cards*/
+
 export default ProductCard
