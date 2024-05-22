@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import ProductForm from '../components/UI/ProductForm';
@@ -16,7 +16,7 @@ export default function Upload() {
   });
 
   const mainFile = useRef<HTMLInputElement>(null);
-  const itemFiles = useRef<Array<HTMLInputElement>>(Array.from({ length: 6 }, () => null));
+  const itemFiles = useRef(Array.from({ length: 6 }, () => null));
 
   const handleUpload = (index: number | null = null) => {
     if (index !== null && itemFiles.current[index]) {
