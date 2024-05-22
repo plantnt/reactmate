@@ -44,8 +44,7 @@ export default function SignUp(){
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("id,email,password,profilepic")
-            ;
+            .select("id, email, password, profilepic")
         if (users){
             const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
             if (user){
@@ -109,7 +108,7 @@ return(
                                 )}
                         </label>
                     </div>
-                    <button  className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-convenientPurple px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button  className="flex justify-self-center justify-center w-[40%] min-w-[100px] bg-convenientPurple px-4 py-2 rounded-md text-white font-semibold hover:bg-darkConvPurple transition-colors" 
                             type="submit" 
                             >
                         Iniciar sesión

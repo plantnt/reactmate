@@ -8,7 +8,7 @@ import { supabase } from "../utils/Utils";
 
 import Separator from "../components/UI/separator";
 import Modal from "../components/Modal";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 
 export default function SignUp(){
@@ -39,7 +39,6 @@ export default function SignUp(){
         password: ""
     }
     
-    const [status, setStatus] = useState(false)
     const [formData, setFormData] = useState(initialState)
     
     const createUser = async () => {
@@ -86,6 +85,10 @@ export default function SignUp(){
     console.log(avatarUrl.current.length)
     return(
         <div className="flex items-center justify-center w-full h-[100vh] bg-cover  bg-[url('/src/assets/SignUpBackground.png')]">
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
                 <img src="src/assets/textLogo.png" className="md:h-[40px] md:w-[220px] mb-2 sm:justify-self-center" />
                 <NavLink to="/">

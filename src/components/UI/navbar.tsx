@@ -12,6 +12,7 @@ import textLogo from '../../assets/textLogo.png';
 import furniLogo from '../../assets/furniLogo.png';
 
 import "./ui.css";
+import { toast, Toaster } from 'react-hot-toast';
 
 const Navbar = () => {  
     const isLogged = !!sessionStorage.getItem('supabaseSession');
@@ -44,17 +45,24 @@ const Navbar = () => {
         sessionStorage.clear
         navigate('/')
         window.location.reload()
+        setTimeout(() => {
+            toast.success('Se ha cerrado sesión')
+        }, 5000)
     }
 
     return (
         <div className='relative'>
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
             <nav className="sticky top-0 flex sm:justify-center justify-between items-center space-x-9 w-full p-3 bg-white border-slate-300 border-b-[1px] z-50">
                 <NavLink to='/'>
                     <img src={textLogo} className=" sm:block w-36 h-auto hidden"/>
                     <img src={furniLogo} className=" block w-16 h-auto sm:hidden"/>
                 </NavLink>
                 <div className='sm:w-[30%]'>
-                    <form className='flex items-center4'>
+                    <form className='flex items-center'>
                         <input type="search" className="bg-slate-200 rounded-l-3xl outline-none px-2 h-7 text-gray-900 w-[85%] hidden sm:block"/>
                         <button className="justify-center items-center sm:rounded-l-none rounded-3xl  h-7 w-14 bg-furnipurple cursor-pointer hidden sm:flex">
                             <FaMagnifyingGlass className="text-white"/>
@@ -62,7 +70,7 @@ const Navbar = () => {
                     </form>
                     <form className="sm:hidden block relative mx-auto w-max">
                         <input type="search" 
-                            className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-convenientPurple focus:pl-16 focus:pr-4" />
+                            className="peer cursor-pointer relative z-10 h-12 w-9 max-w-[185px] rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-convenientPurple focus:pl-16 focus:pr-4 transition-all" />
                         <FaMagnifyingGlass className="absolute top-4 left-4 text-slate-800 cursor-pointer border-gray-500"/>
                     </form>
                 </div> 

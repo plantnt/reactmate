@@ -10,6 +10,7 @@ import { supabase } from '../utils/Utils';
 import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 import { FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
 import ProductCard from '../components/productCard';
+import { toast, Toaster } from 'react-hot-toast';
 
 export default function UserProfile() {
   const { userId } = useParams()
@@ -56,8 +57,6 @@ export default function UserProfile() {
 
   const [phoneNum, setPhoneNum] = useState('');
   const [address, setAddress] = useState('');
-
-  const [updateError, setUpdateError] = useState(false);
   
   const addPhoneNum = async () => {
     try{
@@ -68,19 +67,11 @@ export default function UserProfile() {
       .select()
 
       if(error){ 
-        setUpdateError(true)
+        toast.error('Ocurrió un error')
         throw error
       }
       if(data){
-        setUpdateError(false)
-        setUpdated(true)
-        setTimeout(() => {
-          setUpdated(false)
-        }, 2000);
         setShowEditNum(false)
-        const userPfp = userData.profilepic
-        sessionStorage.setItem('profileSrc', JSON.stringify(userPfp))
-        console.log(userPfp)
       }
        } catch (error) {
        console.error('Error updating profile:', error.message);
@@ -92,7 +83,6 @@ export default function UserProfile() {
     const handleNumInput = (e:any) => {
       e.preventDefault()
       setPhoneNum(e.target.value)
-      console.log(phoneNum)
     }
     
     const addAddress = async () => {
@@ -104,11 +94,9 @@ export default function UserProfile() {
         .select()
   
         if(error){ 
-          setUpdateError(true)
           throw error
         }
         if(data){
-          setUpdateError(false)
           setUpdated(true)
           setTimeout(() => {
             setUpdated(false)
@@ -161,6 +149,7 @@ export default function UserProfile() {
   const [nameMatch, setNameMatch] = useState(true)
 
   const accountUsername = userData.name + ' ' + userData.last_name
+
   const handleAccName = (e:any) => {
     const accValue = e.target.value
     setAccName(accValue)
@@ -184,8 +173,12 @@ export default function UserProfile() {
 
   return (
     <>
-      <div className='flex h-[100vh] w-full'>
-        <div className='p-5 border-r-2 min-w-[300px]'>
+      <div className='sm:flex h-[100vh] w-full'>
+        <Toaster
+        position="top-center"
+        reverseOrder={false}
+        />
+        <div className='p-5 border-r-2 min-w-[300px] border-b-2 border-slate-300'>
           <div className='flex flex-col items-center'>
             <div className='w-[100px] sm:w-[200px] rounded-full'>
               <img src={userData.profilepic} alt="Profile" />
@@ -232,8 +225,7 @@ export default function UserProfile() {
                 }
               </label>
               {showEditNum === true &&
-                <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'
-                  type='submit'>
+                <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'>
                   Actualizar
                 </button>
               }
@@ -264,8 +256,7 @@ export default function UserProfile() {
                 }
               </label>
               {showEditAddress === true &&
-                <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'
-                  type='submit'>
+                <button className='bg-gradient-to-r from-[#ff5c5c] to-[#a25bff] px-3 py-1 rounded-full font-bold text-white'>
                   Actualizar
                 </button>
               }
@@ -296,7 +287,7 @@ export default function UserProfile() {
               </form>
             }
           </div>
-          {updated === false ? (
+          {/* {updated === false ? (
             <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
             ) : (
               <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
@@ -311,7 +302,7 @@ export default function UserProfile() {
                     <FaCircleXmark size={20} className="text-red-400" />
                     Ocurrió un error
                 </div>
-            )}
+            )} */}
         </div>
         <div className='space-y-5'>
           <div className='flex flex-wrap p-3 overflow-hidden w-full'>

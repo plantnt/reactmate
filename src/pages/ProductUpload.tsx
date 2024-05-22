@@ -513,7 +513,12 @@ var Categoriarecuperada = JSON.parse(categoria)
       const { data, error } = await supabase
         .from('products')
         .insert([{ image: images.main, aditImages: images.items,
-           title:title, description:description, price:price, material:material, categoria:Categoriarecuperada }]);
+           title:title, 
+           description:description, 
+           price:price, 
+           material:material, 
+           categoria:Categoriarecuperada 
+        }]);
       console.log(data)
       console.log("info enviada");
       console.log(title, description, price, material, Categoriarecuperada)
