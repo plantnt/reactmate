@@ -499,19 +499,30 @@ const deleteImage = (index = null) => {
 };
   
   
-  const imgCounter = images.items.length;
+const title=sessionStorage.getItem("titulo")
+const description=sessionStorage.getItem("descripcion")
+const price =sessionStorage.getItem("precio")
+const material=sessionStorage.getItem("material")
+const categoria=sessionStorage.getItem("Categoria")
+var Categoriarecuperada = JSON.parse(categoria)
+
+
 
  const uploadImgs = async () => {
     try {
       const { data, error } = await supabase
         .from('products')
-        .insert([{ image: images.main, aditImages: images.items }]);
+        .insert([{ image: images.main, aditImages: images.items,
+           title:title, description:description, price:price, material:material, categoria:Categoriarecuperada }]);
       console.log(data)
       console.log("info enviada");
+      console.log(title, description, price, material, Categoriarecuperada)
+      alert("su producto a sido subido con exito")
       if (error) {
         throw error;
       }
     } catch (error) {
+      alert("vuelva a intentarlo")
       console.error('Error al subir imágenes', error);
     }
   } 

@@ -10,6 +10,7 @@ const ProductForm = () => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };
+    
     const material: SelectProps['options'] = [
         {
           label: 'Madera',
@@ -93,20 +94,23 @@ const ProductForm = () => {
       const [formData, setFormData]=useState({
         title:"",
         description:"",
-        material:"",
-        categoria:[],
 })
-
+const handleMaterialChange = (value) => {
+      console.log('Material seleccionado:', value);
+      sessionStorage.setItem('material', JSON.stringify(value));
+    };
+  
+    const handleCategoriaChange = (value) => {
+      sessionStorage.setItem('Categoria', JSON.stringify(value));
+      console.log('Categoría seleccionada:', value);
+    };
 sessionStorage.setItem("titulo",formData.title)
 sessionStorage.setItem("descripcion",formData.description)
 sessionStorage.setItem("precio",value)
-sessionStorage.setItem("material", formData.material)
-var arrayC = JSON.stringify(formData.categoria)
-sessionStorage.setItem("categoria",arrayC)
-console.log(formData.title)
+console.log(formData)
 console.log(value)
-console.log(formData.description)
-console.log(arrayC)
+
+
 // // Supongamos que tienes un array de datos
 // var miArray = [1, 2, 3, 4, 5];
 
@@ -161,7 +165,7 @@ const handleFormInput = async (e:any) => {
                 id="Mopcion"
                 style={{ width: '200px' }}
                 placeholder="Seleccione una categoría"
-                onChange={handleChange}
+                onChange={handleMaterialChange}
                 optionLabelProp="label"
                 options={material}
                 optionRender={(option) => (
@@ -177,7 +181,7 @@ const handleFormInput = async (e:any) => {
                   mode="multiple"
                   style={{ width: '200px' }}
                   placeholder="Seleccione una categoría"
-                  onChange={handleChange}
+                  onChange={handleCategoriaChange}
                   optionLabelProp="label"
                   options={categoria}
                   optionRender={(option) => (
