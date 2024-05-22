@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaPaperclip } from "react-icons/fa";
+import { FaArrowLeft, FaPaperclip } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router";
 import { supabase } from '../utils/Utils';
@@ -87,11 +87,15 @@ const ServicesChat = () => {
 
     return (
         <>
-            <div className="relative bg-gradient-to-r from-purple-400 to-purple-300 py-6 flex justify-center items-center pb-6 pt-8">
-                <h1 className="text-5xl font-bold font-extrawide text-white -mt-3 p-4 flex">
-                    Foro
-                </h1>
-            </div>
+<div className="relative bg-gradient-to-r from-purple-400 to-purple-300 py-6 flex justify-center items-center max-w-full">
+    <div className="absolute left-0 ml-4">
+        <NavLink to="/chatHome" className="text-white hover:text-gray-200"><FaArrowLeft /></NavLink>
+    </div>
+    <h1 className="text-5xl font-bold font-extrawide text-white -mt-3 p-4 flex">
+        Foro
+    </h1>
+</div>
+
             {isLogged ? (
                 <>
                     <div className="relative bg-gray-50 min-h-screen max-w-full overflow-y-auto pt-2">

@@ -16,6 +16,7 @@ export default {
       furniorange: '#FF886D',
       convenientPurple: '#945aff',
       convenientOrange: '#ff6c6c',
+      darkConvPurple: '#6c28cc',
       slate: {
         50: '#f8fafc',
         100: '#f1f5f9',

@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const Chat = () => {
     // Lista de mensajes de ejemplo
     const [messages, setMessages] = useState([
-        { user: "Usuario1", text: "Buenas, estoy interesado en el servicio que ofreces" },
-        { user: "Tu", text: "Hola, vale ya te confirmo si tenemos los materiales" },
+        { user: "Distribuidora Juanchito", text: "Buenas, vi tu publicación del foro y puedo ayudarte con lo que buscas, mi nombre es Carlos" },
+        { user: "Tu", text: "Buenas tardes, ya te muestro como está el mueble" },
     ]);
 
     // Función para enviar un mensaje

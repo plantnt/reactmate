@@ -51,16 +51,11 @@ export default function SignUp(){
             if (user){
                 setTimeout(() => {
                     console.log('Usuario ha iniciado sesión correctamente:', user);
+                    sessionStorage.setItem('supabaseSession', JSON.stringify(user));
+                    sessionStorage.setItem('userId', JSON.stringify(user.id));
                     
-                const profilePicUrl = user.profilepic;
-                const profilePicId = profilePicUrl.split('/').pop().split('.')[0];
-
-                sessionStorage.setItem('supabaseSession', JSON.stringify(user));
-                sessionStorage.setItem('userId', JSON.stringify(user.id));
-                sessionStorage.setItem('profilesrc', profilePicId);
-                console.log('user id:', user.id);
-                navigate(`/profilePage/${user.id}`);
-                console.log(profilePicId);
+                    console.log('user id:', user.id);
+                    navigate(`/profilePage/${user.id}`);
                 }, 2000)
                 toast.success('Ha ingresado correctamente')
                 
