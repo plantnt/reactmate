@@ -29,7 +29,7 @@ export default function Rating(){
                 </div>
                 <div className="flex items-center ml-10 text-slate-700">
                     Calificación:
-                    <Rate allowHalf className="mt-[5px] ml-2 text-violet-400 text-sm" />
+                    <Rate allowHalf onChange={() => console.log("hoal")} className="mt-[5px] ml-2 text-violet-400 text-sm" />
                     
                 </div>
             </div>
