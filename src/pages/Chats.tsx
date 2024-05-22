@@ -74,7 +74,9 @@ const ChatPage = () => {
                 </>
             ) : (
                 // Si userId no existe, muestra un mensaje
-                <h1 className="text-center bg-white-500 text-black">Por favor, inicia sesión para acceder al chat. <NavLink to="/logIn"><span className="text-purple-500">inicia sesion</span></NavLink></h1>
+                
+                <h1 className="text-center p-44 bg-white-500 text-black"  >Por favor, inicia sesión para acceder al chat. <NavLink to="/logIn"><span className="text-purple-500">inicia sesion</span></NavLink></h1>
+            
             )}
         </>
     );
