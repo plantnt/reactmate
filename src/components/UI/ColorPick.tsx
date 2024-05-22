@@ -6,6 +6,10 @@ import { IoIosCloseCircle } from "react-icons/io"
 
 const ColorPick = () => {
     const [colorCount, setColorCount] = useState(0)
+    const [colorInfo, setcolorInfo]=useState({
+        color1: ""
+    })
+
     return(
         <div className="flex space-x-2 items-start">
             <ColorPicker defaultValue="#fff" disabledAlpha/>
