@@ -1,11 +1,13 @@
 import { Rate } from 'antd'
 import { NavLink } from 'react-router-dom'
+import { supabase } from "../utils/Utils";
 
 import product1 from '../assets/products/1.jpg'
 import product2 from '../assets/products/2.jpg'
 import product3 from '../assets/products/3.jpg'
 import product4 from '../assets/products/4.jpg'
 import product5 from '../assets/products/5.jpg'
+import { useEffect, useState } from 'react';
 
 type ImageUrl = string
     const images: ImageUrl[] = [
@@ -24,7 +26,38 @@ type ImageUrl = string
         const randomIndex = Math.floor(Math.random() * images.length)
         return images[randomIndex]
     }
+    const [Imagenes, setImagenes]=useState({
+        image:"",
+        price:"",
+        title:""
+    })
+    useEffect(() => {
+        const fetchImagenes = async () => {
+          try {
+            
+            const { data, error } = await supabase
+              .from('products')
+              .select('image, title, price')
+              ;
+            
+            if (error) {
+              console.error('Error fetching user data:', error.message);
+              return;
+            }
+            
+            if (data) {
+              setImagenes(data);
+              console.log(setImagenes)
+            } else {
+              console.error('No user data found for the specified ID.');
+            }
+          } catch (error) {
+            console.error('Error in fetchUserData:', error);
+          }
+        };
     
+        fetchImagenes();
+      }, );
     
 const ProductCard = () => {
     const randomImage = getRandomImage(images)
@@ -36,9 +69,9 @@ const ProductCard = () => {
                         <img src={randomImage} alt="Imagen product" className='object-cover'/>
                     </div>
                     <div className='w-full p-2 bg-white'>
-                        <h3 className='font-semibold text-wrap truncate'>Mueble azul de casa</h3>
+                        <h3 className='font-semibold text-wrap truncate'>{Imagenes.title}</h3>
                         <Rate allowHalf disabled value={5} className="text-violet-400 text-xs" />
-                        <h1 className='text-lg'>$ COP 999.99</h1>
+                        <h1 className='text-lg'>$ COP {Imagenes.price}</h1>
                     </div>
                 </div>
             </NavLink>
