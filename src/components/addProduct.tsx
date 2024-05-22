@@ -7,7 +7,7 @@ export default function AddProduct(){
 
   return(
     <>
-      {/* {isLogged ?  */}
+      {isLogged ? 
       <NavLink to='/productUpload'>
         <button className="
         fixed top-[80vh] right-[40px]
@@ -24,9 +24,9 @@ export default function AddProduct(){
           <BiAddToQueue size={35} />
         </button>
       </NavLink>
-      {/* :
+      :
       <></>
-      } */}
+      }
     </>
   )
 }
