@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import { FaPhone } from 'react-icons/fa';
 import { MdMailOutline } from "react-icons/md";

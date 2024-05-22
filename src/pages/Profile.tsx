@@ -95,7 +95,7 @@ export default function UserProfile() {
       console.log(phoneNum)
     }
     
-    const addAddress = async (e:any) => {
+    const addAddress = async () => {
       try{
         const { data, error } = await supabase
         .from('users')
@@ -205,7 +205,7 @@ export default function UserProfile() {
             </label>
             <form onSubmit={(e) => {
               e.preventDefault 
-              addPhoneNum(e)
+              addPhoneNum()
               }} className="flex flex-col items-center justify-center space-y-5 mt-7">
               <label className='flex items-center'>
                 {showEditNum === true ?
@@ -240,7 +240,7 @@ export default function UserProfile() {
             </form>
             <form onSubmit={(e) => {
               e.preventDefault
-              addAddress(e)
+              addAddress()
             }} className="flex flex-col items-center justify-center space-y-5 mt-3">
               <label className='flex items-center'>
                 {showEditAddress === true ?
