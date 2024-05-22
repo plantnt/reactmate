@@ -1,14 +1,13 @@
 import { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 import { IoMdImage, IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
-import { FaCircleCheck } from "react-icons/fa6";
 
 import { supabase } from "../utils/Utils";
 
 import Separator from "../components/UI/separator";
 import Modal from "../components/Modal";
-import toast, { Toaster } from "react-hot-toast";
 
 
 export default function SignUp(){

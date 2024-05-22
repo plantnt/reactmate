@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 
 import { FaCommentDots, } from 'react-icons/fa';
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -12,12 +13,10 @@ import textLogo from '../../assets/textLogo.png';
 import furniLogo from '../../assets/furniLogo.png';
 
 import "./ui.css";
-import { toast, Toaster } from 'react-hot-toast';
 
 const Navbar = () => {  
     const isLogged = !!sessionStorage.getItem('supabaseSession');
     const isUserId = sessionStorage.getItem('userId');
-    const isPfp = sessionStorage.getItem('profilesrc');
 
     console.log('user sessiom',isLogged)
     console.log('user id:',isUserId)

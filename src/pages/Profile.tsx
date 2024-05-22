@@ -15,9 +15,6 @@ import { toast, Toaster } from 'react-hot-toast';
 export default function UserProfile() {
   const { userId } = useParams()
   
-
-  const [updated, setUpdated] = useState(false);
-
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -97,11 +94,7 @@ export default function UserProfile() {
           throw error
         }
         if(data){
-          setUpdated(true)
-          setTimeout(() => {
-            setUpdated(false)
-            setShowEditAddress(false)
-          }, 2000);
+          setShowEditAddress(false)
           
         }
          } catch (error) {
