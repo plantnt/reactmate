@@ -9,7 +9,7 @@ export default function Card1(){
             <NavLink to={'/productPage'}>
                 <div className='w-[10rem] bg-white border-2 border-slate-200 rounded-lg shadow-md'>
                     <div className="h-[140px] w-full overflow-hidden relative">
-                    <FaLeaf size={25} className="text-green-300 block absolute top-0 left-[4px]  bg-white rounded-full p-[1.2px]"/>
+                    <FaLeaf size={25} className="text-green-300 block absolute top-[4px] left-[4px]  bg-white rounded-full p-[1.2px]"/>
                         <img src="src\assets\products\4.jpg" alt="Imagen product" className='object-cover'/>
                     </div>
                     <div className='w-full p-2 bg-white h-[113px] space-y-2'>

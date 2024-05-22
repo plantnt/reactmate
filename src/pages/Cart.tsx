@@ -116,7 +116,7 @@ const CartPage = () => {
             <IoMdArrowDropright size={40} id="closeArrow" className="text-slate-600 text-xl hover:cursor-pointer z-[100]" onClick={() => handleHide()}/>
             <div id='actions' className="block">
               <h1 className="font-semibold text-xl">Total: COP ${calcularTotal()} </h1>
-              <button className={calcularTotal() == 0 ? 'w-[200px] font-normal mt-3 p-2 bg-[#d4b5ff] rounded-full text-white text-3xl cursor-not-allowed' : 'w-[200px] font-normal mt-3 p-2 bg-convenientPurple rounded-full text-white text-3xl'}
+              <button className={calcularTotal() == 0 ? 'w-[200px] font-normal mt-3 p-2 bg-[#d4b5ff] rounded-full text-white text-3xl cursor-not-allowed' : 'w-[200px] font-normal mt-3 p-2 bg-convenientPurple hover:bg-darkConvPurple rounded-full text-white text-3xl'}
                       disabled={calcularTotal() == 0 || isPaymentLoading}
                       onClick={makePayment}>
                 Comprar

@@ -8,6 +8,7 @@ import { supabase } from "../utils/Utils";
 
 import Separator from "../components/UI/separator";
 import Modal from "../components/Modal";
+import toast from "react-hot-toast";
 
 
 export default function SignUp(){
@@ -60,18 +61,18 @@ export default function SignUp(){
                     }
                 ])
                 if (res.error === null && res.status === 201) {
-                    setStatus(true);
+                    toast.success('Se ha creado su cuenta correctamente')
                     setFormData(initialState);
                     sessionStorage.setItem('supabaseSession', JSON.stringify(formData))
 
                     setTimeout(() => {
-                        setStatus(false);
                         navigate('/')
                     }, 2000);
                 }
             }
             catch(error){
                 console.error(error.message)
+                toast.error('Ha ocurrido un error')
             }
         }
     }
@@ -154,7 +155,7 @@ export default function SignUp(){
                             )}
                         </label>
                     </div>
-                    <button className="flex justify-self-center justify-center w-[40%] min-w-[100px] mt-[20px] bg-violet-400 px-4 py-2 rounded-md text-white font-semibold hover:bg-violet-500 transition-colors" 
+                    <button className="flex justify-self-center justify-center w-[40%] min-w-[100px] mt-[20px] bg-convenientPurple px-4 py-2 rounded-md text-white font-semibold hover:bg-darkConvPurple transition-colors" 
                             type="submit"  
                             >
                         Registrarse
@@ -162,14 +163,6 @@ export default function SignUp(){
                     <p className="justify-self-center w-[200px] mt-8 text-sm text-wrap text-center">¿Ya tienes una cuenta? prueba con <NavLink to="/logIn"><span className="text-violet-600">iniciar sesión</span></NavLink></p>
                 </form>
             </div>
-            {status === false? (
-                <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
-                ) : (
-                <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
-                    <FaCircleCheck size={20} className="text-green-400" />
-                    Se ha registrado correctamente
-                </div>
-                )}
         </div>
     )
 }

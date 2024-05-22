@@ -56,7 +56,7 @@ export default function CardCart({ producto, deleteItem, updateQuantity  }) { //
             </div>
           <div className="flex space-x-3 mr-7">
               <div className="flex items-center">
-                <button className={quant == 0 ? "flex items-center justify-center text-white font-bold w-[30px] rounded-l-full h-[40px] bg-[#d4b5ff] cursor-not-allowed" :"flex items-center justify-center text-white font-bold w-[30px] rounded-l-full h-[40px] bg-convenientPurple hover:bg-[#6c28cc] hover:text-xl"}
+                <button className={quant == 0 ? "flex items-center justify-center text-white font-bold w-[30px] rounded-l-full h-[40px] bg-[#d4b5ff] cursor-not-allowed" :"flex items-center justify-center text-white font-bold w-[30px] rounded-l-full h-[40px] bg-convenientPurple hover:bg-darkConvPurple hover:text-xl"}
                         onClick={takeQuantity}
                         disabled={quant == 0}>
                   -
@@ -64,7 +64,7 @@ export default function CardCart({ producto, deleteItem, updateQuantity  }) { //
                 <input type="text" value={quant} className="text-center h-[40px] w-[50px] outline-none" readOnly/>
                 <button className="flex items-center justify-center 
                                   text-white font-bold w-[30px] rounded-r-full 
-                                  h-[40px] bg-convenientPurple hover:bg-[#6c28cc] 
+                                  h-[40px] bg-convenientPurple hover:bg-darkConvPurple 
                                   hover:text-xl"
                                   onClick={addQuantity}>
                   +
