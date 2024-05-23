@@ -30,6 +30,7 @@ const BuyProduct = () => {
 
     const handleFavorite = () => {
         setIsFavorite((prevFavorite) => !prevFavorite)
+        
     }
 
     return(

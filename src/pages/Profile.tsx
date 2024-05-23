@@ -14,6 +14,14 @@ import ProductList from './ProductList';
 import ProductCardRell from '../components/productCardRell';
 
 export default function UserProfile() {
+  const FavoritesList = () => {
+    const [favorites, setFavorites] = useState([]);
+  
+    useEffect(() => {
+      const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      setFavorites(storedFavorites);
+    }, []);
+
   const { userId } = useParams()
   
   const [userData, setUserData] = useState({
@@ -303,9 +311,11 @@ export default function UserProfile() {
               <ProductCardRell/>
             </div>
           </div>
+      
         </div>
       </div>
     </>
     
   );
+}
 }

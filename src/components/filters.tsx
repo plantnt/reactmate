@@ -2,8 +2,8 @@ import { PlusCircle } from "lucide-react"
 import { FaLeaf } from "react-icons/fa"
 export default function Filters(){
     return(
-        <div className="min-w-[20rem] left-0">
-            <div id="filters" className="py-5 pl-5 border-t-[1px] border-r-[1px] border-b-[1px] rounded-r-lg border-slate-300 bg-white ">
+        <div className="min-w-[17rem] left-0">
+            <div id="filters" className="py-5 pl-10 border-t-[1px] border-r-[1px] border-b-[1px] rounded-r-lg border-slate-300 bg-white ">
             <h2 className="font-bold mb-3">Producto</h2>
                 <ul className="flex flex-col space-y-2">
                 <li className="flex items-center">
