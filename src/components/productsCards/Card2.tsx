@@ -17,10 +17,10 @@ export default function Card1(){
                     </div>
                     <div className='w-full p-2 bg-white h-[113px] space-y-2'>
                     <Rate allowHalf disabled value={values} className="text-green-400 pt-1 text-xs text-center bg-green-200 rounded-b-full px-1 w-full" />
-                    <h3 className='text-[15px] font-semibold text-wrap truncate'>Mueble gris azulado de casa</h3>
+                    <h3 className='text-[15px] font-semibold truncate'>Mueble gris azulado de casa</h3>
                         
                         <div className="flex">
-                        <h1 className='font-bold text-lg'>COP $ 600,000 </h1>
+                        <h1 className='font-bold text-md'>COP $ 600,000 </h1>
                         </div>
                         
                     </div>
