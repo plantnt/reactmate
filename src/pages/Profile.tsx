@@ -8,20 +8,11 @@ import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 
 import { supabase } from '../utils/Utils';
 
-import ProductCard from '../components/productCard';
 import AddProduct from '../components/addProduct';
 import ProductList from './ProductList';
 import ProductCardRell from '../components/productCardRell';
 
 export default function UserProfile() {
-  const FavoritesList = () => {
-    const [favorites, setFavorites] = useState([]);
-  
-    useEffect(() => {
-      const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      setFavorites(storedFavorites);
-    }, []);
-
   const { userId } = useParams()
   
   const [userData, setUserData] = useState({
@@ -102,8 +93,8 @@ export default function UserProfile() {
           .select()
           
           if(error){ 
-            throw error
             toast.error('Ocurrió un error')
+            throw error
           }
           if(data){
             setShowEditAddress(false)
@@ -317,5 +308,4 @@ export default function UserProfile() {
     </>
     
   );
-}
 }
