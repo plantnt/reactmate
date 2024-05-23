@@ -11,6 +11,7 @@ import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 import { FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
 import ProductCard from '../components/productCard';
 import { toast, Toaster } from 'react-hot-toast';
+import ProductCardF from '../components/productCardF';
 
 
 
@@ -319,7 +320,7 @@ export default function UserProfile() {
               <ProductCard />
             </div>
           </div>
-          {/* <div className='flex flex-wrap p-3 overflow-hidden w-full'>
+          <div className='flex flex-wrap p-3 overflow-hidden w-full'>
             <h3 className='text-wrap text-xl font-semibold'>Favoritos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
             <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
               <ProductCard />
@@ -331,20 +332,12 @@ export default function UserProfile() {
               <ProductCard />
               <ProductCard />
             </div>
-          </div> */}
-      <div className="flex flex-wrap p-3 overflow-hidden w-full">
-      <h3 className="text-wrap text-xl font-semibold">Favoritos</h3>
-      <div className="flex flex-wrap gap-3 p-3 h-full w-full">
-        {favorites.length > 0 ? (
-          favorites.map((product) => <ProductCard key={product.id} product={product} />)
-        ) : (
-          <p>No hay favoritos aún.</p>
-        )}
-      </div>
-    </div>
+          </div>
+      
         </div>
       </div>
     </>
     
   );
+}
 }
