@@ -29,38 +29,39 @@ type ImageUrl = string
         const randomIndex = Math.floor(Math.random() * images.length)
         return images[randomIndex]
     }
-    const [Imagenes, setImagenes]=useState({
-        image:"",
-        price:"",
-        title:""
-    })
-    useEffect(() => {
-        const fetchImagenes = async () => {
-          try {
-            
-            const { data, error } = await supabase
-              .from('products')
-              .select('image, title, price')
-              ;
-            
-            if (error) {
-              console.error('Error fetching user data:', error.message);
-              return;
-            }
-            
-            if (data) {
-              setImagenes(data);
-              console.log(setImagenes)
-            } else {
-              console.error('No user data found for the specified ID.');
-            }
-          } catch (error) {
-            console.error('Error in fetchUserData:', error);
-          }
-        };
     
-        fetchImagenes();
-      }, );
+  //   const [Imagenes, setImagenes]=useState({
+  //     image:"",
+  //     price:"",
+  //     title:""
+  // })
+  // useEffect(() => {
+  //     const fetchImagenes = async () => {
+  //       try {
+          
+  //         const { data, error } = await supabase
+  //           .from('products')
+  //           .select('image, title, price')
+  //           ;
+          
+  //         if (error) {
+  //           console.error('Error fetching user data:', error.message);
+  //           return;
+  //         }
+          
+  //         if (data) {
+  //           setImagenes(data);
+  //           console.log(setImagenes)
+  //         } else {
+  //           console.error('No user data found for the specified ID.');
+  //         }
+  //       } catch (error) {
+  //         console.error('Error in fetchUserData:', error);
+  //       }
+  //     };
+  
+  //     fetchImagenes();
+  //   }, );
     
 const ProductCard = () => {
     const randomImage = getRandomImage(images)
