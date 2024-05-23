@@ -7,10 +7,6 @@ import ColorPick from './ColorPick';
 
 const ProductForm = () => {
     
-    const handleChange = (value: string[]) => {
-        console.log(`selected ${value}`);
-    };
-    
     const material: SelectProps['options'] = [
         {
           label: 'Madera',
@@ -67,10 +63,11 @@ const ProductForm = () => {
         },
       ];
 
-      const [value, setValue] = useState('')
+    
       const handleInput = (event: { target: { value: string } }) => {
         const result = event.target.value.replace(/\D/g, '')
-        setValue(result)
+        
+        setFormData({ ...formData, price: result})
       }
       //contador de palabras
       const [charCount, setCharCount] = useState(0);
@@ -93,6 +90,7 @@ const ProductForm = () => {
 
       const [formData, setFormData]=useState({
         title:"",
+        price: "",
         description:"",
 })
 const handleMaterialChange = (value) => {
@@ -104,38 +102,19 @@ const handleMaterialChange = (value) => {
       sessionStorage.setItem('Categoria', JSON.stringify(value));
       console.log('Categoría seleccionada:', value);
     };
-sessionStorage.setItem("titulo",formData.title)
-sessionStorage.setItem("descripcion",formData.description)
-sessionStorage.setItem("precio",value)
+
+    useEffect(() => {
+      sessionStorage.setItem('titulo', formData.title);
+      sessionStorage.setItem('descripcion', formData.description);
+      sessionStorage.setItem('precio', formData.price);
+    }, [formData]);
+
 console.log(formData)
-console.log(value)
-
-
-// // Supongamos que tienes un array de datos
-// var miArray = [1, 2, 3, 4, 5];
-
-// // Conviertes el array a una cadena JSON
-// var miArrayJSON = JSON.stringify(miArray);
-
-// // Guardas la cadena JSON en el sessionStorage
-// sessionStorage.setItem('miArray', miArrayJSON);
-// // Recuperar los datos del sessionStorage
-// var miArrayJSON = sessionStorage.getItem('miArray');
-
-// // Convertir la cadena JSON de nuevo a un array
-// var miArrayRecuperado = JSON.parse(miArrayJSON);
-
-// console.log(miArrayRecuperado); // Imprimirá: [1, 2, 3, 4, 5]
-
 
 const handleFormInput = async (e:any) => {
   e.preventDefault();
   setFormData({ ...formData, [e.target.name]: e.target.value });
 };
-
-
-      
-
 
     return(
       <>
@@ -149,7 +128,7 @@ const handleFormInput = async (e:any) => {
                 <div className='flex items-center'>
                   COP
                   <MdAttachMoney size={25}/>
-                  <input type="text" onChange={handleInput} value={value} className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" required />
+                  <input type="text" name='price' onChange={handleInput} value={formData.price} className="px-1 border-2 rounded-md outline-none w-full h-[2.4em]" required />
                 </div>
             </label>
             <label className='grid gap-2'>

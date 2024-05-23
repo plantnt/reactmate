@@ -40,8 +40,8 @@ const App = () => {
           <Route path='/logIn' element={<LogIn/>} />
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/helpPage' element={<HelpPage/>} />
-          <Route path='/productPage' element={<ProductView/>} />
-          <Route path='/productUpload' element={<ProductUpload/>} />
+          <Route path='/productPage/:productId' element={<ProductView/>} />
+          <Route path='/productUpload/:userId' element={<ProductUpload/>} />
           <Route path='/chatHome' element={<ChatPage/>} />
           <Route path='/chatingPage' element={<UserChats/>} />
           <Route path='/chatingServices' element={<ServicesChat/>} />

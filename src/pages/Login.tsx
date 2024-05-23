@@ -5,7 +5,7 @@ import { IoMdEye, IoMdEyeOff, IoIosClose } from "react-icons/io";
 
 import googleIcon from '../assets/icons/google.svg'
 import Separator from "../components/UI/separator";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 
 
@@ -65,6 +65,7 @@ export default function SignUp(){
                 }
             }
             if (error) {
+                toast.error("Ha ocurrido un error")
                 throw error;
             }
         
@@ -77,6 +78,10 @@ export default function SignUp(){
 
 return(
         <div className="flex items-center justify-center w-full h-[100vh] bg-cover bg-[url('/src/assets/SignUpBackground.png')]">
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+            />
             <div className="flex flex-col items-start relative rounded-2xl p-9 text-md bg-white w-[90%] max-w-[900px] bg-opacity-80 backdrop-blur-sm shadow-md">
                 <img src="src/assets/textLogo.png" className="md:h-[20px] md:w-[120px] mb-[50px] sm:justify-self-center" />
                 <NavLink to="/">

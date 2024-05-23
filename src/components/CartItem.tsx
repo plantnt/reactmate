@@ -3,29 +3,29 @@ import { NavLink } from "react-router-dom";
 import { Rate } from "antd";
 import { useState } from "react";
 
-import product1 from '../assets/products/1.jpg'
-import product2 from '../assets/products/2.jpg'
-import product3 from '../assets/products/3.jpg'
-import product4 from '../assets/products/4.jpg'
-import product5 from '../assets/products/5.jpg'
+// import product1 from '../assets/products/recu6.jpg'
+// import product2 from '../assets/products/recu11.jpg'
+// import product3 from '../assets/products/recu20.jpg'
+// import product4 from '../assets/products/recu8.jpg'
+// import product5 from '../assets/products/recu18.jpg'
 
-type ImageUrl = string
-const images: ImageUrl[] = [
-  product1,
-  product2,
-  product3,
-  product4,
-  product5
-]
+// type ImageUrl = string
+// const images: ImageUrl[] = [
+//   product1,
+//   product2,
+//   product3,
+//   product4,
+//   product5
+// ]
 
-function getRandomImage(images: ImageUrl[]): ImageUrl | undefined {
-    if(images.length === 0){
-        return undefined
-    }
+// function getRandomImage(images: ImageUrl[]): ImageUrl | undefined {
+//     if(images.length === 0){
+//         return undefined
+//     }
     
-    const randomIndex = Math.floor(Math.random() * images.length)
-    return images[randomIndex]
-}
+//     const randomIndex = Math.floor(Math.random() * images.length)
+//     return images[randomIndex]
+// }
 
 // Componente de Carrito
 export default function CardCart({ producto, deleteItem, updateQuantity  }) { //Ignorar errores
@@ -48,19 +48,19 @@ export default function CardCart({ producto, deleteItem, updateQuantity  }) { //
     
   }
 
-  const randomImage = getRandomImage(images)
+  // const randomImage = getRandomImage(images)
 
     return (
         <div className="flex bg-slate-100 rounded-r-3xl rounded-l-3xl w-[98%] my-[11px] ">
           <div className="flex w-full m-4 items-center justify-between">
             <div className="flex">
               <NavLink to={'/productPage'}>
-                <div className="max-w-[180px] rounded-xl border-slate-300 border-2">
-                  <img src={randomImage} className="w-full rounded-t-xl bg-contain" alt="Product Image" />
+                <div className="w-[200px] h-[200px] rounded-xl border-slate-300 border-2">
+                  <img src={producto.image} className="w-full h-full rounded-t-xl bg-contain" alt="Product Image" />
                 </div>
               </NavLink>
               <div className="flex flex-col ml-4 space-y-3">
-                  <h2 className="font-bold text-xl">{producto.name}</h2>
+                  <h2 className="w-[200px] font-bold text-xl truncate" title={producto.name}>{producto.name}</h2>
                   <h4 className="text-2xl font-italic pb-2">COP ${producto.price}</h4>
                   <Rate allowHalf disabled value={4} className="flex align-center text-violet-400 text-sm bg-purple-200 rounded-lg px-2 w-min" />
                   <div className="flex flex-wrap gap-1 w-full mt-2">  

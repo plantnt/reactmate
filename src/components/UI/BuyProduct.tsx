@@ -3,6 +3,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IoMdArrowDropleft,IoMdArrowDropright } from "react-icons/io"
 import { MdAttachMoney } from "react-icons/md";
 import { RiShoppingCartLine } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 
 
 const BuyProduct = () => {
@@ -43,10 +44,12 @@ const BuyProduct = () => {
                         <MdAttachMoney size={25}/>
                         Comprar
                     </button>
-                    <button className="flex items-center justify-center bg-violet-400 px-4 p-2 rounded-full">
-                        <RiShoppingCartLine size={25} className="mr-2"/>
-                        Añadir al carrito
-                    </button>
+                    <NavLink to={'/cartPage'}>
+                        <button className="flex items-center justify-center bg-violet-400 px-4 p-2 rounded-full">
+                            <RiShoppingCartLine size={25} className="mr-2"/>
+                            Añadir al carrito
+                        </button>
+                    </NavLink>
                 </div>
                 <div className="flex items-center justify-center mt-4 gap-2">
                     {isFavorite === true ? 

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 import ProductForm from '../components/UI/ProductForm';
 import { supabase } from "../utils/Utils";
@@ -8,14 +8,17 @@ import { LuUpload } from "react-icons/lu";
 import { GiCancel } from "react-icons/gi";
 import { Plus } from 'lucide-react';
 import { FaRegCheckCircle } from 'react-icons/fa';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Upload() {
+  const { userId } = useParams()
+
   const [images, setImages] = useState({
     main: null,
     items: []
   });
 
-  const mainFile = useRef<HTMLInputElement>(null);
+  const mainFile = useRef(null);
   const itemFiles = useRef(Array.from({ length: 6 }, () => null));
 
   const handleUpload = (index: number | null = null) => {
@@ -26,7 +29,7 @@ export default function Upload() {
     }
   };
 
-  const handleUploadChange = (event: React.ChangeEvent<HTMLInputElement>, index: number | null = null) => {
+  const handleUploadChange = (event, index = null) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -61,43 +64,65 @@ const deleteImage = (index = null) => {
 };
   
   
-const title=sessionStorage.getItem("titulo")
-const description=sessionStorage.getItem("descripcion")
-const price =sessionStorage.getItem("precio")
-const material=sessionStorage.getItem("material")
-const categoria=sessionStorage.getItem("Categoria")
+const title = sessionStorage.getItem("titulo")
+const description = sessionStorage.getItem("descripcion")
+const price = sessionStorage.getItem("precio")
+const material = sessionStorage.getItem("material")
+const categoria = sessionStorage.getItem("Categoria")
 var Categoriarecuperada = JSON.parse(categoria)
 
 
 
  const uploadImgs = async () => {
     try {
-      const { data, error } = await supabase
+      const { data: mainData, error: mainError } = await supabase
         .from('products')
-        .insert([{ image: images.main, aditImages: images.items,
-           title:title, 
-           description:description, 
-           price:price, 
-           material:material, 
-           categoria:Categoriarecuperada 
+        .insert([{
+            user_id: userId,
+            image: images.main, 
+            title: title, 
+            description: description, 
+            price: price, 
+            material: material, 
+            categoria: Categoriarecuperada 
         }]);
-      console.log(data)
-      console.log("info enviada");
+      console.log(mainData)
       console.log(title, description, price, material, Categoriarecuperada)
-      alert("su producto a sido subido con exito")
-      if (error) {
-        throw error;
+      
+      if (mainError) {
+        throw mainError;
       }
+      
+      const productId = mainData[0].id
+
+      const { data: additionalData, error: additionalError } = await supabase
+      .from('produc_images')
+      .insert(images.items.map(image => ({
+        product_id: productId,
+        image: image
+      })))
+      
+      if(additionalError){
+        throw additionalError
+      }
+
+      console.log(mainData, additionalData)
+      toast.success('Se ha subido el producto')
+      
     } catch (error) {
-      alert("vuelva a intentarlo")
+      toast.error('Ha ocurrido un error')
       console.error('Error al subir imágenes', error);
     }
   } 
 
   return (
     <div className='p-8 grid'>
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false} 
+      />
       <form className='flex space-x-6'>
-        <div className='flex flex-wrap   w-[400px]'>
+        <div className='flex flex-wrap w-[400px]'>
           <div className='group relative flex flex-col items-center justify-center w-full h-[400px] border-4 border-violet-400 rounded-xl hover:cursor-pointer overflow-hidden'
             onClick={() => handleUpload()}>
             {images.main ? (
@@ -166,7 +191,7 @@ var Categoriarecuperada = JSON.parse(categoria)
           </button>
         </NavLink>
         <NavLink to="/" className="overflow-hidden">
-          <button className='group flex items-center bg-slate-300 w-[200px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:bg-red-500 hover:text-white transition-colors'>
+          <button type='button' className='group flex items-center bg-slate-300 w-[200px] h-[50px] px-4 py-2 rounded-xl text-lg text-slate-800 hover:bg-red-500 hover:text-white transition-colors'>
             <GiCancel className='transform  mr-2 translate-y-9 group-hover:translate-y-0 transition duration-500 ease-in-out' />
             Cancelar
           </button>

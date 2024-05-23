@@ -9,7 +9,8 @@ import { Pagination } from "antd"
 import Catalog from "../components/catalog"
 
 const Home = () => {
-    
+    const isUserId = sessionStorage.getItem('userId');
+
     return(
         <>
             <div className="h-full w-full flex flex-col">
@@ -22,7 +23,7 @@ const Home = () => {
                             <Catalog />
                         </div>
                     </div>
-                    <AddProduct/>
+                    <AddProduct userId={isUserId}/>
                 </div>
                 <Pagination className="self-center mt-6 mb-6" defaultCurrent={1} total={50}></Pagination>
             </div>

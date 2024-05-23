@@ -41,6 +41,7 @@ const Navbar = () => {
     const navigate = useNavigate()
     const handleSignOut = () => {
         sessionStorage.removeItem('supabaseSession');
+        sessionStorage.removeItem('userId');
         sessionStorage.clear
         navigate('/')
         window.location.reload()

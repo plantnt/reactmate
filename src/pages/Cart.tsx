@@ -6,12 +6,26 @@ import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 
 import CardCart from '../components/CartItem';
 
+import product1 from '../assets/products/recu6.jpg'
+import product2 from '../assets/products/recu18.jpg'
+import product3 from '../assets/products/recu9.jpg'
+import product4 from '../assets/products/recu7.jpg'
+import product5 from '../assets/products/recu18.jpg'
+
+type ImageUrl = string
+const images: ImageUrl[] = [
+  product1,
+  product2,
+  product3,
+  product4,
+  product5
+]
 const CartPage = () => {
   const [productos, setProductos] = useState([
-    { id: 1, name: 'Producto 1', price: 120000, quant: 1 },
-    { id: 2, name: 'Producto 2', price: 24000, quant: 1 },
-    { id: 3, name: 'Producto 3', price: 124235.5, quant: 1 },
-    { id: 4, name: 'Producto 4', price: 2324.56, quant: 1 },
+    { id: 1, name: 'Sillas recicladas de neumáticos', image: images[0], price: 120000, quant: 1 },
+    { id: 2, name: 'Mesa de madera restaurada', image: images[1], price: 24000, quant: 1 },
+    { id: 3, name: 'Conjunto de sillas recicladas de neumáticos', image: images[2], price: 124235.5, quant: 1 },
+    { id: 4, name: 'Conjunto de sillas recicladas de madera', image: images[3], price: 2324.56, quant: 1 },
   ]); // Estado inicial de productos
 
 

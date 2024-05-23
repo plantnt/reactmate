@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import { toast, Toaster } from 'react-hot-toast';
 
 import { FaPhone } from 'react-icons/fa';
 import { MdMailOutline } from "react-icons/md";
-
+import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 
 import { supabase } from '../utils/Utils';
 
-import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
-import { FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
 import ProductCard from '../components/productCard';
-import { toast, Toaster } from 'react-hot-toast';
+import AddProduct from '../components/addProduct';
+import ProductList from './ProductList';
+import ProductCardRell from '../components/productCardRell';
 
 export default function UserProfile() {
   const { userId } = useParams()
@@ -69,37 +70,41 @@ export default function UserProfile() {
       }
       if(data){
         setShowEditNum(false)
+        toast.success('Datos actualizados')
+        
       }
-       } catch (error) {
-       console.error('Error updating profile:', error.message);
-       console.log('Error updating profile');
-      
-      }
-    }
-    
-    const handleNumInput = (e:any) => {
-      e.preventDefault()
-      setPhoneNum(e.target.value)
-    }
-    
-    const addAddress = async () => {
-      try{
-        const { data, error } = await supabase
-        .from('users')
-        .update({address: address})
-        .eq( 'id', userId )
-        .select()
-  
-        if(error){ 
-          throw error
-        }
-        if(data){
-          setShowEditAddress(false)
-          
-        }
-         } catch (error) {
+    } catch (error) {
+         toast.error('Ocurrió un error')
          console.error('Error updating profile:', error.message);
-         console.log('Error updating profile');
+         
+        }
+      }
+      
+      const handleNumInput = (e:any) => {
+        e.preventDefault()
+        setPhoneNum(e.target.value)
+      }
+      
+      const addAddress = async () => {
+        try{
+          const { data, error } = await supabase
+          .from('users')
+          .update({address: address})
+          .eq( 'id', userId )
+          .select()
+          
+          if(error){ 
+            throw error
+            toast.error('Ocurrió un error')
+          }
+          if(data){
+            setShowEditAddress(false)
+            toast.success('Datos actualizados')
+            
+          }
+        } catch (error) {
+          toast.error('Ocurrió un error')
+          console.error('Error updating profile:', error.message);
         
         }
       }
@@ -157,7 +162,8 @@ export default function UserProfile() {
     .from('users')
     .delete()
     .eq('email', userData.email)
-    sessionStorage.removeItem('supabaseSession')
+      sessionStorage.removeItem('supabaseSession')
+      sessionStorage.removeItem('userId')
     if (error) {
       throw error;
     }    
@@ -167,9 +173,10 @@ export default function UserProfile() {
   return (
     <>
       <div className='sm:flex h-[100vh] w-full'>
+        <AddProduct userId={userId}/>
         <Toaster
-        position="top-center"
-        reverseOrder={false}
+          position="top-center"
+          reverseOrder={false}
         />
         <div className='p-5 border-r-2 min-w-[300px] border-b-2 border-slate-300'>
           <div className='flex flex-col items-center'>
@@ -280,46 +287,20 @@ export default function UserProfile() {
               </form>
             }
           </div>
-          {/* {updated === false ? (
-            <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
-            ) : (
-              <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
-                    <FaCircleCheck size={20} className="text-green-400" />
-                    Datos actualizados
-                </div>
-            )}
-          {updateError === false ? (
-            <div className="hidden absolute bottom-2 right-2 items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-20 translate-y-20 transition-transform"></div>
-            ) : (
-              <div className="fixed bottom-2 right-2 flex items-center justify-around w-[300px] h-[50px] bg-white p-2 text-md rounded-md translate-x-0 translate-y-0 transition-transform">
-                    <FaCircleXmark size={20} className="text-red-400" />
-                    Ocurrió un error
-                </div>
-            )} */}
+          
         </div>
         <div className='space-y-5'>
           <div className='flex flex-wrap p-3 overflow-hidden w-full'>
             <h3 className='text-wrap text-xl font-semibold'>Productos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
-            <div className='flex flex-wrap gap-3 p-3 w-full'>
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-            </div>
+            <ProductList/>
           </div>
           <div className='flex flex-wrap p-3 overflow-hidden w-full'>
             <h3 className='text-wrap text-xl font-semibold'>Favoritos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
             <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              <ProductCardRell/>
+              <ProductCardRell/>
+              <ProductCardRell/>
+              <ProductCardRell/>
             </div>
           </div>
         </div>

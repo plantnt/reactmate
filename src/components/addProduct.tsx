@@ -1,14 +1,13 @@
 import { BiAddToQueue } from "react-icons/bi";
 import {NavLink} from 'react-router-dom'
 
-export default function AddProduct(){
+export default function AddProduct({ userId }){
   
   const isLogged = !!sessionStorage.getItem('supabaseSession');
-
   return(
     <>
       {isLogged ? 
-      <NavLink to='/productUpload'>
+      <NavLink to={`/productUpload/${userId}`}>
         <button className="
         fixed top-[80vh] right-[40px]
         w-[70px] h-[70px]
