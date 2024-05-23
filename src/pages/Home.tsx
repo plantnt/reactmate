@@ -17,7 +17,7 @@ const Home = () => {
                 <div className="flex justify-center w-full">
                     <div className="flex w-full">
                     <Filters/>
-                        <div className="ml-2">
+                        <div className="ml-5">
                             <Rating/>
                             <Catalog />
                         </div>

@@ -1,6 +1,6 @@
 import { Rate } from 'antd'
 import { NavLink } from 'react-router-dom'
-import { supabase } from "../utils/Utils";
+//import { supabase } from "../utils/Utils";
 
 import product1 from '../assets/products/1.jpg'
 import product2 from '../assets/products/2.jpg'
@@ -9,7 +9,7 @@ import product4 from '../assets/products/4.jpg'
 import product5 from '../assets/products/5.jpg'
 
 import { FaLeaf } from "react-icons/fa"
-import { useEffect, useState } from 'react';
+//import { useEffect, useState } from 'react';
 
 type ImageUrl = string
     const images: ImageUrl[] = [
@@ -84,6 +84,7 @@ const ProductCard = () => {
                       <div className="h-[140px] w-full overflow-hidden relative">
                           {logo > 3 ? (
                               <FaLeaf size={25} className="text-[#27ff59] w-[30px] h[30px] block absolute top-0 left-0  bg-white rounded-md p-1"/>
+                                
                           ) : (
                               ''
                           ) }
@@ -91,7 +92,12 @@ const ProductCard = () => {
                           </div>
           
                           <div className='w-full p-2 bg-white'>
-                          <Rate allowHalf disabled value={values} className="text-violet-400 pt-1 text-xs text-center bg-purple-200 rounded-b-full px-1 w-full" />
+                          {logo > 3 ? (
+                              <Rate allowHalf disabled value={values} className="text-green-400 pt-1 text-xs text-center bg-green-200 rounded-b-full px-1 w-full" />
+                          ) : (
+                            <Rate allowHalf disabled value={values} className="text-violet-400 pt-1 text-xs text-center bg-purple-200 rounded-b-full px-1 w-full" />
+                          ) }
+                          
                               <h3 className='font-semibold text-wrap truncate'>Mueble azul de casa</h3>
                               <h1 className='text-lg'>COP ${price1},{price2}</h1>
                           </div>

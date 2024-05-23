@@ -78,7 +78,7 @@ export default function ProductView(){
                     </div>
                     </NavLink>
                  <p className="font-semibold">Nombre de usuario</p>
-               <Rate allowHalf disabled value={4} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2 " />
+               <Rate allowHalf disabled value={4} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2 pt-1" />
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
@@ -90,7 +90,7 @@ export default function ProductView(){
                     </div>
                     </NavLink>
                  <p className="font-semibold">Nombre de usuario</p>
-               <Rate allowHalf disabled value={3} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2" />
+               <Rate allowHalf disabled value={3} className="text-violet-400 text-sm bg-purple-200 rounded-full px-2 pt-1" />
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
@@ -102,7 +102,7 @@ export default function ProductView(){
                     </div>
                     </NavLink>
                  <p className="font-semibold">Nombre de usuario</p>
-                 <Rate allowHalf disabled value={2} className="flex align-center text-violet-400 text-sm bg-purple-200 rounded-full px-2 w-min" />
+                 <Rate allowHalf disabled value={2} className="flex align-center text-violet-400 text-sm bg-purple-200 rounded-full px-2 pt-1 w-min" />
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem accusamus fugit mollitia odit. Numquam asperiores, illum quaerat, perferendis ea, blanditiis voluptatibus placeat at dolor corporis ipsum ducimus laudantium veniam?
                Distinctio esse nulla itaque rerum perferendis</p>
                </div>
