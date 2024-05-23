@@ -305,10 +305,10 @@ export default function UserProfile() {
           <div className='flex flex-wrap p-3 overflow-hidden w-full'>
             <h3 className='text-wrap text-xl font-semibold'>Favoritos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
             <div className='flex flex-wrap gap-3 p-3 h-full w-full'>
-              <ProductCardRell/>
-              <ProductCardRell/>
-              <ProductCardRell/>
-              <ProductCardRell/>
+              <ProductCardRell id={5}/>
+              <ProductCardRell id={5}/>
+              <ProductCardRell id={5}/>
+              <ProductCardRell id={5}/>
             </div>
           </div>
       
