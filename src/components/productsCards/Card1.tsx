@@ -8,7 +8,7 @@ export default function Card1(){
 
     return(
         <>
-            <NavLink to={'/productPage'}>
+            <NavLink to={'/productPage/5'}>
                 <div className='w-[10rem] bg-white border-2 border-slate-200 rounded-lg shadow-md'>
                 
                     <div className="h-[140px] w-full overflow-hidden relative">

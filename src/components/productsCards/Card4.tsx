@@ -9,7 +9,7 @@ export default function Card1(){
 
     return(
         <>
-            <NavLink to={'/productPage'}>
+            <NavLink to={'/productPage/1'}>
                 <div className='w-[10rem] bg-white border-2 border-slate-200 rounded-lg shadow-md'>
                     <div className="h-[140px] w-full overflow-hidden relative">
                     <FaLeaf size={25} className="text-[#27ff59] w-[30px] h[30px] block absolute top-0 left-0  bg-white rounded-md p-1"/>
