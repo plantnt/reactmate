@@ -44,7 +44,7 @@ export default function SignUp(){
         try {
             const { data: users, error } = await supabase
             .from("users")
-            .select("id, email, password, profilepic")
+            .select("id, email, password")
         if (users){
             const user = users.find((user: any) => user.email === formData.email && user.password === formData.password)
             if (user){
