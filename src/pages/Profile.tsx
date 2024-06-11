@@ -9,7 +9,7 @@ import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 import { supabase } from '../utils/Utils';
 
 import AddProduct from '../components/addProduct';
-import UserProducts from './UserProductss';
+import UserProducts from './UserProducts';
 import ProductCardRell from '../components/productCardRell';
 
 export default function UserProfile() {
