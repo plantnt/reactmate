@@ -9,7 +9,7 @@ import { IoIosClose, IoIosCloseCircle, IoIosPin } from 'react-icons/io';
 import { supabase } from '../utils/Utils';
 
 import AddProduct from '../components/addProduct';
-import ProductList from './ProductList';
+import UserProducts from './UserProductss';
 import ProductCardRell from '../components/productCardRell';
 
 export default function UserProfile() {
@@ -291,7 +291,7 @@ export default function UserProfile() {
         <div className='space-y-5'>
           <div className='flex flex-wrap p-3 overflow-hidden w-full'>
             <h3 className='text-wrap text-xl font-semibold'>Productos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>
-            <ProductList/>
+            <UserProducts/>
           </div>
           <div className='flex flex-wrap p-3 overflow-hidden w-full'>
             <h3 className='text-wrap text-xl font-semibold'>Favoritos de {userData.name || 'nombre'} {userData.last_name || 'apellido'}</h3>

@@ -67,7 +67,7 @@ const deleteImage = (index = null) => {
 const title = sessionStorage.getItem("titulo")
 const description = sessionStorage.getItem("descripcion")
 const price = sessionStorage.getItem("precio")
-const material = sessionStorage.getItem("material")
+const material = sessionStorage.getItem("material")7
 const categoria = sessionStorage.getItem("Categoria")
 var Categoriarecuperada = JSON.parse(categoria)
 

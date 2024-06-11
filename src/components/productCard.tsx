@@ -4,13 +4,10 @@ import { NavLink } from 'react-router-dom'
 
 import { FaLeaf } from "react-icons/fa"
     
-const ProductCard = ({ id, title='', price=555, image='' }) => {
-    // const randomImage = getRandomImage(images)
+const ProductCard = ({ id, title='', price=0, image='' }) => {
+
 
     const values = Math.random() * (5 - 0.5) + 0.5;
-
-    // const price1 = Math.round(Math.random() * (999 - 100) + 100) ;
-    // const price2 = Math.round(Math.random() * (999 - 100) + 100) ; 
 
      const logo = Math.round(Math.random()*(5 - 0));
 

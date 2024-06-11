@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { supabase } from '../utils/Utils'
 import ProductCard from '../components/productCard';
 
-const ProductList = () => {
+const UserProducts = () => {
   const { userId } = useParams();
 
   const [products, setProducts] = useState([]);
@@ -50,4 +50,4 @@ console.log(products.map((prod) => (
   );
 };
 
-export default ProductList;
+export default UserProducts;
