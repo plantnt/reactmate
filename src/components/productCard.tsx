@@ -34,7 +34,7 @@ const ProductCard = ({ id, title='', price=555, image='' }) => {
           
                           <div className='w-full p-2 bg-white'>
                           <Rate allowHalf disabled value={values} className="text-violet-400 pt-1 text-xs text-center bg-purple-200 rounded-b-full px-1 w-full" />
-                              <h3 className='font-semibold text-wrap truncate'>{title}</h3>
+                              <h3 className='font-semibold text-wrap'>{title}</h3>
                               <h1 className='text-lg'>COP ${price}</h1>
                           </div>
                       </div>                
